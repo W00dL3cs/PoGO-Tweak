@@ -3,7 +3,7 @@ Name: PoGO-Tweak
 Depends: mobilesubstrate
 Version: 0.0.1
 Architecture: iphoneos-arm
-Description: Pokemon GO - Tweak
+Description: Handle Pokemon GO data directly from your iDevice!
 Maintainer: W00dL3cs
 Author: W00dL3cs
 Section: Tweaks
