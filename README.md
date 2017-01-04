@@ -15,10 +15,10 @@ Requires a jailbroken iDevice (unless you side-load the tweak) and THEOS install
 ## Compilation
 The project comes with both the latest Google Protocol Buffers, and the compiled Pokemon GO proto messages. <br>
 
-THEOS is required in order to build the source code: if you installed it in a custom directory, remember to define the new path inside the project build settings (under the voice named "THEOS").
+THEOS is required in order to build the source code: if you installed it in a custom directory, remember to define the new path inside the project build settings (under the voice named `THEOS`).
 
 ## Features
-The source code includes a couple of examples about request/response handling and tampering, but more features can be added inside the "Tweak.xm" file: follow the comments to understand the operations flow. <br>
+The source code includes a couple of examples about request/response handling and tampering, but more features can be added inside the `Tweak.xm` file: follow the comments to understand the operations flow. <br>
 
 Messages coming from the server can be edited without additional setups... messages going to the server, instead, require a working implementation of the latest hashing algorithm used from Niantic (not included here). <br>
 
