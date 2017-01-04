@@ -1,4 +1,4 @@
-# PokeGO-Tweak
+# PoGO-Tweak
 This repository contains a proof-of-concept of a Mobile Substrate tweak which can be used to intercept, handle and tamper Pokemon GO data on-the-fly, directly on the device. <br>
 
 Everything is packed inside an XCode project, so you can work from the IDE without additional setups. <br>
@@ -29,5 +29,5 @@ Messages coming from the server can be edited without additional setups... messa
 | Project                 | Link                                    |
 |-------------------------|-----------------------------------------|
 | THEOS                   | https://github.com/theos/theos          |
-| Google Protocol Buffers | https://github.com/google/protobuf      |
 | POGOProtos              | https://github.com/AeonLucid/POGOProtos |
+| Google Protocol Buffers | https://github.com/google/protobuf      |
