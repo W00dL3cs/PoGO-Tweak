@@ -28,5 +28,6 @@ Messages coming from the server can be edited without additional setups... messa
 
 | Project                 | Link                                    |
 |-------------------------|-----------------------------------------|
+| THEOS                   | https://github.com/theos/theos          |
 | Google Protocol Buffers | https://github.com/google/protobuf      |
 | POGOProtos              | https://github.com/AeonLucid/POGOProtos |
