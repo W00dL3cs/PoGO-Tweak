@@ -1,5 +1,5 @@
 # PoGO-Tweak
-This repository contains a proof-of-concept of a Mobile Substrate tweak which can be used to intercept, handle and tamper Pokemon GO data on-the-fly, directly on the device. <br>
+This repository contains a proof-of-concept of a Man-in-the-Middle attack upon the official Pokemon GO iOS client: it's a Mobile Substrate tweak which can be used to intercept, handle and tamper data on-the-fly, directly on the device. <br>
 
 Everything is packed inside an XCode project, so you can work from the IDE without additional setups. <br>
 
