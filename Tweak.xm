@@ -3,12 +3,33 @@
 //  Project Name: PoGO-Tweak
 //
 //  Created by Alexandro Luongo on 26/12/2016.
-//  Copyright © 2016 Alexandro Luongo. All rights reserved.
+//  Copyright © 2016-2017 Alexandro Luongo. All rights reserved.
 //
 
 #import "PogoprotosNetworkingEnvelopes.pbobjc.h"
 #import "PogoprotosNetworkingResponses.pbobjc.h"
 
+//
+// Remove certificate pinning
+// Thanks to ilendemil (https://github.com/rastapasta/pokemon-go-mitm/issues/69#issuecomment-236571321)
+//
+#ifdef THEOS
+%hook NIATrustedCertificatesAuthenticator
+#endif
+
+-(void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler
+{
+    NSURLCredential *credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+    completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
+}
+
+#ifdef THEOS
+%end
+#endif
+
+//
+// MITM Attack
+//
 #ifdef THEOS
 %hook __NSCFURLSession
 #endif
