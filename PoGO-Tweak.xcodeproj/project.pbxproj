@@ -6,424 +6,953 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FA7ED7C11EBE2C880046C902 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7ED7C01EBE2C880046C902 /* Foundation.framework */; };
+		FA7ED7CC1EBE2C880046C902 /* Tweak.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED7CB1EBE2C880046C902 /* Tweak.mm */; };
+		FA7ED7D71EBE2D020046C902 /* libsubstrate.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7ED7D61EBE2D020046C902 /* libsubstrate.dylib */; };
+		FA7ED7E91EBE2E070046C902 /* ByteArray.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED7DD1EBE2E070046C902 /* ByteArray.h */; };
+		FA7ED7EA1EBE2E070046C902 /* IntArray.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED7DE1EBE2E070046C902 /* IntArray.h */; };
+		FA7ED7EB1EBE2E070046C902 /* IntPtr.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED7DF1EBE2E070046C902 /* IntPtr.h */; };
+		FA7ED7EC1EBE2E070046C902 /* Il2CppArray.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED7E11EBE2E070046C902 /* Il2CppArray.h */; };
+		FA7ED7ED1EBE2E070046C902 /* Il2CppObject.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED7E21EBE2E070046C902 /* Il2CppObject.h */; };
+		FA7ED7EE1EBE2E070046C902 /* ByteString.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED7E41EBE2E070046C902 /* ByteString.h */; };
+		FA7ED7EF1EBE2E070046C902 /* ByteStringArray.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED7E51EBE2E070046C902 /* ByteStringArray.h */; };
+		FA7ED7F01EBE2E070046C902 /* ByteStringRepeatedField.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED7E61EBE2E070046C902 /* ByteStringRepeatedField.h */; };
+		FA7ED7F11EBE2E070046C902 /* Result.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED7E71EBE2E070046C902 /* Result.h */; };
+		FA7ED7F21EBE2E070046C902 /* Structs.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED7E81EBE2E070046C902 /* Structs.h */; };
+		FA7ED7F41EBE2E5B0046C902 /* substrate.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED7F31EBE2E5B0046C902 /* substrate.h */; };
+		FA7ED8381EBE30E00046C902 /* Any.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED7F91EBE30E00046C902 /* Any.pbobjc.h */; };
+		FA7ED8391EBE30E00046C902 /* Any.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED7FA1EBE30E00046C902 /* Any.pbobjc.m */; };
+		FA7ED83A1EBE30E00046C902 /* Api.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED7FB1EBE30E00046C902 /* Api.pbobjc.h */; };
+		FA7ED83B1EBE30E00046C902 /* Api.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED7FC1EBE30E00046C902 /* Api.pbobjc.m */; };
+		FA7ED83C1EBE30E00046C902 /* Duration.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED7FD1EBE30E00046C902 /* Duration.pbobjc.h */; };
+		FA7ED83D1EBE30E00046C902 /* Duration.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED7FE1EBE30E00046C902 /* Duration.pbobjc.m */; };
+		FA7ED83E1EBE30E00046C902 /* Empty.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED7FF1EBE30E00046C902 /* Empty.pbobjc.h */; };
+		FA7ED83F1EBE30E00046C902 /* Empty.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8001EBE30E00046C902 /* Empty.pbobjc.m */; };
+		FA7ED8401EBE30E00046C902 /* FieldMask.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8011EBE30E00046C902 /* FieldMask.pbobjc.h */; };
+		FA7ED8411EBE30E00046C902 /* FieldMask.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8021EBE30E00046C902 /* FieldMask.pbobjc.m */; };
+		FA7ED8421EBE30E00046C902 /* SourceContext.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8031EBE30E00046C902 /* SourceContext.pbobjc.h */; };
+		FA7ED8431EBE30E00046C902 /* SourceContext.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8041EBE30E00046C902 /* SourceContext.pbobjc.m */; };
+		FA7ED8441EBE30E00046C902 /* Struct.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8051EBE30E00046C902 /* Struct.pbobjc.h */; };
+		FA7ED8451EBE30E00046C902 /* Struct.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8061EBE30E00046C902 /* Struct.pbobjc.m */; };
+		FA7ED8461EBE30E00046C902 /* Timestamp.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8071EBE30E00046C902 /* Timestamp.pbobjc.h */; };
+		FA7ED8471EBE30E00046C902 /* Timestamp.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8081EBE30E00046C902 /* Timestamp.pbobjc.m */; };
+		FA7ED8481EBE30E00046C902 /* Type.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8091EBE30E00046C902 /* Type.pbobjc.h */; };
+		FA7ED8491EBE30E00046C902 /* Type.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED80A1EBE30E00046C902 /* Type.pbobjc.m */; };
+		FA7ED84A1EBE30E00046C902 /* Wrappers.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED80B1EBE30E00046C902 /* Wrappers.pbobjc.h */; };
+		FA7ED84B1EBE30E00046C902 /* Wrappers.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED80C1EBE30E00046C902 /* Wrappers.pbobjc.m */; };
+		FA7ED84C1EBE30E00046C902 /* GPBArray.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED80D1EBE30E00046C902 /* GPBArray.h */; };
+		FA7ED84D1EBE30E00046C902 /* GPBArray.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED80E1EBE30E00046C902 /* GPBArray.m */; };
+		FA7ED84E1EBE30E00046C902 /* GPBArray_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED80F1EBE30E00046C902 /* GPBArray_PackagePrivate.h */; };
+		FA7ED84F1EBE30E00046C902 /* GPBBootstrap.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8101EBE30E00046C902 /* GPBBootstrap.h */; };
+		FA7ED8501EBE30E00046C902 /* GPBCodedInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8111EBE30E00046C902 /* GPBCodedInputStream.h */; };
+		FA7ED8511EBE30E00046C902 /* GPBCodedInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8121EBE30E00046C902 /* GPBCodedInputStream.m */; };
+		FA7ED8521EBE30E00046C902 /* GPBCodedInputStream_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8131EBE30E00046C902 /* GPBCodedInputStream_PackagePrivate.h */; };
+		FA7ED8531EBE30E00046C902 /* GPBCodedOutputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8141EBE30E00046C902 /* GPBCodedOutputStream.h */; };
+		FA7ED8541EBE30E00046C902 /* GPBCodedOutputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8151EBE30E00046C902 /* GPBCodedOutputStream.m */; };
+		FA7ED8551EBE30E00046C902 /* GPBCodedOutputStream_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8161EBE30E00046C902 /* GPBCodedOutputStream_PackagePrivate.h */; };
+		FA7ED8561EBE30E00046C902 /* GPBDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8171EBE30E00046C902 /* GPBDescriptor.h */; };
+		FA7ED8571EBE30E00046C902 /* GPBDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8181EBE30E00046C902 /* GPBDescriptor.m */; };
+		FA7ED8581EBE30E00046C902 /* GPBDescriptor_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8191EBE30E00046C902 /* GPBDescriptor_PackagePrivate.h */; };
+		FA7ED8591EBE30E00046C902 /* GPBDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED81A1EBE30E00046C902 /* GPBDictionary.h */; };
+		FA7ED85A1EBE30E00046C902 /* GPBDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED81B1EBE30E00046C902 /* GPBDictionary.m */; };
+		FA7ED85B1EBE30E00046C902 /* GPBDictionary_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED81C1EBE30E00046C902 /* GPBDictionary_PackagePrivate.h */; };
+		FA7ED85C1EBE30E00046C902 /* GPBExtensionInternals.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED81D1EBE30E00046C902 /* GPBExtensionInternals.h */; };
+		FA7ED85D1EBE30E00046C902 /* GPBExtensionInternals.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED81E1EBE30E00046C902 /* GPBExtensionInternals.m */; };
+		FA7ED85E1EBE30E00046C902 /* GPBExtensionRegistry.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED81F1EBE30E00046C902 /* GPBExtensionRegistry.h */; };
+		FA7ED85F1EBE30E00046C902 /* GPBExtensionRegistry.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8201EBE30E00046C902 /* GPBExtensionRegistry.m */; };
+		FA7ED8601EBE30E00046C902 /* GPBMessage.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8211EBE30E00046C902 /* GPBMessage.h */; };
+		FA7ED8611EBE30E00046C902 /* GPBMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8221EBE30E00046C902 /* GPBMessage.m */; };
+		FA7ED8621EBE30E00046C902 /* GPBMessage_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8231EBE30E00046C902 /* GPBMessage_PackagePrivate.h */; };
+		FA7ED8631EBE30E00046C902 /* GPBProtocolBuffers.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8241EBE30E00046C902 /* GPBProtocolBuffers.h */; };
+		FA7ED8641EBE30E00046C902 /* GPBProtocolBuffers_RuntimeSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8251EBE30E00046C902 /* GPBProtocolBuffers_RuntimeSupport.h */; };
+		FA7ED8651EBE30E00046C902 /* GPBRootObject.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8261EBE30E00046C902 /* GPBRootObject.h */; };
+		FA7ED8661EBE30E00046C902 /* GPBRootObject.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8271EBE30E00046C902 /* GPBRootObject.m */; };
+		FA7ED8671EBE30E00046C902 /* GPBRootObject_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8281EBE30E00046C902 /* GPBRootObject_PackagePrivate.h */; };
+		FA7ED8681EBE30E00046C902 /* GPBRuntimeTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8291EBE30E00046C902 /* GPBRuntimeTypes.h */; };
+		FA7ED8691EBE30E00046C902 /* GPBUnknownField.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED82A1EBE30E00046C902 /* GPBUnknownField.h */; };
+		FA7ED86A1EBE30E00046C902 /* GPBUnknownField.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED82B1EBE30E00046C902 /* GPBUnknownField.m */; };
+		FA7ED86B1EBE30E00046C902 /* GPBUnknownField_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED82C1EBE30E00046C902 /* GPBUnknownField_PackagePrivate.h */; };
+		FA7ED86C1EBE30E00046C902 /* GPBUnknownFieldSet.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED82D1EBE30E00046C902 /* GPBUnknownFieldSet.h */; };
+		FA7ED86D1EBE30E00046C902 /* GPBUnknownFieldSet.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED82E1EBE30E00046C902 /* GPBUnknownFieldSet.m */; };
+		FA7ED86E1EBE30E00046C902 /* GPBUnknownFieldSet_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED82F1EBE30E00046C902 /* GPBUnknownFieldSet_PackagePrivate.h */; };
+		FA7ED86F1EBE30E00046C902 /* GPBUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8301EBE30E00046C902 /* GPBUtilities.h */; };
+		FA7ED8701EBE30E00046C902 /* GPBUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8311EBE30E00046C902 /* GPBUtilities.m */; };
+		FA7ED8711EBE30E00046C902 /* GPBUtilities_PackagePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8321EBE30E00046C902 /* GPBUtilities_PackagePrivate.h */; };
+		FA7ED8721EBE30E00046C902 /* GPBWellKnownTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8331EBE30E00046C902 /* GPBWellKnownTypes.h */; };
+		FA7ED8731EBE30E00046C902 /* GPBWellKnownTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8341EBE30E00046C902 /* GPBWellKnownTypes.m */; };
+		FA7ED8741EBE30E00046C902 /* GPBWireFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8351EBE30E00046C902 /* GPBWireFormat.h */; };
+		FA7ED8751EBE30E00046C902 /* GPBWireFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8361EBE30E00046C902 /* GPBWireFormat.m */; };
+		FA7ED8AE1EBE32410046C902 /* PogoprotosData.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8761EBE32410046C902 /* PogoprotosData.pbobjc.h */; };
+		FA7ED8AF1EBE32410046C902 /* PogoprotosData.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8771EBE32410046C902 /* PogoprotosData.pbobjc.m */; };
+		FA7ED8B01EBE32410046C902 /* PogoprotosDataAvatar.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8781EBE32410046C902 /* PogoprotosDataAvatar.pbobjc.h */; };
+		FA7ED8B11EBE32410046C902 /* PogoprotosDataAvatar.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8791EBE32410046C902 /* PogoprotosDataAvatar.pbobjc.m */; };
+		FA7ED8B21EBE32410046C902 /* PogoprotosDataBadge.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED87A1EBE32410046C902 /* PogoprotosDataBadge.pbobjc.h */; };
+		FA7ED8B31EBE32410046C902 /* PogoprotosDataBadge.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED87B1EBE32410046C902 /* PogoprotosDataBadge.pbobjc.m */; };
+		FA7ED8B41EBE32410046C902 /* PogoprotosDataBattle.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED87C1EBE32410046C902 /* PogoprotosDataBattle.pbobjc.h */; };
+		FA7ED8B51EBE32410046C902 /* PogoprotosDataBattle.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED87D1EBE32410046C902 /* PogoprotosDataBattle.pbobjc.m */; };
+		FA7ED8B61EBE32410046C902 /* PogoprotosDataCapture.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED87E1EBE32410046C902 /* PogoprotosDataCapture.pbobjc.h */; };
+		FA7ED8B71EBE32410046C902 /* PogoprotosDataCapture.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED87F1EBE32410046C902 /* PogoprotosDataCapture.pbobjc.m */; };
+		FA7ED8B81EBE32410046C902 /* PogoprotosDataGym.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8801EBE32410046C902 /* PogoprotosDataGym.pbobjc.h */; };
+		FA7ED8B91EBE32410046C902 /* PogoprotosDataGym.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8811EBE32410046C902 /* PogoprotosDataGym.pbobjc.m */; };
+		FA7ED8BA1EBE32410046C902 /* PogoprotosDataLogs.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8821EBE32410046C902 /* PogoprotosDataLogs.pbobjc.h */; };
+		FA7ED8BB1EBE32410046C902 /* PogoprotosDataLogs.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8831EBE32410046C902 /* PogoprotosDataLogs.pbobjc.m */; };
+		FA7ED8BC1EBE32410046C902 /* PogoprotosDataPlayer.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8841EBE32410046C902 /* PogoprotosDataPlayer.pbobjc.h */; };
+		FA7ED8BD1EBE32410046C902 /* PogoprotosDataPlayer.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8851EBE32410046C902 /* PogoprotosDataPlayer.pbobjc.m */; };
+		FA7ED8BE1EBE32410046C902 /* PogoprotosDataQuests.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8861EBE32410046C902 /* PogoprotosDataQuests.pbobjc.h */; };
+		FA7ED8BF1EBE32410046C902 /* PogoprotosDataQuests.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8871EBE32410046C902 /* PogoprotosDataQuests.pbobjc.m */; };
+		FA7ED8C01EBE32410046C902 /* PogoprotosDataRedeem.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8881EBE32410046C902 /* PogoprotosDataRedeem.pbobjc.h */; };
+		FA7ED8C11EBE32410046C902 /* PogoprotosDataRedeem.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8891EBE32410046C902 /* PogoprotosDataRedeem.pbobjc.m */; };
+		FA7ED8C21EBE32410046C902 /* PogoprotosEnums.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED88A1EBE32410046C902 /* PogoprotosEnums.pbobjc.h */; };
+		FA7ED8C31EBE32410046C902 /* PogoprotosEnums.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED88B1EBE32410046C902 /* PogoprotosEnums.pbobjc.m */; };
+		FA7ED8C41EBE32410046C902 /* PogoprotosInventory.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED88C1EBE32410046C902 /* PogoprotosInventory.pbobjc.h */; };
+		FA7ED8C51EBE32410046C902 /* PogoprotosInventory.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED88D1EBE32410046C902 /* PogoprotosInventory.pbobjc.m */; };
+		FA7ED8C61EBE32410046C902 /* PogoprotosInventoryItem.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED88E1EBE32410046C902 /* PogoprotosInventoryItem.pbobjc.h */; };
+		FA7ED8C71EBE32410046C902 /* PogoprotosInventoryItem.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED88F1EBE32410046C902 /* PogoprotosInventoryItem.pbobjc.m */; };
+		FA7ED8C81EBE32410046C902 /* PogoprotosMap.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8901EBE32410046C902 /* PogoprotosMap.pbobjc.h */; };
+		FA7ED8C91EBE32410046C902 /* PogoprotosMap.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8911EBE32410046C902 /* PogoprotosMap.pbobjc.m */; };
+		FA7ED8CA1EBE32410046C902 /* PogoprotosMapFort.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8921EBE32410046C902 /* PogoprotosMapFort.pbobjc.h */; };
+		FA7ED8CB1EBE32410046C902 /* PogoprotosMapFort.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8931EBE32410046C902 /* PogoprotosMapFort.pbobjc.m */; };
+		FA7ED8CC1EBE32410046C902 /* PogoprotosMapPokemon.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8941EBE32410046C902 /* PogoprotosMapPokemon.pbobjc.h */; };
+		FA7ED8CD1EBE32410046C902 /* PogoprotosMapPokemon.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8951EBE32410046C902 /* PogoprotosMapPokemon.pbobjc.m */; };
+		FA7ED8CE1EBE32410046C902 /* PogoprotosNetworkingEnvelopes.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8961EBE32410046C902 /* PogoprotosNetworkingEnvelopes.pbobjc.h */; };
+		FA7ED8CF1EBE32410046C902 /* PogoprotosNetworkingEnvelopes.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8971EBE32410046C902 /* PogoprotosNetworkingEnvelopes.pbobjc.m */; };
+		FA7ED8D01EBE32410046C902 /* PogoprotosNetworkingPlatform.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8981EBE32410046C902 /* PogoprotosNetworkingPlatform.pbobjc.h */; };
+		FA7ED8D11EBE32410046C902 /* PogoprotosNetworkingPlatform.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8991EBE32410046C902 /* PogoprotosNetworkingPlatform.pbobjc.m */; };
+		FA7ED8D21EBE32410046C902 /* PogoprotosNetworkingPlatformRequests.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED89A1EBE32410046C902 /* PogoprotosNetworkingPlatformRequests.pbobjc.h */; };
+		FA7ED8D31EBE32410046C902 /* PogoprotosNetworkingPlatformRequests.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED89B1EBE32410046C902 /* PogoprotosNetworkingPlatformRequests.pbobjc.m */; };
+		FA7ED8D41EBE32410046C902 /* PogoprotosNetworkingPlatformResponses.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED89C1EBE32410046C902 /* PogoprotosNetworkingPlatformResponses.pbobjc.h */; };
+		FA7ED8D51EBE32410046C902 /* PogoprotosNetworkingPlatformResponses.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED89D1EBE32410046C902 /* PogoprotosNetworkingPlatformResponses.pbobjc.m */; };
+		FA7ED8D61EBE32410046C902 /* PogoprotosNetworkingRequests.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED89E1EBE32410046C902 /* PogoprotosNetworkingRequests.pbobjc.h */; };
+		FA7ED8D71EBE32410046C902 /* PogoprotosNetworkingRequests.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED89F1EBE32410046C902 /* PogoprotosNetworkingRequests.pbobjc.m */; };
+		FA7ED8D81EBE32410046C902 /* PogoprotosNetworkingRequestsMessages.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8A01EBE32410046C902 /* PogoprotosNetworkingRequestsMessages.pbobjc.h */; };
+		FA7ED8D91EBE32410046C902 /* PogoprotosNetworkingRequestsMessages.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8A11EBE32410046C902 /* PogoprotosNetworkingRequestsMessages.pbobjc.m */; };
+		FA7ED8DA1EBE32410046C902 /* PogoprotosNetworkingResponses.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8A21EBE32410046C902 /* PogoprotosNetworkingResponses.pbobjc.h */; };
+		FA7ED8DB1EBE32410046C902 /* PogoprotosNetworkingResponses.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8A31EBE32410046C902 /* PogoprotosNetworkingResponses.pbobjc.m */; };
+		FA7ED8DC1EBE32410046C902 /* PogoprotosSettings.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8A41EBE32410046C902 /* PogoprotosSettings.pbobjc.h */; };
+		FA7ED8DD1EBE32410046C902 /* PogoprotosSettings.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8A51EBE32410046C902 /* PogoprotosSettings.pbobjc.m */; };
+		FA7ED8DE1EBE32410046C902 /* PogoprotosSettingsMaster.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8A61EBE32410046C902 /* PogoprotosSettingsMaster.pbobjc.h */; };
+		FA7ED8DF1EBE32410046C902 /* PogoprotosSettingsMaster.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8A71EBE32410046C902 /* PogoprotosSettingsMaster.pbobjc.m */; };
+		FA7ED8E01EBE32410046C902 /* PogoprotosSettingsMasterItem.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8A81EBE32410046C902 /* PogoprotosSettingsMasterItem.pbobjc.h */; };
+		FA7ED8E11EBE32410046C902 /* PogoprotosSettingsMasterItem.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8A91EBE32410046C902 /* PogoprotosSettingsMasterItem.pbobjc.m */; };
+		FA7ED8E21EBE32410046C902 /* PogoprotosSettingsMasterPokemon.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8AA1EBE32410046C902 /* PogoprotosSettingsMasterPokemon.pbobjc.h */; };
+		FA7ED8E31EBE32410046C902 /* PogoprotosSettingsMasterPokemon.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8AB1EBE32410046C902 /* PogoprotosSettingsMasterPokemon.pbobjc.m */; };
+		FA7ED8E41EBE32410046C902 /* PogoprotosSettingsMasterQuest.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8AC1EBE32410046C902 /* PogoprotosSettingsMasterQuest.pbobjc.h */; };
+		FA7ED8E51EBE32410046C902 /* PogoprotosSettingsMasterQuest.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8AD1EBE32410046C902 /* PogoprotosSettingsMasterQuest.pbobjc.m */; };
+		FA7ED8E71EBE32820046C902 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7ED8E61EBE32820046C902 /* UIKit.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
-		FA1C90B61E0EAF7B00E58E60 /* PogoprotosNetworkingEnvelopes.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingEnvelopes.pbobjc.h; sourceTree = "<group>"; };
-		FA1C90B71E0EAF7B00E58E60 /* PogoprotosNetworkingEnvelopes.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingEnvelopes.pbobjc.m; sourceTree = "<group>"; };
-		FA1C90B91E0EAF9300E58E60 /* GPBArray_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBArray_PackagePrivate.h; sourceTree = "<group>"; };
-		FA1C90BA1E0EAF9300E58E60 /* GPBArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBArray.h; sourceTree = "<group>"; };
-		FA1C90BB1E0EAF9300E58E60 /* GPBArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBArray.m; sourceTree = "<group>"; };
-		FA1C90BC1E0EAF9300E58E60 /* GPBBootstrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBBootstrap.h; sourceTree = "<group>"; };
-		FA1C90BD1E0EAF9300E58E60 /* GPBCodedInputStream_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBCodedInputStream_PackagePrivate.h; sourceTree = "<group>"; };
-		FA1C90BE1E0EAF9300E58E60 /* GPBCodedInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBCodedInputStream.h; sourceTree = "<group>"; };
-		FA1C90BF1E0EAF9300E58E60 /* GPBCodedInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBCodedInputStream.m; sourceTree = "<group>"; };
-		FA1C90C01E0EAF9300E58E60 /* GPBCodedOutputStream_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBCodedOutputStream_PackagePrivate.h; sourceTree = "<group>"; };
-		FA1C90C11E0EAF9300E58E60 /* GPBCodedOutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBCodedOutputStream.h; sourceTree = "<group>"; };
-		FA1C90C21E0EAF9300E58E60 /* GPBCodedOutputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBCodedOutputStream.m; sourceTree = "<group>"; };
-		FA1C90C31E0EAF9300E58E60 /* GPBDescriptor_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBDescriptor_PackagePrivate.h; sourceTree = "<group>"; };
-		FA1C90C41E0EAF9300E58E60 /* GPBDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBDescriptor.h; sourceTree = "<group>"; };
-		FA1C90C51E0EAF9300E58E60 /* GPBDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBDescriptor.m; sourceTree = "<group>"; };
-		FA1C90C61E0EAF9300E58E60 /* GPBDictionary_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBDictionary_PackagePrivate.h; sourceTree = "<group>"; };
-		FA1C90C71E0EAF9300E58E60 /* GPBDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBDictionary.h; sourceTree = "<group>"; };
-		FA1C90C81E0EAF9300E58E60 /* GPBDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBDictionary.m; sourceTree = "<group>"; };
-		FA1C90C91E0EAF9300E58E60 /* GPBExtensionInternals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBExtensionInternals.h; sourceTree = "<group>"; };
-		FA1C90CA1E0EAF9300E58E60 /* GPBExtensionInternals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBExtensionInternals.m; sourceTree = "<group>"; };
-		FA1C90CB1E0EAF9300E58E60 /* GPBExtensionRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBExtensionRegistry.h; sourceTree = "<group>"; };
-		FA1C90CC1E0EAF9300E58E60 /* GPBExtensionRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBExtensionRegistry.m; sourceTree = "<group>"; };
-		FA1C90CD1E0EAF9300E58E60 /* GPBMessage_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBMessage_PackagePrivate.h; sourceTree = "<group>"; };
-		FA1C90CE1E0EAF9300E58E60 /* GPBMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBMessage.h; sourceTree = "<group>"; };
-		FA1C90CF1E0EAF9300E58E60 /* GPBMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBMessage.m; sourceTree = "<group>"; };
-		FA1C90D01E0EAF9300E58E60 /* GPBProtocolBuffers_RuntimeSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBProtocolBuffers_RuntimeSupport.h; sourceTree = "<group>"; };
-		FA1C90D11E0EAF9300E58E60 /* GPBProtocolBuffers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBProtocolBuffers.h; sourceTree = "<group>"; };
-		FA1C90D21E0EAF9300E58E60 /* GPBProtocolBuffers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBProtocolBuffers.m; sourceTree = "<group>"; };
-		FA1C90D31E0EAF9300E58E60 /* GPBRootObject_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBRootObject_PackagePrivate.h; sourceTree = "<group>"; };
-		FA1C90D41E0EAF9300E58E60 /* GPBRootObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBRootObject.h; sourceTree = "<group>"; };
-		FA1C90D51E0EAF9300E58E60 /* GPBRootObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBRootObject.m; sourceTree = "<group>"; };
-		FA1C90D61E0EAF9300E58E60 /* GPBRuntimeTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBRuntimeTypes.h; sourceTree = "<group>"; };
-		FA1C90D71E0EAF9300E58E60 /* GPBUnknownField_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBUnknownField_PackagePrivate.h; sourceTree = "<group>"; };
-		FA1C90D81E0EAF9300E58E60 /* GPBUnknownField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBUnknownField.h; sourceTree = "<group>"; };
-		FA1C90D91E0EAF9300E58E60 /* GPBUnknownField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBUnknownField.m; sourceTree = "<group>"; };
-		FA1C90DA1E0EAF9300E58E60 /* GPBUnknownFieldSet_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBUnknownFieldSet_PackagePrivate.h; sourceTree = "<group>"; };
-		FA1C90DB1E0EAF9300E58E60 /* GPBUnknownFieldSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBUnknownFieldSet.h; sourceTree = "<group>"; };
-		FA1C90DC1E0EAF9300E58E60 /* GPBUnknownFieldSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBUnknownFieldSet.m; sourceTree = "<group>"; };
-		FA1C90DD1E0EAF9300E58E60 /* GPBUtilities_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBUtilities_PackagePrivate.h; sourceTree = "<group>"; };
-		FA1C90DE1E0EAF9300E58E60 /* GPBUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBUtilities.h; sourceTree = "<group>"; };
-		FA1C90DF1E0EAF9300E58E60 /* GPBUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBUtilities.m; sourceTree = "<group>"; };
-		FA1C90E01E0EAF9300E58E60 /* GPBWellKnownTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBWellKnownTypes.h; sourceTree = "<group>"; };
-		FA1C90E11E0EAF9300E58E60 /* GPBWellKnownTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBWellKnownTypes.m; sourceTree = "<group>"; };
-		FA1C90E21E0EAF9300E58E60 /* GPBWireFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBWireFormat.h; sourceTree = "<group>"; };
-		FA1C90E31E0EAF9300E58E60 /* GPBWireFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBWireFormat.m; sourceTree = "<group>"; };
-		FA1C90E41E0EAFD600E58E60 /* PogoprotosSettings.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosSettings.pbobjc.h; sourceTree = "<group>"; };
-		FA1C90E51E0EAFD600E58E60 /* PogoprotosSettings.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosSettings.pbobjc.m; sourceTree = "<group>"; };
-		FA1C90E61E0EAFD600E58E60 /* PogoprotosSettingsMaster.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosSettingsMaster.pbobjc.h; sourceTree = "<group>"; };
-		FA1C90E71E0EAFD600E58E60 /* PogoprotosSettingsMaster.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosSettingsMaster.pbobjc.m; sourceTree = "<group>"; };
-		FA1C90E81E0EAFD600E58E60 /* PogoprotosSettingsMasterPokemon.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosSettingsMasterPokemon.pbobjc.h; sourceTree = "<group>"; };
-		FA1C90E91E0EAFD600E58E60 /* PogoprotosSettingsMasterPokemon.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosSettingsMasterPokemon.pbobjc.m; sourceTree = "<group>"; };
-		FA1C90EA1E0EAFD600E58E60 /* PogoprotosSettingsMasterQuest.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosSettingsMasterQuest.pbobjc.h; sourceTree = "<group>"; };
-		FA1C90EB1E0EAFD600E58E60 /* PogoprotosSettingsMasterQuest.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosSettingsMasterQuest.pbobjc.m; sourceTree = "<group>"; };
-		FA1C90EC1E0EAFD600E58E60 /* PogoprotosData.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosData.pbobjc.h; sourceTree = "<group>"; };
-		FA1C90ED1E0EAFD600E58E60 /* PogoprotosData.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosData.pbobjc.m; sourceTree = "<group>"; };
-		FA1C90EE1E0EAFD600E58E60 /* PogoprotosDataAvatar.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataAvatar.pbobjc.h; sourceTree = "<group>"; };
-		FA1C90EF1E0EAFD600E58E60 /* PogoprotosDataAvatar.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataAvatar.pbobjc.m; sourceTree = "<group>"; };
-		FA1C90F01E0EAFD600E58E60 /* PogoprotosDataBadge.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataBadge.pbobjc.h; sourceTree = "<group>"; };
-		FA1C90F11E0EAFD600E58E60 /* PogoprotosDataBadge.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataBadge.pbobjc.m; sourceTree = "<group>"; };
-		FA1C90F21E0EAFD600E58E60 /* PogoprotosDataBattle.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataBattle.pbobjc.h; sourceTree = "<group>"; };
-		FA1C90F31E0EAFD600E58E60 /* PogoprotosDataBattle.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataBattle.pbobjc.m; sourceTree = "<group>"; };
-		FA1C90F41E0EAFD600E58E60 /* PogoprotosDataCapture.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataCapture.pbobjc.h; sourceTree = "<group>"; };
-		FA1C90F51E0EAFD600E58E60 /* PogoprotosDataCapture.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataCapture.pbobjc.m; sourceTree = "<group>"; };
-		FA1C90F61E0EAFD600E58E60 /* PogoprotosDataGym.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataGym.pbobjc.h; sourceTree = "<group>"; };
-		FA1C90F71E0EAFD600E58E60 /* PogoprotosDataGym.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataGym.pbobjc.m; sourceTree = "<group>"; };
-		FA1C90F81E0EAFD600E58E60 /* PogoprotosDataLogs.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataLogs.pbobjc.h; sourceTree = "<group>"; };
-		FA1C90F91E0EAFD600E58E60 /* PogoprotosDataLogs.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataLogs.pbobjc.m; sourceTree = "<group>"; };
-		FA1C90FA1E0EAFD600E58E60 /* PogoprotosDataPlayer.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataPlayer.pbobjc.h; sourceTree = "<group>"; };
-		FA1C90FB1E0EAFD600E58E60 /* PogoprotosDataPlayer.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataPlayer.pbobjc.m; sourceTree = "<group>"; };
-		FA1C90FC1E0EAFD600E58E60 /* PogoprotosDataQuests.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataQuests.pbobjc.h; sourceTree = "<group>"; };
-		FA1C90FD1E0EAFD600E58E60 /* PogoprotosDataQuests.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataQuests.pbobjc.m; sourceTree = "<group>"; };
-		FA1C90FE1E0EAFD600E58E60 /* PogoprotosEnums.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosEnums.pbobjc.h; sourceTree = "<group>"; };
-		FA1C90FF1E0EAFD600E58E60 /* PogoprotosEnums.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosEnums.pbobjc.m; sourceTree = "<group>"; };
-		FA1C91001E0EAFD600E58E60 /* PogoprotosInventory.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosInventory.pbobjc.h; sourceTree = "<group>"; };
-		FA1C91011E0EAFD600E58E60 /* PogoprotosInventory.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosInventory.pbobjc.m; sourceTree = "<group>"; };
-		FA1C91021E0EAFD600E58E60 /* PogoprotosInventoryItem.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosInventoryItem.pbobjc.h; sourceTree = "<group>"; };
-		FA1C91031E0EAFD600E58E60 /* PogoprotosInventoryItem.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosInventoryItem.pbobjc.m; sourceTree = "<group>"; };
-		FA1C91041E0EAFD600E58E60 /* PogoprotosMap.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosMap.pbobjc.h; sourceTree = "<group>"; };
-		FA1C91051E0EAFD600E58E60 /* PogoprotosMap.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosMap.pbobjc.m; sourceTree = "<group>"; };
-		FA1C91061E0EAFD600E58E60 /* PogoprotosMapFort.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosMapFort.pbobjc.h; sourceTree = "<group>"; };
-		FA1C91071E0EAFD600E58E60 /* PogoprotosMapFort.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosMapFort.pbobjc.m; sourceTree = "<group>"; };
-		FA1C91081E0EAFD600E58E60 /* PogoprotosMapPokemon.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosMapPokemon.pbobjc.h; sourceTree = "<group>"; };
-		FA1C91091E0EAFD600E58E60 /* PogoprotosMapPokemon.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosMapPokemon.pbobjc.m; sourceTree = "<group>"; };
-		FA1C910A1E0EAFD600E58E60 /* PogoprotosNetworkingPlatform.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingPlatform.pbobjc.h; sourceTree = "<group>"; };
-		FA1C910B1E0EAFD600E58E60 /* PogoprotosNetworkingPlatform.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingPlatform.pbobjc.m; sourceTree = "<group>"; };
-		FA1C910C1E0EAFD600E58E60 /* PogoprotosNetworkingPlatformRequests.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingPlatformRequests.pbobjc.h; sourceTree = "<group>"; };
-		FA1C910D1E0EAFD600E58E60 /* PogoprotosNetworkingPlatformRequests.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingPlatformRequests.pbobjc.m; sourceTree = "<group>"; };
-		FA1C910E1E0EAFD600E58E60 /* PogoprotosNetworkingPlatformResponses.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingPlatformResponses.pbobjc.h; sourceTree = "<group>"; };
-		FA1C910F1E0EAFD600E58E60 /* PogoprotosNetworkingPlatformResponses.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingPlatformResponses.pbobjc.m; sourceTree = "<group>"; };
-		FA1C91101E0EAFD600E58E60 /* PogoprotosNetworkingRequests.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingRequests.pbobjc.h; sourceTree = "<group>"; };
-		FA1C91111E0EAFD600E58E60 /* PogoprotosNetworkingRequests.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingRequests.pbobjc.m; sourceTree = "<group>"; };
-		FA1C91121E0EAFD600E58E60 /* PogoprotosNetworkingRequestsMessages.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingRequestsMessages.pbobjc.h; sourceTree = "<group>"; };
-		FA1C91131E0EAFD600E58E60 /* PogoprotosNetworkingRequestsMessages.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingRequestsMessages.pbobjc.m; sourceTree = "<group>"; };
-		FA1C91141E0EAFD600E58E60 /* PogoprotosNetworkingResponses.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingResponses.pbobjc.h; sourceTree = "<group>"; };
-		FA1C91151E0EAFD600E58E60 /* PogoprotosNetworkingResponses.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingResponses.pbobjc.m; sourceTree = "<group>"; };
-		FA1C91161E0EAFD600E58E60 /* PogoprotosSettingsMasterItem.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosSettingsMasterItem.pbobjc.h; sourceTree = "<group>"; };
-		FA1C91171E0EAFD600E58E60 /* PogoprotosSettingsMasterItem.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosSettingsMasterItem.pbobjc.m; sourceTree = "<group>"; };
-		FA1C91181E0EB1A000E58E60 /* google */ = {isa = PBXFileReference; lastKnownFileType = folder; path = google; sourceTree = "<group>"; };
-		FA1C91191E0EB2DC00E58E60 /* control */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = control; sourceTree = "<group>"; };
-		FA1C911B1E0EB32A00E58E60 /* PoGO-Tweak.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "PoGO-Tweak.plist"; sourceTree = "<group>"; };
-		FA5B86971E0E7C07008E8929 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		FA5B86981E0E7C11008E8929 /* Tweak.xm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Tweak.xm; sourceTree = "<group>"; };
-		FA5B87571E0E9068008E8929 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		FA7ED7BD1EBE2C880046C902 /* PoGO-Tweak.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "PoGO-Tweak.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA7ED7C01EBE2C880046C902 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FA7ED7C51EBE2C880046C902 /* control.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = control.txt; path = Package/DEBIAN/control.txt; sourceTree = "<group>"; };
+		FA7ED7C61EBE2C880046C902 /* control */ = {isa = PBXFileReference; lastKnownFileType = text; name = control; path = Package/DEBIAN/control; sourceTree = "<group>"; };
+		FA7ED7C81EBE2C880046C902 /* PackageVersion.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PackageVersion.plist; sourceTree = "<group>"; };
+		FA7ED7C91EBE2C880046C902 /* PoGO-Tweak-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PoGO-Tweak-Prefix.pch"; sourceTree = "<group>"; };
+		FA7ED7CA1EBE2C880046C902 /* Tweak.xm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Tweak.xm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		FA7ED7CB1EBE2C880046C902 /* Tweak.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = Tweak.mm; sourceTree = "<group>"; };
+		FA7ED7D01EBE2C880046C902 /* PoGO_Tweak.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = PoGO_Tweak.plist; path = Package/Library/MobileSubstrate/DynamicLibraries/PoGO_Tweak.plist; sourceTree = "<group>"; };
+		FA7ED7D61EBE2D020046C902 /* libsubstrate.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsubstrate.dylib; path = ../../../../opt/iOSOpenDev/lib/libsubstrate.dylib; sourceTree = "<group>"; };
+		FA7ED7DD1EBE2E070046C902 /* ByteArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ByteArray.h; sourceTree = "<group>"; };
+		FA7ED7DE1EBE2E070046C902 /* IntArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntArray.h; sourceTree = "<group>"; };
+		FA7ED7DF1EBE2E070046C902 /* IntPtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntPtr.h; sourceTree = "<group>"; };
+		FA7ED7E11EBE2E070046C902 /* Il2CppArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Il2CppArray.h; sourceTree = "<group>"; };
+		FA7ED7E21EBE2E070046C902 /* Il2CppObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Il2CppObject.h; sourceTree = "<group>"; };
+		FA7ED7E41EBE2E070046C902 /* ByteString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ByteString.h; sourceTree = "<group>"; };
+		FA7ED7E51EBE2E070046C902 /* ByteStringArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ByteStringArray.h; sourceTree = "<group>"; };
+		FA7ED7E61EBE2E070046C902 /* ByteStringRepeatedField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ByteStringRepeatedField.h; sourceTree = "<group>"; };
+		FA7ED7E71EBE2E070046C902 /* Result.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Result.h; sourceTree = "<group>"; };
+		FA7ED7E81EBE2E070046C902 /* Structs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Structs.h; sourceTree = "<group>"; };
+		FA7ED7F31EBE2E5B0046C902 /* substrate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = substrate.h; sourceTree = "<group>"; };
+		FA7ED7F91EBE30E00046C902 /* Any.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Any.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED7FA1EBE30E00046C902 /* Any.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Any.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED7FB1EBE30E00046C902 /* Api.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Api.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED7FC1EBE30E00046C902 /* Api.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Api.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED7FD1EBE30E00046C902 /* Duration.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Duration.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED7FE1EBE30E00046C902 /* Duration.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Duration.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED7FF1EBE30E00046C902 /* Empty.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Empty.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8001EBE30E00046C902 /* Empty.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Empty.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8011EBE30E00046C902 /* FieldMask.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldMask.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8021EBE30E00046C902 /* FieldMask.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FieldMask.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8031EBE30E00046C902 /* SourceContext.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceContext.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8041EBE30E00046C902 /* SourceContext.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceContext.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8051EBE30E00046C902 /* Struct.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Struct.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8061EBE30E00046C902 /* Struct.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Struct.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8071EBE30E00046C902 /* Timestamp.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Timestamp.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8081EBE30E00046C902 /* Timestamp.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Timestamp.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8091EBE30E00046C902 /* Type.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED80A1EBE30E00046C902 /* Type.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED80B1EBE30E00046C902 /* Wrappers.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wrappers.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED80C1EBE30E00046C902 /* Wrappers.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Wrappers.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED80D1EBE30E00046C902 /* GPBArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBArray.h; sourceTree = "<group>"; };
+		FA7ED80E1EBE30E00046C902 /* GPBArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBArray.m; sourceTree = "<group>"; };
+		FA7ED80F1EBE30E00046C902 /* GPBArray_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBArray_PackagePrivate.h; sourceTree = "<group>"; };
+		FA7ED8101EBE30E00046C902 /* GPBBootstrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBBootstrap.h; sourceTree = "<group>"; };
+		FA7ED8111EBE30E00046C902 /* GPBCodedInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBCodedInputStream.h; sourceTree = "<group>"; };
+		FA7ED8121EBE30E00046C902 /* GPBCodedInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBCodedInputStream.m; sourceTree = "<group>"; };
+		FA7ED8131EBE30E00046C902 /* GPBCodedInputStream_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBCodedInputStream_PackagePrivate.h; sourceTree = "<group>"; };
+		FA7ED8141EBE30E00046C902 /* GPBCodedOutputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBCodedOutputStream.h; sourceTree = "<group>"; };
+		FA7ED8151EBE30E00046C902 /* GPBCodedOutputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBCodedOutputStream.m; sourceTree = "<group>"; };
+		FA7ED8161EBE30E00046C902 /* GPBCodedOutputStream_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBCodedOutputStream_PackagePrivate.h; sourceTree = "<group>"; };
+		FA7ED8171EBE30E00046C902 /* GPBDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBDescriptor.h; sourceTree = "<group>"; };
+		FA7ED8181EBE30E00046C902 /* GPBDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBDescriptor.m; sourceTree = "<group>"; };
+		FA7ED8191EBE30E00046C902 /* GPBDescriptor_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBDescriptor_PackagePrivate.h; sourceTree = "<group>"; };
+		FA7ED81A1EBE30E00046C902 /* GPBDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBDictionary.h; sourceTree = "<group>"; };
+		FA7ED81B1EBE30E00046C902 /* GPBDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBDictionary.m; sourceTree = "<group>"; };
+		FA7ED81C1EBE30E00046C902 /* GPBDictionary_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBDictionary_PackagePrivate.h; sourceTree = "<group>"; };
+		FA7ED81D1EBE30E00046C902 /* GPBExtensionInternals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBExtensionInternals.h; sourceTree = "<group>"; };
+		FA7ED81E1EBE30E00046C902 /* GPBExtensionInternals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBExtensionInternals.m; sourceTree = "<group>"; };
+		FA7ED81F1EBE30E00046C902 /* GPBExtensionRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBExtensionRegistry.h; sourceTree = "<group>"; };
+		FA7ED8201EBE30E00046C902 /* GPBExtensionRegistry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBExtensionRegistry.m; sourceTree = "<group>"; };
+		FA7ED8211EBE30E00046C902 /* GPBMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBMessage.h; sourceTree = "<group>"; };
+		FA7ED8221EBE30E00046C902 /* GPBMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBMessage.m; sourceTree = "<group>"; };
+		FA7ED8231EBE30E00046C902 /* GPBMessage_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBMessage_PackagePrivate.h; sourceTree = "<group>"; };
+		FA7ED8241EBE30E00046C902 /* GPBProtocolBuffers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBProtocolBuffers.h; sourceTree = "<group>"; };
+		FA7ED8251EBE30E00046C902 /* GPBProtocolBuffers_RuntimeSupport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBProtocolBuffers_RuntimeSupport.h; sourceTree = "<group>"; };
+		FA7ED8261EBE30E00046C902 /* GPBRootObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBRootObject.h; sourceTree = "<group>"; };
+		FA7ED8271EBE30E00046C902 /* GPBRootObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBRootObject.m; sourceTree = "<group>"; };
+		FA7ED8281EBE30E00046C902 /* GPBRootObject_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBRootObject_PackagePrivate.h; sourceTree = "<group>"; };
+		FA7ED8291EBE30E00046C902 /* GPBRuntimeTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBRuntimeTypes.h; sourceTree = "<group>"; };
+		FA7ED82A1EBE30E00046C902 /* GPBUnknownField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBUnknownField.h; sourceTree = "<group>"; };
+		FA7ED82B1EBE30E00046C902 /* GPBUnknownField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBUnknownField.m; sourceTree = "<group>"; };
+		FA7ED82C1EBE30E00046C902 /* GPBUnknownField_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBUnknownField_PackagePrivate.h; sourceTree = "<group>"; };
+		FA7ED82D1EBE30E00046C902 /* GPBUnknownFieldSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBUnknownFieldSet.h; sourceTree = "<group>"; };
+		FA7ED82E1EBE30E00046C902 /* GPBUnknownFieldSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBUnknownFieldSet.m; sourceTree = "<group>"; };
+		FA7ED82F1EBE30E00046C902 /* GPBUnknownFieldSet_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBUnknownFieldSet_PackagePrivate.h; sourceTree = "<group>"; };
+		FA7ED8301EBE30E00046C902 /* GPBUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBUtilities.h; sourceTree = "<group>"; };
+		FA7ED8311EBE30E00046C902 /* GPBUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBUtilities.m; sourceTree = "<group>"; };
+		FA7ED8321EBE30E00046C902 /* GPBUtilities_PackagePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBUtilities_PackagePrivate.h; sourceTree = "<group>"; };
+		FA7ED8331EBE30E00046C902 /* GPBWellKnownTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBWellKnownTypes.h; sourceTree = "<group>"; };
+		FA7ED8341EBE30E00046C902 /* GPBWellKnownTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBWellKnownTypes.m; sourceTree = "<group>"; };
+		FA7ED8351EBE30E00046C902 /* GPBWireFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBWireFormat.h; sourceTree = "<group>"; };
+		FA7ED8361EBE30E00046C902 /* GPBWireFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBWireFormat.m; sourceTree = "<group>"; };
+		FA7ED8761EBE32410046C902 /* PogoprotosData.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosData.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8771EBE32410046C902 /* PogoprotosData.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosData.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8781EBE32410046C902 /* PogoprotosDataAvatar.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataAvatar.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8791EBE32410046C902 /* PogoprotosDataAvatar.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataAvatar.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED87A1EBE32410046C902 /* PogoprotosDataBadge.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataBadge.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED87B1EBE32410046C902 /* PogoprotosDataBadge.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataBadge.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED87C1EBE32410046C902 /* PogoprotosDataBattle.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataBattle.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED87D1EBE32410046C902 /* PogoprotosDataBattle.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataBattle.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED87E1EBE32410046C902 /* PogoprotosDataCapture.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataCapture.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED87F1EBE32410046C902 /* PogoprotosDataCapture.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataCapture.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8801EBE32410046C902 /* PogoprotosDataGym.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataGym.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8811EBE32410046C902 /* PogoprotosDataGym.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataGym.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8821EBE32410046C902 /* PogoprotosDataLogs.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataLogs.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8831EBE32410046C902 /* PogoprotosDataLogs.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataLogs.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8841EBE32410046C902 /* PogoprotosDataPlayer.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataPlayer.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8851EBE32410046C902 /* PogoprotosDataPlayer.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataPlayer.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8861EBE32410046C902 /* PogoprotosDataQuests.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataQuests.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8871EBE32410046C902 /* PogoprotosDataQuests.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataQuests.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8881EBE32410046C902 /* PogoprotosDataRedeem.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataRedeem.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8891EBE32410046C902 /* PogoprotosDataRedeem.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataRedeem.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED88A1EBE32410046C902 /* PogoprotosEnums.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosEnums.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED88B1EBE32410046C902 /* PogoprotosEnums.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosEnums.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED88C1EBE32410046C902 /* PogoprotosInventory.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosInventory.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED88D1EBE32410046C902 /* PogoprotosInventory.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosInventory.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED88E1EBE32410046C902 /* PogoprotosInventoryItem.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosInventoryItem.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED88F1EBE32410046C902 /* PogoprotosInventoryItem.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosInventoryItem.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8901EBE32410046C902 /* PogoprotosMap.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosMap.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8911EBE32410046C902 /* PogoprotosMap.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosMap.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8921EBE32410046C902 /* PogoprotosMapFort.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosMapFort.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8931EBE32410046C902 /* PogoprotosMapFort.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosMapFort.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8941EBE32410046C902 /* PogoprotosMapPokemon.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosMapPokemon.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8951EBE32410046C902 /* PogoprotosMapPokemon.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosMapPokemon.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8961EBE32410046C902 /* PogoprotosNetworkingEnvelopes.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingEnvelopes.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8971EBE32410046C902 /* PogoprotosNetworkingEnvelopes.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingEnvelopes.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8981EBE32410046C902 /* PogoprotosNetworkingPlatform.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingPlatform.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8991EBE32410046C902 /* PogoprotosNetworkingPlatform.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingPlatform.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED89A1EBE32410046C902 /* PogoprotosNetworkingPlatformRequests.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingPlatformRequests.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED89B1EBE32410046C902 /* PogoprotosNetworkingPlatformRequests.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingPlatformRequests.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED89C1EBE32410046C902 /* PogoprotosNetworkingPlatformResponses.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingPlatformResponses.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED89D1EBE32410046C902 /* PogoprotosNetworkingPlatformResponses.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingPlatformResponses.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED89E1EBE32410046C902 /* PogoprotosNetworkingRequests.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingRequests.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED89F1EBE32410046C902 /* PogoprotosNetworkingRequests.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingRequests.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8A01EBE32410046C902 /* PogoprotosNetworkingRequestsMessages.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingRequestsMessages.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8A11EBE32410046C902 /* PogoprotosNetworkingRequestsMessages.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingRequestsMessages.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8A21EBE32410046C902 /* PogoprotosNetworkingResponses.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingResponses.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8A31EBE32410046C902 /* PogoprotosNetworkingResponses.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingResponses.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8A41EBE32410046C902 /* PogoprotosSettings.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosSettings.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8A51EBE32410046C902 /* PogoprotosSettings.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosSettings.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8A61EBE32410046C902 /* PogoprotosSettingsMaster.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosSettingsMaster.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8A71EBE32410046C902 /* PogoprotosSettingsMaster.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosSettingsMaster.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8A81EBE32410046C902 /* PogoprotosSettingsMasterItem.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosSettingsMasterItem.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8A91EBE32410046C902 /* PogoprotosSettingsMasterItem.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosSettingsMasterItem.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8AA1EBE32410046C902 /* PogoprotosSettingsMasterPokemon.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosSettingsMasterPokemon.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8AB1EBE32410046C902 /* PogoprotosSettingsMasterPokemon.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosSettingsMasterPokemon.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8AC1EBE32410046C902 /* PogoprotosSettingsMasterQuest.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosSettingsMasterQuest.pbobjc.h; sourceTree = "<group>"; };
+		FA7ED8AD1EBE32410046C902 /* PogoprotosSettingsMasterQuest.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosSettingsMasterQuest.pbobjc.m; sourceTree = "<group>"; };
+		FA7ED8E61EBE32820046C902 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
+/* Begin PBXFrameworksBuildPhase section */
+		FA7ED7B91EBE2C880046C902 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA7ED7D71EBE2D020046C902 /* libsubstrate.dylib in Frameworks */,
+				FA7ED7C11EBE2C880046C902 /* Foundation.framework in Frameworks */,
+				FA7ED8E71EBE32820046C902 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
-		FA1C90B51E0EAF6D00E58E60 /* POGO */ = {
+		FA7ED7B21EBE2C880046C902 = {
 			isa = PBXGroup;
 			children = (
-				FA1C90E41E0EAFD600E58E60 /* PogoprotosSettings.pbobjc.h */,
-				FA1C90E51E0EAFD600E58E60 /* PogoprotosSettings.pbobjc.m */,
-				FA1C90E61E0EAFD600E58E60 /* PogoprotosSettingsMaster.pbobjc.h */,
-				FA1C90E71E0EAFD600E58E60 /* PogoprotosSettingsMaster.pbobjc.m */,
-				FA1C90E81E0EAFD600E58E60 /* PogoprotosSettingsMasterPokemon.pbobjc.h */,
-				FA1C90E91E0EAFD600E58E60 /* PogoprotosSettingsMasterPokemon.pbobjc.m */,
-				FA1C90EA1E0EAFD600E58E60 /* PogoprotosSettingsMasterQuest.pbobjc.h */,
-				FA1C90EB1E0EAFD600E58E60 /* PogoprotosSettingsMasterQuest.pbobjc.m */,
-				FA1C90EC1E0EAFD600E58E60 /* PogoprotosData.pbobjc.h */,
-				FA1C90ED1E0EAFD600E58E60 /* PogoprotosData.pbobjc.m */,
-				FA1C90EE1E0EAFD600E58E60 /* PogoprotosDataAvatar.pbobjc.h */,
-				FA1C90EF1E0EAFD600E58E60 /* PogoprotosDataAvatar.pbobjc.m */,
-				FA1C90F01E0EAFD600E58E60 /* PogoprotosDataBadge.pbobjc.h */,
-				FA1C90F11E0EAFD600E58E60 /* PogoprotosDataBadge.pbobjc.m */,
-				FA1C90F21E0EAFD600E58E60 /* PogoprotosDataBattle.pbobjc.h */,
-				FA1C90F31E0EAFD600E58E60 /* PogoprotosDataBattle.pbobjc.m */,
-				FA1C90F41E0EAFD600E58E60 /* PogoprotosDataCapture.pbobjc.h */,
-				FA1C90F51E0EAFD600E58E60 /* PogoprotosDataCapture.pbobjc.m */,
-				FA1C90F61E0EAFD600E58E60 /* PogoprotosDataGym.pbobjc.h */,
-				FA1C90F71E0EAFD600E58E60 /* PogoprotosDataGym.pbobjc.m */,
-				FA1C90F81E0EAFD600E58E60 /* PogoprotosDataLogs.pbobjc.h */,
-				FA1C90F91E0EAFD600E58E60 /* PogoprotosDataLogs.pbobjc.m */,
-				FA1C90FA1E0EAFD600E58E60 /* PogoprotosDataPlayer.pbobjc.h */,
-				FA1C90FB1E0EAFD600E58E60 /* PogoprotosDataPlayer.pbobjc.m */,
-				FA1C90FC1E0EAFD600E58E60 /* PogoprotosDataQuests.pbobjc.h */,
-				FA1C90FD1E0EAFD600E58E60 /* PogoprotosDataQuests.pbobjc.m */,
-				FA1C90FE1E0EAFD600E58E60 /* PogoprotosEnums.pbobjc.h */,
-				FA1C90FF1E0EAFD600E58E60 /* PogoprotosEnums.pbobjc.m */,
-				FA1C91001E0EAFD600E58E60 /* PogoprotosInventory.pbobjc.h */,
-				FA1C91011E0EAFD600E58E60 /* PogoprotosInventory.pbobjc.m */,
-				FA1C91021E0EAFD600E58E60 /* PogoprotosInventoryItem.pbobjc.h */,
-				FA1C91031E0EAFD600E58E60 /* PogoprotosInventoryItem.pbobjc.m */,
-				FA1C91041E0EAFD600E58E60 /* PogoprotosMap.pbobjc.h */,
-				FA1C91051E0EAFD600E58E60 /* PogoprotosMap.pbobjc.m */,
-				FA1C91061E0EAFD600E58E60 /* PogoprotosMapFort.pbobjc.h */,
-				FA1C91071E0EAFD600E58E60 /* PogoprotosMapFort.pbobjc.m */,
-				FA1C91081E0EAFD600E58E60 /* PogoprotosMapPokemon.pbobjc.h */,
-				FA1C91091E0EAFD600E58E60 /* PogoprotosMapPokemon.pbobjc.m */,
-				FA1C910A1E0EAFD600E58E60 /* PogoprotosNetworkingPlatform.pbobjc.h */,
-				FA1C910B1E0EAFD600E58E60 /* PogoprotosNetworkingPlatform.pbobjc.m */,
-				FA1C910C1E0EAFD600E58E60 /* PogoprotosNetworkingPlatformRequests.pbobjc.h */,
-				FA1C910D1E0EAFD600E58E60 /* PogoprotosNetworkingPlatformRequests.pbobjc.m */,
-				FA1C910E1E0EAFD600E58E60 /* PogoprotosNetworkingPlatformResponses.pbobjc.h */,
-				FA1C910F1E0EAFD600E58E60 /* PogoprotosNetworkingPlatformResponses.pbobjc.m */,
-				FA1C91101E0EAFD600E58E60 /* PogoprotosNetworkingRequests.pbobjc.h */,
-				FA1C91111E0EAFD600E58E60 /* PogoprotosNetworkingRequests.pbobjc.m */,
-				FA1C91121E0EAFD600E58E60 /* PogoprotosNetworkingRequestsMessages.pbobjc.h */,
-				FA1C91131E0EAFD600E58E60 /* PogoprotosNetworkingRequestsMessages.pbobjc.m */,
-				FA1C91141E0EAFD600E58E60 /* PogoprotosNetworkingResponses.pbobjc.h */,
-				FA1C91151E0EAFD600E58E60 /* PogoprotosNetworkingResponses.pbobjc.m */,
-				FA1C91161E0EAFD600E58E60 /* PogoprotosSettingsMasterItem.pbobjc.h */,
-				FA1C91171E0EAFD600E58E60 /* PogoprotosSettingsMasterItem.pbobjc.m */,
-				FA1C90B61E0EAF7B00E58E60 /* PogoprotosNetworkingEnvelopes.pbobjc.h */,
-				FA1C90B71E0EAF7B00E58E60 /* PogoprotosNetworkingEnvelopes.pbobjc.m */,
-			);
-			name = POGO;
-			sourceTree = "<group>";
-		};
-		FA1C90B81E0EAF8100E58E60 /* GOOGLE */ = {
-			isa = PBXGroup;
-			children = (
-				FA1C91181E0EB1A000E58E60 /* google */,
-				FA1C90B91E0EAF9300E58E60 /* GPBArray_PackagePrivate.h */,
-				FA1C90BA1E0EAF9300E58E60 /* GPBArray.h */,
-				FA1C90BB1E0EAF9300E58E60 /* GPBArray.m */,
-				FA1C90BC1E0EAF9300E58E60 /* GPBBootstrap.h */,
-				FA1C90BD1E0EAF9300E58E60 /* GPBCodedInputStream_PackagePrivate.h */,
-				FA1C90BE1E0EAF9300E58E60 /* GPBCodedInputStream.h */,
-				FA1C90BF1E0EAF9300E58E60 /* GPBCodedInputStream.m */,
-				FA1C90C01E0EAF9300E58E60 /* GPBCodedOutputStream_PackagePrivate.h */,
-				FA1C90C11E0EAF9300E58E60 /* GPBCodedOutputStream.h */,
-				FA1C90C21E0EAF9300E58E60 /* GPBCodedOutputStream.m */,
-				FA1C90C31E0EAF9300E58E60 /* GPBDescriptor_PackagePrivate.h */,
-				FA1C90C41E0EAF9300E58E60 /* GPBDescriptor.h */,
-				FA1C90C51E0EAF9300E58E60 /* GPBDescriptor.m */,
-				FA1C90C61E0EAF9300E58E60 /* GPBDictionary_PackagePrivate.h */,
-				FA1C90C71E0EAF9300E58E60 /* GPBDictionary.h */,
-				FA1C90C81E0EAF9300E58E60 /* GPBDictionary.m */,
-				FA1C90C91E0EAF9300E58E60 /* GPBExtensionInternals.h */,
-				FA1C90CA1E0EAF9300E58E60 /* GPBExtensionInternals.m */,
-				FA1C90CB1E0EAF9300E58E60 /* GPBExtensionRegistry.h */,
-				FA1C90CC1E0EAF9300E58E60 /* GPBExtensionRegistry.m */,
-				FA1C90CD1E0EAF9300E58E60 /* GPBMessage_PackagePrivate.h */,
-				FA1C90CE1E0EAF9300E58E60 /* GPBMessage.h */,
-				FA1C90CF1E0EAF9300E58E60 /* GPBMessage.m */,
-				FA1C90D01E0EAF9300E58E60 /* GPBProtocolBuffers_RuntimeSupport.h */,
-				FA1C90D11E0EAF9300E58E60 /* GPBProtocolBuffers.h */,
-				FA1C90D21E0EAF9300E58E60 /* GPBProtocolBuffers.m */,
-				FA1C90D31E0EAF9300E58E60 /* GPBRootObject_PackagePrivate.h */,
-				FA1C90D41E0EAF9300E58E60 /* GPBRootObject.h */,
-				FA1C90D51E0EAF9300E58E60 /* GPBRootObject.m */,
-				FA1C90D61E0EAF9300E58E60 /* GPBRuntimeTypes.h */,
-				FA1C90D71E0EAF9300E58E60 /* GPBUnknownField_PackagePrivate.h */,
-				FA1C90D81E0EAF9300E58E60 /* GPBUnknownField.h */,
-				FA1C90D91E0EAF9300E58E60 /* GPBUnknownField.m */,
-				FA1C90DA1E0EAF9300E58E60 /* GPBUnknownFieldSet_PackagePrivate.h */,
-				FA1C90DB1E0EAF9300E58E60 /* GPBUnknownFieldSet.h */,
-				FA1C90DC1E0EAF9300E58E60 /* GPBUnknownFieldSet.m */,
-				FA1C90DD1E0EAF9300E58E60 /* GPBUtilities_PackagePrivate.h */,
-				FA1C90DE1E0EAF9300E58E60 /* GPBUtilities.h */,
-				FA1C90DF1E0EAF9300E58E60 /* GPBUtilities.m */,
-				FA1C90E01E0EAF9300E58E60 /* GPBWellKnownTypes.h */,
-				FA1C90E11E0EAF9300E58E60 /* GPBWellKnownTypes.m */,
-				FA1C90E21E0EAF9300E58E60 /* GPBWireFormat.h */,
-				FA1C90E31E0EAF9300E58E60 /* GPBWireFormat.m */,
-			);
-			name = GOOGLE;
-			sourceTree = "<group>";
-		};
-		FA5B868C1E0E7BE6008E8929 = {
-			isa = PBXGroup;
-			children = (
-				FA1C911B1E0EB32A00E58E60 /* PoGO-Tweak.plist */,
-				FA1C91191E0EB2DC00E58E60 /* control */,
-				FA1C90B81E0EAF8100E58E60 /* GOOGLE */,
-				FA1C90B51E0EAF6D00E58E60 /* POGO */,
-				FA5B86981E0E7C11008E8929 /* Tweak.xm */,
-				FA5B86971E0E7C07008E8929 /* Makefile */,
-				FA5B87561E0E9068008E8929 /* Frameworks */,
+				FA7ED7C21EBE2C880046C902 /* PoGO-Tweak */,
+				FA7ED7BF1EBE2C880046C902 /* Frameworks */,
+				FA7ED7BE1EBE2C880046C902 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		FA5B87561E0E9068008E8929 /* Frameworks */ = {
+		FA7ED7BE1EBE2C880046C902 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FA5B87571E0E9068008E8929 /* Foundation.framework */,
+				FA7ED7BD1EBE2C880046C902 /* PoGO-Tweak.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA7ED7BF1EBE2C880046C902 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ED8E61EBE32820046C902 /* UIKit.framework */,
+				FA7ED7D61EBE2D020046C902 /* libsubstrate.dylib */,
+				FA7ED7C01EBE2C880046C902 /* Foundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FA7ED7C21EBE2C880046C902 /* PoGO-Tweak */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ED7F31EBE2E5B0046C902 /* substrate.h */,
+				FA7ED7DA1EBE2E070046C902 /* MITM */,
+				FA7ED7F51EBE30E00046C902 /* Protobuf */,
+				FA7ED7CA1EBE2C880046C902 /* Tweak.xm */,
+				FA7ED7CB1EBE2C880046C902 /* Tweak.mm */,
+				FA7ED7C31EBE2C880046C902 /* Package */,
+				FA7ED7C71EBE2C880046C902 /* Supporting Files */,
+			);
+			path = "PoGO-Tweak";
+			sourceTree = "<group>";
+		};
+		FA7ED7C31EBE2C880046C902 /* Package */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ED7C41EBE2C880046C902 /* DEBIAN */,
+				FA7ED7CD1EBE2C880046C902 /* Library */,
+			);
+			name = Package;
+			sourceTree = "<group>";
+		};
+		FA7ED7C41EBE2C880046C902 /* DEBIAN */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ED7C51EBE2C880046C902 /* control.txt */,
+				FA7ED7C61EBE2C880046C902 /* control */,
+			);
+			name = DEBIAN;
+			sourceTree = "<group>";
+		};
+		FA7ED7C71EBE2C880046C902 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ED7C81EBE2C880046C902 /* PackageVersion.plist */,
+				FA7ED7C91EBE2C880046C902 /* PoGO-Tweak-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FA7ED7CD1EBE2C880046C902 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ED7CE1EBE2C880046C902 /* MobileSubstrate */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		FA7ED7CE1EBE2C880046C902 /* MobileSubstrate */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ED7CF1EBE2C880046C902 /* DynamicLibraries */,
+			);
+			name = MobileSubstrate;
+			sourceTree = "<group>";
+		};
+		FA7ED7CF1EBE2C880046C902 /* DynamicLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ED7D01EBE2C880046C902 /* PoGO_Tweak.plist */,
+			);
+			name = DynamicLibraries;
+			sourceTree = "<group>";
+		};
+		FA7ED7DA1EBE2E070046C902 /* MITM */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ED7DB1EBE2E070046C902 /* Structs */,
+			);
+			path = MITM;
+			sourceTree = "<group>";
+		};
+		FA7ED7DB1EBE2E070046C902 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ED7DC1EBE2E070046C902 /* Generics */,
+				FA7ED7E01EBE2E070046C902 /* Il2Cpp */,
+				FA7ED7E31EBE2E070046C902 /* Pokemon */,
+				FA7ED7E81EBE2E070046C902 /* Structs.h */,
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
+		FA7ED7DC1EBE2E070046C902 /* Generics */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ED7DD1EBE2E070046C902 /* ByteArray.h */,
+				FA7ED7DE1EBE2E070046C902 /* IntArray.h */,
+				FA7ED7DF1EBE2E070046C902 /* IntPtr.h */,
+			);
+			path = Generics;
+			sourceTree = "<group>";
+		};
+		FA7ED7E01EBE2E070046C902 /* Il2Cpp */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ED7E11EBE2E070046C902 /* Il2CppArray.h */,
+				FA7ED7E21EBE2E070046C902 /* Il2CppObject.h */,
+			);
+			path = Il2Cpp;
+			sourceTree = "<group>";
+		};
+		FA7ED7E31EBE2E070046C902 /* Pokemon */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ED7E41EBE2E070046C902 /* ByteString.h */,
+				FA7ED7E51EBE2E070046C902 /* ByteStringArray.h */,
+				FA7ED7E61EBE2E070046C902 /* ByteStringRepeatedField.h */,
+				FA7ED7E71EBE2E070046C902 /* Result.h */,
+			);
+			path = Pokemon;
+			sourceTree = "<group>";
+		};
+		FA7ED7F51EBE30E00046C902 /* Protobuf */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ED7F61EBE30E00046C902 /* Google */,
+				FA7ED8371EBE30E00046C902 /* Pokemon */,
+			);
+			path = Protobuf;
+			sourceTree = "<group>";
+		};
+		FA7ED7F61EBE30E00046C902 /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ED7F71EBE30E00046C902 /* google */,
+				FA7ED80D1EBE30E00046C902 /* GPBArray.h */,
+				FA7ED80E1EBE30E00046C902 /* GPBArray.m */,
+				FA7ED80F1EBE30E00046C902 /* GPBArray_PackagePrivate.h */,
+				FA7ED8101EBE30E00046C902 /* GPBBootstrap.h */,
+				FA7ED8111EBE30E00046C902 /* GPBCodedInputStream.h */,
+				FA7ED8121EBE30E00046C902 /* GPBCodedInputStream.m */,
+				FA7ED8131EBE30E00046C902 /* GPBCodedInputStream_PackagePrivate.h */,
+				FA7ED8141EBE30E00046C902 /* GPBCodedOutputStream.h */,
+				FA7ED8151EBE30E00046C902 /* GPBCodedOutputStream.m */,
+				FA7ED8161EBE30E00046C902 /* GPBCodedOutputStream_PackagePrivate.h */,
+				FA7ED8171EBE30E00046C902 /* GPBDescriptor.h */,
+				FA7ED8181EBE30E00046C902 /* GPBDescriptor.m */,
+				FA7ED8191EBE30E00046C902 /* GPBDescriptor_PackagePrivate.h */,
+				FA7ED81A1EBE30E00046C902 /* GPBDictionary.h */,
+				FA7ED81B1EBE30E00046C902 /* GPBDictionary.m */,
+				FA7ED81C1EBE30E00046C902 /* GPBDictionary_PackagePrivate.h */,
+				FA7ED81D1EBE30E00046C902 /* GPBExtensionInternals.h */,
+				FA7ED81E1EBE30E00046C902 /* GPBExtensionInternals.m */,
+				FA7ED81F1EBE30E00046C902 /* GPBExtensionRegistry.h */,
+				FA7ED8201EBE30E00046C902 /* GPBExtensionRegistry.m */,
+				FA7ED8211EBE30E00046C902 /* GPBMessage.h */,
+				FA7ED8221EBE30E00046C902 /* GPBMessage.m */,
+				FA7ED8231EBE30E00046C902 /* GPBMessage_PackagePrivate.h */,
+				FA7ED8241EBE30E00046C902 /* GPBProtocolBuffers.h */,
+				FA7ED8251EBE30E00046C902 /* GPBProtocolBuffers_RuntimeSupport.h */,
+				FA7ED8261EBE30E00046C902 /* GPBRootObject.h */,
+				FA7ED8271EBE30E00046C902 /* GPBRootObject.m */,
+				FA7ED8281EBE30E00046C902 /* GPBRootObject_PackagePrivate.h */,
+				FA7ED8291EBE30E00046C902 /* GPBRuntimeTypes.h */,
+				FA7ED82A1EBE30E00046C902 /* GPBUnknownField.h */,
+				FA7ED82B1EBE30E00046C902 /* GPBUnknownField.m */,
+				FA7ED82C1EBE30E00046C902 /* GPBUnknownField_PackagePrivate.h */,
+				FA7ED82D1EBE30E00046C902 /* GPBUnknownFieldSet.h */,
+				FA7ED82E1EBE30E00046C902 /* GPBUnknownFieldSet.m */,
+				FA7ED82F1EBE30E00046C902 /* GPBUnknownFieldSet_PackagePrivate.h */,
+				FA7ED8301EBE30E00046C902 /* GPBUtilities.h */,
+				FA7ED8311EBE30E00046C902 /* GPBUtilities.m */,
+				FA7ED8321EBE30E00046C902 /* GPBUtilities_PackagePrivate.h */,
+				FA7ED8331EBE30E00046C902 /* GPBWellKnownTypes.h */,
+				FA7ED8341EBE30E00046C902 /* GPBWellKnownTypes.m */,
+				FA7ED8351EBE30E00046C902 /* GPBWireFormat.h */,
+				FA7ED8361EBE30E00046C902 /* GPBWireFormat.m */,
+			);
+			path = Google;
+			sourceTree = "<group>";
+		};
+		FA7ED7F71EBE30E00046C902 /* google */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ED7F81EBE30E00046C902 /* protobuf */,
+			);
+			path = google;
+			sourceTree = "<group>";
+		};
+		FA7ED7F81EBE30E00046C902 /* protobuf */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ED7F91EBE30E00046C902 /* Any.pbobjc.h */,
+				FA7ED7FA1EBE30E00046C902 /* Any.pbobjc.m */,
+				FA7ED7FB1EBE30E00046C902 /* Api.pbobjc.h */,
+				FA7ED7FC1EBE30E00046C902 /* Api.pbobjc.m */,
+				FA7ED7FD1EBE30E00046C902 /* Duration.pbobjc.h */,
+				FA7ED7FE1EBE30E00046C902 /* Duration.pbobjc.m */,
+				FA7ED7FF1EBE30E00046C902 /* Empty.pbobjc.h */,
+				FA7ED8001EBE30E00046C902 /* Empty.pbobjc.m */,
+				FA7ED8011EBE30E00046C902 /* FieldMask.pbobjc.h */,
+				FA7ED8021EBE30E00046C902 /* FieldMask.pbobjc.m */,
+				FA7ED8031EBE30E00046C902 /* SourceContext.pbobjc.h */,
+				FA7ED8041EBE30E00046C902 /* SourceContext.pbobjc.m */,
+				FA7ED8051EBE30E00046C902 /* Struct.pbobjc.h */,
+				FA7ED8061EBE30E00046C902 /* Struct.pbobjc.m */,
+				FA7ED8071EBE30E00046C902 /* Timestamp.pbobjc.h */,
+				FA7ED8081EBE30E00046C902 /* Timestamp.pbobjc.m */,
+				FA7ED8091EBE30E00046C902 /* Type.pbobjc.h */,
+				FA7ED80A1EBE30E00046C902 /* Type.pbobjc.m */,
+				FA7ED80B1EBE30E00046C902 /* Wrappers.pbobjc.h */,
+				FA7ED80C1EBE30E00046C902 /* Wrappers.pbobjc.m */,
+			);
+			path = protobuf;
+			sourceTree = "<group>";
+		};
+		FA7ED8371EBE30E00046C902 /* Pokemon */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ED8761EBE32410046C902 /* PogoprotosData.pbobjc.h */,
+				FA7ED8771EBE32410046C902 /* PogoprotosData.pbobjc.m */,
+				FA7ED8781EBE32410046C902 /* PogoprotosDataAvatar.pbobjc.h */,
+				FA7ED8791EBE32410046C902 /* PogoprotosDataAvatar.pbobjc.m */,
+				FA7ED87A1EBE32410046C902 /* PogoprotosDataBadge.pbobjc.h */,
+				FA7ED87B1EBE32410046C902 /* PogoprotosDataBadge.pbobjc.m */,
+				FA7ED87C1EBE32410046C902 /* PogoprotosDataBattle.pbobjc.h */,
+				FA7ED87D1EBE32410046C902 /* PogoprotosDataBattle.pbobjc.m */,
+				FA7ED87E1EBE32410046C902 /* PogoprotosDataCapture.pbobjc.h */,
+				FA7ED87F1EBE32410046C902 /* PogoprotosDataCapture.pbobjc.m */,
+				FA7ED8801EBE32410046C902 /* PogoprotosDataGym.pbobjc.h */,
+				FA7ED8811EBE32410046C902 /* PogoprotosDataGym.pbobjc.m */,
+				FA7ED8821EBE32410046C902 /* PogoprotosDataLogs.pbobjc.h */,
+				FA7ED8831EBE32410046C902 /* PogoprotosDataLogs.pbobjc.m */,
+				FA7ED8841EBE32410046C902 /* PogoprotosDataPlayer.pbobjc.h */,
+				FA7ED8851EBE32410046C902 /* PogoprotosDataPlayer.pbobjc.m */,
+				FA7ED8861EBE32410046C902 /* PogoprotosDataQuests.pbobjc.h */,
+				FA7ED8871EBE32410046C902 /* PogoprotosDataQuests.pbobjc.m */,
+				FA7ED8881EBE32410046C902 /* PogoprotosDataRedeem.pbobjc.h */,
+				FA7ED8891EBE32410046C902 /* PogoprotosDataRedeem.pbobjc.m */,
+				FA7ED88A1EBE32410046C902 /* PogoprotosEnums.pbobjc.h */,
+				FA7ED88B1EBE32410046C902 /* PogoprotosEnums.pbobjc.m */,
+				FA7ED88C1EBE32410046C902 /* PogoprotosInventory.pbobjc.h */,
+				FA7ED88D1EBE32410046C902 /* PogoprotosInventory.pbobjc.m */,
+				FA7ED88E1EBE32410046C902 /* PogoprotosInventoryItem.pbobjc.h */,
+				FA7ED88F1EBE32410046C902 /* PogoprotosInventoryItem.pbobjc.m */,
+				FA7ED8901EBE32410046C902 /* PogoprotosMap.pbobjc.h */,
+				FA7ED8911EBE32410046C902 /* PogoprotosMap.pbobjc.m */,
+				FA7ED8921EBE32410046C902 /* PogoprotosMapFort.pbobjc.h */,
+				FA7ED8931EBE32410046C902 /* PogoprotosMapFort.pbobjc.m */,
+				FA7ED8941EBE32410046C902 /* PogoprotosMapPokemon.pbobjc.h */,
+				FA7ED8951EBE32410046C902 /* PogoprotosMapPokemon.pbobjc.m */,
+				FA7ED8961EBE32410046C902 /* PogoprotosNetworkingEnvelopes.pbobjc.h */,
+				FA7ED8971EBE32410046C902 /* PogoprotosNetworkingEnvelopes.pbobjc.m */,
+				FA7ED8981EBE32410046C902 /* PogoprotosNetworkingPlatform.pbobjc.h */,
+				FA7ED8991EBE32410046C902 /* PogoprotosNetworkingPlatform.pbobjc.m */,
+				FA7ED89A1EBE32410046C902 /* PogoprotosNetworkingPlatformRequests.pbobjc.h */,
+				FA7ED89B1EBE32410046C902 /* PogoprotosNetworkingPlatformRequests.pbobjc.m */,
+				FA7ED89C1EBE32410046C902 /* PogoprotosNetworkingPlatformResponses.pbobjc.h */,
+				FA7ED89D1EBE32410046C902 /* PogoprotosNetworkingPlatformResponses.pbobjc.m */,
+				FA7ED89E1EBE32410046C902 /* PogoprotosNetworkingRequests.pbobjc.h */,
+				FA7ED89F1EBE32410046C902 /* PogoprotosNetworkingRequests.pbobjc.m */,
+				FA7ED8A01EBE32410046C902 /* PogoprotosNetworkingRequestsMessages.pbobjc.h */,
+				FA7ED8A11EBE32410046C902 /* PogoprotosNetworkingRequestsMessages.pbobjc.m */,
+				FA7ED8A21EBE32410046C902 /* PogoprotosNetworkingResponses.pbobjc.h */,
+				FA7ED8A31EBE32410046C902 /* PogoprotosNetworkingResponses.pbobjc.m */,
+				FA7ED8A41EBE32410046C902 /* PogoprotosSettings.pbobjc.h */,
+				FA7ED8A51EBE32410046C902 /* PogoprotosSettings.pbobjc.m */,
+				FA7ED8A61EBE32410046C902 /* PogoprotosSettingsMaster.pbobjc.h */,
+				FA7ED8A71EBE32410046C902 /* PogoprotosSettingsMaster.pbobjc.m */,
+				FA7ED8A81EBE32410046C902 /* PogoprotosSettingsMasterItem.pbobjc.h */,
+				FA7ED8A91EBE32410046C902 /* PogoprotosSettingsMasterItem.pbobjc.m */,
+				FA7ED8AA1EBE32410046C902 /* PogoprotosSettingsMasterPokemon.pbobjc.h */,
+				FA7ED8AB1EBE32410046C902 /* PogoprotosSettingsMasterPokemon.pbobjc.m */,
+				FA7ED8AC1EBE32410046C902 /* PogoprotosSettingsMasterQuest.pbobjc.h */,
+				FA7ED8AD1EBE32410046C902 /* PogoprotosSettingsMasterQuest.pbobjc.m */,
+			);
+			path = Pokemon;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
-/* Begin PBXLegacyTarget section */
-		FA5B86911E0E7BE6008E8929 /* PoGO-Tweak */ = {
-			isa = PBXLegacyTarget;
-			buildArgumentsString = "$(ACTION)";
-			buildConfigurationList = FA5B86941E0E7BE6008E8929 /* Build configuration list for PBXLegacyTarget "PoGO-Tweak" */;
-			buildPhases = (
+/* Begin PBXHeadersBuildPhase section */
+		FA7ED7BA1EBE2C880046C902 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA7ED8521EBE30E00046C902 /* GPBCodedInputStream_PackagePrivate.h in Headers */,
+				FA7ED86F1EBE30E00046C902 /* GPBUtilities.h in Headers */,
+				FA7ED8D81EBE32410046C902 /* PogoprotosNetworkingRequestsMessages.pbobjc.h in Headers */,
+				FA7ED7F01EBE2E070046C902 /* ByteStringRepeatedField.h in Headers */,
+				FA7ED8CA1EBE32410046C902 /* PogoprotosMapFort.pbobjc.h in Headers */,
+				FA7ED83A1EBE30E00046C902 /* Api.pbobjc.h in Headers */,
+				FA7ED7EC1EBE2E070046C902 /* Il2CppArray.h in Headers */,
+				FA7ED86E1EBE30E00046C902 /* GPBUnknownFieldSet_PackagePrivate.h in Headers */,
+				FA7ED8B01EBE32410046C902 /* PogoprotosDataAvatar.pbobjc.h in Headers */,
+				FA7ED83C1EBE30E00046C902 /* Duration.pbobjc.h in Headers */,
+				FA7ED8D41EBE32410046C902 /* PogoprotosNetworkingPlatformResponses.pbobjc.h in Headers */,
+				FA7ED8E41EBE32410046C902 /* PogoprotosSettingsMasterQuest.pbobjc.h in Headers */,
+				FA7ED8BE1EBE32410046C902 /* PogoprotosDataQuests.pbobjc.h in Headers */,
+				FA7ED8621EBE30E00046C902 /* GPBMessage_PackagePrivate.h in Headers */,
+				FA7ED7EF1EBE2E070046C902 /* ByteStringArray.h in Headers */,
+				FA7ED7F21EBE2E070046C902 /* Structs.h in Headers */,
+				FA7ED86B1EBE30E00046C902 /* GPBUnknownField_PackagePrivate.h in Headers */,
+				FA7ED8401EBE30E00046C902 /* FieldMask.pbobjc.h in Headers */,
+				FA7ED8681EBE30E00046C902 /* GPBRuntimeTypes.h in Headers */,
+				FA7ED8381EBE30E00046C902 /* Any.pbobjc.h in Headers */,
+				FA7ED85B1EBE30E00046C902 /* GPBDictionary_PackagePrivate.h in Headers */,
+				FA7ED8631EBE30E00046C902 /* GPBProtocolBuffers.h in Headers */,
+				FA7ED8CE1EBE32410046C902 /* PogoprotosNetworkingEnvelopes.pbobjc.h in Headers */,
+				FA7ED84A1EBE30E00046C902 /* Wrappers.pbobjc.h in Headers */,
+				FA7ED86C1EBE30E00046C902 /* GPBUnknownFieldSet.h in Headers */,
+				FA7ED8B81EBE32410046C902 /* PogoprotosDataGym.pbobjc.h in Headers */,
+				FA7ED8461EBE30E00046C902 /* Timestamp.pbobjc.h in Headers */,
+				FA7ED8DC1EBE32410046C902 /* PogoprotosSettings.pbobjc.h in Headers */,
+				FA7ED8671EBE30E00046C902 /* GPBRootObject_PackagePrivate.h in Headers */,
+				FA7ED7EB1EBE2E070046C902 /* IntPtr.h in Headers */,
+				FA7ED7EA1EBE2E070046C902 /* IntArray.h in Headers */,
+				FA7ED84E1EBE30E00046C902 /* GPBArray_PackagePrivate.h in Headers */,
+				FA7ED8651EBE30E00046C902 /* GPBRootObject.h in Headers */,
+				FA7ED8C01EBE32410046C902 /* PogoprotosDataRedeem.pbobjc.h in Headers */,
+				FA7ED8531EBE30E00046C902 /* GPBCodedOutputStream.h in Headers */,
+				FA7ED8561EBE30E00046C902 /* GPBDescriptor.h in Headers */,
+				FA7ED8591EBE30E00046C902 /* GPBDictionary.h in Headers */,
+				FA7ED8601EBE30E00046C902 /* GPBMessage.h in Headers */,
+				FA7ED8B41EBE32410046C902 /* PogoprotosDataBattle.pbobjc.h in Headers */,
+				FA7ED8C41EBE32410046C902 /* PogoprotosInventory.pbobjc.h in Headers */,
+				FA7ED8691EBE30E00046C902 /* GPBUnknownField.h in Headers */,
+				FA7ED8581EBE30E00046C902 /* GPBDescriptor_PackagePrivate.h in Headers */,
+				FA7ED8DA1EBE32410046C902 /* PogoprotosNetworkingResponses.pbobjc.h in Headers */,
+				FA7ED8711EBE30E00046C902 /* GPBUtilities_PackagePrivate.h in Headers */,
+				FA7ED8D01EBE32410046C902 /* PogoprotosNetworkingPlatform.pbobjc.h in Headers */,
+				FA7ED84C1EBE30E00046C902 /* GPBArray.h in Headers */,
+				FA7ED8481EBE30E00046C902 /* Type.pbobjc.h in Headers */,
+				FA7ED8DE1EBE32410046C902 /* PogoprotosSettingsMaster.pbobjc.h in Headers */,
+				FA7ED8421EBE30E00046C902 /* SourceContext.pbobjc.h in Headers */,
+				FA7ED7EE1EBE2E070046C902 /* ByteString.h in Headers */,
+				FA7ED8D61EBE32410046C902 /* PogoprotosNetworkingRequests.pbobjc.h in Headers */,
+				FA7ED7E91EBE2E070046C902 /* ByteArray.h in Headers */,
+				FA7ED8B61EBE32410046C902 /* PogoprotosDataCapture.pbobjc.h in Headers */,
+				FA7ED7F41EBE2E5B0046C902 /* substrate.h in Headers */,
+				FA7ED8BC1EBE32410046C902 /* PogoprotosDataPlayer.pbobjc.h in Headers */,
+				FA7ED8E21EBE32410046C902 /* PogoprotosSettingsMasterPokemon.pbobjc.h in Headers */,
+				FA7ED85E1EBE30E00046C902 /* GPBExtensionRegistry.h in Headers */,
+				FA7ED8BA1EBE32410046C902 /* PogoprotosDataLogs.pbobjc.h in Headers */,
+				FA7ED8E01EBE32410046C902 /* PogoprotosSettingsMasterItem.pbobjc.h in Headers */,
+				FA7ED8CC1EBE32410046C902 /* PogoprotosMapPokemon.pbobjc.h in Headers */,
+				FA7ED8641EBE30E00046C902 /* GPBProtocolBuffers_RuntimeSupport.h in Headers */,
+				FA7ED8C61EBE32410046C902 /* PogoprotosInventoryItem.pbobjc.h in Headers */,
+				FA7ED84F1EBE30E00046C902 /* GPBBootstrap.h in Headers */,
+				FA7ED8721EBE30E00046C902 /* GPBWellKnownTypes.h in Headers */,
+				FA7ED8C81EBE32410046C902 /* PogoprotosMap.pbobjc.h in Headers */,
+				FA7ED8441EBE30E00046C902 /* Struct.pbobjc.h in Headers */,
+				FA7ED7ED1EBE2E070046C902 /* Il2CppObject.h in Headers */,
+				FA7ED8AE1EBE32410046C902 /* PogoprotosData.pbobjc.h in Headers */,
+				FA7ED83E1EBE30E00046C902 /* Empty.pbobjc.h in Headers */,
+				FA7ED8501EBE30E00046C902 /* GPBCodedInputStream.h in Headers */,
+				FA7ED8551EBE30E00046C902 /* GPBCodedOutputStream_PackagePrivate.h in Headers */,
+				FA7ED8741EBE30E00046C902 /* GPBWireFormat.h in Headers */,
+				FA7ED8C21EBE32410046C902 /* PogoprotosEnums.pbobjc.h in Headers */,
+				FA7ED8B21EBE32410046C902 /* PogoprotosDataBadge.pbobjc.h in Headers */,
+				FA7ED7F11EBE2E070046C902 /* Result.h in Headers */,
+				FA7ED8D21EBE32410046C902 /* PogoprotosNetworkingPlatformRequests.pbobjc.h in Headers */,
+				FA7ED85C1EBE30E00046C902 /* GPBExtensionInternals.h in Headers */,
 			);
-			buildToolPath = /usr/bin/make;
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		FA7ED7BC1EBE2C880046C902 /* PoGO-Tweak */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA7ED7D31EBE2C880046C902 /* Build configuration list for PBXNativeTarget "PoGO-Tweak" */;
+			buildPhases = (
+				FA7ED7B71EBE2C880046C902 /* ShellScript */,
+				FA7ED7B81EBE2C880046C902 /* Sources */,
+				FA7ED7B91EBE2C880046C902 /* Frameworks */,
+				FA7ED7BA1EBE2C880046C902 /* Headers */,
+				FA7ED7BB1EBE2C880046C902 /* ShellScript */,
+			);
+			buildRules = (
+			);
 			dependencies = (
 			);
 			name = "PoGO-Tweak";
-			passBuildSettingsInEnvironment = 1;
-			productName = Test;
+			productName = "PoGO-Tweak";
+			productReference = FA7ED7BD1EBE2C880046C902 /* PoGO-Tweak.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
 		};
-/* End PBXLegacyTarget section */
+/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		FA5B868D1E0E7BE6008E8929 /* Project object */ = {
+		FA7ED7B31EBE2C880046C902 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0820;
-				ORGANIZATIONNAME = "Alexandro Luongo";
 				TargetAttributes = {
-					FA5B86911E0E7BE6008E8929 = {
-						CreatedOnToolsVersion = 8.2;
+					FA7ED7BC1EBE2C880046C902 = {
+						CreatedOnToolsVersion = 8.2.1;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = FA5B86901E0E7BE6008E8929 /* Build configuration list for PBXProject "PoGO-Tweak" */;
+			buildConfigurationList = FA7ED7B61EBE2C880046C902 /* Build configuration list for PBXProject "PoGO-Tweak" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
-			mainGroup = FA5B868C1E0E7BE6008E8929;
-			productRefGroup = FA5B868C1E0E7BE6008E8929;
+			mainGroup = FA7ED7B21EBE2C880046C902;
+			productRefGroup = FA7ED7BE1EBE2C880046C902 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FA5B86911E0E7BE6008E8929 /* PoGO-Tweak */,
+				FA7ED7BC1EBE2C880046C902 /* PoGO-Tweak */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		FA7ED7B71EBE2C880046C902 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/iOSOpenDev/bin/iosod --xcbp-logos";
+		};
+		FA7ED7BB1EBE2C880046C902 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/iOSOpenDev/bin/iosod --xcbp";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA7ED7B81EBE2C880046C902 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA7ED8B11EBE32410046C902 /* PogoprotosDataAvatar.pbobjc.m in Sources */,
+				FA7ED8701EBE30E00046C902 /* GPBUtilities.m in Sources */,
+				FA7ED8C71EBE32410046C902 /* PogoprotosInventoryItem.pbobjc.m in Sources */,
+				FA7ED8B31EBE32410046C902 /* PogoprotosDataBadge.pbobjc.m in Sources */,
+				FA7ED8BF1EBE32410046C902 /* PogoprotosDataQuests.pbobjc.m in Sources */,
+				FA7ED8DB1EBE32410046C902 /* PogoprotosNetworkingResponses.pbobjc.m in Sources */,
+				FA7ED86A1EBE30E00046C902 /* GPBUnknownField.m in Sources */,
+				FA7ED84B1EBE30E00046C902 /* Wrappers.pbobjc.m in Sources */,
+				FA7ED8C91EBE32410046C902 /* PogoprotosMap.pbobjc.m in Sources */,
+				FA7ED8CD1EBE32410046C902 /* PogoprotosMapPokemon.pbobjc.m in Sources */,
+				FA7ED8511EBE30E00046C902 /* GPBCodedInputStream.m in Sources */,
+				FA7ED83D1EBE30E00046C902 /* Duration.pbobjc.m in Sources */,
+				FA7ED7CC1EBE2C880046C902 /* Tweak.mm in Sources */,
+				FA7ED8751EBE30E00046C902 /* GPBWireFormat.m in Sources */,
+				FA7ED8E51EBE32410046C902 /* PogoprotosSettingsMasterQuest.pbobjc.m in Sources */,
+				FA7ED83B1EBE30E00046C902 /* Api.pbobjc.m in Sources */,
+				FA7ED8611EBE30E00046C902 /* GPBMessage.m in Sources */,
+				FA7ED83F1EBE30E00046C902 /* Empty.pbobjc.m in Sources */,
+				FA7ED85F1EBE30E00046C902 /* GPBExtensionRegistry.m in Sources */,
+				FA7ED8CB1EBE32410046C902 /* PogoprotosMapFort.pbobjc.m in Sources */,
+				FA7ED8431EBE30E00046C902 /* SourceContext.pbobjc.m in Sources */,
+				FA7ED8451EBE30E00046C902 /* Struct.pbobjc.m in Sources */,
+				FA7ED8661EBE30E00046C902 /* GPBRootObject.m in Sources */,
+				FA7ED8731EBE30E00046C902 /* GPBWellKnownTypes.m in Sources */,
+				FA7ED8C11EBE32410046C902 /* PogoprotosDataRedeem.pbobjc.m in Sources */,
+				FA7ED8491EBE30E00046C902 /* Type.pbobjc.m in Sources */,
+				FA7ED8B51EBE32410046C902 /* PogoprotosDataBattle.pbobjc.m in Sources */,
+				FA7ED8E11EBE32410046C902 /* PogoprotosSettingsMasterItem.pbobjc.m in Sources */,
+				FA7ED8C51EBE32410046C902 /* PogoprotosInventory.pbobjc.m in Sources */,
+				FA7ED8D71EBE32410046C902 /* PogoprotosNetworkingRequests.pbobjc.m in Sources */,
+				FA7ED8C31EBE32410046C902 /* PogoprotosEnums.pbobjc.m in Sources */,
+				FA7ED85A1EBE30E00046C902 /* GPBDictionary.m in Sources */,
+				FA7ED86D1EBE30E00046C902 /* GPBUnknownFieldSet.m in Sources */,
+				FA7ED8B71EBE32410046C902 /* PogoprotosDataCapture.pbobjc.m in Sources */,
+				FA7ED8391EBE30E00046C902 /* Any.pbobjc.m in Sources */,
+				FA7ED8DF1EBE32410046C902 /* PogoprotosSettingsMaster.pbobjc.m in Sources */,
+				FA7ED84D1EBE30E00046C902 /* GPBArray.m in Sources */,
+				FA7ED8CF1EBE32410046C902 /* PogoprotosNetworkingEnvelopes.pbobjc.m in Sources */,
+				FA7ED8AF1EBE32410046C902 /* PogoprotosData.pbobjc.m in Sources */,
+				FA7ED85D1EBE30E00046C902 /* GPBExtensionInternals.m in Sources */,
+				FA7ED8D31EBE32410046C902 /* PogoprotosNetworkingPlatformRequests.pbobjc.m in Sources */,
+				FA7ED8D11EBE32410046C902 /* PogoprotosNetworkingPlatform.pbobjc.m in Sources */,
+				FA7ED8411EBE30E00046C902 /* FieldMask.pbobjc.m in Sources */,
+				FA7ED8DD1EBE32410046C902 /* PogoprotosSettings.pbobjc.m in Sources */,
+				FA7ED8571EBE30E00046C902 /* GPBDescriptor.m in Sources */,
+				FA7ED8D91EBE32410046C902 /* PogoprotosNetworkingRequestsMessages.pbobjc.m in Sources */,
+				FA7ED8541EBE30E00046C902 /* GPBCodedOutputStream.m in Sources */,
+				FA7ED8D51EBE32410046C902 /* PogoprotosNetworkingPlatformResponses.pbobjc.m in Sources */,
+				FA7ED8E31EBE32410046C902 /* PogoprotosSettingsMasterPokemon.pbobjc.m in Sources */,
+				FA7ED8471EBE30E00046C902 /* Timestamp.pbobjc.m in Sources */,
+				FA7ED8B91EBE32410046C902 /* PogoprotosDataGym.pbobjc.m in Sources */,
+				FA7ED8BB1EBE32410046C902 /* PogoprotosDataLogs.pbobjc.m in Sources */,
+				FA7ED8BD1EBE32410046C902 /* PogoprotosDataPlayer.pbobjc.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
 /* Begin XCBuildConfiguration section */
-		FA5B86921E0E7BE6008E8929 /* Debug */ = {
+		FA7ED7D11EBE2C880046C902 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(iOSOpenDevPath)/frameworks/**",
+					"$(SDKROOT)/System/Library/PrivateFrameworks",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				HEADER_SEARCH_PATHS = "$(iOSOpenDevPath)/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LIBRARY_SEARCH_PATHS = "$(iOSOpenDevPath)/lib/**";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = NO;
+				iOSOpenDevPath = /opt/iOSOpenDev;
 			};
 			name = Debug;
 		};
-		FA5B86931E0E7BE6008E8929 /* Release */ = {
+		FA7ED7D21EBE2C880046C902 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				COPY_PHASE_STRIP = YES;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(iOSOpenDevPath)/frameworks/**",
+					"$(SDKROOT)/System/Library/PrivateFrameworks",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MTL_ENABLE_DEBUG_INFO = NO;
+				HEADER_SEARCH_PATHS = "$(iOSOpenDevPath)/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LIBRARY_SEARCH_PATHS = "$(iOSOpenDevPath)/lib/**";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				iOSOpenDevPath = /opt/iOSOpenDev;
 			};
 			name = Release;
 		};
-		FA5B86951E0E7BE6008E8929 /* Debug */ = {
+		FA7ED7D41EBE2C880046C902 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				DEBUGGING_SYMBOLS = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				THEOS = /opt/theos;
+				CODE_SIGN_IDENTITY = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PoGO-Tweak/PoGO-Tweak-Prefix.pch";
+				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/iOSOpenDev/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				iOSOpenDevBuildPackageOnAnyBuild = NO;
+				iOSOpenDevCopyOnBuild = NO;
+				iOSOpenDevDevice = "";
+				iOSOpenDevInstallOnAnyBuild = NO;
+				iOSOpenDevInstallOnProfiling = YES;
+				iOSOpenDevRespringOnInstall = YES;
+				iOSOpenDevUsePackageVersionPList = YES;
 			};
 			name = Debug;
 		};
-		FA5B86961E0E7BE6008E8929 /* Release */ = {
+		FA7ED7D51EBE2C880046C902 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				THEOS = /opt/theos;
+				CODE_SIGN_IDENTITY = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PoGO-Tweak/PoGO-Tweak-Prefix.pch";
+				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/iOSOpenDev/lib,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				iOSOpenDevBuildPackageOnAnyBuild = NO;
+				iOSOpenDevCopyOnBuild = NO;
+				iOSOpenDevDevice = "";
+				iOSOpenDevInstallOnAnyBuild = NO;
+				iOSOpenDevInstallOnProfiling = YES;
+				iOSOpenDevRespringOnInstall = YES;
+				iOSOpenDevUsePackageVersionPList = YES;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FA5B86901E0E7BE6008E8929 /* Build configuration list for PBXProject "PoGO-Tweak" */ = {
+		FA7ED7B61EBE2C880046C902 /* Build configuration list for PBXProject "PoGO-Tweak" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FA5B86921E0E7BE6008E8929 /* Debug */,
-				FA5B86931E0E7BE6008E8929 /* Release */,
+				FA7ED7D11EBE2C880046C902 /* Debug */,
+				FA7ED7D21EBE2C880046C902 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FA5B86941E0E7BE6008E8929 /* Build configuration list for PBXLegacyTarget "PoGO-Tweak" */ = {
+		FA7ED7D31EBE2C880046C902 /* Build configuration list for PBXNativeTarget "PoGO-Tweak" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FA5B86951E0E7BE6008E8929 /* Debug */,
-				FA5B86961E0E7BE6008E8929 /* Release */,
+				FA7ED7D41EBE2C880046C902 /* Debug */,
+				FA7ED7D51EBE2C880046C902 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = FA5B868D1E0E7BE6008E8929 /* Project object */;
+	rootObject = FA7ED7B31EBE2C880046C902 /* Project object */;
 }

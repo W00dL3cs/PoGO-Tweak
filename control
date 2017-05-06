@@ -1,9 +1,0 @@
-Package: com.w00dl3cs.pogo-tweak
-Name: PoGO-Tweak
-Depends: mobilesubstrate
-Version: 0.0.1
-Architecture: iphoneos-arm
-Description: Handle Pokemon GO data directly from your iDevice!
-Maintainer: W00dL3cs
-Author: W00dL3cs
-Section: Tweaks

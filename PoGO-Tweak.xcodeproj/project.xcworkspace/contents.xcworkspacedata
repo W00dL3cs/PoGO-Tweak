@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/Alex/Desktop/PoGO-Hacks/Test/PoGO-Tweak.xcodeproj">
+      location = "self:PoGO-Tweak.xcodeproj">
    </FileRef>
 </Workspace>
