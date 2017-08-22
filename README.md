@@ -8,7 +8,7 @@ Requires a jailbroken iDevice (~~~~unless you side-load the tweak~~~~) and THEOS
 ## Updates:
 * **Jan, 4th 2017:** First release
 * **May, 6th 2017:** Updated after Niantic's recent attempt to stop MITM attacks ;)
-* **Aug, 22th 2017:** Updated code and offsets for Pokemon GO v1.39.1
+* **Aug, 22nd 2017:** Updated code and offsets for Pokemon GO v1.39.1
 
 ## Disclaimer
 > All the source code on this repository is provided for educational and informational purpose only, and should not be construed as legal advice or as an offer to perform legal services on any subject matter.
