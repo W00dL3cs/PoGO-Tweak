@@ -348,6 +348,7 @@ BOOL AvatarCustomizationSettings_AvatarCustomizationUnlockType_IsValidValue(int3
 @dynamic badgeRank;
 @dynamic targetsArray, targetsArray_Count;
 @dynamic captureRewardArray, captureRewardArray_Count;
+@dynamic eventBadge;
 
 typedef struct BadgeSettings__storage_ {
   uint32_t _has_storage_[1];
@@ -399,6 +400,15 @@ typedef struct BadgeSettings__storage_ {
         .flags = GPBFieldRepeated,
         .dataType = GPBDataTypeMessage,
       },
+      {
+        .name = "eventBadge",
+        .dataTypeSpecific.className = NULL,
+        .number = BadgeSettings_FieldNumber_EventBadge,
+        .hasIndex = 2,
+        .offset = 3,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[BadgeSettings class]
@@ -436,7 +446,7 @@ void SetBadgeSettings_BadgeType_RawValue(BadgeSettings *message, int32_t value) 
 @dynamic interpolationArray, interpolationArray_Count;
 @dynamic targetTypeArray, targetTypeArray_Count;
 @dynamic easeInSpeedArray, easeInSpeedArray_Count;
-@dynamic eastOutSpeedArray, eastOutSpeedArray_Count;
+@dynamic easeOutSpeedArray, easeOutSpeedArray_Count;
 @dynamic durationSecondsArray, durationSecondsArray_Count;
 @dynamic waitSecondsArray, waitSecondsArray_Count;
 @dynamic transitionSecondsArray, transitionSecondsArray_Count;
@@ -455,7 +465,7 @@ typedef struct CameraSettings__storage_ {
   GPBEnumArray *interpolationArray;
   GPBEnumArray *targetTypeArray;
   GPBFloatArray *easeInSpeedArray;
-  GPBFloatArray *eastOutSpeedArray;
+  GPBFloatArray *easeOutSpeedArray;
   GPBFloatArray *durationSecondsArray;
   GPBFloatArray *waitSecondsArray;
   GPBFloatArray *transitionSecondsArray;
@@ -512,11 +522,11 @@ typedef struct CameraSettings__storage_ {
         .dataType = GPBDataTypeFloat,
       },
       {
-        .name = "eastOutSpeedArray",
+        .name = "easeOutSpeedArray",
         .dataTypeSpecific.className = NULL,
-        .number = CameraSettings_FieldNumber_EastOutSpeedArray,
+        .number = CameraSettings_FieldNumber_EaseOutSpeedArray,
         .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(CameraSettings__storage_, eastOutSpeedArray),
+        .offset = (uint32_t)offsetof(CameraSettings__storage_, easeOutSpeedArray),
         .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
         .dataType = GPBDataTypeFloat,
       },
@@ -987,6 +997,115 @@ void SetGenderSettings_Pokemon_RawValue(GenderSettings *message, int32_t value) 
   GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
 }
 
+#pragma mark - GymBadgeGmtSettings
+
+@implementation GymBadgeGmtSettings
+
+@dynamic targetArray, targetArray_Count;
+@dynamic battleWinningScorePerDefenderCp;
+@dynamic gymDefendingScorePerMinute;
+@dynamic berryFeedingScore;
+@dynamic pokemonDeployScore;
+@dynamic raidBattleWinningScore;
+@dynamic loseAllBattlesScore;
+
+typedef struct GymBadgeGmtSettings__storage_ {
+  uint32_t _has_storage_[1];
+  float battleWinningScorePerDefenderCp;
+  float gymDefendingScorePerMinute;
+  int32_t berryFeedingScore;
+  int32_t pokemonDeployScore;
+  int32_t raidBattleWinningScore;
+  int32_t loseAllBattlesScore;
+  GPBInt32Array *targetArray;
+} GymBadgeGmtSettings__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "targetArray",
+        .dataTypeSpecific.className = NULL,
+        .number = GymBadgeGmtSettings_FieldNumber_TargetArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(GymBadgeGmtSettings__storage_, targetArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "battleWinningScorePerDefenderCp",
+        .dataTypeSpecific.className = NULL,
+        .number = GymBadgeGmtSettings_FieldNumber_BattleWinningScorePerDefenderCp,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GymBadgeGmtSettings__storage_, battleWinningScorePerDefenderCp),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeFloat,
+      },
+      {
+        .name = "gymDefendingScorePerMinute",
+        .dataTypeSpecific.className = NULL,
+        .number = GymBadgeGmtSettings_FieldNumber_GymDefendingScorePerMinute,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(GymBadgeGmtSettings__storage_, gymDefendingScorePerMinute),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeFloat,
+      },
+      {
+        .name = "berryFeedingScore",
+        .dataTypeSpecific.className = NULL,
+        .number = GymBadgeGmtSettings_FieldNumber_BerryFeedingScore,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(GymBadgeGmtSettings__storage_, berryFeedingScore),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "pokemonDeployScore",
+        .dataTypeSpecific.className = NULL,
+        .number = GymBadgeGmtSettings_FieldNumber_PokemonDeployScore,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(GymBadgeGmtSettings__storage_, pokemonDeployScore),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "raidBattleWinningScore",
+        .dataTypeSpecific.className = NULL,
+        .number = GymBadgeGmtSettings_FieldNumber_RaidBattleWinningScore,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(GymBadgeGmtSettings__storage_, raidBattleWinningScore),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "loseAllBattlesScore",
+        .dataTypeSpecific.className = NULL,
+        .number = GymBadgeGmtSettings_FieldNumber_LoseAllBattlesScore,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(GymBadgeGmtSettings__storage_, loseAllBattlesScore),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GymBadgeGmtSettings class]
+                                     rootClass:[PogoprotosSettingsMasterRoot class]
+                                          file:PogoprotosSettingsMasterRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GymBadgeGmtSettings__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - GymBattleSettings
 
 @implementation GymBattleSettings
@@ -1006,6 +1125,7 @@ void SetGenderSettings_Pokemon_RawValue(GenderSettings *message, int32_t value) 
 @dynamic minimumPlayerLevel;
 @dynamic swapDurationMs;
 @dynamic dodgeDamageReductionPercent;
+@dynamic minimumRaidPlayerLevel;
 
 typedef struct GymBattleSettings__storage_ {
   uint32_t _has_storage_[1];
@@ -1024,6 +1144,7 @@ typedef struct GymBattleSettings__storage_ {
   int32_t minimumPlayerLevel;
   int32_t swapDurationMs;
   float dodgeDamageReductionPercent;
+  int32_t minimumRaidPlayerLevel;
 } GymBattleSettings__storage_;
 
 // This method is threadsafe because it is initially called
@@ -1166,6 +1287,15 @@ typedef struct GymBattleSettings__storage_ {
         .offset = (uint32_t)offsetof(GymBattleSettings__storage_, dodgeDamageReductionPercent),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeFloat,
+      },
+      {
+        .name = "minimumRaidPlayerLevel",
+        .dataTypeSpecific.className = NULL,
+        .number = GymBattleSettings_FieldNumber_MinimumRaidPlayerLevel,
+        .hasIndex = 15,
+        .offset = (uint32_t)offsetof(GymBattleSettings__storage_, minimumRaidPlayerLevel),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
       },
     };
     GPBDescriptor *localDescriptor =
@@ -1972,11 +2102,13 @@ void SetMoveSettings_PokemonType_RawValue(MoveSettings *message, int32_t value) 
 @dynamic cpMultiplierArray, cpMultiplierArray_Count;
 @dynamic maxEggPlayerLevel;
 @dynamic maxEncounterPlayerLevel;
+@dynamic maxRaidEncounterPlayerLevel;
 
 typedef struct PlayerLevelSettings__storage_ {
   uint32_t _has_storage_[1];
   int32_t maxEggPlayerLevel;
   int32_t maxEncounterPlayerLevel;
+  int32_t maxRaidEncounterPlayerLevel;
   GPBInt32Array *rankNumArray;
   GPBInt32Array *requiredExperienceArray;
   GPBFloatArray *cpMultiplierArray;
@@ -2030,6 +2162,15 @@ typedef struct PlayerLevelSettings__storage_ {
         .number = PlayerLevelSettings_FieldNumber_MaxEncounterPlayerLevel,
         .hasIndex = 1,
         .offset = (uint32_t)offsetof(PlayerLevelSettings__storage_, maxEncounterPlayerLevel),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "maxRaidEncounterPlayerLevel",
+        .dataTypeSpecific.className = NULL,
+        .number = PlayerLevelSettings_FieldNumber_MaxRaidEncounterPlayerLevel,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(PlayerLevelSettings__storage_, maxRaidEncounterPlayerLevel),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt32,
       },

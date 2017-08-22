@@ -36,6 +36,7 @@ CF_EXTERN_C_BEGIN
 @class MapSettings;
 @class NewsSettings;
 @class NewsSettings_News;
+@class NotificationSettings;
 @class PasscodeSettings;
 @class SfidaSettings;
 @class TranslationSettings;
@@ -145,6 +146,8 @@ typedef GPB_ENUM(FortSettings_FieldNumber) {
   FortSettings_FieldNumber_DeployAttackMultiplier = 5,
   FortSettings_FieldNumber_FarInteractionRangeMeters = 6,
   FortSettings_FieldNumber_DisableGyms = 7,
+  FortSettings_FieldNumber_MaxSamePokemonAtFort = 8,
+  FortSettings_FieldNumber_MaxPlayerTotalDeployedPokemon = 9,
 };
 
 @interface FortSettings : GPBMessage
@@ -162,6 +165,10 @@ typedef GPB_ENUM(FortSettings_FieldNumber) {
 @property(nonatomic, readwrite) double farInteractionRangeMeters;
 
 @property(nonatomic, readwrite) BOOL disableGyms;
+
+@property(nonatomic, readwrite) int32_t maxSamePokemonAtFort;
+
+@property(nonatomic, readwrite) int32_t maxPlayerTotalDeployedPokemon;
 
 @end
 
@@ -181,6 +188,7 @@ typedef GPB_ENUM(GlobalSettings_FieldNumber) {
   GlobalSettings_FieldNumber_NewsSettings = 12,
   GlobalSettings_FieldNumber_TranslationSettings = 13,
   GlobalSettings_FieldNumber_PasscodeSettings = 14,
+  GlobalSettings_FieldNumber_NotificationSettings = 15,
 };
 
 @interface GlobalSettings : GPBMessage
@@ -232,6 +240,10 @@ typedef GPB_ENUM(GlobalSettings_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) PasscodeSettings *passcodeSettings;
 /** Test to see if @c passcodeSettings has been set. */
 @property(nonatomic, readwrite) BOOL hasPasscodeSettings;
+
+@property(nonatomic, readwrite, strong, null_resettable) NotificationSettings *notificationSettings;
+/** Test to see if @c notificationSettings has been set. */
+@property(nonatomic, readwrite) BOOL hasNotificationSettings;
 
 @end
 
@@ -356,6 +368,21 @@ typedef GPB_ENUM(NewsSettings_News_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<NSString*> *exclusiveCountriesArray;
 /** The number of items in @c exclusiveCountriesArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger exclusiveCountriesArray_Count;
+
+@end
+
+#pragma mark - NotificationSettings
+
+typedef GPB_ENUM(NotificationSettings_FieldNumber) {
+  NotificationSettings_FieldNumber_PullNotifications = 1,
+  NotificationSettings_FieldNumber_ShowNotifications = 2,
+};
+
+@interface NotificationSettings : GPBMessage
+
+@property(nonatomic, readwrite) BOOL pullNotifications;
+
+@property(nonatomic, readwrite) BOOL showNotifications;
 
 @end
 

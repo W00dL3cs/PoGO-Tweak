@@ -49,25 +49,31 @@ GPBEnumDescriptor *ItemId_EnumDescriptor(void) {
   if (!descriptor) {
     static const char *valueNames =
         "ItemUnknown\000ItemPokeBall\000ItemGreatBall\000I"
-        "temUltraBall\000ItemMasterBall\000ItemPotion\000I"
-        "temSuperPotion\000ItemHyperPotion\000ItemMaxPo"
-        "tion\000ItemRevive\000ItemMaxRevive\000ItemLuckyE"
-        "gg\000ItemIncenseOrdinary\000ItemIncenseSpicy\000"
-        "ItemIncenseCool\000ItemIncenseFloral\000ItemTr"
-        "oyDisk\000ItemXAttack\000ItemXDefense\000ItemXMir"
-        "acle\000ItemRazzBerry\000ItemBlukBerry\000ItemNan"
-        "abBerry\000ItemWeparBerry\000ItemPinapBerry\000It"
-        "emSpecialCamera\000ItemIncubatorBasicUnlimi"
-        "ted\000ItemIncubatorBasic\000ItemPokemonStorag"
-        "eUpgrade\000ItemItemStorageUpgrade\000ItemSunS"
-        "tone\000ItemKingsRock\000ItemMetalCoat\000ItemDra"
-        "gonScale\000ItemUpGrade\000";
+        "temUltraBall\000ItemMasterBall\000ItemPremierB"
+        "all\000ItemPotion\000ItemSuperPotion\000ItemHyper"
+        "Potion\000ItemMaxPotion\000ItemRevive\000ItemMaxR"
+        "evive\000ItemLuckyEgg\000ItemIncenseOrdinary\000I"
+        "temIncenseSpicy\000ItemIncenseCool\000ItemInce"
+        "nseFloral\000ItemTroyDisk\000ItemXAttack\000ItemX"
+        "Defense\000ItemXMiracle\000ItemRazzBerry\000ItemB"
+        "lukBerry\000ItemNanabBerry\000ItemWeparBerry\000I"
+        "temPinapBerry\000ItemGoldenRazzBerry\000ItemGo"
+        "ldenNanabBerry\000ItemGoldenPinapBerry\000Item"
+        "SpecialCamera\000ItemIncubatorBasicUnlimite"
+        "d\000ItemIncubatorBasic\000ItemPokemonStorageU"
+        "pgrade\000ItemItemStorageUpgrade\000ItemSunSto"
+        "ne\000ItemKingsRock\000ItemMetalCoat\000ItemDrago"
+        "nScale\000ItemUpGrade\000ItemMoveRerollFastAtt"
+        "ack\000ItemMoveRerollSpecialAttack\000ItemRare"
+        "Candy\000ItemFreeRaidTicket\000ItemPaidRaidTic"
+        "ket\000ItemLegendaryRaidTicket\000";
     static const int32_t values[] = {
         ItemId_ItemUnknown,
         ItemId_ItemPokeBall,
         ItemId_ItemGreatBall,
         ItemId_ItemUltraBall,
         ItemId_ItemMasterBall,
+        ItemId_ItemPremierBall,
         ItemId_ItemPotion,
         ItemId_ItemSuperPotion,
         ItemId_ItemHyperPotion,
@@ -88,6 +94,9 @@ GPBEnumDescriptor *ItemId_EnumDescriptor(void) {
         ItemId_ItemNanabBerry,
         ItemId_ItemWeparBerry,
         ItemId_ItemPinapBerry,
+        ItemId_ItemGoldenRazzBerry,
+        ItemId_ItemGoldenNanabBerry,
+        ItemId_ItemGoldenPinapBerry,
         ItemId_ItemSpecialCamera,
         ItemId_ItemIncubatorBasicUnlimited,
         ItemId_ItemIncubatorBasic,
@@ -98,6 +107,12 @@ GPBEnumDescriptor *ItemId_EnumDescriptor(void) {
         ItemId_ItemMetalCoat,
         ItemId_ItemDragonScale,
         ItemId_ItemUpGrade,
+        ItemId_ItemMoveRerollFastAttack,
+        ItemId_ItemMoveRerollSpecialAttack,
+        ItemId_ItemRareCandy,
+        ItemId_ItemFreeRaidTicket,
+        ItemId_ItemPaidRaidTicket,
+        ItemId_ItemLegendaryRaidTicket,
     };
     GPBEnumDescriptor *worker =
         [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(ItemId)
@@ -119,6 +134,7 @@ BOOL ItemId_IsValidValue(int32_t value__) {
     case ItemId_ItemGreatBall:
     case ItemId_ItemUltraBall:
     case ItemId_ItemMasterBall:
+    case ItemId_ItemPremierBall:
     case ItemId_ItemPotion:
     case ItemId_ItemSuperPotion:
     case ItemId_ItemHyperPotion:
@@ -139,6 +155,9 @@ BOOL ItemId_IsValidValue(int32_t value__) {
     case ItemId_ItemNanabBerry:
     case ItemId_ItemWeparBerry:
     case ItemId_ItemPinapBerry:
+    case ItemId_ItemGoldenRazzBerry:
+    case ItemId_ItemGoldenNanabBerry:
+    case ItemId_ItemGoldenPinapBerry:
     case ItemId_ItemSpecialCamera:
     case ItemId_ItemIncubatorBasicUnlimited:
     case ItemId_ItemIncubatorBasic:
@@ -149,6 +168,12 @@ BOOL ItemId_IsValidValue(int32_t value__) {
     case ItemId_ItemMetalCoat:
     case ItemId_ItemDragonScale:
     case ItemId_ItemUpGrade:
+    case ItemId_ItemMoveRerollFastAttack:
+    case ItemId_ItemMoveRerollSpecialAttack:
+    case ItemId_ItemRareCandy:
+    case ItemId_ItemFreeRaidTicket:
+    case ItemId_ItemPaidRaidTicket:
+    case ItemId_ItemLegendaryRaidTicket:
       return YES;
     default:
       return NO;
@@ -166,7 +191,9 @@ GPBEnumDescriptor *ItemType_EnumDescriptor(void) {
         "Battle\000ItemTypeFood\000ItemTypeCamera\000ItemT"
         "ypeDisk\000ItemTypeIncubator\000ItemTypeIncens"
         "e\000ItemTypeXpBoost\000ItemTypeInventoryUpgra"
-        "de\000ItemTypeEvolutionRequirement\000";
+        "de\000ItemTypeEvolutionRequirement\000ItemType"
+        "MoveReroll\000ItemTypeCandy\000ItemTypeRaidTic"
+        "ket\000";
     static const int32_t values[] = {
         ItemType_ItemTypeNone,
         ItemType_ItemTypePokeball,
@@ -182,6 +209,9 @@ GPBEnumDescriptor *ItemType_EnumDescriptor(void) {
         ItemType_ItemTypeXpBoost,
         ItemType_ItemTypeInventoryUpgrade,
         ItemType_ItemTypeEvolutionRequirement,
+        ItemType_ItemTypeMoveReroll,
+        ItemType_ItemTypeCandy,
+        ItemType_ItemTypeRaidTicket,
     };
     GPBEnumDescriptor *worker =
         [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(ItemType)
@@ -212,6 +242,9 @@ BOOL ItemType_IsValidValue(int32_t value__) {
     case ItemType_ItemTypeXpBoost:
     case ItemType_ItemTypeInventoryUpgrade:
     case ItemType_ItemTypeEvolutionRequirement:
+    case ItemType_ItemTypeMoveReroll:
+    case ItemType_ItemTypeCandy:
+    case ItemType_ItemTypeRaidTicket:
       return YES;
     default:
       return NO;

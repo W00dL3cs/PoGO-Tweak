@@ -23,8 +23,8 @@
 
 @implementation PogoprotosDataBadgeRoot
 
-// No extensions in the file and no imports, so no need to generate
-// +extensionRegistry.
+// No extensions in the file and none of the imports (direct or indirect)
+// defined extensions, so no need to generate +extensionRegistry.
 
 @end
 
@@ -40,6 +40,219 @@ static GPBFileDescriptor *PogoprotosDataBadgeRoot_FileDescriptor(void) {
                                                      syntax:GPBFileSyntaxProto3];
   }
   return descriptor;
+}
+
+#pragma mark - AwardedGymBadge
+
+@implementation AwardedGymBadge
+
+@dynamic fortId;
+@dynamic gymBadgeType;
+@dynamic score;
+@dynamic hasGymBadgeStats, gymBadgeStats;
+@dynamic lastUpdateTimestampMs;
+@dynamic lastCheckTimestampMs;
+@dynamic earnedPoints;
+@dynamic progress;
+@dynamic levelUp;
+@dynamic name;
+@dynamic imageURL;
+@dynamic description_p;
+@dynamic latitude;
+@dynamic longitude;
+@dynamic hasRaids, raids;
+
+typedef struct AwardedGymBadge__storage_ {
+  uint32_t _has_storage_[1];
+  GymBadgeType gymBadgeType;
+  uint32_t score;
+  uint32_t earnedPoints;
+  float progress;
+  NSString *fortId;
+  GymBadgeStats *gymBadgeStats;
+  NSString *name;
+  NSString *imageURL;
+  NSString *description_p;
+  PlayerRaidInfo *raids;
+  uint64_t lastUpdateTimestampMs;
+  double latitude;
+  double longitude;
+  uint64_t lastCheckTimestampMs;
+} AwardedGymBadge__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "fortId",
+        .dataTypeSpecific.className = NULL,
+        .number = AwardedGymBadge_FieldNumber_FortId,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(AwardedGymBadge__storage_, fortId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "gymBadgeType",
+        .dataTypeSpecific.enumDescFunc = GymBadgeType_EnumDescriptor,
+        .number = AwardedGymBadge_FieldNumber_GymBadgeType,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(AwardedGymBadge__storage_, gymBadgeType),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+      {
+        .name = "score",
+        .dataTypeSpecific.className = NULL,
+        .number = AwardedGymBadge_FieldNumber_Score,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(AwardedGymBadge__storage_, score),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "gymBadgeStats",
+        .dataTypeSpecific.className = GPBStringifySymbol(GymBadgeStats),
+        .number = AwardedGymBadge_FieldNumber_GymBadgeStats,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(AwardedGymBadge__storage_, gymBadgeStats),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "lastUpdateTimestampMs",
+        .dataTypeSpecific.className = NULL,
+        .number = AwardedGymBadge_FieldNumber_LastUpdateTimestampMs,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(AwardedGymBadge__storage_, lastUpdateTimestampMs),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt64,
+      },
+      {
+        .name = "name",
+        .dataTypeSpecific.className = NULL,
+        .number = AwardedGymBadge_FieldNumber_Name,
+        .hasIndex = 10,
+        .offset = (uint32_t)offsetof(AwardedGymBadge__storage_, name),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "imageURL",
+        .dataTypeSpecific.className = NULL,
+        .number = AwardedGymBadge_FieldNumber_ImageURL,
+        .hasIndex = 11,
+        .offset = (uint32_t)offsetof(AwardedGymBadge__storage_, imageURL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "description_p",
+        .dataTypeSpecific.className = NULL,
+        .number = AwardedGymBadge_FieldNumber_Description_p,
+        .hasIndex = 12,
+        .offset = (uint32_t)offsetof(AwardedGymBadge__storage_, description_p),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "latitude",
+        .dataTypeSpecific.className = NULL,
+        .number = AwardedGymBadge_FieldNumber_Latitude,
+        .hasIndex = 13,
+        .offset = (uint32_t)offsetof(AwardedGymBadge__storage_, latitude),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeDouble,
+      },
+      {
+        .name = "longitude",
+        .dataTypeSpecific.className = NULL,
+        .number = AwardedGymBadge_FieldNumber_Longitude,
+        .hasIndex = 14,
+        .offset = (uint32_t)offsetof(AwardedGymBadge__storage_, longitude),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeDouble,
+      },
+      {
+        .name = "lastCheckTimestampMs",
+        .dataTypeSpecific.className = NULL,
+        .number = AwardedGymBadge_FieldNumber_LastCheckTimestampMs,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(AwardedGymBadge__storage_, lastCheckTimestampMs),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt64,
+      },
+      {
+        .name = "earnedPoints",
+        .dataTypeSpecific.className = NULL,
+        .number = AwardedGymBadge_FieldNumber_EarnedPoints,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(AwardedGymBadge__storage_, earnedPoints),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "progress",
+        .dataTypeSpecific.className = NULL,
+        .number = AwardedGymBadge_FieldNumber_Progress,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(AwardedGymBadge__storage_, progress),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeFloat,
+      },
+      {
+        .name = "levelUp",
+        .dataTypeSpecific.className = NULL,
+        .number = AwardedGymBadge_FieldNumber_LevelUp,
+        .hasIndex = 8,
+        .offset = 9,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
+      },
+      {
+        .name = "raids",
+        .dataTypeSpecific.className = GPBStringifySymbol(PlayerRaidInfo),
+        .number = AwardedGymBadge_FieldNumber_Raids,
+        .hasIndex = 15,
+        .offset = (uint32_t)offsetof(AwardedGymBadge__storage_, raids),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[AwardedGymBadge class]
+                                     rootClass:[PogoprotosDataBadgeRoot class]
+                                          file:PogoprotosDataBadgeRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(AwardedGymBadge__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\007\005\241!!\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t AwardedGymBadge_GymBadgeType_RawValue(AwardedGymBadge *message) {
+  GPBDescriptor *descriptor = [AwardedGymBadge descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:AwardedGymBadge_FieldNumber_GymBadgeType];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetAwardedGymBadge_GymBadgeType_RawValue(AwardedGymBadge *message, int32_t value) {
+  GPBDescriptor *descriptor = [AwardedGymBadge descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:AwardedGymBadge_FieldNumber_GymBadgeType];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
 }
 
 #pragma mark - BadgeCaptureReward
@@ -87,6 +300,93 @@ typedef struct BadgeCaptureReward__storage_ {
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(BadgeCaptureReward__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - GymBadgeStats
+
+@implementation GymBadgeStats
+
+@dynamic totalTimeDefendedMs;
+@dynamic numBattlesWon;
+@dynamic numBattlesLost;
+@dynamic numBerriesFed;
+@dynamic numDeploys;
+
+typedef struct GymBadgeStats__storage_ {
+  uint32_t _has_storage_[1];
+  uint32_t numBattlesWon;
+  uint32_t numBerriesFed;
+  uint32_t numDeploys;
+  uint32_t numBattlesLost;
+  uint64_t totalTimeDefendedMs;
+} GymBadgeStats__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "totalTimeDefendedMs",
+        .dataTypeSpecific.className = NULL,
+        .number = GymBadgeStats_FieldNumber_TotalTimeDefendedMs,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GymBadgeStats__storage_, totalTimeDefendedMs),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt64,
+      },
+      {
+        .name = "numBattlesWon",
+        .dataTypeSpecific.className = NULL,
+        .number = GymBadgeStats_FieldNumber_NumBattlesWon,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(GymBadgeStats__storage_, numBattlesWon),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "numBerriesFed",
+        .dataTypeSpecific.className = NULL,
+        .number = GymBadgeStats_FieldNumber_NumBerriesFed,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(GymBadgeStats__storage_, numBerriesFed),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "numDeploys",
+        .dataTypeSpecific.className = NULL,
+        .number = GymBadgeStats_FieldNumber_NumDeploys,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(GymBadgeStats__storage_, numDeploys),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+      {
+        .name = "numBattlesLost",
+        .dataTypeSpecific.className = NULL,
+        .number = GymBadgeStats_FieldNumber_NumBattlesLost,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(GymBadgeStats__storage_, numBattlesLost),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeUInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GymBadgeStats class]
+                                     rootClass:[PogoprotosDataBadgeRoot class]
+                                          file:PogoprotosDataBadgeRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GymBadgeStats__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;

@@ -498,6 +498,131 @@ typedef struct EggIncubators__storage_ {
 
 @end
 
+#pragma mark - ExclusiveTicketInfo
+
+@implementation ExclusiveTicketInfo
+
+@dynamic raidSeed;
+@dynamic fortId;
+@dynamic startTimeMs;
+@dynamic endTimeMs;
+@dynamic imageURL;
+@dynamic latitude;
+@dynamic longitude;
+@dynamic gymName;
+
+typedef struct ExclusiveTicketInfo__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *fortId;
+  NSString *imageURL;
+  NSString *gymName;
+  int64_t raidSeed;
+  int64_t startTimeMs;
+  int64_t endTimeMs;
+  double latitude;
+  double longitude;
+} ExclusiveTicketInfo__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "raidSeed",
+        .dataTypeSpecific.className = NULL,
+        .number = ExclusiveTicketInfo_FieldNumber_RaidSeed,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(ExclusiveTicketInfo__storage_, raidSeed),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "fortId",
+        .dataTypeSpecific.className = NULL,
+        .number = ExclusiveTicketInfo_FieldNumber_FortId,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(ExclusiveTicketInfo__storage_, fortId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "startTimeMs",
+        .dataTypeSpecific.className = NULL,
+        .number = ExclusiveTicketInfo_FieldNumber_StartTimeMs,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(ExclusiveTicketInfo__storage_, startTimeMs),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "endTimeMs",
+        .dataTypeSpecific.className = NULL,
+        .number = ExclusiveTicketInfo_FieldNumber_EndTimeMs,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(ExclusiveTicketInfo__storage_, endTimeMs),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "imageURL",
+        .dataTypeSpecific.className = NULL,
+        .number = ExclusiveTicketInfo_FieldNumber_ImageURL,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(ExclusiveTicketInfo__storage_, imageURL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "latitude",
+        .dataTypeSpecific.className = NULL,
+        .number = ExclusiveTicketInfo_FieldNumber_Latitude,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(ExclusiveTicketInfo__storage_, latitude),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeDouble,
+      },
+      {
+        .name = "longitude",
+        .dataTypeSpecific.className = NULL,
+        .number = ExclusiveTicketInfo_FieldNumber_Longitude,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(ExclusiveTicketInfo__storage_, longitude),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeDouble,
+      },
+      {
+        .name = "gymName",
+        .dataTypeSpecific.className = NULL,
+        .number = ExclusiveTicketInfo_FieldNumber_GymName,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(ExclusiveTicketInfo__storage_, gymName),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[ExclusiveTicketInfo class]
+                                     rootClass:[PogoprotosInventoryRoot class]
+                                          file:PogoprotosInventoryRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(ExclusiveTicketInfo__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\006\005\241!!\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - InventoryDelta
 
 @implementation InventoryDelta
@@ -688,6 +813,7 @@ typedef struct InventoryItem_DeletedItem__storage_ {
 @dynamic hasCandy, candy;
 @dynamic hasQuest, quest;
 @dynamic hasAvatarItem, avatarItem;
+@dynamic hasRaidTickets, raidTickets;
 
 typedef struct InventoryItemData__storage_ {
   uint32_t _has_storage_[1];
@@ -703,6 +829,7 @@ typedef struct InventoryItemData__storage_ {
   Candy *candy;
   Quest *quest;
   AvatarItem *avatarItem;
+  RaidTickets *raidTickets;
 } InventoryItemData__storage_;
 
 // This method is threadsafe because it is initially called
@@ -819,6 +946,15 @@ typedef struct InventoryItemData__storage_ {
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
+      {
+        .name = "raidTickets",
+        .dataTypeSpecific.className = GPBStringifySymbol(RaidTickets),
+        .number = InventoryItemData_FieldNumber_RaidTickets,
+        .hasIndex = 12,
+        .offset = (uint32_t)offsetof(InventoryItemData__storage_, raidTickets),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[InventoryItemData class]
@@ -852,6 +988,7 @@ typedef struct InventoryItemData__storage_ {
 @dynamic pokemonFamilyId;
 @dynamic questType;
 @dynamic avatarTemplateId;
+@dynamic raidTickets;
 
 typedef struct InventoryKey__storage_ {
   uint32_t _has_storage_[1];
@@ -976,6 +1113,15 @@ typedef struct InventoryKey__storage_ {
         .offset = (uint32_t)offsetof(InventoryKey__storage_, avatarTemplateId),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "raidTickets",
+        .dataTypeSpecific.className = NULL,
+        .number = InventoryKey_FieldNumber_RaidTickets,
+        .hasIndex = 18,
+        .offset = 19,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
       },
     };
     GPBDescriptor *localDescriptor =
@@ -1153,6 +1299,278 @@ typedef struct InventoryUpgrades__storage_ {
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(InventoryUpgrades__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - Loot
+
+@implementation Loot
+
+@dynamic lootItemArray, lootItemArray_Count;
+
+typedef struct Loot__storage_ {
+  uint32_t _has_storage_[1];
+  NSMutableArray *lootItemArray;
+} Loot__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "lootItemArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(LootItem),
+        .number = Loot_FieldNumber_LootItemArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(Loot__storage_, lootItemArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[Loot class]
+                                     rootClass:[PogoprotosInventoryRoot class]
+                                          file:PogoprotosInventoryRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(Loot__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - LootItem
+
+@implementation LootItem
+
+@dynamic item;
+@dynamic stardust;
+@dynamic pokecoin;
+@dynamic pokemonCandy;
+@dynamic count;
+
+typedef struct LootItem__storage_ {
+  uint32_t _has_storage_[1];
+  ItemId item;
+  PokemonId pokemonCandy;
+  int32_t count;
+} LootItem__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "item",
+        .dataTypeSpecific.enumDescFunc = ItemId_EnumDescriptor,
+        .number = LootItem_FieldNumber_Item,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(LootItem__storage_, item),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+      {
+        .name = "stardust",
+        .dataTypeSpecific.className = NULL,
+        .number = LootItem_FieldNumber_Stardust,
+        .hasIndex = 1,
+        .offset = 2,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
+      },
+      {
+        .name = "pokecoin",
+        .dataTypeSpecific.className = NULL,
+        .number = LootItem_FieldNumber_Pokecoin,
+        .hasIndex = 3,
+        .offset = 4,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
+      },
+      {
+        .name = "pokemonCandy",
+        .dataTypeSpecific.enumDescFunc = PokemonId_EnumDescriptor,
+        .number = LootItem_FieldNumber_PokemonCandy,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(LootItem__storage_, pokemonCandy),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+      {
+        .name = "count",
+        .dataTypeSpecific.className = NULL,
+        .number = LootItem_FieldNumber_Count,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(LootItem__storage_, count),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[LootItem class]
+                                     rootClass:[PogoprotosInventoryRoot class]
+                                          file:PogoprotosInventoryRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(LootItem__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t LootItem_Item_RawValue(LootItem *message) {
+  GPBDescriptor *descriptor = [LootItem descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:LootItem_FieldNumber_Item];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetLootItem_Item_RawValue(LootItem *message, int32_t value) {
+  GPBDescriptor *descriptor = [LootItem descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:LootItem_FieldNumber_Item];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+int32_t LootItem_PokemonCandy_RawValue(LootItem *message) {
+  GPBDescriptor *descriptor = [LootItem descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:LootItem_FieldNumber_PokemonCandy];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetLootItem_PokemonCandy_RawValue(LootItem *message, int32_t value) {
+  GPBDescriptor *descriptor = [LootItem descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:LootItem_FieldNumber_PokemonCandy];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+#pragma mark - RaidTicket
+
+@implementation RaidTicket
+
+@dynamic ticketId;
+@dynamic item;
+@dynamic hasExclusiveInfo, exclusiveInfo;
+
+typedef struct RaidTicket__storage_ {
+  uint32_t _has_storage_[1];
+  ItemId item;
+  NSString *ticketId;
+  ExclusiveTicketInfo *exclusiveInfo;
+} RaidTicket__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "ticketId",
+        .dataTypeSpecific.className = NULL,
+        .number = RaidTicket_FieldNumber_TicketId,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(RaidTicket__storage_, ticketId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "item",
+        .dataTypeSpecific.enumDescFunc = ItemId_EnumDescriptor,
+        .number = RaidTicket_FieldNumber_Item,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(RaidTicket__storage_, item),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+      {
+        .name = "exclusiveInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(ExclusiveTicketInfo),
+        .number = RaidTicket_FieldNumber_ExclusiveInfo,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(RaidTicket__storage_, exclusiveInfo),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[RaidTicket class]
+                                     rootClass:[PogoprotosInventoryRoot class]
+                                          file:PogoprotosInventoryRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(RaidTicket__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t RaidTicket_Item_RawValue(RaidTicket *message) {
+  GPBDescriptor *descriptor = [RaidTicket descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:RaidTicket_FieldNumber_Item];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetRaidTicket_Item_RawValue(RaidTicket *message, int32_t value) {
+  GPBDescriptor *descriptor = [RaidTicket descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:RaidTicket_FieldNumber_Item];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+#pragma mark - RaidTickets
+
+@implementation RaidTickets
+
+@dynamic raidTicketArray, raidTicketArray_Count;
+
+typedef struct RaidTickets__storage_ {
+  uint32_t _has_storage_[1];
+  NSMutableArray *raidTicketArray;
+} RaidTickets__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "raidTicketArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(RaidTicket),
+        .number = RaidTickets_FieldNumber_RaidTicketArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(RaidTickets__storage_, raidTicketArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[RaidTickets class]
+                                     rootClass:[PogoprotosInventoryRoot class]
+                                          file:PogoprotosInventoryRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(RaidTickets__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;

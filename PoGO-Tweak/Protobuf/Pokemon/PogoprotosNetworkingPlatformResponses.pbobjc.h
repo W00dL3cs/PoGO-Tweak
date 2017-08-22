@@ -21,7 +21,6 @@
 #endif
 
  #import "PogoprotosDataPlayer.pbobjc.h"
- #import "PogoprotosInventoryItem.pbobjc.h"
 // @@protoc_insertion_point(imports)
 
 #pragma clang diagnostic push
@@ -31,7 +30,8 @@ CF_EXTERN_C_BEGIN
 
 @class Currency;
 @class GetStoreItemsResponse_StoreItem;
-@class ItemData;
+@class GetStoreItemsResponse_StoreItemInfo;
+@class GetStoreItemsResponse_StoreTags;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -175,7 +175,7 @@ typedef GPB_ENUM(GetStoreItemsResponse_FieldNumber) {
   GetStoreItemsResponse_FieldNumber_Status = 1,
   GetStoreItemsResponse_FieldNumber_ItemsArray = 2,
   GetStoreItemsResponse_FieldNumber_PlayerCurrenciesArray = 3,
-  GetStoreItemsResponse_FieldNumber_Unknown4 = 4,
+  GetStoreItemsResponse_FieldNumber_Hash_p = 4,
 };
 
 @interface GetStoreItemsResponse : GPBMessage
@@ -193,8 +193,8 @@ typedef GPB_ENUM(GetStoreItemsResponse_FieldNumber) {
 /** The number of items in @c playerCurrenciesArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger playerCurrenciesArray_Count;
 
-/** Some base64 encoded stuff... (Developer payload?) */
-@property(nonatomic, readwrite, copy, null_resettable) NSString *unknown4;
+/** hash? */
+@property(nonatomic, readwrite, copy, null_resettable) NSString *hash_p;
 
 @end
 
@@ -218,7 +218,7 @@ typedef GPB_ENUM(GetStoreItemsResponse_StoreItem_FieldNumber) {
   GetStoreItemsResponse_StoreItem_FieldNumber_CurrencyToBuy = 3,
   GetStoreItemsResponse_StoreItem_FieldNumber_YieldsCurrency = 4,
   GetStoreItemsResponse_StoreItem_FieldNumber_YieldsItem = 5,
-  GetStoreItemsResponse_StoreItem_FieldNumber_Tags = 6,
+  GetStoreItemsResponse_StoreItem_FieldNumber_TagsArray = 6,
   GetStoreItemsResponse_StoreItem_FieldNumber_Unknown7 = 7,
 };
 
@@ -241,17 +241,47 @@ typedef GPB_ENUM(GetStoreItemsResponse_StoreItem_FieldNumber) {
 @property(nonatomic, readwrite) BOOL hasYieldsCurrency;
 
 /** The item and count of such item that this IAP will yield */
-@property(nonatomic, readwrite, strong, null_resettable) ItemData *yieldsItem;
+@property(nonatomic, readwrite, strong, null_resettable) GetStoreItemsResponse_StoreItemInfo *yieldsItem;
 /** Test to see if @c yieldsItem has been set. */
 @property(nonatomic, readwrite) BOOL hasYieldsItem;
 
 /** Stuff like SORT:12, CATEGORY:ITEMS */
-@property(nonatomic, readwrite, strong, null_resettable) NSMutableDictionary<NSString*, NSString*> *tags;
-/** The number of items in @c tags without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger tags_Count;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<GetStoreItemsResponse_StoreTags*> *tagsArray;
+/** The number of items in @c tagsArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger tagsArray_Count;
 
 /** Possibly something to toggle visibility in the store/purchasibility? */
 @property(nonatomic, readwrite) int32_t unknown7;
+
+@end
+
+#pragma mark - GetStoreItemsResponse_StoreTags
+
+typedef GPB_ENUM(GetStoreItemsResponse_StoreTags_FieldNumber) {
+  GetStoreItemsResponse_StoreTags_FieldNumber_Tag = 1,
+  GetStoreItemsResponse_StoreTags_FieldNumber_Value = 2,
+};
+
+@interface GetStoreItemsResponse_StoreTags : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *tag;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *value;
+
+@end
+
+#pragma mark - GetStoreItemsResponse_StoreItemInfo
+
+typedef GPB_ENUM(GetStoreItemsResponse_StoreItemInfo_FieldNumber) {
+  GetStoreItemsResponse_StoreItemInfo_FieldNumber_ItemId = 1,
+  GetStoreItemsResponse_StoreItemInfo_FieldNumber_Count = 2,
+};
+
+@interface GetStoreItemsResponse_StoreItemInfo : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *itemId;
+
+@property(nonatomic, readwrite) int32_t count;
 
 @end
 

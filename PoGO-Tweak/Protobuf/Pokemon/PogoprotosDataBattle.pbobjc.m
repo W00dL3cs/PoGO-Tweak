@@ -146,11 +146,12 @@ GPBEnumDescriptor *BattleType_EnumDescriptor(void) {
   if (!descriptor) {
     static const char *valueNames =
         "BattleTypeUnset\000BattleTypeNormal\000BattleT"
-        "ypeTraining\000";
+        "ypeTraining\000BattleTypeRaid\000";
     static const int32_t values[] = {
         BattleType_BattleTypeUnset,
         BattleType_BattleTypeNormal,
         BattleType_BattleTypeTraining,
+        BattleType_BattleTypeRaid,
     };
     GPBEnumDescriptor *worker =
         [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(BattleType)
@@ -170,11 +171,110 @@ BOOL BattleType_IsValidValue(int32_t value__) {
     case BattleType_BattleTypeUnset:
     case BattleType_BattleTypeNormal:
     case BattleType_BattleTypeTraining:
+    case BattleType_BattleTypeRaid:
       return YES;
     default:
       return NO;
   }
 }
+
+#pragma mark - Battle
+
+@implementation Battle
+
+@dynamic battleStartMs;
+@dynamic battleEndMs;
+@dynamic battleId;
+@dynamic hasDefender, defender;
+@dynamic hasBattleLog, battleLog;
+@dynamic hasAttacker, attacker;
+
+typedef struct Battle__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *battleId;
+  BattleParticipant *defender;
+  BattleLog *battleLog;
+  BattleParticipant *attacker;
+  int64_t battleStartMs;
+  int64_t battleEndMs;
+} Battle__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "battleStartMs",
+        .dataTypeSpecific.className = NULL,
+        .number = Battle_FieldNumber_BattleStartMs,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(Battle__storage_, battleStartMs),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "battleEndMs",
+        .dataTypeSpecific.className = NULL,
+        .number = Battle_FieldNumber_BattleEndMs,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(Battle__storage_, battleEndMs),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "battleId",
+        .dataTypeSpecific.className = NULL,
+        .number = Battle_FieldNumber_BattleId,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(Battle__storage_, battleId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "defender",
+        .dataTypeSpecific.className = GPBStringifySymbol(BattleParticipant),
+        .number = Battle_FieldNumber_Defender,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(Battle__storage_, defender),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "battleLog",
+        .dataTypeSpecific.className = GPBStringifySymbol(BattleLog),
+        .number = Battle_FieldNumber_BattleLog,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(Battle__storage_, battleLog),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "attacker",
+        .dataTypeSpecific.className = GPBStringifySymbol(BattleParticipant),
+        .number = Battle_FieldNumber_Attacker,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(Battle__storage_, attacker),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[Battle class]
+                                     rootClass:[PogoprotosDataBattleRoot class]
+                                          file:PogoprotosDataBattleRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(Battle__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
 
 #pragma mark - BattleAction
 
@@ -493,13 +593,17 @@ void SetBattleLog_BattleType_RawValue(BattleLog *message, int32_t value) {
 @dynamic hasTrainerPublicProfile, trainerPublicProfile;
 @dynamic reversePokemonArray, reversePokemonArray_Count;
 @dynamic defeatedPokemonArray, defeatedPokemonArray_Count;
+@dynamic lobbyPokemonArray, lobbyPokemonArray_Count;
+@dynamic damageDealt;
 
 typedef struct BattleParticipant__storage_ {
   uint32_t _has_storage_[1];
+  int32_t damageDealt;
   BattlePokemonInfo *activePokemon;
   PlayerPublicProfile *trainerPublicProfile;
   NSMutableArray *reversePokemonArray;
   NSMutableArray *defeatedPokemonArray;
+  NSMutableArray *lobbyPokemonArray;
 } BattleParticipant__storage_;
 
 // This method is threadsafe because it is initially called
@@ -543,6 +647,24 @@ typedef struct BattleParticipant__storage_ {
         .offset = (uint32_t)offsetof(BattleParticipant__storage_, defeatedPokemonArray),
         .flags = GPBFieldRepeated,
         .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "lobbyPokemonArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(LobbyPokemon),
+        .number = BattleParticipant_FieldNumber_LobbyPokemonArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(BattleParticipant__storage_, lobbyPokemonArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "damageDealt",
+        .dataTypeSpecific.className = NULL,
+        .number = BattleParticipant_FieldNumber_DamageDealt,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(BattleParticipant__storage_, damageDealt),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
       },
     };
     GPBDescriptor *localDescriptor =
@@ -635,6 +757,11 @@ typedef struct BattlePokemonInfo__storage_ {
 @dynamic playerExperienceAwardedArray, playerExperienceAwardedArray_Count;
 @dynamic nextDefenderPokemonId;
 @dynamic gymPointsDelta;
+@dynamic hasGymStatus, gymStatus;
+@dynamic participationArray, participationArray_Count;
+@dynamic raidItemRewardsArray, raidItemRewardsArray_Count;
+@dynamic postRaidEncounterArray, postRaidEncounterArray_Count;
+@dynamic gymBadgeArray, gymBadgeArray_Count;
 
 typedef struct BattleResults__storage_ {
   uint32_t _has_storage_[1];
@@ -642,6 +769,11 @@ typedef struct BattleResults__storage_ {
   GymState *gymState;
   NSMutableArray *attackersArray;
   GPBInt32Array *playerExperienceAwardedArray;
+  GymStatusAndDefenders *gymStatus;
+  NSMutableArray *participationArray;
+  NSMutableArray *raidItemRewardsArray;
+  NSMutableArray *postRaidEncounterArray;
+  NSMutableArray *gymBadgeArray;
   int64_t nextDefenderPokemonId;
 } BattleResults__storage_;
 
@@ -696,6 +828,51 @@ typedef struct BattleResults__storage_ {
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt32,
       },
+      {
+        .name = "gymStatus",
+        .dataTypeSpecific.className = GPBStringifySymbol(GymStatusAndDefenders),
+        .number = BattleResults_FieldNumber_GymStatus,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(BattleResults__storage_, gymStatus),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "participationArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(Participation),
+        .number = BattleResults_FieldNumber_ParticipationArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(BattleResults__storage_, participationArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "raidItemRewardsArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(Loot),
+        .number = BattleResults_FieldNumber_RaidItemRewardsArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(BattleResults__storage_, raidItemRewardsArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "postRaidEncounterArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(RaidEncounter),
+        .number = BattleResults_FieldNumber_PostRaidEncounterArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(BattleResults__storage_, postRaidEncounterArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "gymBadgeArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(AwardedGymBadge),
+        .number = BattleResults_FieldNumber_GymBadgeArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(BattleResults__storage_, gymBadgeArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[BattleResults class]
@@ -704,6 +881,82 @@ typedef struct BattleResults__storage_ {
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(BattleResults__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - BattleUpdate
+
+@implementation BattleUpdate
+
+@dynamic hasBattleLog, battleLog;
+@dynamic battleId;
+@dynamic hasActiveDefender, activeDefender;
+@dynamic hasActiveAttacker, activeAttacker;
+
+typedef struct BattleUpdate__storage_ {
+  uint32_t _has_storage_[1];
+  BattleLog *battleLog;
+  NSString *battleId;
+  BattlePokemonInfo *activeDefender;
+  BattlePokemonInfo *activeAttacker;
+} BattleUpdate__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "battleLog",
+        .dataTypeSpecific.className = GPBStringifySymbol(BattleLog),
+        .number = BattleUpdate_FieldNumber_BattleLog,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(BattleUpdate__storage_, battleLog),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "battleId",
+        .dataTypeSpecific.className = NULL,
+        .number = BattleUpdate_FieldNumber_BattleId,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(BattleUpdate__storage_, battleId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "activeDefender",
+        .dataTypeSpecific.className = GPBStringifySymbol(BattlePokemonInfo),
+        .number = BattleUpdate_FieldNumber_ActiveDefender,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(BattleUpdate__storage_, activeDefender),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "activeAttacker",
+        .dataTypeSpecific.className = GPBStringifySymbol(BattlePokemonInfo),
+        .number = BattleUpdate_FieldNumber_ActiveAttacker,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(BattleUpdate__storage_, activeAttacker),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[BattleUpdate class]
+                                     rootClass:[PogoprotosDataBattleRoot class]
+                                          file:PogoprotosDataBattleRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(BattleUpdate__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;

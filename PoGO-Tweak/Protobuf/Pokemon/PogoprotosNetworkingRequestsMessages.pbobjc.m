@@ -228,6 +228,93 @@ typedef struct AttackGymMessage__storage_ {
 
 @end
 
+#pragma mark - AttackRaidMessage
+
+@implementation AttackRaidMessage
+
+@dynamic gymId;
+@dynamic battleId;
+@dynamic attackerActionsArray, attackerActionsArray_Count;
+@dynamic hasLastRetrievedAction, lastRetrievedAction;
+@dynamic timestampMs;
+
+typedef struct AttackRaidMessage__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *gymId;
+  NSString *battleId;
+  NSMutableArray *attackerActionsArray;
+  BattleAction *lastRetrievedAction;
+  int64_t timestampMs;
+} AttackRaidMessage__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "gymId",
+        .dataTypeSpecific.className = NULL,
+        .number = AttackRaidMessage_FieldNumber_GymId,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(AttackRaidMessage__storage_, gymId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "battleId",
+        .dataTypeSpecific.className = NULL,
+        .number = AttackRaidMessage_FieldNumber_BattleId,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(AttackRaidMessage__storage_, battleId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "attackerActionsArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(BattleAction),
+        .number = AttackRaidMessage_FieldNumber_AttackerActionsArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(AttackRaidMessage__storage_, attackerActionsArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "lastRetrievedAction",
+        .dataTypeSpecific.className = GPBStringifySymbol(BattleAction),
+        .number = AttackRaidMessage_FieldNumber_LastRetrievedAction,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(AttackRaidMessage__storage_, lastRetrievedAction),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "timestampMs",
+        .dataTypeSpecific.className = NULL,
+        .number = AttackRaidMessage_FieldNumber_TimestampMs,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(AttackRaidMessage__storage_, timestampMs),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[AttackRaidMessage class]
+                                     rootClass:[PogoprotosNetworkingRequestsMessagesRoot class]
+                                          file:PogoprotosNetworkingRequestsMessagesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(AttackRaidMessage__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - CatchPokemonMessage
 
 @implementation CatchPokemonMessage
@@ -1605,6 +1692,71 @@ typedef struct GetDownloadUrlsMessage__storage_ {
 
 @end
 
+#pragma mark - GetGymBadgeDetailsMessage
+
+@implementation GetGymBadgeDetailsMessage
+
+@dynamic fortId;
+@dynamic latitude;
+@dynamic longitude;
+
+typedef struct GetGymBadgeDetailsMessage__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *fortId;
+  double latitude;
+  double longitude;
+} GetGymBadgeDetailsMessage__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "fortId",
+        .dataTypeSpecific.className = NULL,
+        .number = GetGymBadgeDetailsMessage_FieldNumber_FortId,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GetGymBadgeDetailsMessage__storage_, fortId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "latitude",
+        .dataTypeSpecific.className = NULL,
+        .number = GetGymBadgeDetailsMessage_FieldNumber_Latitude,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(GetGymBadgeDetailsMessage__storage_, latitude),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeDouble,
+      },
+      {
+        .name = "longitude",
+        .dataTypeSpecific.className = NULL,
+        .number = GetGymBadgeDetailsMessage_FieldNumber_Longitude,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(GetGymBadgeDetailsMessage__storage_, longitude),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeDouble,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GetGymBadgeDetailsMessage class]
+                                     rootClass:[PogoprotosNetworkingRequestsMessagesRoot class]
+                                          file:PogoprotosNetworkingRequestsMessagesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GetGymBadgeDetailsMessage__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - GetGymDetailsMessage
 
 @implementation GetGymDetailsMessage
@@ -1737,9 +1889,13 @@ typedef struct GetHatchedEggsMessage__storage_ {
 
 @implementation GetInboxMessage
 
+@dynamic isHistory;
+@dynamic isReverse;
+@dynamic notBeforeMs;
 
 typedef struct GetInboxMessage__storage_ {
   uint32_t _has_storage_[1];
+  int64_t notBeforeMs;
 } GetInboxMessage__storage_;
 
 // This method is threadsafe because it is initially called
@@ -1747,12 +1903,41 @@ typedef struct GetInboxMessage__storage_ {
 + (GPBDescriptor *)descriptor {
   static GPBDescriptor *descriptor = nil;
   if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "isHistory",
+        .dataTypeSpecific.className = NULL,
+        .number = GetInboxMessage_FieldNumber_IsHistory,
+        .hasIndex = 0,
+        .offset = 1,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
+      },
+      {
+        .name = "isReverse",
+        .dataTypeSpecific.className = NULL,
+        .number = GetInboxMessage_FieldNumber_IsReverse,
+        .hasIndex = 2,
+        .offset = 3,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
+      },
+      {
+        .name = "notBeforeMs",
+        .dataTypeSpecific.className = NULL,
+        .number = GetInboxMessage_FieldNumber_NotBeforeMs,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(GetInboxMessage__storage_, notBeforeMs),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
+    };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[GetInboxMessage class]
                                      rootClass:[PogoprotosNetworkingRequestsMessagesRoot class]
                                           file:PogoprotosNetworkingRequestsMessagesRoot_FileDescriptor()
-                                        fields:NULL
-                                    fieldCount:0
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(GetInboxMessage__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
     NSAssert(descriptor == nil, @"Startup recursed!");
@@ -2099,6 +2284,366 @@ typedef struct GetPlayerProfileMessage__storage_ {
 
 @end
 
+#pragma mark - GetRaidDetailsMessage
+
+@implementation GetRaidDetailsMessage
+
+@dynamic raidSeed;
+@dynamic gymId;
+@dynamic lobbyIdArray, lobbyIdArray_Count;
+@dynamic playerLatDegrees;
+@dynamic playerLngDegrees;
+
+typedef struct GetRaidDetailsMessage__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *gymId;
+  GPBInt32Array *lobbyIdArray;
+  int64_t raidSeed;
+  double playerLatDegrees;
+  double playerLngDegrees;
+} GetRaidDetailsMessage__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "raidSeed",
+        .dataTypeSpecific.className = NULL,
+        .number = GetRaidDetailsMessage_FieldNumber_RaidSeed,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GetRaidDetailsMessage__storage_, raidSeed),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "gymId",
+        .dataTypeSpecific.className = NULL,
+        .number = GetRaidDetailsMessage_FieldNumber_GymId,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(GetRaidDetailsMessage__storage_, gymId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "lobbyIdArray",
+        .dataTypeSpecific.className = NULL,
+        .number = GetRaidDetailsMessage_FieldNumber_LobbyIdArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(GetRaidDetailsMessage__storage_, lobbyIdArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "playerLatDegrees",
+        .dataTypeSpecific.className = NULL,
+        .number = GetRaidDetailsMessage_FieldNumber_PlayerLatDegrees,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(GetRaidDetailsMessage__storage_, playerLatDegrees),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeDouble,
+      },
+      {
+        .name = "playerLngDegrees",
+        .dataTypeSpecific.className = NULL,
+        .number = GetRaidDetailsMessage_FieldNumber_PlayerLngDegrees,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(GetRaidDetailsMessage__storage_, playerLngDegrees),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeDouble,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GetRaidDetailsMessage class]
+                                     rootClass:[PogoprotosNetworkingRequestsMessagesRoot class]
+                                          file:PogoprotosNetworkingRequestsMessagesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GetRaidDetailsMessage__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - GymDeployMessage
+
+@implementation GymDeployMessage
+
+@dynamic fortId;
+@dynamic pokemonId;
+@dynamic playerLatitude;
+@dynamic playerLongitude;
+
+typedef struct GymDeployMessage__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *fortId;
+  uint64_t pokemonId;
+  double playerLatitude;
+  double playerLongitude;
+} GymDeployMessage__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "fortId",
+        .dataTypeSpecific.className = NULL,
+        .number = GymDeployMessage_FieldNumber_FortId,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GymDeployMessage__storage_, fortId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "pokemonId",
+        .dataTypeSpecific.className = NULL,
+        .number = GymDeployMessage_FieldNumber_PokemonId,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(GymDeployMessage__storage_, pokemonId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeFixed64,
+      },
+      {
+        .name = "playerLatitude",
+        .dataTypeSpecific.className = NULL,
+        .number = GymDeployMessage_FieldNumber_PlayerLatitude,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(GymDeployMessage__storage_, playerLatitude),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeDouble,
+      },
+      {
+        .name = "playerLongitude",
+        .dataTypeSpecific.className = NULL,
+        .number = GymDeployMessage_FieldNumber_PlayerLongitude,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(GymDeployMessage__storage_, playerLongitude),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeDouble,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GymDeployMessage class]
+                                     rootClass:[PogoprotosNetworkingRequestsMessagesRoot class]
+                                          file:PogoprotosNetworkingRequestsMessagesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GymDeployMessage__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - GymFeedPokemonMessage
+
+@implementation GymFeedPokemonMessage
+
+@dynamic item;
+@dynamic startingQuantity;
+@dynamic gymId;
+@dynamic pokemonId;
+@dynamic playerLatDegrees;
+@dynamic playerLngDegrees;
+
+typedef struct GymFeedPokemonMessage__storage_ {
+  uint32_t _has_storage_[1];
+  ItemId item;
+  int32_t startingQuantity;
+  NSString *gymId;
+  uint64_t pokemonId;
+  double playerLatDegrees;
+  double playerLngDegrees;
+} GymFeedPokemonMessage__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "item",
+        .dataTypeSpecific.enumDescFunc = ItemId_EnumDescriptor,
+        .number = GymFeedPokemonMessage_FieldNumber_Item,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GymFeedPokemonMessage__storage_, item),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+      {
+        .name = "startingQuantity",
+        .dataTypeSpecific.className = NULL,
+        .number = GymFeedPokemonMessage_FieldNumber_StartingQuantity,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(GymFeedPokemonMessage__storage_, startingQuantity),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "gymId",
+        .dataTypeSpecific.className = NULL,
+        .number = GymFeedPokemonMessage_FieldNumber_GymId,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(GymFeedPokemonMessage__storage_, gymId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "pokemonId",
+        .dataTypeSpecific.className = NULL,
+        .number = GymFeedPokemonMessage_FieldNumber_PokemonId,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(GymFeedPokemonMessage__storage_, pokemonId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeFixed64,
+      },
+      {
+        .name = "playerLatDegrees",
+        .dataTypeSpecific.className = NULL,
+        .number = GymFeedPokemonMessage_FieldNumber_PlayerLatDegrees,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(GymFeedPokemonMessage__storage_, playerLatDegrees),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeDouble,
+      },
+      {
+        .name = "playerLngDegrees",
+        .dataTypeSpecific.className = NULL,
+        .number = GymFeedPokemonMessage_FieldNumber_PlayerLngDegrees,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(GymFeedPokemonMessage__storage_, playerLngDegrees),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeDouble,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GymFeedPokemonMessage class]
+                                     rootClass:[PogoprotosNetworkingRequestsMessagesRoot class]
+                                          file:PogoprotosNetworkingRequestsMessagesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GymFeedPokemonMessage__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t GymFeedPokemonMessage_Item_RawValue(GymFeedPokemonMessage *message) {
+  GPBDescriptor *descriptor = [GymFeedPokemonMessage descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:GymFeedPokemonMessage_FieldNumber_Item];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetGymFeedPokemonMessage_Item_RawValue(GymFeedPokemonMessage *message, int32_t value) {
+  GPBDescriptor *descriptor = [GymFeedPokemonMessage descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:GymFeedPokemonMessage_FieldNumber_Item];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+#pragma mark - GymGetInfoMessage
+
+@implementation GymGetInfoMessage
+
+@dynamic gymId;
+@dynamic playerLatDegrees;
+@dynamic playerLngDegrees;
+@dynamic gymLatDegrees;
+@dynamic gymLngDegrees;
+
+typedef struct GymGetInfoMessage__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *gymId;
+  double playerLatDegrees;
+  double playerLngDegrees;
+  double gymLatDegrees;
+  double gymLngDegrees;
+} GymGetInfoMessage__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "gymId",
+        .dataTypeSpecific.className = NULL,
+        .number = GymGetInfoMessage_FieldNumber_GymId,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GymGetInfoMessage__storage_, gymId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "playerLatDegrees",
+        .dataTypeSpecific.className = NULL,
+        .number = GymGetInfoMessage_FieldNumber_PlayerLatDegrees,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(GymGetInfoMessage__storage_, playerLatDegrees),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeDouble,
+      },
+      {
+        .name = "playerLngDegrees",
+        .dataTypeSpecific.className = NULL,
+        .number = GymGetInfoMessage_FieldNumber_PlayerLngDegrees,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(GymGetInfoMessage__storage_, playerLngDegrees),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeDouble,
+      },
+      {
+        .name = "gymLatDegrees",
+        .dataTypeSpecific.className = NULL,
+        .number = GymGetInfoMessage_FieldNumber_GymLatDegrees,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(GymGetInfoMessage__storage_, gymLatDegrees),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeDouble,
+      },
+      {
+        .name = "gymLngDegrees",
+        .dataTypeSpecific.className = NULL,
+        .number = GymGetInfoMessage_FieldNumber_GymLngDegrees,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(GymGetInfoMessage__storage_, gymLngDegrees),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeDouble,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GymGetInfoMessage class]
+                                     rootClass:[PogoprotosNetworkingRequestsMessagesRoot class]
+                                          file:PogoprotosNetworkingRequestsMessagesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GymGetInfoMessage__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - IncenseEncounterMessage
 
 @implementation IncenseEncounterMessage
@@ -2295,6 +2840,36 @@ void SetListAvatarCustomizationsMessage_AvatarType_RawValue(ListAvatarCustomizat
   GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
 }
 
+#pragma mark - ListGymBadgesMessage
+
+@implementation ListGymBadgesMessage
+
+
+typedef struct ListGymBadgesMessage__storage_ {
+  uint32_t _has_storage_[1];
+} ListGymBadgesMessage__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[ListGymBadgesMessage class]
+                                     rootClass:[PogoprotosNetworkingRequestsMessagesRoot class]
+                                          file:PogoprotosNetworkingRequestsMessagesRoot_FileDescriptor()
+                                        fields:NULL
+                                    fieldCount:0
+                                   storageSize:sizeof(ListGymBadgesMessage__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - MarkTutorialCompleteMessage
 
 @implementation MarkTutorialCompleteMessage
@@ -2404,6 +2979,488 @@ typedef struct NicknamePokemonMessage__storage_ {
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(NicknamePokemonMessage__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - RegisterPushNotificationMessage
+
+@implementation RegisterPushNotificationMessage
+
+@dynamic hasApnToken, apnToken;
+@dynamic hasGcmToken, gcmToken;
+
+typedef struct RegisterPushNotificationMessage__storage_ {
+  uint32_t _has_storage_[1];
+  RegisterPushNotificationMessage_ApnToken *apnToken;
+  RegisterPushNotificationMessage_GcmToken *gcmToken;
+} RegisterPushNotificationMessage__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "apnToken",
+        .dataTypeSpecific.className = GPBStringifySymbol(RegisterPushNotificationMessage_ApnToken),
+        .number = RegisterPushNotificationMessage_FieldNumber_ApnToken,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(RegisterPushNotificationMessage__storage_, apnToken),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "gcmToken",
+        .dataTypeSpecific.className = GPBStringifySymbol(RegisterPushNotificationMessage_GcmToken),
+        .number = RegisterPushNotificationMessage_FieldNumber_GcmToken,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(RegisterPushNotificationMessage__storage_, gcmToken),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[RegisterPushNotificationMessage class]
+                                     rootClass:[PogoprotosNetworkingRequestsMessagesRoot class]
+                                          file:PogoprotosNetworkingRequestsMessagesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(RegisterPushNotificationMessage__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - RegisterPushNotificationMessage_ApnToken
+
+@implementation RegisterPushNotificationMessage_ApnToken
+
+@dynamic registrationId;
+@dynamic bundleIdentifier;
+@dynamic payloadByteSize;
+
+typedef struct RegisterPushNotificationMessage_ApnToken__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t payloadByteSize;
+  NSString *registrationId;
+  NSString *bundleIdentifier;
+} RegisterPushNotificationMessage_ApnToken__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "registrationId",
+        .dataTypeSpecific.className = NULL,
+        .number = RegisterPushNotificationMessage_ApnToken_FieldNumber_RegistrationId,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(RegisterPushNotificationMessage_ApnToken__storage_, registrationId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "bundleIdentifier",
+        .dataTypeSpecific.className = NULL,
+        .number = RegisterPushNotificationMessage_ApnToken_FieldNumber_BundleIdentifier,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(RegisterPushNotificationMessage_ApnToken__storage_, bundleIdentifier),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "payloadByteSize",
+        .dataTypeSpecific.className = NULL,
+        .number = RegisterPushNotificationMessage_ApnToken_FieldNumber_PayloadByteSize,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(RegisterPushNotificationMessage_ApnToken__storage_, payloadByteSize),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[RegisterPushNotificationMessage_ApnToken class]
+                                     rootClass:[PogoprotosNetworkingRequestsMessagesRoot class]
+                                          file:PogoprotosNetworkingRequestsMessagesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(RegisterPushNotificationMessage_ApnToken__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(RegisterPushNotificationMessage)];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - RegisterPushNotificationMessage_GcmToken
+
+@implementation RegisterPushNotificationMessage_GcmToken
+
+@dynamic registrationId;
+
+typedef struct RegisterPushNotificationMessage_GcmToken__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *registrationId;
+} RegisterPushNotificationMessage_GcmToken__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "registrationId",
+        .dataTypeSpecific.className = NULL,
+        .number = RegisterPushNotificationMessage_GcmToken_FieldNumber_RegistrationId,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(RegisterPushNotificationMessage_GcmToken__storage_, registrationId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[RegisterPushNotificationMessage_GcmToken class]
+                                     rootClass:[PogoprotosNetworkingRequestsMessagesRoot class]
+                                          file:PogoprotosNetworkingRequestsMessagesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(RegisterPushNotificationMessage_GcmToken__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(RegisterPushNotificationMessage)];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - UpdateNotificationStatusMessage
+
+@implementation UpdateNotificationStatusMessage
+
+@dynamic notificationIdsArray, notificationIdsArray_Count;
+@dynamic createTimestampMsArray, createTimestampMsArray_Count;
+@dynamic state;
+
+typedef struct UpdateNotificationStatusMessage__storage_ {
+  uint32_t _has_storage_[1];
+  UpdateNotificationStatusMessage_NotificationState state;
+  NSMutableArray *notificationIdsArray;
+  GPBInt64Array *createTimestampMsArray;
+} UpdateNotificationStatusMessage__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "notificationIdsArray",
+        .dataTypeSpecific.className = NULL,
+        .number = UpdateNotificationStatusMessage_FieldNumber_NotificationIdsArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(UpdateNotificationStatusMessage__storage_, notificationIdsArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "createTimestampMsArray",
+        .dataTypeSpecific.className = NULL,
+        .number = UpdateNotificationStatusMessage_FieldNumber_CreateTimestampMsArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(UpdateNotificationStatusMessage__storage_, createTimestampMsArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
+        .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "state",
+        .dataTypeSpecific.enumDescFunc = UpdateNotificationStatusMessage_NotificationState_EnumDescriptor,
+        .number = UpdateNotificationStatusMessage_FieldNumber_State,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(UpdateNotificationStatusMessage__storage_, state),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[UpdateNotificationStatusMessage class]
+                                     rootClass:[PogoprotosNetworkingRequestsMessagesRoot class]
+                                          file:PogoprotosNetworkingRequestsMessagesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(UpdateNotificationStatusMessage__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t UpdateNotificationStatusMessage_State_RawValue(UpdateNotificationStatusMessage *message) {
+  GPBDescriptor *descriptor = [UpdateNotificationStatusMessage descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:UpdateNotificationStatusMessage_FieldNumber_State];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetUpdateNotificationStatusMessage_State_RawValue(UpdateNotificationStatusMessage *message, int32_t value) {
+  GPBDescriptor *descriptor = [UpdateNotificationStatusMessage descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:UpdateNotificationStatusMessage_FieldNumber_State];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+#pragma mark - Enum UpdateNotificationStatusMessage_NotificationState
+
+GPBEnumDescriptor *UpdateNotificationStatusMessage_NotificationState_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "UnsetState\000Viewed\000";
+    static const int32_t values[] = {
+        UpdateNotificationStatusMessage_NotificationState_UnsetState,
+        UpdateNotificationStatusMessage_NotificationState_Viewed,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(UpdateNotificationStatusMessage_NotificationState)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:UpdateNotificationStatusMessage_NotificationState_IsValidValue];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL UpdateNotificationStatusMessage_NotificationState_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case UpdateNotificationStatusMessage_NotificationState_UnsetState:
+    case UpdateNotificationStatusMessage_NotificationState_Viewed:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
+#pragma mark - OptOutPushNotificationCategoryMessage
+
+@implementation OptOutPushNotificationCategoryMessage
+
+@dynamic categoriesArray, categoriesArray_Count;
+
+typedef struct OptOutPushNotificationCategoryMessage__storage_ {
+  uint32_t _has_storage_[1];
+  NSMutableArray *categoriesArray;
+} OptOutPushNotificationCategoryMessage__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "categoriesArray",
+        .dataTypeSpecific.className = NULL,
+        .number = OptOutPushNotificationCategoryMessage_FieldNumber_CategoriesArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(OptOutPushNotificationCategoryMessage__storage_, categoriesArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[OptOutPushNotificationCategoryMessage class]
+                                     rootClass:[PogoprotosNetworkingRequestsMessagesRoot class]
+                                          file:PogoprotosNetworkingRequestsMessagesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(OptOutPushNotificationCategoryMessage__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - PushNotificationRegistryMessage
+
+@implementation PushNotificationRegistryMessage
+
+@dynamic hasApnToken, apnToken;
+@dynamic hasGcmToken, gcmToken;
+
+typedef struct PushNotificationRegistryMessage__storage_ {
+  uint32_t _has_storage_[1];
+  PushNotificationRegistryMessage_ApnToken *apnToken;
+  PushNotificationRegistryMessage_GcmToken *gcmToken;
+} PushNotificationRegistryMessage__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "apnToken",
+        .dataTypeSpecific.className = GPBStringifySymbol(PushNotificationRegistryMessage_ApnToken),
+        .number = PushNotificationRegistryMessage_FieldNumber_ApnToken,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(PushNotificationRegistryMessage__storage_, apnToken),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "gcmToken",
+        .dataTypeSpecific.className = GPBStringifySymbol(PushNotificationRegistryMessage_GcmToken),
+        .number = PushNotificationRegistryMessage_FieldNumber_GcmToken,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(PushNotificationRegistryMessage__storage_, gcmToken),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[PushNotificationRegistryMessage class]
+                                     rootClass:[PogoprotosNetworkingRequestsMessagesRoot class]
+                                          file:PogoprotosNetworkingRequestsMessagesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(PushNotificationRegistryMessage__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - PushNotificationRegistryMessage_ApnToken
+
+@implementation PushNotificationRegistryMessage_ApnToken
+
+@dynamic registrationId;
+@dynamic bundleIdentifier;
+@dynamic payloadByteSize;
+
+typedef struct PushNotificationRegistryMessage_ApnToken__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t payloadByteSize;
+  NSString *registrationId;
+  NSString *bundleIdentifier;
+} PushNotificationRegistryMessage_ApnToken__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "registrationId",
+        .dataTypeSpecific.className = NULL,
+        .number = PushNotificationRegistryMessage_ApnToken_FieldNumber_RegistrationId,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(PushNotificationRegistryMessage_ApnToken__storage_, registrationId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "bundleIdentifier",
+        .dataTypeSpecific.className = NULL,
+        .number = PushNotificationRegistryMessage_ApnToken_FieldNumber_BundleIdentifier,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(PushNotificationRegistryMessage_ApnToken__storage_, bundleIdentifier),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "payloadByteSize",
+        .dataTypeSpecific.className = NULL,
+        .number = PushNotificationRegistryMessage_ApnToken_FieldNumber_PayloadByteSize,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(PushNotificationRegistryMessage_ApnToken__storage_, payloadByteSize),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[PushNotificationRegistryMessage_ApnToken class]
+                                     rootClass:[PogoprotosNetworkingRequestsMessagesRoot class]
+                                          file:PogoprotosNetworkingRequestsMessagesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(PushNotificationRegistryMessage_ApnToken__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(PushNotificationRegistryMessage)];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - PushNotificationRegistryMessage_GcmToken
+
+@implementation PushNotificationRegistryMessage_GcmToken
+
+@dynamic registrationId;
+
+typedef struct PushNotificationRegistryMessage_GcmToken__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *registrationId;
+} PushNotificationRegistryMessage_GcmToken__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "registrationId",
+        .dataTypeSpecific.className = NULL,
+        .number = PushNotificationRegistryMessage_GcmToken_FieldNumber_RegistrationId,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(PushNotificationRegistryMessage_GcmToken__storage_, registrationId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[PushNotificationRegistryMessage_GcmToken class]
+                                     rootClass:[PogoprotosNetworkingRequestsMessagesRoot class]
+                                          file:PogoprotosNetworkingRequestsMessagesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(PushNotificationRegistryMessage_GcmToken__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(PushNotificationRegistryMessage)];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
@@ -2887,6 +3944,49 @@ typedef struct SfidaActionLogMessage__storage_ {
                                         fields:NULL
                                     fieldCount:0
                                    storageSize:sizeof(SfidaActionLogMessage__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - SfidaRegistrationMessage
+
+@implementation SfidaRegistrationMessage
+
+@dynamic sfidaId;
+
+typedef struct SfidaRegistrationMessage__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *sfidaId;
+} SfidaRegistrationMessage__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "sfidaId",
+        .dataTypeSpecific.className = NULL,
+        .number = SfidaRegistrationMessage_FieldNumber_SfidaId,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(SfidaRegistrationMessage__storage_, sfidaId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[SfidaRegistrationMessage class]
+                                     rootClass:[PogoprotosNetworkingRequestsMessagesRoot class]
+                                          file:PogoprotosNetworkingRequestsMessagesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(SfidaRegistrationMessage__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
@@ -3454,6 +4554,72 @@ void SetUseItemGymMessage_ItemId_RawValue(UseItemGymMessage *message, int32_t va
   GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
 }
 
+#pragma mark - UseItemMoveRerollMessage
+
+@implementation UseItemMoveRerollMessage
+
+@dynamic itemId;
+@dynamic pokemonId;
+
+typedef struct UseItemMoveRerollMessage__storage_ {
+  uint32_t _has_storage_[1];
+  ItemId itemId;
+  uint64_t pokemonId;
+} UseItemMoveRerollMessage__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "itemId",
+        .dataTypeSpecific.enumDescFunc = ItemId_EnumDescriptor,
+        .number = UseItemMoveRerollMessage_FieldNumber_ItemId,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(UseItemMoveRerollMessage__storage_, itemId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+      {
+        .name = "pokemonId",
+        .dataTypeSpecific.className = NULL,
+        .number = UseItemMoveRerollMessage_FieldNumber_PokemonId,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(UseItemMoveRerollMessage__storage_, pokemonId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeFixed64,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[UseItemMoveRerollMessage class]
+                                     rootClass:[PogoprotosNetworkingRequestsMessagesRoot class]
+                                          file:PogoprotosNetworkingRequestsMessagesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(UseItemMoveRerollMessage__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t UseItemMoveRerollMessage_ItemId_RawValue(UseItemMoveRerollMessage *message) {
+  GPBDescriptor *descriptor = [UseItemMoveRerollMessage descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:UseItemMoveRerollMessage_FieldNumber_ItemId];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetUseItemMoveRerollMessage_ItemId_RawValue(UseItemMoveRerollMessage *message, int32_t value) {
+  GPBDescriptor *descriptor = [UseItemMoveRerollMessage descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:UseItemMoveRerollMessage_FieldNumber_ItemId];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
 #pragma mark - UseItemPotionMessage
 
 @implementation UseItemPotionMessage
@@ -3517,6 +4683,84 @@ int32_t UseItemPotionMessage_ItemId_RawValue(UseItemPotionMessage *message) {
 void SetUseItemPotionMessage_ItemId_RawValue(UseItemPotionMessage *message, int32_t value) {
   GPBDescriptor *descriptor = [UseItemPotionMessage descriptor];
   GPBFieldDescriptor *field = [descriptor fieldWithNumber:UseItemPotionMessage_FieldNumber_ItemId];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+#pragma mark - UseItemRareCandyMessage
+
+@implementation UseItemRareCandyMessage
+
+@dynamic itemId;
+@dynamic pokemonId;
+
+typedef struct UseItemRareCandyMessage__storage_ {
+  uint32_t _has_storage_[1];
+  ItemId itemId;
+  PokemonId pokemonId;
+} UseItemRareCandyMessage__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "itemId",
+        .dataTypeSpecific.enumDescFunc = ItemId_EnumDescriptor,
+        .number = UseItemRareCandyMessage_FieldNumber_ItemId,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(UseItemRareCandyMessage__storage_, itemId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+      {
+        .name = "pokemonId",
+        .dataTypeSpecific.enumDescFunc = PokemonId_EnumDescriptor,
+        .number = UseItemRareCandyMessage_FieldNumber_PokemonId,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(UseItemRareCandyMessage__storage_, pokemonId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[UseItemRareCandyMessage class]
+                                     rootClass:[PogoprotosNetworkingRequestsMessagesRoot class]
+                                          file:PogoprotosNetworkingRequestsMessagesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(UseItemRareCandyMessage__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t UseItemRareCandyMessage_ItemId_RawValue(UseItemRareCandyMessage *message) {
+  GPBDescriptor *descriptor = [UseItemRareCandyMessage descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:UseItemRareCandyMessage_FieldNumber_ItemId];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetUseItemRareCandyMessage_ItemId_RawValue(UseItemRareCandyMessage *message, int32_t value) {
+  GPBDescriptor *descriptor = [UseItemRareCandyMessage descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:UseItemRareCandyMessage_FieldNumber_ItemId];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+int32_t UseItemRareCandyMessage_PokemonId_RawValue(UseItemRareCandyMessage *message) {
+  GPBDescriptor *descriptor = [UseItemRareCandyMessage descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:UseItemRareCandyMessage_FieldNumber_PokemonId];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetUseItemRareCandyMessage_PokemonId_RawValue(UseItemRareCandyMessage *message, int32_t value) {
+  GPBDescriptor *descriptor = [UseItemRareCandyMessage descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:UseItemRareCandyMessage_FieldNumber_PokemonId];
   GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
 }
 

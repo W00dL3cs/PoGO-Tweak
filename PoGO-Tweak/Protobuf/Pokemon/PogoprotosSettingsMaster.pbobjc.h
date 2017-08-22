@@ -253,6 +253,7 @@ typedef GPB_ENUM(BadgeSettings_FieldNumber) {
   BadgeSettings_FieldNumber_BadgeRank = 2,
   BadgeSettings_FieldNumber_TargetsArray = 3,
   BadgeSettings_FieldNumber_CaptureRewardArray = 4,
+  BadgeSettings_FieldNumber_EventBadge = 5,
 };
 
 @interface BadgeSettings : GPBMessage
@@ -268,6 +269,8 @@ typedef GPB_ENUM(BadgeSettings_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<BadgeCaptureReward*> *captureRewardArray;
 /** The number of items in @c captureRewardArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger captureRewardArray_Count;
+
+@property(nonatomic, readwrite) BOOL eventBadge;
 
 @end
 
@@ -290,7 +293,7 @@ typedef GPB_ENUM(CameraSettings_FieldNumber) {
   CameraSettings_FieldNumber_InterpolationArray = 2,
   CameraSettings_FieldNumber_TargetTypeArray = 3,
   CameraSettings_FieldNumber_EaseInSpeedArray = 4,
-  CameraSettings_FieldNumber_EastOutSpeedArray = 5,
+  CameraSettings_FieldNumber_EaseOutSpeedArray = 5,
   CameraSettings_FieldNumber_DurationSecondsArray = 6,
   CameraSettings_FieldNumber_WaitSecondsArray = 7,
   CameraSettings_FieldNumber_TransitionSecondsArray = 8,
@@ -322,9 +325,9 @@ typedef GPB_ENUM(CameraSettings_FieldNumber) {
 /** The number of items in @c easeInSpeedArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger easeInSpeedArray_Count;
 
-@property(nonatomic, readwrite, strong, null_resettable) GPBFloatArray *eastOutSpeedArray;
-/** The number of items in @c eastOutSpeedArray without causing the array to be created. */
-@property(nonatomic, readonly) NSUInteger eastOutSpeedArray_Count;
+@property(nonatomic, readwrite, strong, null_resettable) GPBFloatArray *easeOutSpeedArray;
+/** The number of items in @c easeOutSpeedArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger easeOutSpeedArray_Count;
 
 @property(nonatomic, readwrite, strong, null_resettable) GPBFloatArray *durationSecondsArray;
 /** The number of items in @c durationSecondsArray without causing the array to be created. */
@@ -503,6 +506,38 @@ int32_t GenderSettings_Pokemon_RawValue(GenderSettings *message);
  **/
 void SetGenderSettings_Pokemon_RawValue(GenderSettings *message, int32_t value);
 
+#pragma mark - GymBadgeGmtSettings
+
+typedef GPB_ENUM(GymBadgeGmtSettings_FieldNumber) {
+  GymBadgeGmtSettings_FieldNumber_TargetArray = 1,
+  GymBadgeGmtSettings_FieldNumber_BattleWinningScorePerDefenderCp = 2,
+  GymBadgeGmtSettings_FieldNumber_GymDefendingScorePerMinute = 3,
+  GymBadgeGmtSettings_FieldNumber_BerryFeedingScore = 4,
+  GymBadgeGmtSettings_FieldNumber_PokemonDeployScore = 5,
+  GymBadgeGmtSettings_FieldNumber_RaidBattleWinningScore = 6,
+  GymBadgeGmtSettings_FieldNumber_LoseAllBattlesScore = 7,
+};
+
+@interface GymBadgeGmtSettings : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) GPBInt32Array *targetArray;
+/** The number of items in @c targetArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger targetArray_Count;
+
+@property(nonatomic, readwrite) float battleWinningScorePerDefenderCp;
+
+@property(nonatomic, readwrite) float gymDefendingScorePerMinute;
+
+@property(nonatomic, readwrite) int32_t berryFeedingScore;
+
+@property(nonatomic, readwrite) int32_t pokemonDeployScore;
+
+@property(nonatomic, readwrite) int32_t raidBattleWinningScore;
+
+@property(nonatomic, readwrite) int32_t loseAllBattlesScore;
+
+@end
+
 #pragma mark - GymBattleSettings
 
 typedef GPB_ENUM(GymBattleSettings_FieldNumber) {
@@ -521,6 +556,7 @@ typedef GPB_ENUM(GymBattleSettings_FieldNumber) {
   GymBattleSettings_FieldNumber_MinimumPlayerLevel = 13,
   GymBattleSettings_FieldNumber_SwapDurationMs = 14,
   GymBattleSettings_FieldNumber_DodgeDamageReductionPercent = 15,
+  GymBattleSettings_FieldNumber_MinimumRaidPlayerLevel = 16,
 };
 
 @interface GymBattleSettings : GPBMessage
@@ -554,6 +590,8 @@ typedef GPB_ENUM(GymBattleSettings_FieldNumber) {
 @property(nonatomic, readwrite) int32_t swapDurationMs;
 
 @property(nonatomic, readwrite) float dodgeDamageReductionPercent;
+
+@property(nonatomic, readwrite) int32_t minimumRaidPlayerLevel;
 
 @end
 
@@ -871,6 +909,7 @@ typedef GPB_ENUM(PlayerLevelSettings_FieldNumber) {
   PlayerLevelSettings_FieldNumber_CpMultiplierArray = 3,
   PlayerLevelSettings_FieldNumber_MaxEggPlayerLevel = 4,
   PlayerLevelSettings_FieldNumber_MaxEncounterPlayerLevel = 5,
+  PlayerLevelSettings_FieldNumber_MaxRaidEncounterPlayerLevel = 6,
 };
 
 @interface PlayerLevelSettings : GPBMessage
@@ -890,6 +929,8 @@ typedef GPB_ENUM(PlayerLevelSettings_FieldNumber) {
 @property(nonatomic, readwrite) int32_t maxEggPlayerLevel;
 
 @property(nonatomic, readwrite) int32_t maxEncounterPlayerLevel;
+
+@property(nonatomic, readwrite) int32_t maxRaidEncounterPlayerLevel;
 
 @end
 

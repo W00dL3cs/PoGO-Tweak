@@ -42,6 +42,94 @@ static GPBFileDescriptor *PogoprotosMapPokemonRoot_FileDescriptor(void) {
   return descriptor;
 }
 
+#pragma mark - LobbyPokemon
+
+@implementation LobbyPokemon
+
+@dynamic id_p;
+@dynamic pokedexId;
+@dynamic cp;
+@dynamic percentHealth;
+
+typedef struct LobbyPokemon__storage_ {
+  uint32_t _has_storage_[1];
+  PokemonId pokedexId;
+  int32_t cp;
+  float percentHealth;
+  int64_t id_p;
+} LobbyPokemon__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "id_p",
+        .dataTypeSpecific.className = NULL,
+        .number = LobbyPokemon_FieldNumber_Id_p,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(LobbyPokemon__storage_, id_p),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "pokedexId",
+        .dataTypeSpecific.enumDescFunc = PokemonId_EnumDescriptor,
+        .number = LobbyPokemon_FieldNumber_PokedexId,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(LobbyPokemon__storage_, pokedexId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+      {
+        .name = "cp",
+        .dataTypeSpecific.className = NULL,
+        .number = LobbyPokemon_FieldNumber_Cp,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(LobbyPokemon__storage_, cp),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "percentHealth",
+        .dataTypeSpecific.className = NULL,
+        .number = LobbyPokemon_FieldNumber_PercentHealth,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(LobbyPokemon__storage_, percentHealth),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeFloat,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[LobbyPokemon class]
+                                     rootClass:[PogoprotosMapPokemonRoot class]
+                                          file:PogoprotosMapPokemonRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(LobbyPokemon__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t LobbyPokemon_PokedexId_RawValue(LobbyPokemon *message) {
+  GPBDescriptor *descriptor = [LobbyPokemon descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:LobbyPokemon_FieldNumber_PokedexId];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetLobbyPokemon_PokedexId_RawValue(LobbyPokemon *message, int32_t value) {
+  GPBDescriptor *descriptor = [LobbyPokemon descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:LobbyPokemon_FieldNumber_PokedexId];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
 #pragma mark - MapPokemon
 
 @implementation MapPokemon
@@ -162,6 +250,126 @@ void SetMapPokemon_PokemonId_RawValue(MapPokemon *message, int32_t value) {
   GPBFieldDescriptor *field = [descriptor fieldWithNumber:MapPokemon_FieldNumber_PokemonId];
   GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
 }
+
+#pragma mark - MotivatedPokemon
+
+@implementation MotivatedPokemon
+
+@dynamic hasPokemon, pokemon;
+@dynamic deployMs;
+@dynamic cpWhenDeployed;
+@dynamic motivationNow;
+@dynamic cpNow;
+@dynamic berryValue;
+@dynamic feedCooldownDurationMillis;
+@dynamic foodValueArray, foodValueArray_Count;
+
+typedef struct MotivatedPokemon__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t cpWhenDeployed;
+  int32_t cpNow;
+  float berryValue;
+  PokemonData *pokemon;
+  NSMutableArray *foodValueArray;
+  int64_t deployMs;
+  double motivationNow;
+  int64_t feedCooldownDurationMillis;
+} MotivatedPokemon__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "pokemon",
+        .dataTypeSpecific.className = GPBStringifySymbol(PokemonData),
+        .number = MotivatedPokemon_FieldNumber_Pokemon,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(MotivatedPokemon__storage_, pokemon),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "deployMs",
+        .dataTypeSpecific.className = NULL,
+        .number = MotivatedPokemon_FieldNumber_DeployMs,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(MotivatedPokemon__storage_, deployMs),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "cpWhenDeployed",
+        .dataTypeSpecific.className = NULL,
+        .number = MotivatedPokemon_FieldNumber_CpWhenDeployed,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(MotivatedPokemon__storage_, cpWhenDeployed),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "motivationNow",
+        .dataTypeSpecific.className = NULL,
+        .number = MotivatedPokemon_FieldNumber_MotivationNow,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(MotivatedPokemon__storage_, motivationNow),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeDouble,
+      },
+      {
+        .name = "cpNow",
+        .dataTypeSpecific.className = NULL,
+        .number = MotivatedPokemon_FieldNumber_CpNow,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(MotivatedPokemon__storage_, cpNow),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "berryValue",
+        .dataTypeSpecific.className = NULL,
+        .number = MotivatedPokemon_FieldNumber_BerryValue,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(MotivatedPokemon__storage_, berryValue),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeFloat,
+      },
+      {
+        .name = "feedCooldownDurationMillis",
+        .dataTypeSpecific.className = NULL,
+        .number = MotivatedPokemon_FieldNumber_FeedCooldownDurationMillis,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(MotivatedPokemon__storage_, feedCooldownDurationMillis),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "foodValueArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(FoodValue),
+        .number = MotivatedPokemon_FieldNumber_FoodValueArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(MotivatedPokemon__storage_, foodValueArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[MotivatedPokemon class]
+                                     rootClass:[PogoprotosMapPokemonRoot class]
+                                          file:PogoprotosMapPokemonRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(MotivatedPokemon__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
 
 #pragma mark - NearbyPokemon
 

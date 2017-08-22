@@ -65,6 +65,11 @@ typedef GPB_ENUM(ActivityType) {
   ActivityType_ActivityCatchFirstCatchStreakBonus = 24,
   ActivityType_ActivitySearchFortFirstOfTheDay = 25,
   ActivityType_ActivitySearchFortStreakBonus = 26,
+  ActivityType_ActivityDefeatRaidPokemon = 27,
+  ActivityType_ActivityFeedBerry = 28,
+  ActivityType_ActivitySearchGym = 29,
+  ActivityType_ActivityNewPokestop = 30,
+  ActivityType_ActivityGymBattleLoss = 31,
 };
 
 GPBEnumDescriptor *ActivityType_EnumDescriptor(void);
@@ -124,6 +129,14 @@ typedef GPB_ENUM(BadgeType) {
   BadgeType_BadgePikachu = 37,
   BadgeType_BadgeUnown = 38,
   BadgeType_BadgePokedexEntriesGen2 = 39,
+  BadgeType_BadgeRaidBattleWon = 40,
+  BadgeType_BadgeLegendaryBattleWon = 41,
+  BadgeType_BadgeBerriesFed = 42,
+  BadgeType_BadgeHoursDefended = 43,
+  BadgeType_BadgePlaceHolder = 44,
+  BadgeType_BadgeEventMin = 2000,
+  BadgeType_BadgeChicagoFestJuly2017 = 2001,
+  BadgeType_BadgePikachuOutbreakYokohama2017 = 2002,
 };
 
 GPBEnumDescriptor *BadgeType_EnumDescriptor(void);
@@ -203,6 +216,7 @@ typedef GPB_ENUM(Costume) {
   Costume_CostumeUnset = 0,
   Costume_Holiday2016 = 1,
   Costume_Anniversary = 2,
+  Costume_OneYearAnniversary = 3,
 };
 
 GPBEnumDescriptor *Costume_EnumDescriptor(void);
@@ -225,6 +239,7 @@ typedef GPB_ENUM(EncounterType) {
   EncounterType_SpawnPoint = 0,
   EncounterType_Incense = 1,
   EncounterType_Disk = 2,
+  EncounterType_PostRaid = 3,
 };
 
 GPBEnumDescriptor *EncounterType_EnumDescriptor(void);
@@ -332,6 +347,30 @@ GPBEnumDescriptor *Gender_EnumDescriptor(void);
  **/
 BOOL Gender_IsValidValue(int32_t value);
 
+#pragma mark - Enum GymBadgeType
+
+typedef GPB_ENUM(GymBadgeType) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  GymBadgeType_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  GymBadgeType_GymBadgeUnset = 0,
+  GymBadgeType_GymBadgeVanilla = 1,
+  GymBadgeType_GymBadgeBronze = 2,
+  GymBadgeType_GymBadgeSilver = 3,
+  GymBadgeType_GymBadgeGold = 4,
+};
+
+GPBEnumDescriptor *GymBadgeType_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL GymBadgeType_IsValidValue(int32_t value);
+
 #pragma mark - Enum HoloIapItemCategory
 
 typedef GPB_ENUM(HoloIapItemCategory) {
@@ -379,6 +418,9 @@ typedef GPB_ENUM(ItemCategory) {
   ItemCategory_ItemCategoryXpBoost = 10,
   ItemCategory_ItemCategoryInventoryUpgrade = 11,
   ItemCategory_ItemCategoryEvolutionRequirement = 12,
+  ItemCategory_ItemCategoryMoveReroll = 13,
+  ItemCategory_ItemCategoryCandy = 14,
+  ItemCategory_ItemCategoryRaidTicket = 15,
 };
 
 GPBEnumDescriptor *ItemCategory_EnumDescriptor(void);
@@ -414,6 +456,7 @@ typedef GPB_ENUM(ItemEffect) {
   ItemEffect_ItemEffectCapChanceAlways = 1013,
   ItemEffect_ItemEffectCapChanceSingleThrow = 1014,
   ItemEffect_ItemEffectCandyAward = 1015,
+  ItemEffect_ItemEffectFullMotivation = 1016,
 };
 
 GPBEnumDescriptor *ItemEffect_EnumDescriptor(void);
@@ -423,6 +466,30 @@ GPBEnumDescriptor *ItemEffect_EnumDescriptor(void);
  * the time this source was generated.
  **/
 BOOL ItemEffect_IsValidValue(int32_t value);
+
+#pragma mark - Enum NotificationCategory
+
+typedef GPB_ENUM(NotificationCategory) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  NotificationCategory_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  NotificationCategory_UnsetNotificationCategory = 0,
+  NotificationCategory_GymRemoval = 1,
+  NotificationCategory_PokemonHungry = 2,
+  NotificationCategory_PokemonWon = 3,
+  NotificationCategory_ExclusiveRaidInvite = 4,
+};
+
+GPBEnumDescriptor *NotificationCategory_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL NotificationCategory_IsValidValue(int32_t value);
 
 #pragma mark - Enum NotificationState
 
@@ -434,9 +501,7 @@ typedef GPB_ENUM(NotificationState) {
    **/
   NotificationState_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
   NotificationState_UnsetState = 0,
-  NotificationState_Listed = 1,
-  NotificationState_Viewed = 2,
-  NotificationState_Deleted = 3,
+  NotificationState_Viewed = 1,
 };
 
 GPBEnumDescriptor *NotificationState_EnumDescriptor(void);
@@ -1242,6 +1307,31 @@ GPBEnumDescriptor *QuestType_EnumDescriptor(void);
  **/
 BOOL QuestType_IsValidValue(int32_t value);
 
+#pragma mark - Enum RaidLevel
+
+typedef GPB_ENUM(RaidLevel) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  RaidLevel_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  RaidLevel_RaidLevelUnset = 0,
+  RaidLevel_RaidLevel1 = 1,
+  RaidLevel_RaidLevel2 = 2,
+  RaidLevel_RaidLevel3 = 3,
+  RaidLevel_RaidLevel4 = 4,
+  RaidLevel_RaidLevel5 = 5,
+};
+
+GPBEnumDescriptor *RaidLevel_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL RaidLevel_IsValidValue(int32_t value);
+
 #pragma mark - Enum Slot
 
 typedef GPB_ENUM(Slot) {
@@ -1325,6 +1415,52 @@ GPBEnumDescriptor *TutorialState_EnumDescriptor(void);
  * the time this source was generated.
  **/
 BOOL TutorialState_IsValidValue(int32_t value);
+
+#pragma mark - Enum VariableName
+
+typedef GPB_ENUM(VariableName) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  VariableName_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  VariableName_UnsetVariableName = 0,
+  VariableName_CodeName = 1,
+  VariableName_Team = 2,
+  VariableName_Level = 3,
+  VariableName_Experience = 4,
+  VariableName_PokecoinBalance = 5,
+  VariableName_StardustBalance = 6,
+  VariableName_Email = 7,
+  VariableName_LoginMethod = 8,
+  VariableName_GymId = 1000,
+  VariableName_GymName = 1001,
+  VariableName_PokemonDisplay = 1002,
+  VariableName_PokedexEntryNumber = 1003,
+  VariableName_PokemonId = 1004,
+  VariableName_PokemonNickname = 1005,
+  VariableName_GymBadgeEarnedPoints = 1006,
+  VariableName_GymBadgeProgress = 1007,
+  VariableName_GymBadgeRank = 1008,
+  VariableName_GymBadgeImageURL = 1009,
+  VariableName_GymBadgeLevelUp = 1010,
+  VariableName_PokecoinAwarded = 1011,
+  VariableName_PokecoinAwardedToday = 1012,
+  VariableName_MaxDailyPokecoin = 1013,
+  VariableName_BattlesWon = 1014,
+  VariableName_BattlesLost = 1015,
+  VariableName_DeployedMillis = 1016,
+  VariableName_RaidSeed = 1017,
+};
+
+GPBEnumDescriptor *VariableName_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL VariableName_IsValidValue(int32_t value);
 
 #pragma mark - PogoprotosEnumsRoot
 

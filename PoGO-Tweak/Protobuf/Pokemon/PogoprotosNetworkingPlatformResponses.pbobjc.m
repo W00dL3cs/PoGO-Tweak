@@ -240,14 +240,14 @@ BOOL BuyItemPokeCoinsResponse_Status_IsValidValue(int32_t value__) {
 @dynamic status;
 @dynamic itemsArray, itemsArray_Count;
 @dynamic playerCurrenciesArray, playerCurrenciesArray_Count;
-@dynamic unknown4;
+@dynamic hash_p;
 
 typedef struct GetStoreItemsResponse__storage_ {
   uint32_t _has_storage_[1];
   GetStoreItemsResponse_Status status;
   NSMutableArray *itemsArray;
   NSMutableArray *playerCurrenciesArray;
-  NSString *unknown4;
+  NSString *hash_p;
 } GetStoreItemsResponse__storage_;
 
 // This method is threadsafe because it is initially called
@@ -284,11 +284,11 @@ typedef struct GetStoreItemsResponse__storage_ {
         .dataType = GPBDataTypeMessage,
       },
       {
-        .name = "unknown4",
+        .name = "hash_p",
         .dataTypeSpecific.className = NULL,
-        .number = GetStoreItemsResponse_FieldNumber_Unknown4,
+        .number = GetStoreItemsResponse_FieldNumber_Hash_p,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(GetStoreItemsResponse__storage_, unknown4),
+        .offset = (uint32_t)offsetof(GetStoreItemsResponse__storage_, hash_p),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
@@ -364,7 +364,7 @@ BOOL GetStoreItemsResponse_Status_IsValidValue(int32_t value__) {
 @dynamic hasCurrencyToBuy, currencyToBuy;
 @dynamic hasYieldsCurrency, yieldsCurrency;
 @dynamic hasYieldsItem, yieldsItem;
-@dynamic tags, tags_Count;
+@dynamic tagsArray, tagsArray_Count;
 @dynamic unknown7;
 
 typedef struct GetStoreItemsResponse_StoreItem__storage_ {
@@ -373,8 +373,8 @@ typedef struct GetStoreItemsResponse_StoreItem__storage_ {
   NSString *itemId;
   Currency *currencyToBuy;
   Currency *yieldsCurrency;
-  ItemData *yieldsItem;
-  NSMutableDictionary *tags;
+  GetStoreItemsResponse_StoreItemInfo *yieldsItem;
+  NSMutableArray *tagsArray;
 } GetStoreItemsResponse_StoreItem__storage_;
 
 // This method is threadsafe because it is initially called
@@ -421,7 +421,7 @@ typedef struct GetStoreItemsResponse_StoreItem__storage_ {
       },
       {
         .name = "yieldsItem",
-        .dataTypeSpecific.className = GPBStringifySymbol(ItemData),
+        .dataTypeSpecific.className = GPBStringifySymbol(GetStoreItemsResponse_StoreItemInfo),
         .number = GetStoreItemsResponse_StoreItem_FieldNumber_YieldsItem,
         .hasIndex = 5,
         .offset = (uint32_t)offsetof(GetStoreItemsResponse_StoreItem__storage_, yieldsItem),
@@ -429,13 +429,13 @@ typedef struct GetStoreItemsResponse_StoreItem__storage_ {
         .dataType = GPBDataTypeMessage,
       },
       {
-        .name = "tags",
-        .dataTypeSpecific.className = NULL,
-        .number = GetStoreItemsResponse_StoreItem_FieldNumber_Tags,
+        .name = "tagsArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(GetStoreItemsResponse_StoreTags),
+        .number = GetStoreItemsResponse_StoreItem_FieldNumber_TagsArray,
         .hasIndex = GPBNoHasBit,
-        .offset = (uint32_t)offsetof(GetStoreItemsResponse_StoreItem__storage_, tags),
-        .flags = GPBFieldMapKeyString,
-        .dataType = GPBDataTypeString,
+        .offset = (uint32_t)offsetof(GetStoreItemsResponse_StoreItem__storage_, tagsArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
       },
       {
         .name = "unknown7",
@@ -454,6 +454,116 @@ typedef struct GetStoreItemsResponse_StoreItem__storage_ {
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(GetStoreItemsResponse_StoreItem__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(GetStoreItemsResponse)];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - GetStoreItemsResponse_StoreTags
+
+@implementation GetStoreItemsResponse_StoreTags
+
+@dynamic tag;
+@dynamic value;
+
+typedef struct GetStoreItemsResponse_StoreTags__storage_ {
+  uint32_t _has_storage_[1];
+  NSString *tag;
+  NSString *value;
+} GetStoreItemsResponse_StoreTags__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "tag",
+        .dataTypeSpecific.className = NULL,
+        .number = GetStoreItemsResponse_StoreTags_FieldNumber_Tag,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GetStoreItemsResponse_StoreTags__storage_, tag),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "value",
+        .dataTypeSpecific.className = NULL,
+        .number = GetStoreItemsResponse_StoreTags_FieldNumber_Value,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(GetStoreItemsResponse_StoreTags__storage_, value),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GetStoreItemsResponse_StoreTags class]
+                                     rootClass:[PogoprotosNetworkingPlatformResponsesRoot class]
+                                          file:PogoprotosNetworkingPlatformResponsesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GetStoreItemsResponse_StoreTags__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(GetStoreItemsResponse)];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - GetStoreItemsResponse_StoreItemInfo
+
+@implementation GetStoreItemsResponse_StoreItemInfo
+
+@dynamic itemId;
+@dynamic count;
+
+typedef struct GetStoreItemsResponse_StoreItemInfo__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t count;
+  NSString *itemId;
+} GetStoreItemsResponse_StoreItemInfo__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "itemId",
+        .dataTypeSpecific.className = NULL,
+        .number = GetStoreItemsResponse_StoreItemInfo_FieldNumber_ItemId,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GetStoreItemsResponse_StoreItemInfo__storage_, itemId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "count",
+        .dataTypeSpecific.className = NULL,
+        .number = GetStoreItemsResponse_StoreItemInfo_FieldNumber_Count,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(GetStoreItemsResponse_StoreItemInfo__storage_, count),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GetStoreItemsResponse_StoreItemInfo class]
+                                     rootClass:[PogoprotosNetworkingPlatformResponsesRoot class]
+                                          file:PogoprotosNetworkingPlatformResponsesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GetStoreItemsResponse_StoreItemInfo__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
     [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(GetStoreItemsResponse)];
     NSAssert(descriptor == nil, @"Startup recursed!");

@@ -42,6 +42,148 @@ static GPBFileDescriptor *PogoprotosDataGymRoot_FileDescriptor(void) {
   return descriptor;
 }
 
+#pragma mark - GymDefender
+
+@implementation GymDefender
+
+@dynamic hasMotivatedPokemon, motivatedPokemon;
+@dynamic hasDeploymentTotals, deploymentTotals;
+@dynamic hasTrainerPublicProfile, trainerPublicProfile;
+
+typedef struct GymDefender__storage_ {
+  uint32_t _has_storage_[1];
+  MotivatedPokemon *motivatedPokemon;
+  GymDefender_DeploymentTotals *deploymentTotals;
+  PlayerPublicProfile *trainerPublicProfile;
+} GymDefender__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "motivatedPokemon",
+        .dataTypeSpecific.className = GPBStringifySymbol(MotivatedPokemon),
+        .number = GymDefender_FieldNumber_MotivatedPokemon,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GymDefender__storage_, motivatedPokemon),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "deploymentTotals",
+        .dataTypeSpecific.className = GPBStringifySymbol(GymDefender_DeploymentTotals),
+        .number = GymDefender_FieldNumber_DeploymentTotals,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(GymDefender__storage_, deploymentTotals),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "trainerPublicProfile",
+        .dataTypeSpecific.className = GPBStringifySymbol(PlayerPublicProfile),
+        .number = GymDefender_FieldNumber_TrainerPublicProfile,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(GymDefender__storage_, trainerPublicProfile),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GymDefender class]
+                                     rootClass:[PogoprotosDataGymRoot class]
+                                          file:PogoprotosDataGymRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GymDefender__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - GymDefender_DeploymentTotals
+
+@implementation GymDefender_DeploymentTotals
+
+@dynamic timesFed;
+@dynamic battlesWon;
+@dynamic battlesLost;
+@dynamic deploymentDurationMs;
+
+typedef struct GymDefender_DeploymentTotals__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t timesFed;
+  int32_t battlesWon;
+  int32_t battlesLost;
+  int64_t deploymentDurationMs;
+} GymDefender_DeploymentTotals__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "timesFed",
+        .dataTypeSpecific.className = NULL,
+        .number = GymDefender_DeploymentTotals_FieldNumber_TimesFed,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GymDefender_DeploymentTotals__storage_, timesFed),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "battlesWon",
+        .dataTypeSpecific.className = NULL,
+        .number = GymDefender_DeploymentTotals_FieldNumber_BattlesWon,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(GymDefender_DeploymentTotals__storage_, battlesWon),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "battlesLost",
+        .dataTypeSpecific.className = NULL,
+        .number = GymDefender_DeploymentTotals_FieldNumber_BattlesLost,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(GymDefender_DeploymentTotals__storage_, battlesLost),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "deploymentDurationMs",
+        .dataTypeSpecific.className = NULL,
+        .number = GymDefender_DeploymentTotals_FieldNumber_DeploymentDurationMs,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(GymDefender_DeploymentTotals__storage_, deploymentDurationMs),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GymDefender_DeploymentTotals class]
+                                     rootClass:[PogoprotosDataGymRoot class]
+                                          file:PogoprotosDataGymRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GymDefender_DeploymentTotals__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(GymDefender)];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - GymMembership
 
 @implementation GymMembership
@@ -162,6 +304,60 @@ typedef struct GymState__storage_ {
                                         fields:fields
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(GymState__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - GymStatusAndDefenders
+
+@implementation GymStatusAndDefenders
+
+@dynamic hasPokemonFortProto, pokemonFortProto;
+@dynamic gymDefenderArray, gymDefenderArray_Count;
+
+typedef struct GymStatusAndDefenders__storage_ {
+  uint32_t _has_storage_[1];
+  FortData *pokemonFortProto;
+  NSMutableArray *gymDefenderArray;
+} GymStatusAndDefenders__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "pokemonFortProto",
+        .dataTypeSpecific.className = GPBStringifySymbol(FortData),
+        .number = GymStatusAndDefenders_FieldNumber_PokemonFortProto,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GymStatusAndDefenders__storage_, pokemonFortProto),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "gymDefenderArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(GymDefender),
+        .number = GymStatusAndDefenders_FieldNumber_GymDefenderArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(GymStatusAndDefenders__storage_, gymDefenderArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GymStatusAndDefenders class]
+                                     rootClass:[PogoprotosDataGymRoot class]
+                                          file:PogoprotosDataGymRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GymStatusAndDefenders__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;

@@ -668,10 +668,20 @@ typedef struct PlayerCurrency__storage_ {
 @dynamic name;
 @dynamic level;
 @dynamic hasAvatar, avatar;
+@dynamic teamColor;
+@dynamic battlesWon;
+@dynamic kmWalked;
+@dynamic caughtPokemon;
+@dynamic gymBadgeType;
 
 typedef struct PlayerPublicProfile__storage_ {
   uint32_t _has_storage_[1];
   int32_t level;
+  TeamColor teamColor;
+  int32_t battlesWon;
+  float kmWalked;
+  int32_t caughtPokemon;
+  GymBadgeType gymBadgeType;
   NSString *name;
   PlayerAvatar *avatar;
 } PlayerPublicProfile__storage_;
@@ -709,6 +719,51 @@ typedef struct PlayerPublicProfile__storage_ {
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
+      {
+        .name = "teamColor",
+        .dataTypeSpecific.enumDescFunc = TeamColor_EnumDescriptor,
+        .number = PlayerPublicProfile_FieldNumber_TeamColor,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(PlayerPublicProfile__storage_, teamColor),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+      {
+        .name = "battlesWon",
+        .dataTypeSpecific.className = NULL,
+        .number = PlayerPublicProfile_FieldNumber_BattlesWon,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(PlayerPublicProfile__storage_, battlesWon),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "kmWalked",
+        .dataTypeSpecific.className = NULL,
+        .number = PlayerPublicProfile_FieldNumber_KmWalked,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(PlayerPublicProfile__storage_, kmWalked),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeFloat,
+      },
+      {
+        .name = "caughtPokemon",
+        .dataTypeSpecific.className = NULL,
+        .number = PlayerPublicProfile_FieldNumber_CaughtPokemon,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(PlayerPublicProfile__storage_, caughtPokemon),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "gymBadgeType",
+        .dataTypeSpecific.enumDescFunc = GymBadgeType_EnumDescriptor,
+        .number = PlayerPublicProfile_FieldNumber_GymBadgeType,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(PlayerPublicProfile__storage_, gymBadgeType),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[PlayerPublicProfile class]
@@ -725,6 +780,30 @@ typedef struct PlayerPublicProfile__storage_ {
 }
 
 @end
+
+int32_t PlayerPublicProfile_TeamColor_RawValue(PlayerPublicProfile *message) {
+  GPBDescriptor *descriptor = [PlayerPublicProfile descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:PlayerPublicProfile_FieldNumber_TeamColor];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetPlayerPublicProfile_TeamColor_RawValue(PlayerPublicProfile *message, int32_t value) {
+  GPBDescriptor *descriptor = [PlayerPublicProfile descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:PlayerPublicProfile_FieldNumber_TeamColor];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+int32_t PlayerPublicProfile_GymBadgeType_RawValue(PlayerPublicProfile *message) {
+  GPBDescriptor *descriptor = [PlayerPublicProfile descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:PlayerPublicProfile_FieldNumber_GymBadgeType];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetPlayerPublicProfile_GymBadgeType_RawValue(PlayerPublicProfile *message, int32_t value) {
+  GPBDescriptor *descriptor = [PlayerPublicProfile descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:PlayerPublicProfile_FieldNumber_GymBadgeType];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
 
 #pragma mark - PlayerStats
 
@@ -755,6 +834,13 @@ typedef struct PlayerPublicProfile__storage_ {
 @dynamic smallRattataCaught;
 @dynamic usedKmPool;
 @dynamic lastKmRefillMs;
+@dynamic numRaidBattleWon;
+@dynamic numRaidBattleTotal;
+@dynamic numLegendaryBattleWon;
+@dynamic numLegendaryBattleTotal;
+@dynamic numBerriesFed;
+@dynamic totalDefendedMs;
+@dynamic eventBadgesArray, eventBadgesArray_Count;
 
 typedef struct PlayerStats__storage_ {
   uint32_t _has_storage_[1];
@@ -777,12 +863,19 @@ typedef struct PlayerStats__storage_ {
   int32_t prestigeDroppedTotal;
   int32_t pokemonDeployed;
   int32_t smallRattataCaught;
+  int32_t numRaidBattleWon;
+  int32_t numRaidBattleTotal;
+  int32_t numLegendaryBattleWon;
+  int32_t numLegendaryBattleTotal;
+  int32_t numBerriesFed;
   GPBInt32Array *pokemonCaughtByTypeArray;
+  GPBEnumArray *eventBadgesArray;
   int64_t experience;
   int64_t prevLevelXp;
   int64_t nextLevelXp;
   double usedKmPool;
   int64_t lastKmRefillMs;
+  int64_t totalDefendedMs;
 } PlayerStats__storage_;
 
 // This method is threadsafe because it is initially called
@@ -1015,6 +1108,69 @@ typedef struct PlayerStats__storage_ {
         .offset = (uint32_t)offsetof(PlayerStats__storage_, lastKmRefillMs),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "numRaidBattleWon",
+        .dataTypeSpecific.className = NULL,
+        .number = PlayerStats_FieldNumber_NumRaidBattleWon,
+        .hasIndex = 24,
+        .offset = (uint32_t)offsetof(PlayerStats__storage_, numRaidBattleWon),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "numRaidBattleTotal",
+        .dataTypeSpecific.className = NULL,
+        .number = PlayerStats_FieldNumber_NumRaidBattleTotal,
+        .hasIndex = 25,
+        .offset = (uint32_t)offsetof(PlayerStats__storage_, numRaidBattleTotal),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "numLegendaryBattleWon",
+        .dataTypeSpecific.className = NULL,
+        .number = PlayerStats_FieldNumber_NumLegendaryBattleWon,
+        .hasIndex = 26,
+        .offset = (uint32_t)offsetof(PlayerStats__storage_, numLegendaryBattleWon),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "numLegendaryBattleTotal",
+        .dataTypeSpecific.className = NULL,
+        .number = PlayerStats_FieldNumber_NumLegendaryBattleTotal,
+        .hasIndex = 27,
+        .offset = (uint32_t)offsetof(PlayerStats__storage_, numLegendaryBattleTotal),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "numBerriesFed",
+        .dataTypeSpecific.className = NULL,
+        .number = PlayerStats_FieldNumber_NumBerriesFed,
+        .hasIndex = 28,
+        .offset = (uint32_t)offsetof(PlayerStats__storage_, numBerriesFed),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "totalDefendedMs",
+        .dataTypeSpecific.className = NULL,
+        .number = PlayerStats_FieldNumber_TotalDefendedMs,
+        .hasIndex = 29,
+        .offset = (uint32_t)offsetof(PlayerStats__storage_, totalDefendedMs),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "eventBadgesArray",
+        .dataTypeSpecific.enumDescFunc = GymBadgeType_EnumDescriptor,
+        .number = PlayerStats_FieldNumber_EventBadgesArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(PlayerStats__storage_, eventBadgesArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
       },
     };
     GPBDescriptor *localDescriptor =

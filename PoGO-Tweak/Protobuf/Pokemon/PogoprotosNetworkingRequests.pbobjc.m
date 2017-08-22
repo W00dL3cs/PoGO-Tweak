@@ -66,15 +66,23 @@ GPBEnumDescriptor *RequestType_EnumDescriptor(void) {
         "ollectDailyDefenderBonus\000UpgradePokemon\000"
         "SetFavoritePokemon\000NicknamePokemon\000Equip"
         "Badge\000SetContactSettings\000SetBuddyPokemon"
-        "\000GetBuddyWalked\000UseItemEncounter\000GetAsse"
-        "tDigest\000GetDownloadUrls\000ClaimCodename\000Se"
-        "tAvatar\000SetPlayerTeam\000MarkTutorialComple"
-        "te\000CheckChallenge\000VerifyChallenge\000Echo\000S"
-        "fidaRegistration\000SfidaActionLog\000SfidaCer"
-        "tification\000SfidaUpdate\000SfidaAction\000Sfida"
-        "Dowser\000SfidaCapture\000ListAvatarCustomizat"
-        "ions\000SetAvatarItemAsViewed\000GetInbox\000Upda"
-        "teNotificationStatus\000";
+        "\000GetBuddyWalked\000UseItemEncounter\000GymDepl"
+        "oy\000GymGetInfo\000GymStartSession\000GymBattleA"
+        "ttack\000JoinLobby\000LeaveLobby\000SetLobbyVisib"
+        "ility\000SetLobbyPokemon\000GetRaidDetails\000Gym"
+        "FeedPokemon\000StartRaidBattle\000AttackRaid\000G"
+        "etAssetDigest\000GetDownloadUrls\000ClaimCoden"
+        "ame\000SetAvatar\000SetPlayerTeam\000MarkTutorial"
+        "Complete\000CheckChallenge\000VerifyChallenge\000"
+        "Echo\000SfidaRegistration\000SfidaActionLog\000Sf"
+        "idaCertification\000SfidaUpdate\000SfidaAction"
+        "\000SfidaDowser\000SfidaCapture\000ListAvatarCust"
+        "omizations\000SetAvatarItemAsViewed\000GetInbo"
+        "x\000ListGymBadges\000GetGymBadgeDetails\000UseIt"
+        "emMoveReroll\000UseItemRareCandy\000RegisterPu"
+        "shNotification\000UnregisterPushNotificatio"
+        "n\000UpdateNotificationStatus\000OptOutPushNot"
+        "ificationCategory\000";
     static const int32_t values[] = {
         RequestType_MethodUnset,
         RequestType_GetPlayer,
@@ -123,6 +131,18 @@ GPBEnumDescriptor *RequestType_EnumDescriptor(void) {
         RequestType_SetBuddyPokemon,
         RequestType_GetBuddyWalked,
         RequestType_UseItemEncounter,
+        RequestType_GymDeploy,
+        RequestType_GymGetInfo,
+        RequestType_GymStartSession,
+        RequestType_GymBattleAttack,
+        RequestType_JoinLobby,
+        RequestType_LeaveLobby,
+        RequestType_SetLobbyVisibility,
+        RequestType_SetLobbyPokemon,
+        RequestType_GetRaidDetails,
+        RequestType_GymFeedPokemon,
+        RequestType_StartRaidBattle,
+        RequestType_AttackRaid,
         RequestType_GetAssetDigest,
         RequestType_GetDownloadUrls,
         RequestType_ClaimCodename,
@@ -142,7 +162,14 @@ GPBEnumDescriptor *RequestType_EnumDescriptor(void) {
         RequestType_ListAvatarCustomizations,
         RequestType_SetAvatarItemAsViewed,
         RequestType_GetInbox,
+        RequestType_ListGymBadges,
+        RequestType_GetGymBadgeDetails,
+        RequestType_UseItemMoveReroll,
+        RequestType_UseItemRareCandy,
+        RequestType_RegisterPushNotification,
+        RequestType_UnregisterPushNotification,
         RequestType_UpdateNotificationStatus,
+        RequestType_OptOutPushNotificationCategory,
     };
     GPBEnumDescriptor *worker =
         [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(RequestType)
@@ -206,6 +233,18 @@ BOOL RequestType_IsValidValue(int32_t value__) {
     case RequestType_SetBuddyPokemon:
     case RequestType_GetBuddyWalked:
     case RequestType_UseItemEncounter:
+    case RequestType_GymDeploy:
+    case RequestType_GymGetInfo:
+    case RequestType_GymStartSession:
+    case RequestType_GymBattleAttack:
+    case RequestType_JoinLobby:
+    case RequestType_LeaveLobby:
+    case RequestType_SetLobbyVisibility:
+    case RequestType_SetLobbyPokemon:
+    case RequestType_GetRaidDetails:
+    case RequestType_GymFeedPokemon:
+    case RequestType_StartRaidBattle:
+    case RequestType_AttackRaid:
     case RequestType_GetAssetDigest:
     case RequestType_GetDownloadUrls:
     case RequestType_ClaimCodename:
@@ -225,7 +264,14 @@ BOOL RequestType_IsValidValue(int32_t value__) {
     case RequestType_ListAvatarCustomizations:
     case RequestType_SetAvatarItemAsViewed:
     case RequestType_GetInbox:
+    case RequestType_ListGymBadges:
+    case RequestType_GetGymBadgeDetails:
+    case RequestType_UseItemMoveReroll:
+    case RequestType_UseItemRareCandy:
+    case RequestType_RegisterPushNotification:
+    case RequestType_UnregisterPushNotification:
     case RequestType_UpdateNotificationStatus:
+    case RequestType_OptOutPushNotificationCategory:
       return YES;
     default:
       return NO;

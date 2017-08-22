@@ -69,6 +69,12 @@ typedef GPB_ENUM(BuyItemPokeCoinsRequest_FieldNumber) {
 
 @end
 
+#pragma mark - GetStoreItemsRequest
+
+@interface GetStoreItemsRequest : GPBMessage
+
+@end
+
 #pragma mark - SendEncryptedSignatureRequest
 
 typedef GPB_ENUM(SendEncryptedSignatureRequest_FieldNumber) {

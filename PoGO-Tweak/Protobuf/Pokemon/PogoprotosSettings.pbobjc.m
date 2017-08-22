@@ -252,11 +252,15 @@ BOOL FestivalSettings_FestivalType_IsValidValue(int32_t value__) {
 @dynamic deployAttackMultiplier;
 @dynamic farInteractionRangeMeters;
 @dynamic disableGyms;
+@dynamic maxSamePokemonAtFort;
+@dynamic maxPlayerTotalDeployedPokemon;
 
 typedef struct FortSettings__storage_ {
   uint32_t _has_storage_[1];
   int32_t maxTotalDeployedPokemon;
   int32_t maxPlayerDeployedPokemon;
+  int32_t maxSamePokemonAtFort;
+  int32_t maxPlayerTotalDeployedPokemon;
   double interactionRangeMeters;
   double deployStaminaMultiplier;
   double deployAttackMultiplier;
@@ -332,6 +336,24 @@ typedef struct FortSettings__storage_ {
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeBool,
       },
+      {
+        .name = "maxSamePokemonAtFort",
+        .dataTypeSpecific.className = NULL,
+        .number = FortSettings_FieldNumber_MaxSamePokemonAtFort,
+        .hasIndex = 8,
+        .offset = (uint32_t)offsetof(FortSettings__storage_, maxSamePokemonAtFort),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "maxPlayerTotalDeployedPokemon",
+        .dataTypeSpecific.className = NULL,
+        .number = FortSettings_FieldNumber_MaxPlayerTotalDeployedPokemon,
+        .hasIndex = 9,
+        .offset = (uint32_t)offsetof(FortSettings__storage_, maxPlayerTotalDeployedPokemon),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[FortSettings class]
@@ -366,6 +388,7 @@ typedef struct FortSettings__storage_ {
 @dynamic hasNewsSettings, newsSettings;
 @dynamic hasTranslationSettings, translationSettings;
 @dynamic hasPasscodeSettings, passcodeSettings;
+@dynamic hasNotificationSettings, notificationSettings;
 
 typedef struct GlobalSettings__storage_ {
   uint32_t _has_storage_[1];
@@ -382,6 +405,7 @@ typedef struct GlobalSettings__storage_ {
   NewsSettings *newsSettings;
   TranslationSettings *translationSettings;
   PasscodeSettings *passcodeSettings;
+  NotificationSettings *notificationSettings;
 } GlobalSettings__storage_;
 
 // This method is threadsafe because it is initially called
@@ -504,6 +528,15 @@ typedef struct GlobalSettings__storage_ {
         .number = GlobalSettings_FieldNumber_PasscodeSettings,
         .hasIndex = 12,
         .offset = (uint32_t)offsetof(GlobalSettings__storage_, passcodeSettings),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "notificationSettings",
+        .dataTypeSpecific.className = GPBStringifySymbol(NotificationSettings),
+        .number = GlobalSettings_FieldNumber_NotificationSettings,
+        .hasIndex = 13,
+        .offset = (uint32_t)offsetof(GlobalSettings__storage_, notificationSettings),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
@@ -951,6 +984,58 @@ typedef struct NewsSettings_News__storage_ {
                                    storageSize:sizeof(NewsSettings_News__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
     [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(NewsSettings)];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - NotificationSettings
+
+@implementation NotificationSettings
+
+@dynamic pullNotifications;
+@dynamic showNotifications;
+
+typedef struct NotificationSettings__storage_ {
+  uint32_t _has_storage_[1];
+} NotificationSettings__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "pullNotifications",
+        .dataTypeSpecific.className = NULL,
+        .number = NotificationSettings_FieldNumber_PullNotifications,
+        .hasIndex = 0,
+        .offset = 1,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
+      },
+      {
+        .name = "showNotifications",
+        .dataTypeSpecific.className = NULL,
+        .number = NotificationSettings_FieldNumber_ShowNotifications,
+        .hasIndex = 2,
+        .offset = 3,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[NotificationSettings class]
+                                     rootClass:[PogoprotosSettingsRoot class]
+                                          file:PogoprotosSettingsRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(NotificationSettings__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }

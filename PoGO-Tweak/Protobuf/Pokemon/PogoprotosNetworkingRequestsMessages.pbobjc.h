@@ -35,6 +35,10 @@ CF_EXTERN_C_BEGIN
 @class ContactSettings;
 @class GetPlayerMessage_PlayerLocale;
 @class PlayerAvatar;
+@class PushNotificationRegistryMessage_ApnToken;
+@class PushNotificationRegistryMessage_GcmToken;
+@class RegisterPushNotificationMessage_ApnToken;
+@class RegisterPushNotificationMessage_GcmToken;
 GPB_ENUM_FWD_DECLARE(BadgeType);
 GPB_ENUM_FWD_DECLARE(ItemId);
 GPB_ENUM_FWD_DECLARE(NotificationState);
@@ -44,6 +48,27 @@ GPB_ENUM_FWD_DECLARE(PokemonId);
 GPB_ENUM_FWD_DECLARE(TeamColor);
 
 NS_ASSUME_NONNULL_BEGIN
+
+#pragma mark - Enum UpdateNotificationStatusMessage_NotificationState
+
+typedef GPB_ENUM(UpdateNotificationStatusMessage_NotificationState) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  UpdateNotificationStatusMessage_NotificationState_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  UpdateNotificationStatusMessage_NotificationState_UnsetState = 0,
+  UpdateNotificationStatusMessage_NotificationState_Viewed = 1,
+};
+
+GPBEnumDescriptor *UpdateNotificationStatusMessage_NotificationState_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL UpdateNotificationStatusMessage_NotificationState_IsValidValue(int32_t value);
 
 #pragma mark - PogoprotosNetworkingRequestsMessagesRoot
 
@@ -121,6 +146,34 @@ typedef GPB_ENUM(AttackGymMessage_FieldNumber) {
 @property(nonatomic, readwrite) double playerLatitude;
 
 @property(nonatomic, readwrite) double playerLongitude;
+
+@end
+
+#pragma mark - AttackRaidMessage
+
+typedef GPB_ENUM(AttackRaidMessage_FieldNumber) {
+  AttackRaidMessage_FieldNumber_GymId = 1,
+  AttackRaidMessage_FieldNumber_BattleId = 2,
+  AttackRaidMessage_FieldNumber_AttackerActionsArray = 3,
+  AttackRaidMessage_FieldNumber_LastRetrievedAction = 4,
+  AttackRaidMessage_FieldNumber_TimestampMs = 5,
+};
+
+@interface AttackRaidMessage : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *gymId;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *battleId;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<BattleAction*> *attackerActionsArray;
+/** The number of items in @c attackerActionsArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger attackerActionsArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) BattleAction *lastRetrievedAction;
+/** Test to see if @c lastRetrievedAction has been set. */
+@property(nonatomic, readwrite) BOOL hasLastRetrievedAction;
+
+@property(nonatomic, readwrite) int64_t timestampMs;
 
 @end
 
@@ -561,6 +614,24 @@ typedef GPB_ENUM(GetDownloadUrlsMessage_FieldNumber) {
 
 @end
 
+#pragma mark - GetGymBadgeDetailsMessage
+
+typedef GPB_ENUM(GetGymBadgeDetailsMessage_FieldNumber) {
+  GetGymBadgeDetailsMessage_FieldNumber_FortId = 1,
+  GetGymBadgeDetailsMessage_FieldNumber_Latitude = 2,
+  GetGymBadgeDetailsMessage_FieldNumber_Longitude = 3,
+};
+
+@interface GetGymBadgeDetailsMessage : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *fortId;
+
+@property(nonatomic, readwrite) double latitude;
+
+@property(nonatomic, readwrite) double longitude;
+
+@end
+
 #pragma mark - GetGymDetailsMessage
 
 typedef GPB_ENUM(GetGymDetailsMessage_FieldNumber) {
@@ -599,10 +670,19 @@ typedef GPB_ENUM(GetGymDetailsMessage_FieldNumber) {
 
 #pragma mark - GetInboxMessage
 
-/**
- * No message needed.
- **/
+typedef GPB_ENUM(GetInboxMessage_FieldNumber) {
+  GetInboxMessage_FieldNumber_IsHistory = 1,
+  GetInboxMessage_FieldNumber_IsReverse = 2,
+  GetInboxMessage_FieldNumber_NotBeforeMs = 3,
+};
+
 @interface GetInboxMessage : GPBMessage
+
+@property(nonatomic, readwrite) BOOL isHistory;
+
+@property(nonatomic, readwrite) BOOL isReverse;
+
+@property(nonatomic, readwrite) int64_t notBeforeMs;
 
 @end
 
@@ -706,6 +786,116 @@ typedef GPB_ENUM(GetPlayerProfileMessage_FieldNumber) {
 
 @end
 
+#pragma mark - GetRaidDetailsMessage
+
+typedef GPB_ENUM(GetRaidDetailsMessage_FieldNumber) {
+  GetRaidDetailsMessage_FieldNumber_RaidSeed = 1,
+  GetRaidDetailsMessage_FieldNumber_GymId = 2,
+  GetRaidDetailsMessage_FieldNumber_LobbyIdArray = 3,
+  GetRaidDetailsMessage_FieldNumber_PlayerLatDegrees = 4,
+  GetRaidDetailsMessage_FieldNumber_PlayerLngDegrees = 5,
+};
+
+@interface GetRaidDetailsMessage : GPBMessage
+
+@property(nonatomic, readwrite) int64_t raidSeed;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *gymId;
+
+@property(nonatomic, readwrite, strong, null_resettable) GPBInt32Array *lobbyIdArray;
+/** The number of items in @c lobbyIdArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger lobbyIdArray_Count;
+
+@property(nonatomic, readwrite) double playerLatDegrees;
+
+@property(nonatomic, readwrite) double playerLngDegrees;
+
+@end
+
+#pragma mark - GymDeployMessage
+
+typedef GPB_ENUM(GymDeployMessage_FieldNumber) {
+  GymDeployMessage_FieldNumber_FortId = 1,
+  GymDeployMessage_FieldNumber_PokemonId = 2,
+  GymDeployMessage_FieldNumber_PlayerLatitude = 3,
+  GymDeployMessage_FieldNumber_PlayerLongitude = 4,
+};
+
+@interface GymDeployMessage : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *fortId;
+
+@property(nonatomic, readwrite) uint64_t pokemonId;
+
+@property(nonatomic, readwrite) double playerLatitude;
+
+@property(nonatomic, readwrite) double playerLongitude;
+
+@end
+
+#pragma mark - GymFeedPokemonMessage
+
+typedef GPB_ENUM(GymFeedPokemonMessage_FieldNumber) {
+  GymFeedPokemonMessage_FieldNumber_Item = 1,
+  GymFeedPokemonMessage_FieldNumber_StartingQuantity = 2,
+  GymFeedPokemonMessage_FieldNumber_GymId = 3,
+  GymFeedPokemonMessage_FieldNumber_PokemonId = 4,
+  GymFeedPokemonMessage_FieldNumber_PlayerLatDegrees = 5,
+  GymFeedPokemonMessage_FieldNumber_PlayerLngDegrees = 6,
+};
+
+@interface GymFeedPokemonMessage : GPBMessage
+
+@property(nonatomic, readwrite) enum ItemId item;
+
+@property(nonatomic, readwrite) int32_t startingQuantity;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *gymId;
+
+@property(nonatomic, readwrite) uint64_t pokemonId;
+
+@property(nonatomic, readwrite) double playerLatDegrees;
+
+@property(nonatomic, readwrite) double playerLngDegrees;
+
+@end
+
+/**
+ * Fetches the raw value of a @c GymFeedPokemonMessage's @c item property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t GymFeedPokemonMessage_Item_RawValue(GymFeedPokemonMessage *message);
+/**
+ * Sets the raw value of an @c GymFeedPokemonMessage's @c item property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetGymFeedPokemonMessage_Item_RawValue(GymFeedPokemonMessage *message, int32_t value);
+
+#pragma mark - GymGetInfoMessage
+
+typedef GPB_ENUM(GymGetInfoMessage_FieldNumber) {
+  GymGetInfoMessage_FieldNumber_GymId = 1,
+  GymGetInfoMessage_FieldNumber_PlayerLatDegrees = 2,
+  GymGetInfoMessage_FieldNumber_PlayerLngDegrees = 3,
+  GymGetInfoMessage_FieldNumber_GymLatDegrees = 4,
+  GymGetInfoMessage_FieldNumber_GymLngDegrees = 5,
+};
+
+@interface GymGetInfoMessage : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *gymId;
+
+@property(nonatomic, readwrite) double playerLatDegrees;
+
+@property(nonatomic, readwrite) double playerLngDegrees;
+
+@property(nonatomic, readwrite) double gymLatDegrees;
+
+@property(nonatomic, readwrite) double gymLngDegrees;
+
+@end
+
 #pragma mark - IncenseEncounterMessage
 
 typedef GPB_ENUM(IncenseEncounterMessage_FieldNumber) {
@@ -775,6 +965,15 @@ int32_t ListAvatarCustomizationsMessage_AvatarType_RawValue(ListAvatarCustomizat
  **/
 void SetListAvatarCustomizationsMessage_AvatarType_RawValue(ListAvatarCustomizationsMessage *message, int32_t value);
 
+#pragma mark - ListGymBadgesMessage
+
+/**
+ * No message needed.
+ **/
+@interface ListGymBadgesMessage : GPBMessage
+
+@end
+
 #pragma mark - MarkTutorialCompleteMessage
 
 typedef GPB_ENUM(MarkTutorialCompleteMessage_FieldNumber) {
@@ -808,6 +1007,152 @@ typedef GPB_ENUM(NicknamePokemonMessage_FieldNumber) {
 @property(nonatomic, readwrite) uint64_t pokemonId;
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *nickname;
+
+@end
+
+#pragma mark - RegisterPushNotificationMessage
+
+typedef GPB_ENUM(RegisterPushNotificationMessage_FieldNumber) {
+  RegisterPushNotificationMessage_FieldNumber_ApnToken = 1,
+  RegisterPushNotificationMessage_FieldNumber_GcmToken = 2,
+};
+
+@interface RegisterPushNotificationMessage : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) RegisterPushNotificationMessage_ApnToken *apnToken;
+/** Test to see if @c apnToken has been set. */
+@property(nonatomic, readwrite) BOOL hasApnToken;
+
+@property(nonatomic, readwrite, strong, null_resettable) RegisterPushNotificationMessage_GcmToken *gcmToken;
+/** Test to see if @c gcmToken has been set. */
+@property(nonatomic, readwrite) BOOL hasGcmToken;
+
+@end
+
+#pragma mark - RegisterPushNotificationMessage_ApnToken
+
+typedef GPB_ENUM(RegisterPushNotificationMessage_ApnToken_FieldNumber) {
+  RegisterPushNotificationMessage_ApnToken_FieldNumber_RegistrationId = 1,
+  RegisterPushNotificationMessage_ApnToken_FieldNumber_BundleIdentifier = 2,
+  RegisterPushNotificationMessage_ApnToken_FieldNumber_PayloadByteSize = 3,
+};
+
+@interface RegisterPushNotificationMessage_ApnToken : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *registrationId;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *bundleIdentifier;
+
+@property(nonatomic, readwrite) int32_t payloadByteSize;
+
+@end
+
+#pragma mark - RegisterPushNotificationMessage_GcmToken
+
+typedef GPB_ENUM(RegisterPushNotificationMessage_GcmToken_FieldNumber) {
+  RegisterPushNotificationMessage_GcmToken_FieldNumber_RegistrationId = 1,
+};
+
+@interface RegisterPushNotificationMessage_GcmToken : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *registrationId;
+
+@end
+
+#pragma mark - UpdateNotificationStatusMessage
+
+typedef GPB_ENUM(UpdateNotificationStatusMessage_FieldNumber) {
+  UpdateNotificationStatusMessage_FieldNumber_NotificationIdsArray = 1,
+  UpdateNotificationStatusMessage_FieldNumber_CreateTimestampMsArray = 2,
+  UpdateNotificationStatusMessage_FieldNumber_State = 3,
+};
+
+@interface UpdateNotificationStatusMessage : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<NSString*> *notificationIdsArray;
+/** The number of items in @c notificationIdsArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger notificationIdsArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) GPBInt64Array *createTimestampMsArray;
+/** The number of items in @c createTimestampMsArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger createTimestampMsArray_Count;
+
+@property(nonatomic, readwrite) UpdateNotificationStatusMessage_NotificationState state;
+
+@end
+
+/**
+ * Fetches the raw value of a @c UpdateNotificationStatusMessage's @c state property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t UpdateNotificationStatusMessage_State_RawValue(UpdateNotificationStatusMessage *message);
+/**
+ * Sets the raw value of an @c UpdateNotificationStatusMessage's @c state property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetUpdateNotificationStatusMessage_State_RawValue(UpdateNotificationStatusMessage *message, int32_t value);
+
+#pragma mark - OptOutPushNotificationCategoryMessage
+
+typedef GPB_ENUM(OptOutPushNotificationCategoryMessage_FieldNumber) {
+  OptOutPushNotificationCategoryMessage_FieldNumber_CategoriesArray = 1,
+};
+
+@interface OptOutPushNotificationCategoryMessage : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<NSString*> *categoriesArray;
+/** The number of items in @c categoriesArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger categoriesArray_Count;
+
+@end
+
+#pragma mark - PushNotificationRegistryMessage
+
+typedef GPB_ENUM(PushNotificationRegistryMessage_FieldNumber) {
+  PushNotificationRegistryMessage_FieldNumber_ApnToken = 1,
+  PushNotificationRegistryMessage_FieldNumber_GcmToken = 2,
+};
+
+@interface PushNotificationRegistryMessage : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) PushNotificationRegistryMessage_ApnToken *apnToken;
+/** Test to see if @c apnToken has been set. */
+@property(nonatomic, readwrite) BOOL hasApnToken;
+
+@property(nonatomic, readwrite, strong, null_resettable) PushNotificationRegistryMessage_GcmToken *gcmToken;
+/** Test to see if @c gcmToken has been set. */
+@property(nonatomic, readwrite) BOOL hasGcmToken;
+
+@end
+
+#pragma mark - PushNotificationRegistryMessage_ApnToken
+
+typedef GPB_ENUM(PushNotificationRegistryMessage_ApnToken_FieldNumber) {
+  PushNotificationRegistryMessage_ApnToken_FieldNumber_RegistrationId = 1,
+  PushNotificationRegistryMessage_ApnToken_FieldNumber_BundleIdentifier = 2,
+  PushNotificationRegistryMessage_ApnToken_FieldNumber_PayloadByteSize = 3,
+};
+
+@interface PushNotificationRegistryMessage_ApnToken : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *registrationId;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *bundleIdentifier;
+
+@property(nonatomic, readwrite) int32_t payloadByteSize;
+
+@end
+
+#pragma mark - PushNotificationRegistryMessage_GcmToken
+
+typedef GPB_ENUM(PushNotificationRegistryMessage_GcmToken_FieldNumber) {
+  PushNotificationRegistryMessage_GcmToken_FieldNumber_RegistrationId = 1,
+};
+
+@interface PushNotificationRegistryMessage_GcmToken : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *registrationId;
 
 @end
 
@@ -970,6 +1315,18 @@ void SetSetPlayerTeamMessage_Team_RawValue(SetPlayerTeamMessage *message, int32_
  * No message needed.
  **/
 @interface SfidaActionLogMessage : GPBMessage
+
+@end
+
+#pragma mark - SfidaRegistrationMessage
+
+typedef GPB_ENUM(SfidaRegistrationMessage_FieldNumber) {
+  SfidaRegistrationMessage_FieldNumber_SfidaId = 1,
+};
+
+@interface SfidaRegistrationMessage : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *sfidaId;
 
 @end
 
@@ -1178,6 +1535,33 @@ int32_t UseItemGymMessage_ItemId_RawValue(UseItemGymMessage *message);
  **/
 void SetUseItemGymMessage_ItemId_RawValue(UseItemGymMessage *message, int32_t value);
 
+#pragma mark - UseItemMoveRerollMessage
+
+typedef GPB_ENUM(UseItemMoveRerollMessage_FieldNumber) {
+  UseItemMoveRerollMessage_FieldNumber_ItemId = 1,
+  UseItemMoveRerollMessage_FieldNumber_PokemonId = 2,
+};
+
+@interface UseItemMoveRerollMessage : GPBMessage
+
+@property(nonatomic, readwrite) enum ItemId itemId;
+
+@property(nonatomic, readwrite) uint64_t pokemonId;
+
+@end
+
+/**
+ * Fetches the raw value of a @c UseItemMoveRerollMessage's @c itemId property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t UseItemMoveRerollMessage_ItemId_RawValue(UseItemMoveRerollMessage *message);
+/**
+ * Sets the raw value of an @c UseItemMoveRerollMessage's @c itemId property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetUseItemMoveRerollMessage_ItemId_RawValue(UseItemMoveRerollMessage *message, int32_t value);
+
 #pragma mark - UseItemPotionMessage
 
 typedef GPB_ENUM(UseItemPotionMessage_FieldNumber) {
@@ -1204,6 +1588,45 @@ int32_t UseItemPotionMessage_ItemId_RawValue(UseItemPotionMessage *message);
  * was generated.
  **/
 void SetUseItemPotionMessage_ItemId_RawValue(UseItemPotionMessage *message, int32_t value);
+
+#pragma mark - UseItemRareCandyMessage
+
+typedef GPB_ENUM(UseItemRareCandyMessage_FieldNumber) {
+  UseItemRareCandyMessage_FieldNumber_ItemId = 1,
+  UseItemRareCandyMessage_FieldNumber_PokemonId = 2,
+};
+
+@interface UseItemRareCandyMessage : GPBMessage
+
+@property(nonatomic, readwrite) enum ItemId itemId;
+
+@property(nonatomic, readwrite) enum PokemonId pokemonId;
+
+@end
+
+/**
+ * Fetches the raw value of a @c UseItemRareCandyMessage's @c itemId property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t UseItemRareCandyMessage_ItemId_RawValue(UseItemRareCandyMessage *message);
+/**
+ * Sets the raw value of an @c UseItemRareCandyMessage's @c itemId property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetUseItemRareCandyMessage_ItemId_RawValue(UseItemRareCandyMessage *message, int32_t value);
+
+/**
+ * Fetches the raw value of a @c UseItemRareCandyMessage's @c pokemonId property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t UseItemRareCandyMessage_PokemonId_RawValue(UseItemRareCandyMessage *message);
+/**
+ * Sets the raw value of an @c UseItemRareCandyMessage's @c pokemonId property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetUseItemRareCandyMessage_PokemonId_RawValue(UseItemRareCandyMessage *message, int32_t value);
 
 #pragma mark - UseItemReviveMessage
 

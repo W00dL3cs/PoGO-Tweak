@@ -21,6 +21,7 @@
 #endif
 
  #import "PogoprotosData.pbobjc.h"
+ #import "PogoprotosDataRaid.pbobjc.h"
  #import "PogoprotosEnums.pbobjc.h"
  #import "PogoprotosInventoryItem.pbobjc.h"
 // @@protoc_insertion_point(imports)
@@ -31,7 +32,10 @@
 CF_EXTERN_C_BEGIN
 
 @class FortLureInfo;
+@class GymDisplay;
+@class GymEvent;
 @class PokemonDisplay;
+@class RaidInfo;
 GPB_ENUM_FWD_DECLARE(ItemId);
 GPB_ENUM_FWD_DECLARE(PokemonId);
 GPB_ENUM_FWD_DECLARE(TeamColor);
@@ -90,6 +94,8 @@ typedef GPB_ENUM(FortSponsor) {
   FortSponsor_Muffintin = 19,
   FortSponsor_Salamander = 20,
   FortSponsor_Plancha = 21,
+  FortSponsor_NiaOps = 22,
+  FortSponsor_Whisk = 23,
 };
 
 GPBEnumDescriptor *FortSponsor_EnumDescriptor(void);
@@ -120,6 +126,34 @@ GPBEnumDescriptor *FortType_EnumDescriptor(void);
  * the time this source was generated.
  **/
 BOOL FortType_IsValidValue(int32_t value);
+
+#pragma mark - Enum GymEvent_Event
+
+typedef GPB_ENUM(GymEvent_Event) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  GymEvent_Event_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  GymEvent_Event_Unknown = 0,
+  GymEvent_Event_PokemonFed = 1,
+  GymEvent_Event_PokemonDeployed = 2,
+  GymEvent_Event_PokemonReturned = 3,
+  GymEvent_Event_BattleWon = 4,
+  GymEvent_Event_BattleLoss = 5,
+  GymEvent_Event_RaidStarted = 6,
+  GymEvent_Event_RaidEnded = 7,
+  GymEvent_Event_GymNeutralized = 8,
+};
+
+GPBEnumDescriptor *GymEvent_Event_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL GymEvent_Event_IsValidValue(int32_t value);
 
 #pragma mark - PogoprotosMapFortRoot
 
@@ -158,6 +192,13 @@ typedef GPB_ENUM(FortData_FieldNumber) {
   FortData_FieldNumber_DeployLockoutEndMs = 17,
   FortData_FieldNumber_GuardPokemonDisplay = 18,
   FortData_FieldNumber_Closed = 19,
+  FortData_FieldNumber_RaidInfo = 20,
+  FortData_FieldNumber_GymDisplay = 21,
+  FortData_FieldNumber_Visited = 22,
+  FortData_FieldNumber_SameTeamDeployLockoutEndMs = 23,
+  FortData_FieldNumber_AllowCheckin = 24,
+  FortData_FieldNumber_ImageURL = 25,
+  FortData_FieldNumber_InEvent = 26,
 };
 
 @interface FortData : GPBMessage
@@ -214,6 +255,24 @@ typedef GPB_ENUM(FortData_FieldNumber) {
 @property(nonatomic, readwrite) BOOL hasGuardPokemonDisplay;
 
 @property(nonatomic, readwrite) BOOL closed;
+
+@property(nonatomic, readwrite, strong, null_resettable) RaidInfo *raidInfo;
+/** Test to see if @c raidInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasRaidInfo;
+
+@property(nonatomic, readwrite, strong, null_resettable) GymDisplay *gymDisplay;
+/** Test to see if @c gymDisplay has been set. */
+@property(nonatomic, readwrite) BOOL hasGymDisplay;
+
+@property(nonatomic, readwrite) BOOL visited;
+
+@property(nonatomic, readwrite) int64_t sameTeamDeployLockoutEndMs;
+
+@property(nonatomic, readwrite) BOOL allowCheckin;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *imageURL;
+
+@property(nonatomic, readwrite) BOOL inEvent;
 
 @end
 
@@ -360,6 +419,68 @@ typedef GPB_ENUM(FortSummary_FieldNumber) {
 @property(nonatomic, readwrite) double longitude;
 
 @end
+
+#pragma mark - GymDisplay
+
+typedef GPB_ENUM(GymDisplay_FieldNumber) {
+  GymDisplay_FieldNumber_GymEventArray = 1,
+  GymDisplay_FieldNumber_TotalGymCp = 2,
+  GymDisplay_FieldNumber_LowestPokemonMotivation = 3,
+  GymDisplay_FieldNumber_SlotsAvailable = 4,
+  GymDisplay_FieldNumber_OccupiedMillis = 5,
+};
+
+@interface GymDisplay : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<GymEvent*> *gymEventArray;
+/** The number of items in @c gymEventArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger gymEventArray_Count;
+
+@property(nonatomic, readwrite) int32_t totalGymCp;
+
+@property(nonatomic, readwrite) double lowestPokemonMotivation;
+
+@property(nonatomic, readwrite) int32_t slotsAvailable;
+
+@property(nonatomic, readwrite) int64_t occupiedMillis;
+
+@end
+
+#pragma mark - GymEvent
+
+typedef GPB_ENUM(GymEvent_FieldNumber) {
+  GymEvent_FieldNumber_Trainer = 1,
+  GymEvent_FieldNumber_TimestampMs = 2,
+  GymEvent_FieldNumber_Event = 3,
+  GymEvent_FieldNumber_PokedexId = 4,
+  GymEvent_FieldNumber_PokemonId = 5,
+};
+
+@interface GymEvent : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *trainer;
+
+@property(nonatomic, readwrite) int64_t timestampMs;
+
+@property(nonatomic, readwrite) GymEvent_Event event;
+
+@property(nonatomic, readwrite) int32_t pokedexId;
+
+@property(nonatomic, readwrite) uint64_t pokemonId;
+
+@end
+
+/**
+ * Fetches the raw value of a @c GymEvent's @c event property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t GymEvent_Event_RawValue(GymEvent *message);
+/**
+ * Sets the raw value of an @c GymEvent's @c event property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetGymEvent_Event_RawValue(GymEvent *message, int32_t value);
 
 NS_ASSUME_NONNULL_END
 

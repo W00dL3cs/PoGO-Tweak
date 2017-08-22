@@ -43,6 +43,7 @@ typedef GPB_ENUM(ItemId) {
   ItemId_ItemGreatBall = 2,
   ItemId_ItemUltraBall = 3,
   ItemId_ItemMasterBall = 4,
+  ItemId_ItemPremierBall = 5,
   ItemId_ItemPotion = 101,
   ItemId_ItemSuperPotion = 102,
   ItemId_ItemHyperPotion = 103,
@@ -63,6 +64,9 @@ typedef GPB_ENUM(ItemId) {
   ItemId_ItemNanabBerry = 703,
   ItemId_ItemWeparBerry = 704,
   ItemId_ItemPinapBerry = 705,
+  ItemId_ItemGoldenRazzBerry = 706,
+  ItemId_ItemGoldenNanabBerry = 707,
+  ItemId_ItemGoldenPinapBerry = 708,
   ItemId_ItemSpecialCamera = 801,
   ItemId_ItemIncubatorBasicUnlimited = 901,
   ItemId_ItemIncubatorBasic = 902,
@@ -73,6 +77,12 @@ typedef GPB_ENUM(ItemId) {
   ItemId_ItemMetalCoat = 1103,
   ItemId_ItemDragonScale = 1104,
   ItemId_ItemUpGrade = 1105,
+  ItemId_ItemMoveRerollFastAttack = 1201,
+  ItemId_ItemMoveRerollSpecialAttack = 1202,
+  ItemId_ItemRareCandy = 1301,
+  ItemId_ItemFreeRaidTicket = 1401,
+  ItemId_ItemPaidRaidTicket = 1402,
+  ItemId_ItemLegendaryRaidTicket = 1403,
 };
 
 GPBEnumDescriptor *ItemId_EnumDescriptor(void);
@@ -106,6 +116,9 @@ typedef GPB_ENUM(ItemType) {
   ItemType_ItemTypeXpBoost = 11,
   ItemType_ItemTypeInventoryUpgrade = 12,
   ItemType_ItemTypeEvolutionRequirement = 13,
+  ItemType_ItemTypeMoveReroll = 14,
+  ItemType_ItemTypeCandy = 15,
+  ItemType_ItemTypeRaidTicket = 16,
 };
 
 GPBEnumDescriptor *ItemType_EnumDescriptor(void);

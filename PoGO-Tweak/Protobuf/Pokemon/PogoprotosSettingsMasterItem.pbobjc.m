@@ -223,10 +223,14 @@ typedef struct ExperienceBoostAttributes__storage_ {
 @dynamic itemEffectArray, itemEffectArray_Count;
 @dynamic itemEffectPercentArray, itemEffectPercentArray_Count;
 @dynamic growthPercent;
+@dynamic berryMultiplier;
+@dynamic remoteBerryMultiplier;
 
 typedef struct FoodAttributes__storage_ {
   uint32_t _has_storage_[1];
   float growthPercent;
+  float berryMultiplier;
+  float remoteBerryMultiplier;
   GPBEnumArray *itemEffectArray;
   GPBFloatArray *itemEffectPercentArray;
 } FoodAttributes__storage_;
@@ -261,6 +265,24 @@ typedef struct FoodAttributes__storage_ {
         .number = FoodAttributes_FieldNumber_GrowthPercent,
         .hasIndex = 0,
         .offset = (uint32_t)offsetof(FoodAttributes__storage_, growthPercent),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeFloat,
+      },
+      {
+        .name = "berryMultiplier",
+        .dataTypeSpecific.className = NULL,
+        .number = FoodAttributes_FieldNumber_BerryMultiplier,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(FoodAttributes__storage_, berryMultiplier),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeFloat,
+      },
+      {
+        .name = "remoteBerryMultiplier",
+        .dataTypeSpecific.className = NULL,
+        .number = FoodAttributes_FieldNumber_RemoteBerryMultiplier,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(FoodAttributes__storage_, remoteBerryMultiplier),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeFloat,
       },

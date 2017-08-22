@@ -394,6 +394,83 @@ typedef struct DownloadUrlEntry__storage_ {
 
 @end
 
+#pragma mark - FoodValue
+
+@implementation FoodValue
+
+@dynamic motivationIncrease;
+@dynamic cpIncrease;
+@dynamic foodItem;
+
+typedef struct FoodValue__storage_ {
+  uint32_t _has_storage_[1];
+  float motivationIncrease;
+  int32_t cpIncrease;
+  ItemId foodItem;
+} FoodValue__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "motivationIncrease",
+        .dataTypeSpecific.className = NULL,
+        .number = FoodValue_FieldNumber_MotivationIncrease,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(FoodValue__storage_, motivationIncrease),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeFloat,
+      },
+      {
+        .name = "cpIncrease",
+        .dataTypeSpecific.className = NULL,
+        .number = FoodValue_FieldNumber_CpIncrease,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(FoodValue__storage_, cpIncrease),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "foodItem",
+        .dataTypeSpecific.enumDescFunc = ItemId_EnumDescriptor,
+        .number = FoodValue_FieldNumber_FoodItem,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(FoodValue__storage_, foodItem),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[FoodValue class]
+                                     rootClass:[PogoprotosDataRoot class]
+                                          file:PogoprotosDataRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(FoodValue__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t FoodValue_FoodItem_RawValue(FoodValue *message) {
+  GPBDescriptor *descriptor = [FoodValue descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:FoodValue_FieldNumber_FoodItem];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetFoodValue_FoodItem_RawValue(FoodValue *message, int32_t value) {
+  GPBDescriptor *descriptor = [FoodValue descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:FoodValue_FieldNumber_FoodItem];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
 #pragma mark - PlayerBadge
 
 @implementation PlayerBadge
@@ -936,6 +1013,8 @@ void SetPokedexEntry_PokemonId_RawValue(PokedexEntry *message, int32_t value) {
 @dynamic displayPokemonId;
 @dynamic displayCp;
 @dynamic hasPokemonDisplay, pokemonDisplay;
+@dynamic isBad;
+@dynamic hatchedFromEgg;
 
 typedef struct PokemonData__storage_ {
   uint32_t _has_storage_[2];
@@ -1296,6 +1375,24 @@ typedef struct PokemonData__storage_ {
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
+      {
+        .name = "isBad",
+        .dataTypeSpecific.className = NULL,
+        .number = PokemonData_FieldNumber_IsBad,
+        .hasIndex = 36,
+        .offset = 37,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
+      },
+      {
+        .name = "hatchedFromEgg",
+        .dataTypeSpecific.className = NULL,
+        .number = PokemonData_FieldNumber_HatchedFromEgg,
+        .hasIndex = 38,
+        .offset = 39,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[PokemonData class]
@@ -1488,6 +1585,7 @@ void SetPokemonDisplay_Form_RawValue(PokemonDisplay *message, int32_t value) {
 @dynamic pokeCandyArray, pokeCandyArray_Count;
 @dynamic stardust;
 @dynamic pokecoins;
+@dynamic badgesArray, badgesArray_Count;
 
 typedef struct RedeemPasscodeReward__storage_ {
   uint32_t _has_storage_[1];
@@ -1498,6 +1596,7 @@ typedef struct RedeemPasscodeReward__storage_ {
   NSMutableArray *eggPokemonArray;
   NSMutableArray *pokemonArray;
   NSMutableArray *pokeCandyArray;
+  GPBEnumArray *badgesArray;
 } RedeemPasscodeReward__storage_;
 
 // This method is threadsafe because it is initially called
@@ -1568,6 +1667,15 @@ typedef struct RedeemPasscodeReward__storage_ {
         .offset = (uint32_t)offsetof(RedeemPasscodeReward__storage_, pokecoins),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "badgesArray",
+        .dataTypeSpecific.enumDescFunc = GymBadgeType_EnumDescriptor,
+        .number = RedeemPasscodeReward_FieldNumber_BadgesArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(RedeemPasscodeReward__storage_, badgesArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
       },
     };
     GPBDescriptor *localDescriptor =

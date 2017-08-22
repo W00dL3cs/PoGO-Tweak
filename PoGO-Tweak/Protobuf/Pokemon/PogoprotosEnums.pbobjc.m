@@ -50,7 +50,9 @@ GPBEnumDescriptor *ActivityType_EnumDescriptor(void) {
         "ender\000ActivityDefeatGymLeader\000ActivityCa"
         "tchFirstCatchStreakBonus\000ActivitySearchF"
         "ortFirstOfTheDay\000ActivitySearchFortStrea"
-        "kBonus\000";
+        "kBonus\000ActivityDefeatRaidPokemon\000Activit"
+        "yFeedBerry\000ActivitySearchGym\000ActivityNew"
+        "Pokestop\000ActivityGymBattleLoss\000";
     static const int32_t values[] = {
         ActivityType_ActivityUnknown,
         ActivityType_ActivityCatchPokemon,
@@ -79,6 +81,11 @@ GPBEnumDescriptor *ActivityType_EnumDescriptor(void) {
         ActivityType_ActivityCatchFirstCatchStreakBonus,
         ActivityType_ActivitySearchFortFirstOfTheDay,
         ActivityType_ActivitySearchFortStreakBonus,
+        ActivityType_ActivityDefeatRaidPokemon,
+        ActivityType_ActivityFeedBerry,
+        ActivityType_ActivitySearchGym,
+        ActivityType_ActivityNewPokestop,
+        ActivityType_ActivityGymBattleLoss,
     };
     GPBEnumDescriptor *worker =
         [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(ActivityType)
@@ -122,6 +129,11 @@ BOOL ActivityType_IsValidValue(int32_t value__) {
     case ActivityType_ActivityCatchFirstCatchStreakBonus:
     case ActivityType_ActivitySearchFortFirstOfTheDay:
     case ActivityType_ActivitySearchFortStreakBonus:
+    case ActivityType_ActivityDefeatRaidPokemon:
+    case ActivityType_ActivityFeedBerry:
+    case ActivityType_ActivitySearchGym:
+    case ActivityType_ActivityNewPokestop:
+    case ActivityType_ActivityGymBattleLoss:
       return YES;
     default:
       return NO;
@@ -151,7 +163,11 @@ GPBEnumDescriptor *BadgeType_EnumDescriptor(void) {
         "c\000BadgeTypeIce\000BadgeTypeDragon\000BadgeType"
         "Dark\000BadgeTypeFairy\000BadgeSmallRattata\000Ba"
         "dgePikachu\000BadgeUnown\000BadgePokedexEntrie"
-        "sGen2\000";
+        "sGen2\000BadgeRaidBattleWon\000BadgeLegendaryB"
+        "attleWon\000BadgeBerriesFed\000BadgeHoursDefen"
+        "ded\000BadgePlaceHolder\000BadgeEventMin\000Badge"
+        "ChicagoFestJuly2017\000BadgePikachuOutbreak"
+        "Yokohama2017\000";
     static const int32_t values[] = {
         BadgeType_BadgeUnset,
         BadgeType_BadgeTravelKm,
@@ -193,13 +209,23 @@ GPBEnumDescriptor *BadgeType_EnumDescriptor(void) {
         BadgeType_BadgePikachu,
         BadgeType_BadgeUnown,
         BadgeType_BadgePokedexEntriesGen2,
+        BadgeType_BadgeRaidBattleWon,
+        BadgeType_BadgeLegendaryBattleWon,
+        BadgeType_BadgeBerriesFed,
+        BadgeType_BadgeHoursDefended,
+        BadgeType_BadgePlaceHolder,
+        BadgeType_BadgeEventMin,
+        BadgeType_BadgeChicagoFestJuly2017,
+        BadgeType_BadgePikachuOutbreakYokohama2017,
     };
+    static const char *extraTextFormatInfo = "\002.e\347\344\344\204\000/e\347\350\350\204\000";
     GPBEnumDescriptor *worker =
         [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(BadgeType)
                                        valueNames:valueNames
                                            values:values
                                             count:(uint32_t)(sizeof(values) / sizeof(int32_t))
-                                     enumVerifier:BadgeType_IsValidValue];
+                                     enumVerifier:BadgeType_IsValidValue
+                              extraTextFormatInfo:extraTextFormatInfo];
     if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
       [worker release];
     }
@@ -249,6 +275,14 @@ BOOL BadgeType_IsValidValue(int32_t value__) {
     case BadgeType_BadgePikachu:
     case BadgeType_BadgeUnown:
     case BadgeType_BadgePokedexEntriesGen2:
+    case BadgeType_BadgeRaidBattleWon:
+    case BadgeType_BadgeLegendaryBattleWon:
+    case BadgeType_BadgeBerriesFed:
+    case BadgeType_BadgeHoursDefended:
+    case BadgeType_BadgePlaceHolder:
+    case BadgeType_BadgeEventMin:
+    case BadgeType_BadgeChicagoFestJuly2017:
+    case BadgeType_BadgePikachuOutbreakYokohama2017:
       return YES;
     default:
       return NO;
@@ -370,11 +404,13 @@ GPBEnumDescriptor *Costume_EnumDescriptor(void) {
   static GPBEnumDescriptor *descriptor = NULL;
   if (!descriptor) {
     static const char *valueNames =
-        "CostumeUnset\000Holiday2016\000Anniversary\000";
+        "CostumeUnset\000Holiday2016\000Anniversary\000One"
+        "YearAnniversary\000";
     static const int32_t values[] = {
         Costume_CostumeUnset,
         Costume_Holiday2016,
         Costume_Anniversary,
+        Costume_OneYearAnniversary,
     };
     static const char *extraTextFormatInfo = "\001\001g\204\000";
     GPBEnumDescriptor *worker =
@@ -396,6 +432,7 @@ BOOL Costume_IsValidValue(int32_t value__) {
     case Costume_CostumeUnset:
     case Costume_Holiday2016:
     case Costume_Anniversary:
+    case Costume_OneYearAnniversary:
       return YES;
     default:
       return NO;
@@ -408,11 +445,12 @@ GPBEnumDescriptor *EncounterType_EnumDescriptor(void) {
   static GPBEnumDescriptor *descriptor = NULL;
   if (!descriptor) {
     static const char *valueNames =
-        "SpawnPoint\000Incense\000Disk\000";
+        "SpawnPoint\000Incense\000Disk\000PostRaid\000";
     static const int32_t values[] = {
         EncounterType_SpawnPoint,
         EncounterType_Incense,
         EncounterType_Disk,
+        EncounterType_PostRaid,
     };
     GPBEnumDescriptor *worker =
         [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(EncounterType)
@@ -432,6 +470,7 @@ BOOL EncounterType_IsValidValue(int32_t value__) {
     case EncounterType_SpawnPoint:
     case EncounterType_Incense:
     case EncounterType_Disk:
+    case EncounterType_PostRaid:
       return YES;
     default:
       return NO;
@@ -614,6 +653,47 @@ BOOL Gender_IsValidValue(int32_t value__) {
   }
 }
 
+#pragma mark - Enum GymBadgeType
+
+GPBEnumDescriptor *GymBadgeType_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "GymBadgeUnset\000GymBadgeVanilla\000GymBadgeBr"
+        "onze\000GymBadgeSilver\000GymBadgeGold\000";
+    static const int32_t values[] = {
+        GymBadgeType_GymBadgeUnset,
+        GymBadgeType_GymBadgeVanilla,
+        GymBadgeType_GymBadgeBronze,
+        GymBadgeType_GymBadgeSilver,
+        GymBadgeType_GymBadgeGold,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(GymBadgeType)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:GymBadgeType_IsValidValue];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL GymBadgeType_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case GymBadgeType_GymBadgeUnset:
+    case GymBadgeType_GymBadgeVanilla:
+    case GymBadgeType_GymBadgeBronze:
+    case GymBadgeType_GymBadgeSilver:
+    case GymBadgeType_GymBadgeGold:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
 #pragma mark - Enum HoloIapItemCategory
 
 GPBEnumDescriptor *HoloIapItemCategory_EnumDescriptor(void) {
@@ -670,7 +750,9 @@ GPBEnumDescriptor *ItemCategory_EnumDescriptor(void) {
         "ategoryCamera\000ItemCategoryDisk\000ItemCateg"
         "oryIncubator\000ItemCategoryIncense\000ItemCat"
         "egoryXpBoost\000ItemCategoryInventoryUpgrad"
-        "e\000ItemCategoryEvolutionRequirement\000";
+        "e\000ItemCategoryEvolutionRequirement\000ItemC"
+        "ategoryMoveReroll\000ItemCategoryCandy\000Item"
+        "CategoryRaidTicket\000";
     static const int32_t values[] = {
         ItemCategory_ItemCategoryNone,
         ItemCategory_ItemCategoryPokeball,
@@ -685,6 +767,9 @@ GPBEnumDescriptor *ItemCategory_EnumDescriptor(void) {
         ItemCategory_ItemCategoryXpBoost,
         ItemCategory_ItemCategoryInventoryUpgrade,
         ItemCategory_ItemCategoryEvolutionRequirement,
+        ItemCategory_ItemCategoryMoveReroll,
+        ItemCategory_ItemCategoryCandy,
+        ItemCategory_ItemCategoryRaidTicket,
     };
     GPBEnumDescriptor *worker =
         [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(ItemCategory)
@@ -714,6 +799,9 @@ BOOL ItemCategory_IsValidValue(int32_t value__) {
     case ItemCategory_ItemCategoryXpBoost:
     case ItemCategory_ItemCategoryInventoryUpgrade:
     case ItemCategory_ItemCategoryEvolutionRequirement:
+    case ItemCategory_ItemCategoryMoveReroll:
+    case ItemCategory_ItemCategoryCandy:
+    case ItemCategory_ItemCategoryRaidTicket:
       return YES;
     default:
       return NO;
@@ -735,7 +823,8 @@ GPBEnumDescriptor *ItemEffect_EnumDescriptor(void) {
         "EffectCapChanceHeavy\000ItemEffectCapChance"
         "Repeat\000ItemEffectCapChanceMultiThrow\000Ite"
         "mEffectCapChanceAlways\000ItemEffectCapChan"
-        "ceSingleThrow\000ItemEffectCandyAward\000";
+        "ceSingleThrow\000ItemEffectCandyAward\000ItemE"
+        "ffectFullMotivation\000";
     static const int32_t values[] = {
         ItemEffect_ItemEffectNone,
         ItemEffect_ItemEffectCapNoFlee,
@@ -753,6 +842,7 @@ GPBEnumDescriptor *ItemEffect_EnumDescriptor(void) {
         ItemEffect_ItemEffectCapChanceAlways,
         ItemEffect_ItemEffectCapChanceSingleThrow,
         ItemEffect_ItemEffectCandyAward,
+        ItemEffect_ItemEffectFullMotivation,
     };
     GPBEnumDescriptor *worker =
         [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(ItemEffect)
@@ -785,6 +875,51 @@ BOOL ItemEffect_IsValidValue(int32_t value__) {
     case ItemEffect_ItemEffectCapChanceAlways:
     case ItemEffect_ItemEffectCapChanceSingleThrow:
     case ItemEffect_ItemEffectCandyAward:
+    case ItemEffect_ItemEffectFullMotivation:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
+#pragma mark - Enum NotificationCategory
+
+GPBEnumDescriptor *NotificationCategory_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "UnsetNotificationCategory\000GymRemoval\000Pok"
+        "emonHungry\000PokemonWon\000ExclusiveRaidInvit"
+        "e\000";
+    static const int32_t values[] = {
+        NotificationCategory_UnsetNotificationCategory,
+        NotificationCategory_GymRemoval,
+        NotificationCategory_PokemonHungry,
+        NotificationCategory_PokemonWon,
+        NotificationCategory_ExclusiveRaidInvite,
+    };
+    static const char *extraTextFormatInfo = "\001\000e\224\000";
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(NotificationCategory)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:NotificationCategory_IsValidValue
+                              extraTextFormatInfo:extraTextFormatInfo];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL NotificationCategory_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case NotificationCategory_UnsetNotificationCategory:
+    case NotificationCategory_GymRemoval:
+    case NotificationCategory_PokemonHungry:
+    case NotificationCategory_PokemonWon:
+    case NotificationCategory_ExclusiveRaidInvite:
       return YES;
     default:
       return NO;
@@ -797,12 +932,10 @@ GPBEnumDescriptor *NotificationState_EnumDescriptor(void) {
   static GPBEnumDescriptor *descriptor = NULL;
   if (!descriptor) {
     static const char *valueNames =
-        "UnsetState\000Listed\000Viewed\000Deleted\000";
+        "UnsetState\000Viewed\000";
     static const int32_t values[] = {
         NotificationState_UnsetState,
-        NotificationState_Listed,
         NotificationState_Viewed,
-        NotificationState_Deleted,
     };
     GPBEnumDescriptor *worker =
         [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(NotificationState)
@@ -820,9 +953,7 @@ GPBEnumDescriptor *NotificationState_EnumDescriptor(void) {
 BOOL NotificationState_IsValidValue(int32_t value__) {
   switch (value__) {
     case NotificationState_UnsetState:
-    case NotificationState_Listed:
     case NotificationState_Viewed:
-    case NotificationState_Deleted:
       return YES;
     default:
       return NO;
@@ -2524,6 +2655,51 @@ BOOL QuestType_IsValidValue(int32_t value__) {
   }
 }
 
+#pragma mark - Enum RaidLevel
+
+GPBEnumDescriptor *RaidLevel_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "RaidLevelUnset\000RaidLevel1\000RaidLevel2\000Rai"
+        "dLevel3\000RaidLevel4\000RaidLevel5\000";
+    static const int32_t values[] = {
+        RaidLevel_RaidLevelUnset,
+        RaidLevel_RaidLevel1,
+        RaidLevel_RaidLevel2,
+        RaidLevel_RaidLevel3,
+        RaidLevel_RaidLevel4,
+        RaidLevel_RaidLevel5,
+    };
+    static const char *extraTextFormatInfo = "\005\001d\345\201\000\002d\345\201\000\003d\345\201\000\004d\345\201\000\005d\345\201\000";
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(RaidLevel)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:RaidLevel_IsValidValue
+                              extraTextFormatInfo:extraTextFormatInfo];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL RaidLevel_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case RaidLevel_RaidLevelUnset:
+    case RaidLevel_RaidLevel1:
+    case RaidLevel_RaidLevel2:
+    case RaidLevel_RaidLevel3:
+    case RaidLevel_RaidLevel4:
+    case RaidLevel_RaidLevel5:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
 #pragma mark - Enum Slot
 
 GPBEnumDescriptor *Slot_EnumDescriptor(void) {
@@ -2667,6 +2843,100 @@ BOOL TutorialState_IsValidValue(int32_t value__) {
     case TutorialState_FirstTimeExperienceComplete:
     case TutorialState_PokestopTutorial:
     case TutorialState_GymTutorial:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
+#pragma mark - Enum VariableName
+
+GPBEnumDescriptor *VariableName_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "UnsetVariableName\000CodeName\000Team\000Level\000Ex"
+        "perience\000PokecoinBalance\000StardustBalance"
+        "\000Email\000LoginMethod\000GymId\000GymName\000Pokemon"
+        "Display\000PokedexEntryNumber\000PokemonId\000Pok"
+        "emonNickname\000GymBadgeEarnedPoints\000GymBad"
+        "geProgress\000GymBadgeRank\000GymBadgeImageURL"
+        "\000GymBadgeLevelUp\000PokecoinAwarded\000Pokecoi"
+        "nAwardedToday\000MaxDailyPokecoin\000BattlesWo"
+        "n\000BattlesLost\000DeployedMillis\000RaidSeed\000";
+    static const int32_t values[] = {
+        VariableName_UnsetVariableName,
+        VariableName_CodeName,
+        VariableName_Team,
+        VariableName_Level,
+        VariableName_Experience,
+        VariableName_PokecoinBalance,
+        VariableName_StardustBalance,
+        VariableName_Email,
+        VariableName_LoginMethod,
+        VariableName_GymId,
+        VariableName_GymName,
+        VariableName_PokemonDisplay,
+        VariableName_PokedexEntryNumber,
+        VariableName_PokemonId,
+        VariableName_PokemonNickname,
+        VariableName_GymBadgeEarnedPoints,
+        VariableName_GymBadgeProgress,
+        VariableName_GymBadgeRank,
+        VariableName_GymBadgeImageURL,
+        VariableName_GymBadgeLevelUp,
+        VariableName_PokecoinAwarded,
+        VariableName_PokecoinAwardedToday,
+        VariableName_MaxDailyPokecoin,
+        VariableName_BattlesWon,
+        VariableName_BattlesLost,
+        VariableName_DeployedMillis,
+        VariableName_RaidSeed,
+    };
+    static const char *extraTextFormatInfo = "\002\000e\214\000\022c\345\345\203\000";
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(VariableName)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:VariableName_IsValidValue
+                              extraTextFormatInfo:extraTextFormatInfo];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL VariableName_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case VariableName_UnsetVariableName:
+    case VariableName_CodeName:
+    case VariableName_Team:
+    case VariableName_Level:
+    case VariableName_Experience:
+    case VariableName_PokecoinBalance:
+    case VariableName_StardustBalance:
+    case VariableName_Email:
+    case VariableName_LoginMethod:
+    case VariableName_GymId:
+    case VariableName_GymName:
+    case VariableName_PokemonDisplay:
+    case VariableName_PokedexEntryNumber:
+    case VariableName_PokemonId:
+    case VariableName_PokemonNickname:
+    case VariableName_GymBadgeEarnedPoints:
+    case VariableName_GymBadgeProgress:
+    case VariableName_GymBadgeRank:
+    case VariableName_GymBadgeImageURL:
+    case VariableName_GymBadgeLevelUp:
+    case VariableName_PokecoinAwarded:
+    case VariableName_PokecoinAwardedToday:
+    case VariableName_MaxDailyPokecoin:
+    case VariableName_BattlesWon:
+    case VariableName_BattlesLost:
+    case VariableName_DeployedMillis:
+    case VariableName_RaidSeed:
       return YES;
     default:
       return NO;

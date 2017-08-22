@@ -30,8 +30,10 @@
  #import "PogoprotosMapPokemon.pbobjc.h"
  #import "PogoprotosDataPlayer.pbobjc.h"
  #import "PogoprotosDataGym.pbobjc.h"
+ #import "PogoprotosDataRaid.pbobjc.h"
  #import "PogoprotosMapFort.pbobjc.h"
  #import "PogoprotosInventory.pbobjc.h"
+ #import "PogoprotosDataBadge.pbobjc.h"
  #import "PogoprotosMap.pbobjc.h"
  #import "PogoprotosDataAvatar.pbobjc.h"
  #import "PogoprotosDataLogs.pbobjc.h"
@@ -48,11 +50,14 @@ CF_EXTERN_C_BEGIN
 @class AssetDigestEntry;
 @class AvatarCustomization;
 @class AvatarCustomizationSettings;
+@class AwardedGymBadge;
 @class BackgroundToken;
 @class BadgeSettings;
+@class Battle;
 @class BattleLog;
 @class BattleParticipant;
 @class BattlePokemonInfo;
+@class BattleUpdate;
 @class BuddyPokemon;
 @class CameraSettings;
 @class CaptureAward;
@@ -63,6 +68,7 @@ CF_EXTERN_C_BEGIN
 @class EncounterSettings;
 @class EquippedBadge;
 @class EquippedBadgeSettings;
+@class EventInfo;
 @class FormSettings;
 @class FortDetailsResponse;
 @class FortModifier;
@@ -70,15 +76,20 @@ CF_EXTERN_C_BEGIN
 @class GetInboxResponse_ClientInbox;
 @class GetInboxResponse_ClientInbox_Notification;
 @class GetInboxResponse_ClientInbox_TemplateVariable;
+@class GetPlayerProfileResponse_GymBadges;
 @class GlobalSettings;
+@class GymBadgeGmtSettings;
 @class GymBattleSettings;
+@class GymDefender;
 @class GymLevelSettings;
 @class GymState;
+@class GymStatusAndDefenders;
 @class IapItemDisplay;
 @class IapSettings;
 @class InventoryDelta;
 @class ItemAward;
 @class ItemSettings;
+@class Loot;
 @class MapCell;
 @class MoveSequenceSettings;
 @class MoveSettings;
@@ -149,6 +160,32 @@ GPBEnumDescriptor *AttackGymResponse_Result_EnumDescriptor(void);
  * the time this source was generated.
  **/
 BOOL AttackGymResponse_Result_IsValidValue(int32_t value);
+
+#pragma mark - Enum AttackRaidResponse_Result
+
+typedef GPB_ENUM(AttackRaidResponse_Result) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  AttackRaidResponse_Result_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  AttackRaidResponse_Result_Unset = 0,
+  AttackRaidResponse_Result_Success = 1,
+  AttackRaidResponse_Result_ErrorGymNotFound = 2,
+  AttackRaidResponse_Result_ErrorBattleNotFound = 3,
+  AttackRaidResponse_Result_ErrorInvalidAttackActions = 4,
+  AttackRaidResponse_Result_ErrorNotPartOfBattle = 5,
+  AttackRaidResponse_Result_ErrorBattleIdNotRaid = 6,
+};
+
+GPBEnumDescriptor *AttackRaidResponse_Result_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL AttackRaidResponse_Result_IsValidValue(int32_t value);
 
 #pragma mark - Enum CatchPokemonResponse_CatchStatus
 
@@ -504,6 +541,8 @@ typedef GPB_ENUM(FortDeployPokemonResponse_Result) {
   FortDeployPokemonResponse_Result_ErrorFortDeployLockout = 10,
   FortDeployPokemonResponse_Result_ErrorPlayerHasNoNickname = 11,
   FortDeployPokemonResponse_Result_ErrorPoiInaccessible = 12,
+  FortDeployPokemonResponse_Result_ErrorLegendaryPokemon = 13,
+  FortDeployPokemonResponse_Result_ErrorInvalidPokemon = 14,
 };
 
 GPBEnumDescriptor *FortDeployPokemonResponse_Result_EnumDescriptor(void);
@@ -643,8 +682,7 @@ typedef GPB_ENUM(GetInboxResponse_ClientInbox_Notification_Label) {
   GetInboxResponse_ClientInbox_Notification_Label_UnsetLabel = 0,
   GetInboxResponse_ClientInbox_Notification_Label_Unread = 1,
   GetInboxResponse_ClientInbox_Notification_Label_New = 2,
-  GetInboxResponse_ClientInbox_Notification_Label_ExpiringSoon = 3,
-  GetInboxResponse_ClientInbox_Notification_Label_Immediate = 4,
+  GetInboxResponse_ClientInbox_Notification_Label_Immediate = 3,
 };
 
 GPBEnumDescriptor *GetInboxResponse_ClientInbox_Notification_Label_EnumDescriptor(void);
@@ -654,30 +692,6 @@ GPBEnumDescriptor *GetInboxResponse_ClientInbox_Notification_Label_EnumDescripto
  * the time this source was generated.
  **/
 BOOL GetInboxResponse_ClientInbox_Notification_Label_IsValidValue(int32_t value);
-
-#pragma mark - Enum GetInboxResponse_ClientInbox_Notification_NotificationCategory
-
-typedef GPB_ENUM(GetInboxResponse_ClientInbox_Notification_NotificationCategory) {
-  /**
-   * Value used if any message's field encounters a value that is not defined
-   * by this enum. The message will also have C functions to get/set the rawValue
-   * of the field.
-   **/
-  GetInboxResponse_ClientInbox_Notification_NotificationCategory_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
-  GetInboxResponse_ClientInbox_Notification_NotificationCategory_UnsetCategory = 0,
-  GetInboxResponse_ClientInbox_Notification_NotificationCategory_Marketing = 1,
-  GetInboxResponse_ClientInbox_Notification_NotificationCategory_Announcement = 2,
-  GetInboxResponse_ClientInbox_Notification_NotificationCategory_AdminNote = 3,
-  GetInboxResponse_ClientInbox_Notification_NotificationCategory_GameEvent = 4,
-};
-
-GPBEnumDescriptor *GetInboxResponse_ClientInbox_Notification_NotificationCategory_EnumDescriptor(void);
-
-/**
- * Checks to see if the given value is defined by the enum or was not known at
- * the time this source was generated.
- **/
-BOOL GetInboxResponse_ClientInbox_Notification_NotificationCategory_IsValidValue(int32_t value);
 
 #pragma mark - Enum GetIncensePokemonResponse_Result
 
@@ -743,6 +757,101 @@ GPBEnumDescriptor *GetPlayerProfileResponse_Result_EnumDescriptor(void);
  * the time this source was generated.
  **/
 BOOL GetPlayerProfileResponse_Result_IsValidValue(int32_t value);
+
+#pragma mark - Enum GymDeployResponse_Result
+
+typedef GPB_ENUM(GymDeployResponse_Result) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  GymDeployResponse_Result_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  GymDeployResponse_Result_NoResultSet = 0,
+  GymDeployResponse_Result_Success = 1,
+  GymDeployResponse_Result_ErrorAlreadyHasPokemonOnFort = 2,
+  GymDeployResponse_Result_ErrorOpposingTeamOwnsFort = 3,
+  GymDeployResponse_Result_ErrorFortIsFull = 4,
+  GymDeployResponse_Result_ErrorNotInRange = 5,
+  GymDeployResponse_Result_ErrorPlayerHasNoTeam = 6,
+  GymDeployResponse_Result_ErrorPokemonNotFullHp = 7,
+  GymDeployResponse_Result_ErrorPlayerBelowMinimumLevel = 8,
+  GymDeployResponse_Result_ErrorPokemonIsBuddy = 9,
+  GymDeployResponse_Result_ErrorFortDeployLockout = 10,
+  GymDeployResponse_Result_ErrorPlayerHasNoNickname = 11,
+  GymDeployResponse_Result_ErrorPoiInaccessible = 12,
+  GymDeployResponse_Result_ErrorNotAPokemon = 13,
+  GymDeployResponse_Result_ErrorTooManyOfSameKind = 14,
+  GymDeployResponse_Result_ErrorTooManyDeployed = 15,
+  GymDeployResponse_Result_ErrorTeamDeployLockout = 16,
+  GymDeployResponse_Result_ErrorLegendaryPokemon = 17,
+  GymDeployResponse_Result_ErrorInvalidPokemon = 18,
+  GymDeployResponse_Result_ErrorRaidActive = 19,
+};
+
+GPBEnumDescriptor *GymDeployResponse_Result_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL GymDeployResponse_Result_IsValidValue(int32_t value);
+
+#pragma mark - Enum GymFeedPokemonResponse_Result
+
+typedef GPB_ENUM(GymFeedPokemonResponse_Result) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  GymFeedPokemonResponse_Result_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  GymFeedPokemonResponse_Result_Unset = 0,
+  GymFeedPokemonResponse_Result_Success = 1,
+  GymFeedPokemonResponse_Result_ErrorCannotUse = 2,
+  GymFeedPokemonResponse_Result_ErrorNotInRange = 3,
+  GymFeedPokemonResponse_Result_ErrorPokemonNotThere = 4,
+  GymFeedPokemonResponse_Result_ErrorPokemonFull = 5,
+  GymFeedPokemonResponse_Result_ErrorNoBerriesLeft = 6,
+  GymFeedPokemonResponse_Result_ErrorWrongTeam = 7,
+  GymFeedPokemonResponse_Result_ErrorWrongCount = 8,
+  GymFeedPokemonResponse_Result_ErrorTooFast = 9,
+  GymFeedPokemonResponse_Result_ErrorTooFrequent = 10,
+  GymFeedPokemonResponse_Result_ErrorGymBusy = 11,
+  GymFeedPokemonResponse_Result_ErrorRaidActive = 12,
+  GymFeedPokemonResponse_Result_ErrorGymClosed = 13,
+};
+
+GPBEnumDescriptor *GymFeedPokemonResponse_Result_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL GymFeedPokemonResponse_Result_IsValidValue(int32_t value);
+
+#pragma mark - Enum GymGetInfoResponse_Result
+
+typedef GPB_ENUM(GymGetInfoResponse_Result) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  GymGetInfoResponse_Result_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  GymGetInfoResponse_Result_Unset = 0,
+  GymGetInfoResponse_Result_Success = 1,
+  GymGetInfoResponse_Result_ErrorNotInRange = 2,
+  GymGetInfoResponse_Result_ErrorGymDisabled = 3,
+};
+
+GPBEnumDescriptor *GymGetInfoResponse_Result_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL GymGetInfoResponse_Result_IsValidValue(int32_t value);
 
 #pragma mark - Enum IncenseEncounterResponse_Result
 
@@ -834,6 +943,71 @@ GPBEnumDescriptor *NicknamePokemonResponse_Result_EnumDescriptor(void);
  * the time this source was generated.
  **/
 BOOL NicknamePokemonResponse_Result_IsValidValue(int32_t value);
+
+#pragma mark - Enum RegisterPushNotificationResponse_Result
+
+typedef GPB_ENUM(RegisterPushNotificationResponse_Result) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  RegisterPushNotificationResponse_Result_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  RegisterPushNotificationResponse_Result_Unset = 0,
+  RegisterPushNotificationResponse_Result_Success = 1,
+  RegisterPushNotificationResponse_Result_NoChange = 2,
+};
+
+GPBEnumDescriptor *RegisterPushNotificationResponse_Result_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL RegisterPushNotificationResponse_Result_IsValidValue(int32_t value);
+
+#pragma mark - Enum UpdateNotificationStatusResponse_NotificationState
+
+typedef GPB_ENUM(UpdateNotificationStatusResponse_NotificationState) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  UpdateNotificationStatusResponse_NotificationState_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  UpdateNotificationStatusResponse_NotificationState_UnsetState = 0,
+  UpdateNotificationStatusResponse_NotificationState_Viewed = 1,
+};
+
+GPBEnumDescriptor *UpdateNotificationStatusResponse_NotificationState_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL UpdateNotificationStatusResponse_NotificationState_IsValidValue(int32_t value);
+
+#pragma mark - Enum PushNotificationRegistryResponse_Result
+
+typedef GPB_ENUM(PushNotificationRegistryResponse_Result) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  PushNotificationRegistryResponse_Result_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  PushNotificationRegistryResponse_Result_Unset = 0,
+  PushNotificationRegistryResponse_Result_Success = 1,
+  PushNotificationRegistryResponse_Result_NoChange = 2,
+};
+
+GPBEnumDescriptor *PushNotificationRegistryResponse_Result_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL PushNotificationRegistryResponse_Result_IsValidValue(int32_t value);
 
 #pragma mark - Enum RecycleInventoryItemResponse_Result
 
@@ -967,6 +1141,7 @@ typedef GPB_ENUM(SetBuddyPokemonResponse_Result) {
   SetBuddyPokemonResponse_Result_ErrorPokemonDeployed = 2,
   SetBuddyPokemonResponse_Result_ErrorPokemonNotOwned = 3,
   SetBuddyPokemonResponse_Result_ErrorPokemonIsEgg = 4,
+  SetBuddyPokemonResponse_Result_ErrorInvalidPokemon = 5,
 };
 
 GPBEnumDescriptor *SetBuddyPokemonResponse_Result_EnumDescriptor(void);
@@ -1223,6 +1398,33 @@ GPBEnumDescriptor *UseItemGymResponse_Result_EnumDescriptor(void);
  **/
 BOOL UseItemGymResponse_Result_IsValidValue(int32_t value);
 
+#pragma mark - Enum UseItemMoveRerollResponse_Result
+
+typedef GPB_ENUM(UseItemMoveRerollResponse_Result) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  UseItemMoveRerollResponse_Result_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  UseItemMoveRerollResponse_Result_Unset = 0,
+  UseItemMoveRerollResponse_Result_Success = 1,
+  UseItemMoveRerollResponse_Result_NoPokemon = 2,
+  UseItemMoveRerollResponse_Result_NoOtherMoves = 3,
+  UseItemMoveRerollResponse_Result_NoPlayer = 4,
+  UseItemMoveRerollResponse_Result_WrongItemType = 5,
+  UseItemMoveRerollResponse_Result_ItemNotInInventory = 6,
+  UseItemMoveRerollResponse_Result_InvalidPokemon = 7,
+};
+
+GPBEnumDescriptor *UseItemMoveRerollResponse_Result_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL UseItemMoveRerollResponse_Result_IsValidValue(int32_t value);
+
 #pragma mark - Enum UseItemPotionResponse_Result
 
 typedef GPB_ENUM(UseItemPotionResponse_Result) {
@@ -1246,6 +1448,31 @@ GPBEnumDescriptor *UseItemPotionResponse_Result_EnumDescriptor(void);
  * the time this source was generated.
  **/
 BOOL UseItemPotionResponse_Result_IsValidValue(int32_t value);
+
+#pragma mark - Enum UseItemRareCandyResponse_Result
+
+typedef GPB_ENUM(UseItemRareCandyResponse_Result) {
+  /**
+   * Value used if any message's field encounters a value that is not defined
+   * by this enum. The message will also have C functions to get/set the rawValue
+   * of the field.
+   **/
+  UseItemRareCandyResponse_Result_GPBUnrecognizedEnumeratorValue = kGPBUnrecognizedEnumeratorValue,
+  UseItemRareCandyResponse_Result_Unset = 0,
+  UseItemRareCandyResponse_Result_Success = 1,
+  UseItemRareCandyResponse_Result_InvalidPokemonId = 2,
+  UseItemRareCandyResponse_Result_NoPlayer = 3,
+  UseItemRareCandyResponse_Result_WrongItemType = 4,
+  UseItemRareCandyResponse_Result_ItemNotInInventory = 5,
+};
+
+GPBEnumDescriptor *UseItemRareCandyResponse_Result_EnumDescriptor(void);
+
+/**
+ * Checks to see if the given value is defined by the enum or was not known at
+ * the time this source was generated.
+ **/
+BOOL UseItemRareCandyResponse_Result_IsValidValue(int32_t value);
 
 #pragma mark - Enum UseItemReviveResponse_Result
 
@@ -1348,6 +1575,7 @@ typedef GPB_ENUM(AttackGymResponse_FieldNumber) {
   AttackGymResponse_FieldNumber_BattleId = 3,
   AttackGymResponse_FieldNumber_ActiveDefender = 4,
   AttackGymResponse_FieldNumber_ActiveAttacker = 5,
+  AttackGymResponse_FieldNumber_BattleUpdate = 6,
 };
 
 @interface AttackGymResponse : GPBMessage
@@ -1368,6 +1596,10 @@ typedef GPB_ENUM(AttackGymResponse_FieldNumber) {
 /** Test to see if @c activeAttacker has been set. */
 @property(nonatomic, readwrite) BOOL hasActiveAttacker;
 
+@property(nonatomic, readwrite, strong, null_resettable) BattleUpdate *battleUpdate;
+/** Test to see if @c battleUpdate has been set. */
+@property(nonatomic, readwrite) BOOL hasBattleUpdate;
+
 @end
 
 /**
@@ -1382,6 +1614,35 @@ int32_t AttackGymResponse_Result_RawValue(AttackGymResponse *message);
  **/
 void SetAttackGymResponse_Result_RawValue(AttackGymResponse *message, int32_t value);
 
+#pragma mark - AttackRaidResponse
+
+typedef GPB_ENUM(AttackRaidResponse_FieldNumber) {
+  AttackRaidResponse_FieldNumber_Result = 1,
+  AttackRaidResponse_FieldNumber_BattleUpdate = 2,
+};
+
+@interface AttackRaidResponse : GPBMessage
+
+@property(nonatomic, readwrite) AttackRaidResponse_Result result;
+
+@property(nonatomic, readwrite, strong, null_resettable) BattleUpdate *battleUpdate;
+/** Test to see if @c battleUpdate has been set. */
+@property(nonatomic, readwrite) BOOL hasBattleUpdate;
+
+@end
+
+/**
+ * Fetches the raw value of a @c AttackRaidResponse's @c result property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t AttackRaidResponse_Result_RawValue(AttackRaidResponse *message);
+/**
+ * Sets the raw value of an @c AttackRaidResponse's @c result property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetAttackRaidResponse_Result_RawValue(AttackRaidResponse *message, int32_t value);
+
 #pragma mark - CatchPokemonResponse
 
 typedef GPB_ENUM(CatchPokemonResponse_FieldNumber) {
@@ -1391,6 +1652,7 @@ typedef GPB_ENUM(CatchPokemonResponse_FieldNumber) {
   CatchPokemonResponse_FieldNumber_CaptureAward = 4,
   CatchPokemonResponse_FieldNumber_CaptureReason = 5,
   CatchPokemonResponse_FieldNumber_DisplayPokedexId = 6,
+  CatchPokemonResponse_FieldNumber_ThrowsRemaining = 7,
 };
 
 @interface CatchPokemonResponse : GPBMessage
@@ -1408,6 +1670,8 @@ typedef GPB_ENUM(CatchPokemonResponse_FieldNumber) {
 @property(nonatomic, readwrite) CatchPokemonResponse_CaptureReason captureReason;
 
 @property(nonatomic, readwrite) int32_t displayPokedexId;
+
+@property(nonatomic, readwrite) int32_t throwsRemaining;
 
 @end
 
@@ -1717,6 +1981,7 @@ typedef GPB_ENUM(DownloadItemTemplatesResponse_ItemTemplate_FieldNumber) {
   DownloadItemTemplatesResponse_ItemTemplate_FieldNumber_AvatarCustomization = 21,
   DownloadItemTemplatesResponse_ItemTemplate_FieldNumber_FormSettings = 22,
   DownloadItemTemplatesResponse_ItemTemplate_FieldNumber_GenderSettings = 23,
+  DownloadItemTemplatesResponse_ItemTemplate_FieldNumber_GymBadgeSettings = 24,
 };
 
 @interface DownloadItemTemplatesResponse_ItemTemplate : GPBMessage
@@ -1798,6 +2063,10 @@ typedef GPB_ENUM(DownloadItemTemplatesResponse_ItemTemplate_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) GenderSettings *genderSettings;
 /** Test to see if @c genderSettings has been set. */
 @property(nonatomic, readwrite) BOOL hasGenderSettings;
+
+@property(nonatomic, readwrite, strong, null_resettable) GymBadgeGmtSettings *gymBadgeSettings;
+/** Test to see if @c gymBadgeSettings has been set. */
+@property(nonatomic, readwrite) BOOL hasGymBadgeSettings;
 
 @end
 
@@ -2081,6 +2350,9 @@ typedef GPB_ENUM(FortDetailsResponse_FieldNumber) {
   FortDetailsResponse_FieldNumber_Longitude = 11,
   FortDetailsResponse_FieldNumber_Description_p = 12,
   FortDetailsResponse_FieldNumber_ModifiersArray = 13,
+  FortDetailsResponse_FieldNumber_CloseSoon = 14,
+  FortDetailsResponse_FieldNumber_CheckinImageURL = 15,
+  FortDetailsResponse_FieldNumber_EventInfo = 16,
 };
 
 @interface FortDetailsResponse : GPBMessage
@@ -2116,6 +2388,14 @@ typedef GPB_ENUM(FortDetailsResponse_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<FortModifier*> *modifiersArray;
 /** The number of items in @c modifiersArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger modifiersArray_Count;
+
+@property(nonatomic, readwrite) BOOL closeSoon;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *checkinImageURL;
+
+@property(nonatomic, readwrite, strong, null_resettable) EventInfo *eventInfo;
+/** Test to see if @c eventInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasEventInfo;
 
 @end
 
@@ -2182,6 +2462,11 @@ typedef GPB_ENUM(FortSearchResponse_FieldNumber) {
   FortSearchResponse_FieldNumber_ExperienceAwarded = 5,
   FortSearchResponse_FieldNumber_CooldownCompleteTimestampMs = 6,
   FortSearchResponse_FieldNumber_ChainHackSequenceNumber = 7,
+  FortSearchResponse_FieldNumber_AwardedGymBadge = 8,
+  FortSearchResponse_FieldNumber_Loot = 9,
+  FortSearchResponse_FieldNumber_BonusLoot = 10,
+  FortSearchResponse_FieldNumber_RaidTickets = 11,
+  FortSearchResponse_FieldNumber_TeamBonusLoot = 12,
 };
 
 @interface FortSearchResponse : GPBMessage
@@ -2203,6 +2488,24 @@ typedef GPB_ENUM(FortSearchResponse_FieldNumber) {
 @property(nonatomic, readwrite) int64_t cooldownCompleteTimestampMs;
 
 @property(nonatomic, readwrite) int32_t chainHackSequenceNumber;
+
+@property(nonatomic, readwrite, strong, null_resettable) AwardedGymBadge *awardedGymBadge;
+/** Test to see if @c awardedGymBadge has been set. */
+@property(nonatomic, readwrite) BOOL hasAwardedGymBadge;
+
+@property(nonatomic, readwrite, strong, null_resettable) Loot *loot;
+/** Test to see if @c loot has been set. */
+@property(nonatomic, readwrite) BOOL hasLoot;
+
+@property(nonatomic, readwrite, strong, null_resettable) Loot *bonusLoot;
+/** Test to see if @c bonusLoot has been set. */
+@property(nonatomic, readwrite) BOOL hasBonusLoot;
+
+@property(nonatomic, readwrite) int32_t raidTickets;
+
+@property(nonatomic, readwrite, strong, null_resettable) Loot *teamBonusLoot;
+/** Test to see if @c teamBonusLoot has been set. */
+@property(nonatomic, readwrite) BOOL hasTeamBonusLoot;
 
 @end
 
@@ -2297,6 +2600,28 @@ typedef GPB_ENUM(GetDownloadUrlsResponse_FieldNumber) {
 
 @end
 
+#pragma mark - GetGymBadgeDetailsResponse
+
+typedef GPB_ENUM(GetGymBadgeDetailsResponse_FieldNumber) {
+  GetGymBadgeDetailsResponse_FieldNumber_GymBadge = 1,
+  GetGymBadgeDetailsResponse_FieldNumber_GymDefender = 2,
+  GetGymBadgeDetailsResponse_FieldNumber_Success = 3,
+};
+
+@interface GetGymBadgeDetailsResponse : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) AwardedGymBadge *gymBadge;
+/** Test to see if @c gymBadge has been set. */
+@property(nonatomic, readwrite) BOOL hasGymBadge;
+
+@property(nonatomic, readwrite, strong, null_resettable) GymDefender *gymDefender;
+/** Test to see if @c gymDefender has been set. */
+@property(nonatomic, readwrite) BOOL hasGymDefender;
+
+@property(nonatomic, readwrite) BOOL success;
+
+@end
+
 #pragma mark - GetGymDetailsResponse
 
 typedef GPB_ENUM(GetGymDetailsResponse_FieldNumber) {
@@ -2306,6 +2631,8 @@ typedef GPB_ENUM(GetGymDetailsResponse_FieldNumber) {
   GetGymDetailsResponse_FieldNumber_Result = 4,
   GetGymDetailsResponse_FieldNumber_Description_p = 5,
   GetGymDetailsResponse_FieldNumber_SecondaryURLArray = 6,
+  GetGymDetailsResponse_FieldNumber_CheckinImageURL = 7,
+  GetGymDetailsResponse_FieldNumber_EventInfo = 8,
 };
 
 @interface GetGymDetailsResponse : GPBMessage
@@ -2327,6 +2654,12 @@ typedef GPB_ENUM(GetGymDetailsResponse_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<NSString*> *secondaryURLArray;
 /** The number of items in @c secondaryURLArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger secondaryURLArray_Count;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *checkinImageURL;
+
+@property(nonatomic, readwrite, strong, null_resettable) EventInfo *eventInfo;
+/** Test to see if @c eventInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasEventInfo;
 
 @end
 
@@ -2436,34 +2769,22 @@ typedef GPB_ENUM(GetInboxResponse_ClientInbox_FieldNumber) {
 
 typedef GPB_ENUM(GetInboxResponse_ClientInbox_Notification_FieldNumber) {
   GetInboxResponse_ClientInbox_Notification_FieldNumber_NotificationId = 1,
-  GetInboxResponse_ClientInbox_Notification_FieldNumber_Bundle = 2,
-  GetInboxResponse_ClientInbox_Notification_FieldNumber_Asset = 3,
-  GetInboxResponse_ClientInbox_Notification_FieldNumber_Icon = 4,
-  GetInboxResponse_ClientInbox_Notification_FieldNumber_TitleKey = 5,
-  GetInboxResponse_ClientInbox_Notification_FieldNumber_Category = 6,
-  GetInboxResponse_ClientInbox_Notification_FieldNumber_CreateTimestampMs = 7,
-  GetInboxResponse_ClientInbox_Notification_FieldNumber_ExpireTimestampMs = 8,
-  GetInboxResponse_ClientInbox_Notification_FieldNumber_VariablesArray = 9,
-  GetInboxResponse_ClientInbox_Notification_FieldNumber_LabelsArray = 11,
+  GetInboxResponse_ClientInbox_Notification_FieldNumber_TitleKey = 2,
+  GetInboxResponse_ClientInbox_Notification_FieldNumber_Category = 3,
+  GetInboxResponse_ClientInbox_Notification_FieldNumber_CreateTimestampMs = 4,
+  GetInboxResponse_ClientInbox_Notification_FieldNumber_VariablesArray = 5,
+  GetInboxResponse_ClientInbox_Notification_FieldNumber_LabelsArray = 6,
 };
 
 @interface GetInboxResponse_ClientInbox_Notification : GPBMessage
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *notificationId;
 
-@property(nonatomic, readwrite, copy, null_resettable) NSString *bundle;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *asset;
-
-@property(nonatomic, readwrite, copy, null_resettable) NSString *icon;
-
 @property(nonatomic, readwrite, copy, null_resettable) NSString *titleKey;
 
-@property(nonatomic, readwrite) GetInboxResponse_ClientInbox_Notification_NotificationCategory category;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *category;
 
 @property(nonatomic, readwrite) int64_t createTimestampMs;
-
-@property(nonatomic, readwrite) int64_t expireTimestampMs;
 
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<GetInboxResponse_ClientInbox_TemplateVariable*> *variablesArray;
 /** The number of items in @c variablesArray without causing the array to be created. */
@@ -2476,30 +2797,27 @@ typedef GPB_ENUM(GetInboxResponse_ClientInbox_Notification_FieldNumber) {
 
 @end
 
-/**
- * Fetches the raw value of a @c GetInboxResponse_ClientInbox_Notification's @c category property, even
- * if the value was not defined by the enum at the time the code was generated.
- **/
-int32_t GetInboxResponse_ClientInbox_Notification_Category_RawValue(GetInboxResponse_ClientInbox_Notification *message);
-/**
- * Sets the raw value of an @c GetInboxResponse_ClientInbox_Notification's @c category property, allowing
- * it to be set to a value that was not defined by the enum at the time the code
- * was generated.
- **/
-void SetGetInboxResponse_ClientInbox_Notification_Category_RawValue(GetInboxResponse_ClientInbox_Notification *message, int32_t value);
-
 #pragma mark - GetInboxResponse_ClientInbox_TemplateVariable
 
 typedef GPB_ENUM(GetInboxResponse_ClientInbox_TemplateVariable_FieldNumber) {
   GetInboxResponse_ClientInbox_TemplateVariable_FieldNumber_Name = 1,
-  GetInboxResponse_ClientInbox_TemplateVariable_FieldNumber_Value = 2,
+  GetInboxResponse_ClientInbox_TemplateVariable_FieldNumber_Literal = 2,
+  GetInboxResponse_ClientInbox_TemplateVariable_FieldNumber_Key = 3,
+  GetInboxResponse_ClientInbox_TemplateVariable_FieldNumber_LookupTable = 4,
+  GetInboxResponse_ClientInbox_TemplateVariable_FieldNumber_ByteValue = 5,
 };
 
 @interface GetInboxResponse_ClientInbox_TemplateVariable : GPBMessage
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *name;
 
-@property(nonatomic, readwrite, copy, null_resettable) NSString *value;
+@property(nonatomic, readwrite, copy, null_resettable) NSString *literal;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *key;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *lookupTable;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *byteValue;
 
 @end
 
@@ -2629,6 +2947,7 @@ typedef GPB_ENUM(GetPlayerProfileResponse_FieldNumber) {
   GetPlayerProfileResponse_FieldNumber_Result = 1,
   GetPlayerProfileResponse_FieldNumber_StartTime = 2,
   GetPlayerProfileResponse_FieldNumber_BadgesArray = 3,
+  GetPlayerProfileResponse_FieldNumber_GymBadges = 4,
 };
 
 @interface GetPlayerProfileResponse : GPBMessage
@@ -2640,6 +2959,10 @@ typedef GPB_ENUM(GetPlayerProfileResponse_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<PlayerBadge*> *badgesArray;
 /** The number of items in @c badgesArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger badgesArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) GetPlayerProfileResponse_GymBadges *gymBadges;
+/** Test to see if @c gymBadges has been set. */
+@property(nonatomic, readwrite) BOOL hasGymBadges;
 
 @end
 
@@ -2654,6 +2977,23 @@ int32_t GetPlayerProfileResponse_Result_RawValue(GetPlayerProfileResponse *messa
  * was generated.
  **/
 void SetGetPlayerProfileResponse_Result_RawValue(GetPlayerProfileResponse *message, int32_t value);
+
+#pragma mark - GetPlayerProfileResponse_GymBadges
+
+typedef GPB_ENUM(GetPlayerProfileResponse_GymBadges_FieldNumber) {
+  GetPlayerProfileResponse_GymBadges_FieldNumber_GymBadgeArray = 1,
+  GetPlayerProfileResponse_GymBadges_FieldNumber_Total = 2,
+};
+
+@interface GetPlayerProfileResponse_GymBadges : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<AwardedGymBadge*> *gymBadgeArray;
+/** The number of items in @c gymBadgeArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger gymBadgeArray_Count;
+
+@property(nonatomic, readwrite) int32_t total;
+
+@end
 
 #pragma mark - GetPlayerResponse
 
@@ -2677,6 +3017,158 @@ typedef GPB_ENUM(GetPlayerResponse_FieldNumber) {
 @property(nonatomic, readwrite) BOOL warn;
 
 @end
+
+#pragma mark - GymDeployResponse
+
+typedef GPB_ENUM(GymDeployResponse_FieldNumber) {
+  GymDeployResponse_FieldNumber_Result = 1,
+  GymDeployResponse_FieldNumber_GymStatusAndDefenders = 2,
+  GymDeployResponse_FieldNumber_AwardedGymBadge = 3,
+  GymDeployResponse_FieldNumber_CooldownCompleteTimestampMs = 4,
+};
+
+@interface GymDeployResponse : GPBMessage
+
+@property(nonatomic, readwrite) GymDeployResponse_Result result;
+
+@property(nonatomic, readwrite, strong, null_resettable) GymStatusAndDefenders *gymStatusAndDefenders;
+/** Test to see if @c gymStatusAndDefenders has been set. */
+@property(nonatomic, readwrite) BOOL hasGymStatusAndDefenders;
+
+@property(nonatomic, readwrite, strong, null_resettable) AwardedGymBadge *awardedGymBadge;
+/** Test to see if @c awardedGymBadge has been set. */
+@property(nonatomic, readwrite) BOOL hasAwardedGymBadge;
+
+@property(nonatomic, readwrite) int64_t cooldownCompleteTimestampMs;
+
+@end
+
+/**
+ * Fetches the raw value of a @c GymDeployResponse's @c result property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t GymDeployResponse_Result_RawValue(GymDeployResponse *message);
+/**
+ * Sets the raw value of an @c GymDeployResponse's @c result property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetGymDeployResponse_Result_RawValue(GymDeployResponse *message, int32_t value);
+
+#pragma mark - GymFeedPokemonResponse
+
+typedef GPB_ENUM(GymFeedPokemonResponse_FieldNumber) {
+  GymFeedPokemonResponse_FieldNumber_Result = 1,
+  GymFeedPokemonResponse_FieldNumber_GymStatusAndDefenders = 2,
+  GymFeedPokemonResponse_FieldNumber_AwardedGymBadge = 3,
+  GymFeedPokemonResponse_FieldNumber_StardustAwarded = 4,
+  GymFeedPokemonResponse_FieldNumber_XpAwarded = 5,
+  GymFeedPokemonResponse_FieldNumber_NumCandyAwarded = 6,
+  GymFeedPokemonResponse_FieldNumber_FamilyCandyId = 7,
+  GymFeedPokemonResponse_FieldNumber_CooldownComplete = 8,
+};
+
+@interface GymFeedPokemonResponse : GPBMessage
+
+@property(nonatomic, readwrite) GymFeedPokemonResponse_Result result;
+
+@property(nonatomic, readwrite, strong, null_resettable) GymStatusAndDefenders *gymStatusAndDefenders;
+/** Test to see if @c gymStatusAndDefenders has been set. */
+@property(nonatomic, readwrite) BOOL hasGymStatusAndDefenders;
+
+@property(nonatomic, readwrite, strong, null_resettable) AwardedGymBadge *awardedGymBadge;
+/** Test to see if @c awardedGymBadge has been set. */
+@property(nonatomic, readwrite) BOOL hasAwardedGymBadge;
+
+@property(nonatomic, readwrite) int32_t stardustAwarded;
+
+@property(nonatomic, readwrite) int32_t xpAwarded;
+
+@property(nonatomic, readwrite) int32_t numCandyAwarded;
+
+@property(nonatomic, readwrite) enum PokemonFamilyId familyCandyId;
+
+@property(nonatomic, readwrite) int64_t cooldownComplete;
+
+@end
+
+/**
+ * Fetches the raw value of a @c GymFeedPokemonResponse's @c result property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t GymFeedPokemonResponse_Result_RawValue(GymFeedPokemonResponse *message);
+/**
+ * Sets the raw value of an @c GymFeedPokemonResponse's @c result property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetGymFeedPokemonResponse_Result_RawValue(GymFeedPokemonResponse *message, int32_t value);
+
+/**
+ * Fetches the raw value of a @c GymFeedPokemonResponse's @c familyCandyId property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t GymFeedPokemonResponse_FamilyCandyId_RawValue(GymFeedPokemonResponse *message);
+/**
+ * Sets the raw value of an @c GymFeedPokemonResponse's @c familyCandyId property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetGymFeedPokemonResponse_FamilyCandyId_RawValue(GymFeedPokemonResponse *message, int32_t value);
+
+#pragma mark - GymGetInfoResponse
+
+typedef GPB_ENUM(GymGetInfoResponse_FieldNumber) {
+  GymGetInfoResponse_FieldNumber_GymStatusAndDefenders = 1,
+  GymGetInfoResponse_FieldNumber_Name = 2,
+  GymGetInfoResponse_FieldNumber_URL = 3,
+  GymGetInfoResponse_FieldNumber_Result = 4,
+  GymGetInfoResponse_FieldNumber_Description_p = 5,
+  GymGetInfoResponse_FieldNumber_SecondaryURL = 6,
+  GymGetInfoResponse_FieldNumber_AwardedGymBadge = 7,
+  GymGetInfoResponse_FieldNumber_CheckinImageURL = 8,
+  GymGetInfoResponse_FieldNumber_EventInfo = 9,
+};
+
+@interface GymGetInfoResponse : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) GymStatusAndDefenders *gymStatusAndDefenders;
+/** Test to see if @c gymStatusAndDefenders has been set. */
+@property(nonatomic, readwrite) BOOL hasGymStatusAndDefenders;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *name;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *URL;
+
+@property(nonatomic, readwrite) GymGetInfoResponse_Result result;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *description_p;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *secondaryURL;
+
+@property(nonatomic, readwrite, strong, null_resettable) AwardedGymBadge *awardedGymBadge;
+/** Test to see if @c awardedGymBadge has been set. */
+@property(nonatomic, readwrite) BOOL hasAwardedGymBadge;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *checkinImageURL;
+
+@property(nonatomic, readwrite, strong, null_resettable) EventInfo *eventInfo;
+/** Test to see if @c eventInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasEventInfo;
+
+@end
+
+/**
+ * Fetches the raw value of a @c GymGetInfoResponse's @c result property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t GymGetInfoResponse_Result_RawValue(GymGetInfoResponse *message);
+/**
+ * Sets the raw value of an @c GymGetInfoResponse's @c result property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetGymGetInfoResponse_Result_RawValue(GymGetInfoResponse *message, int32_t value);
 
 #pragma mark - IncenseEncounterResponse
 
@@ -2771,16 +3263,16 @@ void SetLevelUpRewardsResponse_Result_RawValue(LevelUpRewardsResponse *message, 
 
 typedef GPB_ENUM(ListAvatarCustomizationsResponse_FieldNumber) {
   ListAvatarCustomizationsResponse_FieldNumber_Result = 1,
-  ListAvatarCustomizationsResponse_FieldNumber_AvatarCustomizations = 2,
+  ListAvatarCustomizationsResponse_FieldNumber_AvatarCustomizationsArray = 2,
 };
 
 @interface ListAvatarCustomizationsResponse : GPBMessage
 
 @property(nonatomic, readwrite) ListAvatarCustomizationsResponse_Result result;
 
-@property(nonatomic, readwrite, strong, null_resettable) AvatarCustomization *avatarCustomizations;
-/** Test to see if @c avatarCustomizations has been set. */
-@property(nonatomic, readwrite) BOOL hasAvatarCustomizations;
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<AvatarCustomization*> *avatarCustomizationsArray;
+/** The number of items in @c avatarCustomizationsArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger avatarCustomizationsArray_Count;
 
 @end
 
@@ -2795,6 +3287,20 @@ int32_t ListAvatarCustomizationsResponse_Result_RawValue(ListAvatarCustomization
  * was generated.
  **/
 void SetListAvatarCustomizationsResponse_Result_RawValue(ListAvatarCustomizationsResponse *message, int32_t value);
+
+#pragma mark - ListGymBadgesResponse
+
+typedef GPB_ENUM(ListGymBadgesResponse_FieldNumber) {
+  ListGymBadgesResponse_FieldNumber_GymBadgeArray = 1,
+};
+
+@interface ListGymBadgesResponse : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<AwardedGymBadge*> *gymBadgeArray;
+/** The number of items in @c gymBadgeArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger gymBadgeArray_Count;
+
+@end
 
 #pragma mark - MarkTutorialCompleteResponse
 
@@ -2836,6 +3342,94 @@ int32_t NicknamePokemonResponse_Result_RawValue(NicknamePokemonResponse *message
  * was generated.
  **/
 void SetNicknamePokemonResponse_Result_RawValue(NicknamePokemonResponse *message, int32_t value);
+
+#pragma mark - RegisterPushNotificationResponse
+
+typedef GPB_ENUM(RegisterPushNotificationResponse_FieldNumber) {
+  RegisterPushNotificationResponse_FieldNumber_Result = 1,
+};
+
+@interface RegisterPushNotificationResponse : GPBMessage
+
+@property(nonatomic, readwrite) RegisterPushNotificationResponse_Result result;
+
+@end
+
+/**
+ * Fetches the raw value of a @c RegisterPushNotificationResponse's @c result property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t RegisterPushNotificationResponse_Result_RawValue(RegisterPushNotificationResponse *message);
+/**
+ * Sets the raw value of an @c RegisterPushNotificationResponse's @c result property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetRegisterPushNotificationResponse_Result_RawValue(RegisterPushNotificationResponse *message, int32_t value);
+
+#pragma mark - UpdateNotificationStatusResponse
+
+typedef GPB_ENUM(UpdateNotificationStatusResponse_FieldNumber) {
+  UpdateNotificationStatusResponse_FieldNumber_NotificationIdsArray = 1,
+  UpdateNotificationStatusResponse_FieldNumber_CreateTimestampMsArray = 2,
+  UpdateNotificationStatusResponse_FieldNumber_State = 3,
+};
+
+@interface UpdateNotificationStatusResponse : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<NSString*> *notificationIdsArray;
+/** The number of items in @c notificationIdsArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger notificationIdsArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) GPBInt64Array *createTimestampMsArray;
+/** The number of items in @c createTimestampMsArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger createTimestampMsArray_Count;
+
+@property(nonatomic, readwrite) UpdateNotificationStatusResponse_NotificationState state;
+
+@end
+
+/**
+ * Fetches the raw value of a @c UpdateNotificationStatusResponse's @c state property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t UpdateNotificationStatusResponse_State_RawValue(UpdateNotificationStatusResponse *message);
+/**
+ * Sets the raw value of an @c UpdateNotificationStatusResponse's @c state property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetUpdateNotificationStatusResponse_State_RawValue(UpdateNotificationStatusResponse *message, int32_t value);
+
+#pragma mark - OptOutPushNotificationCategoryResponse
+
+@interface OptOutPushNotificationCategoryResponse : GPBMessage
+
+@end
+
+#pragma mark - PushNotificationRegistryResponse
+
+typedef GPB_ENUM(PushNotificationRegistryResponse_FieldNumber) {
+  PushNotificationRegistryResponse_FieldNumber_Result = 1,
+};
+
+@interface PushNotificationRegistryResponse : GPBMessage
+
+@property(nonatomic, readwrite) PushNotificationRegistryResponse_Result result;
+
+@end
+
+/**
+ * Fetches the raw value of a @c PushNotificationRegistryResponse's @c result property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t PushNotificationRegistryResponse_Result_RawValue(PushNotificationRegistryResponse *message);
+/**
+ * Sets the raw value of an @c PushNotificationRegistryResponse's @c result property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetPushNotificationRegistryResponse_Result_RawValue(PushNotificationRegistryResponse *message, int32_t value);
 
 #pragma mark - RecycleInventoryItemResponse
 
@@ -3113,6 +3707,18 @@ int32_t SfidaActionLogResponse_Result_RawValue(SfidaActionLogResponse *message);
  **/
 void SetSfidaActionLogResponse_Result_RawValue(SfidaActionLogResponse *message, int32_t value);
 
+#pragma mark - SfidaRegistrationResponse
+
+typedef GPB_ENUM(SfidaRegistrationResponse_FieldNumber) {
+  SfidaRegistrationResponse_FieldNumber_AccessToken = 1,
+};
+
+@interface SfidaRegistrationResponse : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSData *accessToken;
+
+@end
+
 #pragma mark - StartGymBattleResponse
 
 typedef GPB_ENUM(StartGymBattleResponse_FieldNumber) {
@@ -3123,6 +3729,7 @@ typedef GPB_ENUM(StartGymBattleResponse_FieldNumber) {
   StartGymBattleResponse_FieldNumber_Defender = 5,
   StartGymBattleResponse_FieldNumber_BattleLog = 6,
   StartGymBattleResponse_FieldNumber_Attacker = 7,
+  StartGymBattleResponse_FieldNumber_Battle = 8,
 };
 
 @interface StartGymBattleResponse : GPBMessage
@@ -3146,6 +3753,10 @@ typedef GPB_ENUM(StartGymBattleResponse_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) BattleParticipant *attacker;
 /** Test to see if @c attacker has been set. */
 @property(nonatomic, readwrite) BOOL hasAttacker;
+
+@property(nonatomic, readwrite, strong, null_resettable) Battle *battle;
+/** Test to see if @c battle has been set. */
+@property(nonatomic, readwrite) BOOL hasBattle;
 
 @end
 
@@ -3384,6 +3995,35 @@ int32_t UseItemGymResponse_Result_RawValue(UseItemGymResponse *message);
  **/
 void SetUseItemGymResponse_Result_RawValue(UseItemGymResponse *message, int32_t value);
 
+#pragma mark - UseItemMoveRerollResponse
+
+typedef GPB_ENUM(UseItemMoveRerollResponse_FieldNumber) {
+  UseItemMoveRerollResponse_FieldNumber_Result = 1,
+  UseItemMoveRerollResponse_FieldNumber_UpgradedPokemon = 2,
+};
+
+@interface UseItemMoveRerollResponse : GPBMessage
+
+@property(nonatomic, readwrite) UseItemMoveRerollResponse_Result result;
+
+@property(nonatomic, readwrite, strong, null_resettable) PokemonData *upgradedPokemon;
+/** Test to see if @c upgradedPokemon has been set. */
+@property(nonatomic, readwrite) BOOL hasUpgradedPokemon;
+
+@end
+
+/**
+ * Fetches the raw value of a @c UseItemMoveRerollResponse's @c result property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t UseItemMoveRerollResponse_Result_RawValue(UseItemMoveRerollResponse *message);
+/**
+ * Sets the raw value of an @c UseItemMoveRerollResponse's @c result property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetUseItemMoveRerollResponse_Result_RawValue(UseItemMoveRerollResponse *message, int32_t value);
+
 #pragma mark - UseItemPotionResponse
 
 typedef GPB_ENUM(UseItemPotionResponse_FieldNumber) {
@@ -3410,6 +4050,48 @@ int32_t UseItemPotionResponse_Result_RawValue(UseItemPotionResponse *message);
  * was generated.
  **/
 void SetUseItemPotionResponse_Result_RawValue(UseItemPotionResponse *message, int32_t value);
+
+#pragma mark - UseItemRareCandyResponse
+
+typedef GPB_ENUM(UseItemRareCandyResponse_FieldNumber) {
+  UseItemRareCandyResponse_FieldNumber_Result = 1,
+  UseItemRareCandyResponse_FieldNumber_PokemonId = 2,
+  UseItemRareCandyResponse_FieldNumber_UpdatedCandyCount = 3,
+};
+
+@interface UseItemRareCandyResponse : GPBMessage
+
+@property(nonatomic, readwrite) UseItemRareCandyResponse_Result result;
+
+@property(nonatomic, readwrite) enum PokemonId pokemonId;
+
+@property(nonatomic, readwrite) int32_t updatedCandyCount;
+
+@end
+
+/**
+ * Fetches the raw value of a @c UseItemRareCandyResponse's @c result property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t UseItemRareCandyResponse_Result_RawValue(UseItemRareCandyResponse *message);
+/**
+ * Sets the raw value of an @c UseItemRareCandyResponse's @c result property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetUseItemRareCandyResponse_Result_RawValue(UseItemRareCandyResponse *message, int32_t value);
+
+/**
+ * Fetches the raw value of a @c UseItemRareCandyResponse's @c pokemonId property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t UseItemRareCandyResponse_PokemonId_RawValue(UseItemRareCandyResponse *message);
+/**
+ * Sets the raw value of an @c UseItemRareCandyResponse's @c pokemonId property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetUseItemRareCandyResponse_PokemonId_RawValue(UseItemRareCandyResponse *message, int32_t value);
 
 #pragma mark - UseItemReviveResponse
 

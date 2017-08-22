@@ -161,6 +161,7 @@ BOOL AddFortModifierResponse_Result_IsValidValue(int32_t value__) {
 @dynamic battleId;
 @dynamic hasActiveDefender, activeDefender;
 @dynamic hasActiveAttacker, activeAttacker;
+@dynamic hasBattleUpdate, battleUpdate;
 
 typedef struct AttackGymResponse__storage_ {
   uint32_t _has_storage_[1];
@@ -169,6 +170,7 @@ typedef struct AttackGymResponse__storage_ {
   NSString *battleId;
   BattlePokemonInfo *activeDefender;
   BattlePokemonInfo *activeAttacker;
+  BattleUpdate *battleUpdate;
 } AttackGymResponse__storage_;
 
 // This method is threadsafe because it is initially called
@@ -219,6 +221,15 @@ typedef struct AttackGymResponse__storage_ {
         .number = AttackGymResponse_FieldNumber_ActiveAttacker,
         .hasIndex = 4,
         .offset = (uint32_t)offsetof(AttackGymResponse__storage_, activeAttacker),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "battleUpdate",
+        .dataTypeSpecific.className = GPBStringifySymbol(BattleUpdate),
+        .number = AttackGymResponse_FieldNumber_BattleUpdate,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(AttackGymResponse__storage_, battleUpdate),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
@@ -290,6 +301,118 @@ BOOL AttackGymResponse_Result_IsValidValue(int32_t value__) {
   }
 }
 
+#pragma mark - AttackRaidResponse
+
+@implementation AttackRaidResponse
+
+@dynamic result;
+@dynamic hasBattleUpdate, battleUpdate;
+
+typedef struct AttackRaidResponse__storage_ {
+  uint32_t _has_storage_[1];
+  AttackRaidResponse_Result result;
+  BattleUpdate *battleUpdate;
+} AttackRaidResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "result",
+        .dataTypeSpecific.enumDescFunc = AttackRaidResponse_Result_EnumDescriptor,
+        .number = AttackRaidResponse_FieldNumber_Result,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(AttackRaidResponse__storage_, result),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+      {
+        .name = "battleUpdate",
+        .dataTypeSpecific.className = GPBStringifySymbol(BattleUpdate),
+        .number = AttackRaidResponse_FieldNumber_BattleUpdate,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(AttackRaidResponse__storage_, battleUpdate),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[AttackRaidResponse class]
+                                     rootClass:[PogoprotosNetworkingResponsesRoot class]
+                                          file:PogoprotosNetworkingResponsesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(AttackRaidResponse__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t AttackRaidResponse_Result_RawValue(AttackRaidResponse *message) {
+  GPBDescriptor *descriptor = [AttackRaidResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:AttackRaidResponse_FieldNumber_Result];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetAttackRaidResponse_Result_RawValue(AttackRaidResponse *message, int32_t value) {
+  GPBDescriptor *descriptor = [AttackRaidResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:AttackRaidResponse_FieldNumber_Result];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+#pragma mark - Enum AttackRaidResponse_Result
+
+GPBEnumDescriptor *AttackRaidResponse_Result_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "Unset\000Success\000ErrorGymNotFound\000ErrorBatt"
+        "leNotFound\000ErrorInvalidAttackActions\000Err"
+        "orNotPartOfBattle\000ErrorBattleIdNotRaid\000";
+    static const int32_t values[] = {
+        AttackRaidResponse_Result_Unset,
+        AttackRaidResponse_Result_Success,
+        AttackRaidResponse_Result_ErrorGymNotFound,
+        AttackRaidResponse_Result_ErrorBattleNotFound,
+        AttackRaidResponse_Result_ErrorInvalidAttackActions,
+        AttackRaidResponse_Result_ErrorNotPartOfBattle,
+        AttackRaidResponse_Result_ErrorBattleIdNotRaid,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(AttackRaidResponse_Result)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:AttackRaidResponse_Result_IsValidValue];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL AttackRaidResponse_Result_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case AttackRaidResponse_Result_Unset:
+    case AttackRaidResponse_Result_Success:
+    case AttackRaidResponse_Result_ErrorGymNotFound:
+    case AttackRaidResponse_Result_ErrorBattleNotFound:
+    case AttackRaidResponse_Result_ErrorInvalidAttackActions:
+    case AttackRaidResponse_Result_ErrorNotPartOfBattle:
+    case AttackRaidResponse_Result_ErrorBattleIdNotRaid:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
 #pragma mark - CatchPokemonResponse
 
 @implementation CatchPokemonResponse
@@ -300,12 +423,14 @@ BOOL AttackGymResponse_Result_IsValidValue(int32_t value__) {
 @dynamic hasCaptureAward, captureAward;
 @dynamic captureReason;
 @dynamic displayPokedexId;
+@dynamic throwsRemaining;
 
 typedef struct CatchPokemonResponse__storage_ {
   uint32_t _has_storage_[1];
   CatchPokemonResponse_CatchStatus status;
   CatchPokemonResponse_CaptureReason captureReason;
   int32_t displayPokedexId;
+  int32_t throwsRemaining;
   CaptureAward *captureAward;
   double missPercent;
   uint64_t capturedPokemonId;
@@ -368,6 +493,15 @@ typedef struct CatchPokemonResponse__storage_ {
         .number = CatchPokemonResponse_FieldNumber_DisplayPokedexId,
         .hasIndex = 5,
         .offset = (uint32_t)offsetof(CatchPokemonResponse__storage_, displayPokedexId),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "throwsRemaining",
+        .dataTypeSpecific.className = NULL,
+        .number = CatchPokemonResponse_FieldNumber_ThrowsRemaining,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(CatchPokemonResponse__storage_, throwsRemaining),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt32,
       },
@@ -1414,6 +1548,7 @@ BOOL DownloadItemTemplatesResponse_Result_IsValidValue(int32_t value__) {
 @dynamic hasAvatarCustomization, avatarCustomization;
 @dynamic hasFormSettings, formSettings;
 @dynamic hasGenderSettings, genderSettings;
+@dynamic hasGymBadgeSettings, gymBadgeSettings;
 
 typedef struct DownloadItemTemplatesResponse_ItemTemplate__storage_ {
   uint32_t _has_storage_[1];
@@ -1437,6 +1572,7 @@ typedef struct DownloadItemTemplatesResponse_ItemTemplate__storage_ {
   AvatarCustomizationSettings *avatarCustomization;
   FormSettings *formSettings;
   GenderSettings *genderSettings;
+  GymBadgeGmtSettings *gymBadgeSettings;
 } DownloadItemTemplatesResponse_ItemTemplate__storage_;
 
 // This method is threadsafe because it is initially called
@@ -1622,6 +1758,15 @@ typedef struct DownloadItemTemplatesResponse_ItemTemplate__storage_ {
         .number = DownloadItemTemplatesResponse_ItemTemplate_FieldNumber_GenderSettings,
         .hasIndex = 19,
         .offset = (uint32_t)offsetof(DownloadItemTemplatesResponse_ItemTemplate__storage_, genderSettings),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "gymBadgeSettings",
+        .dataTypeSpecific.className = GPBStringifySymbol(GymBadgeGmtSettings),
+        .number = DownloadItemTemplatesResponse_ItemTemplate_FieldNumber_GymBadgeSettings,
+        .hasIndex = 20,
+        .offset = (uint32_t)offsetof(DownloadItemTemplatesResponse_ItemTemplate__storage_, gymBadgeSettings),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
@@ -2521,7 +2666,8 @@ GPBEnumDescriptor *FortDeployPokemonResponse_Result_EnumDescriptor(void) {
         "sNoTeam\000ErrorPokemonNotFullHp\000ErrorPlaye"
         "rBelowMinimumLevel\000ErrorPokemonIsBuddy\000E"
         "rrorFortDeployLockout\000ErrorPlayerHasNoNi"
-        "ckname\000ErrorPoiInaccessible\000";
+        "ckname\000ErrorPoiInaccessible\000ErrorLegenda"
+        "ryPokemon\000ErrorInvalidPokemon\000";
     static const int32_t values[] = {
         FortDeployPokemonResponse_Result_NoResultSet,
         FortDeployPokemonResponse_Result_Success,
@@ -2536,6 +2682,8 @@ GPBEnumDescriptor *FortDeployPokemonResponse_Result_EnumDescriptor(void) {
         FortDeployPokemonResponse_Result_ErrorFortDeployLockout,
         FortDeployPokemonResponse_Result_ErrorPlayerHasNoNickname,
         FortDeployPokemonResponse_Result_ErrorPoiInaccessible,
+        FortDeployPokemonResponse_Result_ErrorLegendaryPokemon,
+        FortDeployPokemonResponse_Result_ErrorInvalidPokemon,
     };
     GPBEnumDescriptor *worker =
         [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(FortDeployPokemonResponse_Result)
@@ -2565,6 +2713,8 @@ BOOL FortDeployPokemonResponse_Result_IsValidValue(int32_t value__) {
     case FortDeployPokemonResponse_Result_ErrorFortDeployLockout:
     case FortDeployPokemonResponse_Result_ErrorPlayerHasNoNickname:
     case FortDeployPokemonResponse_Result_ErrorPoiInaccessible:
+    case FortDeployPokemonResponse_Result_ErrorLegendaryPokemon:
+    case FortDeployPokemonResponse_Result_ErrorInvalidPokemon:
       return YES;
     default:
       return NO;
@@ -2588,6 +2738,9 @@ BOOL FortDeployPokemonResponse_Result_IsValidValue(int32_t value__) {
 @dynamic longitude;
 @dynamic description_p;
 @dynamic modifiersArray, modifiersArray_Count;
+@dynamic closeSoon;
+@dynamic checkinImageURL;
+@dynamic hasEventInfo, eventInfo;
 
 typedef struct FortDetailsResponse__storage_ {
   uint32_t _has_storage_[1];
@@ -2602,6 +2755,8 @@ typedef struct FortDetailsResponse__storage_ {
   NSMutableArray *imageUrlsArray;
   NSString *description_p;
   NSMutableArray *modifiersArray;
+  NSString *checkinImageURL;
+  EventInfo *eventInfo;
   double latitude;
   double longitude;
 } FortDetailsResponse__storage_;
@@ -2729,6 +2884,33 @@ typedef struct FortDetailsResponse__storage_ {
         .flags = GPBFieldRepeated,
         .dataType = GPBDataTypeMessage,
       },
+      {
+        .name = "closeSoon",
+        .dataTypeSpecific.className = NULL,
+        .number = FortDetailsResponse_FieldNumber_CloseSoon,
+        .hasIndex = 11,
+        .offset = 12,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
+      },
+      {
+        .name = "checkinImageURL",
+        .dataTypeSpecific.className = NULL,
+        .number = FortDetailsResponse_FieldNumber_CheckinImageURL,
+        .hasIndex = 13,
+        .offset = (uint32_t)offsetof(FortDetailsResponse__storage_, checkinImageURL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "eventInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(EventInfo),
+        .number = FortDetailsResponse_FieldNumber_EventInfo,
+        .hasIndex = 14,
+        .offset = (uint32_t)offsetof(FortDetailsResponse__storage_, eventInfo),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[FortDetailsResponse class]
@@ -2738,6 +2920,11 @@ typedef struct FortDetailsResponse__storage_ {
                                     fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
                                    storageSize:sizeof(FortDetailsResponse__storage_)
                                          flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\001\017\007\245\241!!\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
     descriptor = localDescriptor;
   }
@@ -2888,6 +3075,11 @@ BOOL FortRecallPokemonResponse_Result_IsValidValue(int32_t value__) {
 @dynamic experienceAwarded;
 @dynamic cooldownCompleteTimestampMs;
 @dynamic chainHackSequenceNumber;
+@dynamic hasAwardedGymBadge, awardedGymBadge;
+@dynamic hasLoot, loot;
+@dynamic hasBonusLoot, bonusLoot;
+@dynamic raidTickets;
+@dynamic hasTeamBonusLoot, teamBonusLoot;
 
 typedef struct FortSearchResponse__storage_ {
   uint32_t _has_storage_[1];
@@ -2895,8 +3087,13 @@ typedef struct FortSearchResponse__storage_ {
   int32_t gemsAwarded;
   int32_t experienceAwarded;
   int32_t chainHackSequenceNumber;
+  int32_t raidTickets;
   NSMutableArray *itemsAwardedArray;
   PokemonData *pokemonDataEgg;
+  AwardedGymBadge *awardedGymBadge;
+  Loot *loot;
+  Loot *bonusLoot;
+  Loot *teamBonusLoot;
   int64_t cooldownCompleteTimestampMs;
 } FortSearchResponse__storage_;
 
@@ -2968,6 +3165,51 @@ typedef struct FortSearchResponse__storage_ {
         .offset = (uint32_t)offsetof(FortSearchResponse__storage_, chainHackSequenceNumber),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "awardedGymBadge",
+        .dataTypeSpecific.className = GPBStringifySymbol(AwardedGymBadge),
+        .number = FortSearchResponse_FieldNumber_AwardedGymBadge,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(FortSearchResponse__storage_, awardedGymBadge),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "loot",
+        .dataTypeSpecific.className = GPBStringifySymbol(Loot),
+        .number = FortSearchResponse_FieldNumber_Loot,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(FortSearchResponse__storage_, loot),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "bonusLoot",
+        .dataTypeSpecific.className = GPBStringifySymbol(Loot),
+        .number = FortSearchResponse_FieldNumber_BonusLoot,
+        .hasIndex = 8,
+        .offset = (uint32_t)offsetof(FortSearchResponse__storage_, bonusLoot),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "raidTickets",
+        .dataTypeSpecific.className = NULL,
+        .number = FortSearchResponse_FieldNumber_RaidTickets,
+        .hasIndex = 9,
+        .offset = (uint32_t)offsetof(FortSearchResponse__storage_, raidTickets),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "teamBonusLoot",
+        .dataTypeSpecific.className = GPBStringifySymbol(Loot),
+        .number = FortSearchResponse_FieldNumber_TeamBonusLoot,
+        .hasIndex = 10,
+        .offset = (uint32_t)offsetof(FortSearchResponse__storage_, teamBonusLoot),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
       },
     };
     GPBDescriptor *localDescriptor =
@@ -3289,6 +3531,70 @@ typedef struct GetDownloadUrlsResponse__storage_ {
 
 @end
 
+#pragma mark - GetGymBadgeDetailsResponse
+
+@implementation GetGymBadgeDetailsResponse
+
+@dynamic hasGymBadge, gymBadge;
+@dynamic hasGymDefender, gymDefender;
+@dynamic success;
+
+typedef struct GetGymBadgeDetailsResponse__storage_ {
+  uint32_t _has_storage_[1];
+  AwardedGymBadge *gymBadge;
+  GymDefender *gymDefender;
+} GetGymBadgeDetailsResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "gymBadge",
+        .dataTypeSpecific.className = GPBStringifySymbol(AwardedGymBadge),
+        .number = GetGymBadgeDetailsResponse_FieldNumber_GymBadge,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GetGymBadgeDetailsResponse__storage_, gymBadge),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "gymDefender",
+        .dataTypeSpecific.className = GPBStringifySymbol(GymDefender),
+        .number = GetGymBadgeDetailsResponse_FieldNumber_GymDefender,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(GetGymBadgeDetailsResponse__storage_, gymDefender),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "success",
+        .dataTypeSpecific.className = NULL,
+        .number = GetGymBadgeDetailsResponse_FieldNumber_Success,
+        .hasIndex = 2,
+        .offset = 3,  // Stored in _has_storage_ to save space.
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBool,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GetGymBadgeDetailsResponse class]
+                                     rootClass:[PogoprotosNetworkingResponsesRoot class]
+                                          file:PogoprotosNetworkingResponsesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GetGymBadgeDetailsResponse__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - GetGymDetailsResponse
 
 @implementation GetGymDetailsResponse
@@ -3299,6 +3605,8 @@ typedef struct GetDownloadUrlsResponse__storage_ {
 @dynamic result;
 @dynamic description_p;
 @dynamic secondaryURLArray, secondaryURLArray_Count;
+@dynamic checkinImageURL;
+@dynamic hasEventInfo, eventInfo;
 
 typedef struct GetGymDetailsResponse__storage_ {
   uint32_t _has_storage_[1];
@@ -3308,6 +3616,8 @@ typedef struct GetGymDetailsResponse__storage_ {
   NSMutableArray *urlsArray;
   NSString *description_p;
   NSMutableArray *secondaryURLArray;
+  NSString *checkinImageURL;
+  EventInfo *eventInfo;
 } GetGymDetailsResponse__storage_;
 
 // This method is threadsafe because it is initially called
@@ -3370,6 +3680,24 @@ typedef struct GetGymDetailsResponse__storage_ {
         .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldTextFormatNameCustom),
         .dataType = GPBDataTypeString,
       },
+      {
+        .name = "checkinImageURL",
+        .dataTypeSpecific.className = NULL,
+        .number = GetGymDetailsResponse_FieldNumber_CheckinImageURL,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(GetGymDetailsResponse__storage_, checkinImageURL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "eventInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(EventInfo),
+        .number = GetGymDetailsResponse_FieldNumber_EventInfo,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(GetGymDetailsResponse__storage_, eventInfo),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
     };
     GPBDescriptor *localDescriptor =
         [GPBDescriptor allocDescriptorForClass:[GetGymDetailsResponse class]
@@ -3381,7 +3709,7 @@ typedef struct GetGymDetailsResponse__storage_ {
                                          flags:GPBDescriptorInitializationFlag_None];
 #if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     static const char *extraTextFormatInfo =
-        "\001\006\000secondary_url\000";
+        "\002\006\000secondary_url\000\007\007\245\241!!\000";
     [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
 #endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
     NSAssert(descriptor == nil, @"Startup recursed!");
@@ -3710,28 +4038,20 @@ typedef struct GetInboxResponse_ClientInbox__storage_ {
 @implementation GetInboxResponse_ClientInbox_Notification
 
 @dynamic notificationId;
-@dynamic bundle;
-@dynamic asset;
-@dynamic icon;
 @dynamic titleKey;
 @dynamic category;
 @dynamic createTimestampMs;
-@dynamic expireTimestampMs;
 @dynamic variablesArray, variablesArray_Count;
 @dynamic labelsArray, labelsArray_Count;
 
 typedef struct GetInboxResponse_ClientInbox_Notification__storage_ {
   uint32_t _has_storage_[1];
-  GetInboxResponse_ClientInbox_Notification_NotificationCategory category;
   NSString *notificationId;
-  NSString *bundle;
-  NSString *asset;
-  NSString *icon;
   NSString *titleKey;
+  NSString *category;
   NSMutableArray *variablesArray;
   GPBEnumArray *labelsArray;
   int64_t createTimestampMs;
-  int64_t expireTimestampMs;
 } GetInboxResponse_ClientInbox_Notification__storage_;
 
 // This method is threadsafe because it is initially called
@@ -3750,65 +4070,29 @@ typedef struct GetInboxResponse_ClientInbox_Notification__storage_ {
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "bundle",
-        .dataTypeSpecific.className = NULL,
-        .number = GetInboxResponse_ClientInbox_Notification_FieldNumber_Bundle,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(GetInboxResponse_ClientInbox_Notification__storage_, bundle),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "asset",
-        .dataTypeSpecific.className = NULL,
-        .number = GetInboxResponse_ClientInbox_Notification_FieldNumber_Asset,
-        .hasIndex = 2,
-        .offset = (uint32_t)offsetof(GetInboxResponse_ClientInbox_Notification__storage_, asset),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
-      },
-      {
-        .name = "icon",
-        .dataTypeSpecific.className = NULL,
-        .number = GetInboxResponse_ClientInbox_Notification_FieldNumber_Icon,
-        .hasIndex = 3,
-        .offset = (uint32_t)offsetof(GetInboxResponse_ClientInbox_Notification__storage_, icon),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeString,
-      },
-      {
         .name = "titleKey",
         .dataTypeSpecific.className = NULL,
         .number = GetInboxResponse_ClientInbox_Notification_FieldNumber_TitleKey,
-        .hasIndex = 4,
+        .hasIndex = 1,
         .offset = (uint32_t)offsetof(GetInboxResponse_ClientInbox_Notification__storage_, titleKey),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
       },
       {
         .name = "category",
-        .dataTypeSpecific.enumDescFunc = GetInboxResponse_ClientInbox_Notification_NotificationCategory_EnumDescriptor,
+        .dataTypeSpecific.className = NULL,
         .number = GetInboxResponse_ClientInbox_Notification_FieldNumber_Category,
-        .hasIndex = 5,
+        .hasIndex = 2,
         .offset = (uint32_t)offsetof(GetInboxResponse_ClientInbox_Notification__storage_, category),
-        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
-        .dataType = GPBDataTypeEnum,
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
       },
       {
         .name = "createTimestampMs",
         .dataTypeSpecific.className = NULL,
         .number = GetInboxResponse_ClientInbox_Notification_FieldNumber_CreateTimestampMs,
-        .hasIndex = 6,
+        .hasIndex = 3,
         .offset = (uint32_t)offsetof(GetInboxResponse_ClientInbox_Notification__storage_, createTimestampMs),
-        .flags = GPBFieldOptional,
-        .dataType = GPBDataTypeInt64,
-      },
-      {
-        .name = "expireTimestampMs",
-        .dataTypeSpecific.className = NULL,
-        .number = GetInboxResponse_ClientInbox_Notification_FieldNumber_ExpireTimestampMs,
-        .hasIndex = 7,
-        .offset = (uint32_t)offsetof(GetInboxResponse_ClientInbox_Notification__storage_, expireTimestampMs),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeInt64,
       },
@@ -3848,31 +4132,17 @@ typedef struct GetInboxResponse_ClientInbox_Notification__storage_ {
 
 @end
 
-int32_t GetInboxResponse_ClientInbox_Notification_Category_RawValue(GetInboxResponse_ClientInbox_Notification *message) {
-  GPBDescriptor *descriptor = [GetInboxResponse_ClientInbox_Notification descriptor];
-  GPBFieldDescriptor *field = [descriptor fieldWithNumber:GetInboxResponse_ClientInbox_Notification_FieldNumber_Category];
-  return GPBGetMessageInt32Field(message, field);
-}
-
-void SetGetInboxResponse_ClientInbox_Notification_Category_RawValue(GetInboxResponse_ClientInbox_Notification *message, int32_t value) {
-  GPBDescriptor *descriptor = [GetInboxResponse_ClientInbox_Notification descriptor];
-  GPBFieldDescriptor *field = [descriptor fieldWithNumber:GetInboxResponse_ClientInbox_Notification_FieldNumber_Category];
-  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
-}
-
 #pragma mark - Enum GetInboxResponse_ClientInbox_Notification_Label
 
 GPBEnumDescriptor *GetInboxResponse_ClientInbox_Notification_Label_EnumDescriptor(void) {
   static GPBEnumDescriptor *descriptor = NULL;
   if (!descriptor) {
     static const char *valueNames =
-        "UnsetLabel\000Unread\000New\000ExpiringSoon\000Immed"
-        "iate\000";
+        "UnsetLabel\000Unread\000New\000Immediate\000";
     static const int32_t values[] = {
         GetInboxResponse_ClientInbox_Notification_Label_UnsetLabel,
         GetInboxResponse_ClientInbox_Notification_Label_Unread,
         GetInboxResponse_ClientInbox_Notification_Label_New,
-        GetInboxResponse_ClientInbox_Notification_Label_ExpiringSoon,
         GetInboxResponse_ClientInbox_Notification_Label_Immediate,
     };
     GPBEnumDescriptor *worker =
@@ -3893,49 +4163,7 @@ BOOL GetInboxResponse_ClientInbox_Notification_Label_IsValidValue(int32_t value_
     case GetInboxResponse_ClientInbox_Notification_Label_UnsetLabel:
     case GetInboxResponse_ClientInbox_Notification_Label_Unread:
     case GetInboxResponse_ClientInbox_Notification_Label_New:
-    case GetInboxResponse_ClientInbox_Notification_Label_ExpiringSoon:
     case GetInboxResponse_ClientInbox_Notification_Label_Immediate:
-      return YES;
-    default:
-      return NO;
-  }
-}
-
-#pragma mark - Enum GetInboxResponse_ClientInbox_Notification_NotificationCategory
-
-GPBEnumDescriptor *GetInboxResponse_ClientInbox_Notification_NotificationCategory_EnumDescriptor(void) {
-  static GPBEnumDescriptor *descriptor = NULL;
-  if (!descriptor) {
-    static const char *valueNames =
-        "UnsetCategory\000Marketing\000Announcement\000Adm"
-        "inNote\000GameEvent\000";
-    static const int32_t values[] = {
-        GetInboxResponse_ClientInbox_Notification_NotificationCategory_UnsetCategory,
-        GetInboxResponse_ClientInbox_Notification_NotificationCategory_Marketing,
-        GetInboxResponse_ClientInbox_Notification_NotificationCategory_Announcement,
-        GetInboxResponse_ClientInbox_Notification_NotificationCategory_AdminNote,
-        GetInboxResponse_ClientInbox_Notification_NotificationCategory_GameEvent,
-    };
-    GPBEnumDescriptor *worker =
-        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(GetInboxResponse_ClientInbox_Notification_NotificationCategory)
-                                       valueNames:valueNames
-                                           values:values
-                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
-                                     enumVerifier:GetInboxResponse_ClientInbox_Notification_NotificationCategory_IsValidValue];
-    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
-      [worker release];
-    }
-  }
-  return descriptor;
-}
-
-BOOL GetInboxResponse_ClientInbox_Notification_NotificationCategory_IsValidValue(int32_t value__) {
-  switch (value__) {
-    case GetInboxResponse_ClientInbox_Notification_NotificationCategory_UnsetCategory:
-    case GetInboxResponse_ClientInbox_Notification_NotificationCategory_Marketing:
-    case GetInboxResponse_ClientInbox_Notification_NotificationCategory_Announcement:
-    case GetInboxResponse_ClientInbox_Notification_NotificationCategory_AdminNote:
-    case GetInboxResponse_ClientInbox_Notification_NotificationCategory_GameEvent:
       return YES;
     default:
       return NO;
@@ -3947,12 +4175,18 @@ BOOL GetInboxResponse_ClientInbox_Notification_NotificationCategory_IsValidValue
 @implementation GetInboxResponse_ClientInbox_TemplateVariable
 
 @dynamic name;
-@dynamic value;
+@dynamic literal;
+@dynamic key;
+@dynamic lookupTable;
+@dynamic byteValue;
 
 typedef struct GetInboxResponse_ClientInbox_TemplateVariable__storage_ {
   uint32_t _has_storage_[1];
   NSString *name;
-  NSString *value;
+  NSString *literal;
+  NSString *key;
+  NSString *lookupTable;
+  NSData *byteValue;
 } GetInboxResponse_ClientInbox_TemplateVariable__storage_;
 
 // This method is threadsafe because it is initially called
@@ -3971,13 +4205,40 @@ typedef struct GetInboxResponse_ClientInbox_TemplateVariable__storage_ {
         .dataType = GPBDataTypeString,
       },
       {
-        .name = "value",
+        .name = "literal",
         .dataTypeSpecific.className = NULL,
-        .number = GetInboxResponse_ClientInbox_TemplateVariable_FieldNumber_Value,
+        .number = GetInboxResponse_ClientInbox_TemplateVariable_FieldNumber_Literal,
         .hasIndex = 1,
-        .offset = (uint32_t)offsetof(GetInboxResponse_ClientInbox_TemplateVariable__storage_, value),
+        .offset = (uint32_t)offsetof(GetInboxResponse_ClientInbox_TemplateVariable__storage_, literal),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "key",
+        .dataTypeSpecific.className = NULL,
+        .number = GetInboxResponse_ClientInbox_TemplateVariable_FieldNumber_Key,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(GetInboxResponse_ClientInbox_TemplateVariable__storage_, key),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "lookupTable",
+        .dataTypeSpecific.className = NULL,
+        .number = GetInboxResponse_ClientInbox_TemplateVariable_FieldNumber_LookupTable,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(GetInboxResponse_ClientInbox_TemplateVariable__storage_, lookupTable),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "byteValue",
+        .dataTypeSpecific.className = NULL,
+        .number = GetInboxResponse_ClientInbox_TemplateVariable_FieldNumber_ByteValue,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(GetInboxResponse_ClientInbox_TemplateVariable__storage_, byteValue),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
       },
     };
     GPBDescriptor *localDescriptor =
@@ -4363,11 +4624,13 @@ BOOL GetMapObjectsResponse_TimeOfDay_IsValidValue(int32_t value__) {
 @dynamic result;
 @dynamic startTime;
 @dynamic badgesArray, badgesArray_Count;
+@dynamic hasGymBadges, gymBadges;
 
 typedef struct GetPlayerProfileResponse__storage_ {
   uint32_t _has_storage_[1];
   GetPlayerProfileResponse_Result result;
   NSMutableArray *badgesArray;
+  GetPlayerProfileResponse_GymBadges *gymBadges;
   int64_t startTime;
 } GetPlayerProfileResponse__storage_;
 
@@ -4402,6 +4665,15 @@ typedef struct GetPlayerProfileResponse__storage_ {
         .hasIndex = GPBNoHasBit,
         .offset = (uint32_t)offsetof(GetPlayerProfileResponse__storage_, badgesArray),
         .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "gymBadges",
+        .dataTypeSpecific.className = GPBStringifySymbol(GetPlayerProfileResponse_GymBadges),
+        .number = GetPlayerProfileResponse_FieldNumber_GymBadges,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(GetPlayerProfileResponse__storage_, gymBadges),
+        .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
     };
@@ -4466,6 +4738,61 @@ BOOL GetPlayerProfileResponse_Result_IsValidValue(int32_t value__) {
       return NO;
   }
 }
+
+#pragma mark - GetPlayerProfileResponse_GymBadges
+
+@implementation GetPlayerProfileResponse_GymBadges
+
+@dynamic gymBadgeArray, gymBadgeArray_Count;
+@dynamic total;
+
+typedef struct GetPlayerProfileResponse_GymBadges__storage_ {
+  uint32_t _has_storage_[1];
+  int32_t total;
+  NSMutableArray *gymBadgeArray;
+} GetPlayerProfileResponse_GymBadges__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "gymBadgeArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(AwardedGymBadge),
+        .number = GetPlayerProfileResponse_GymBadges_FieldNumber_GymBadgeArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(GetPlayerProfileResponse_GymBadges__storage_, gymBadgeArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "total",
+        .dataTypeSpecific.className = NULL,
+        .number = GetPlayerProfileResponse_GymBadges_FieldNumber_Total,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GetPlayerProfileResponse_GymBadges__storage_, total),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GetPlayerProfileResponse_GymBadges class]
+                                     rootClass:[PogoprotosNetworkingResponsesRoot class]
+                                          file:PogoprotosNetworkingResponsesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GetPlayerProfileResponse_GymBadges__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    [localDescriptor setupContainingMessageClassName:GPBStringifySymbol(GetPlayerProfileResponse)];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
 
 #pragma mark - GetPlayerResponse
 
@@ -4539,6 +4866,568 @@ typedef struct GetPlayerResponse__storage_ {
 }
 
 @end
+
+#pragma mark - GymDeployResponse
+
+@implementation GymDeployResponse
+
+@dynamic result;
+@dynamic hasGymStatusAndDefenders, gymStatusAndDefenders;
+@dynamic hasAwardedGymBadge, awardedGymBadge;
+@dynamic cooldownCompleteTimestampMs;
+
+typedef struct GymDeployResponse__storage_ {
+  uint32_t _has_storage_[1];
+  GymDeployResponse_Result result;
+  GymStatusAndDefenders *gymStatusAndDefenders;
+  AwardedGymBadge *awardedGymBadge;
+  int64_t cooldownCompleteTimestampMs;
+} GymDeployResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "result",
+        .dataTypeSpecific.enumDescFunc = GymDeployResponse_Result_EnumDescriptor,
+        .number = GymDeployResponse_FieldNumber_Result,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GymDeployResponse__storage_, result),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+      {
+        .name = "gymStatusAndDefenders",
+        .dataTypeSpecific.className = GPBStringifySymbol(GymStatusAndDefenders),
+        .number = GymDeployResponse_FieldNumber_GymStatusAndDefenders,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(GymDeployResponse__storage_, gymStatusAndDefenders),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "awardedGymBadge",
+        .dataTypeSpecific.className = GPBStringifySymbol(AwardedGymBadge),
+        .number = GymDeployResponse_FieldNumber_AwardedGymBadge,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(GymDeployResponse__storage_, awardedGymBadge),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "cooldownCompleteTimestampMs",
+        .dataTypeSpecific.className = NULL,
+        .number = GymDeployResponse_FieldNumber_CooldownCompleteTimestampMs,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(GymDeployResponse__storage_, cooldownCompleteTimestampMs),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GymDeployResponse class]
+                                     rootClass:[PogoprotosNetworkingResponsesRoot class]
+                                          file:PogoprotosNetworkingResponsesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GymDeployResponse__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t GymDeployResponse_Result_RawValue(GymDeployResponse *message) {
+  GPBDescriptor *descriptor = [GymDeployResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:GymDeployResponse_FieldNumber_Result];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetGymDeployResponse_Result_RawValue(GymDeployResponse *message, int32_t value) {
+  GPBDescriptor *descriptor = [GymDeployResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:GymDeployResponse_FieldNumber_Result];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+#pragma mark - Enum GymDeployResponse_Result
+
+GPBEnumDescriptor *GymDeployResponse_Result_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "NoResultSet\000Success\000ErrorAlreadyHasPokem"
+        "onOnFort\000ErrorOpposingTeamOwnsFort\000Error"
+        "FortIsFull\000ErrorNotInRange\000ErrorPlayerHa"
+        "sNoTeam\000ErrorPokemonNotFullHp\000ErrorPlaye"
+        "rBelowMinimumLevel\000ErrorPokemonIsBuddy\000E"
+        "rrorFortDeployLockout\000ErrorPlayerHasNoNi"
+        "ckname\000ErrorPoiInaccessible\000ErrorNotAPok"
+        "emon\000ErrorTooManyOfSameKind\000ErrorTooMany"
+        "Deployed\000ErrorTeamDeployLockout\000ErrorLeg"
+        "endaryPokemon\000ErrorInvalidPokemon\000ErrorR"
+        "aidActive\000";
+    static const int32_t values[] = {
+        GymDeployResponse_Result_NoResultSet,
+        GymDeployResponse_Result_Success,
+        GymDeployResponse_Result_ErrorAlreadyHasPokemonOnFort,
+        GymDeployResponse_Result_ErrorOpposingTeamOwnsFort,
+        GymDeployResponse_Result_ErrorFortIsFull,
+        GymDeployResponse_Result_ErrorNotInRange,
+        GymDeployResponse_Result_ErrorPlayerHasNoTeam,
+        GymDeployResponse_Result_ErrorPokemonNotFullHp,
+        GymDeployResponse_Result_ErrorPlayerBelowMinimumLevel,
+        GymDeployResponse_Result_ErrorPokemonIsBuddy,
+        GymDeployResponse_Result_ErrorFortDeployLockout,
+        GymDeployResponse_Result_ErrorPlayerHasNoNickname,
+        GymDeployResponse_Result_ErrorPoiInaccessible,
+        GymDeployResponse_Result_ErrorNotAPokemon,
+        GymDeployResponse_Result_ErrorTooManyOfSameKind,
+        GymDeployResponse_Result_ErrorTooManyDeployed,
+        GymDeployResponse_Result_ErrorTeamDeployLockout,
+        GymDeployResponse_Result_ErrorLegendaryPokemon,
+        GymDeployResponse_Result_ErrorInvalidPokemon,
+        GymDeployResponse_Result_ErrorRaidActive,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(GymDeployResponse_Result)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:GymDeployResponse_Result_IsValidValue];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL GymDeployResponse_Result_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case GymDeployResponse_Result_NoResultSet:
+    case GymDeployResponse_Result_Success:
+    case GymDeployResponse_Result_ErrorAlreadyHasPokemonOnFort:
+    case GymDeployResponse_Result_ErrorOpposingTeamOwnsFort:
+    case GymDeployResponse_Result_ErrorFortIsFull:
+    case GymDeployResponse_Result_ErrorNotInRange:
+    case GymDeployResponse_Result_ErrorPlayerHasNoTeam:
+    case GymDeployResponse_Result_ErrorPokemonNotFullHp:
+    case GymDeployResponse_Result_ErrorPlayerBelowMinimumLevel:
+    case GymDeployResponse_Result_ErrorPokemonIsBuddy:
+    case GymDeployResponse_Result_ErrorFortDeployLockout:
+    case GymDeployResponse_Result_ErrorPlayerHasNoNickname:
+    case GymDeployResponse_Result_ErrorPoiInaccessible:
+    case GymDeployResponse_Result_ErrorNotAPokemon:
+    case GymDeployResponse_Result_ErrorTooManyOfSameKind:
+    case GymDeployResponse_Result_ErrorTooManyDeployed:
+    case GymDeployResponse_Result_ErrorTeamDeployLockout:
+    case GymDeployResponse_Result_ErrorLegendaryPokemon:
+    case GymDeployResponse_Result_ErrorInvalidPokemon:
+    case GymDeployResponse_Result_ErrorRaidActive:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
+#pragma mark - GymFeedPokemonResponse
+
+@implementation GymFeedPokemonResponse
+
+@dynamic result;
+@dynamic hasGymStatusAndDefenders, gymStatusAndDefenders;
+@dynamic hasAwardedGymBadge, awardedGymBadge;
+@dynamic stardustAwarded;
+@dynamic xpAwarded;
+@dynamic numCandyAwarded;
+@dynamic familyCandyId;
+@dynamic cooldownComplete;
+
+typedef struct GymFeedPokemonResponse__storage_ {
+  uint32_t _has_storage_[1];
+  GymFeedPokemonResponse_Result result;
+  int32_t stardustAwarded;
+  int32_t xpAwarded;
+  int32_t numCandyAwarded;
+  PokemonFamilyId familyCandyId;
+  GymStatusAndDefenders *gymStatusAndDefenders;
+  AwardedGymBadge *awardedGymBadge;
+  int64_t cooldownComplete;
+} GymFeedPokemonResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "result",
+        .dataTypeSpecific.enumDescFunc = GymFeedPokemonResponse_Result_EnumDescriptor,
+        .number = GymFeedPokemonResponse_FieldNumber_Result,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GymFeedPokemonResponse__storage_, result),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+      {
+        .name = "gymStatusAndDefenders",
+        .dataTypeSpecific.className = GPBStringifySymbol(GymStatusAndDefenders),
+        .number = GymFeedPokemonResponse_FieldNumber_GymStatusAndDefenders,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(GymFeedPokemonResponse__storage_, gymStatusAndDefenders),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "awardedGymBadge",
+        .dataTypeSpecific.className = GPBStringifySymbol(AwardedGymBadge),
+        .number = GymFeedPokemonResponse_FieldNumber_AwardedGymBadge,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(GymFeedPokemonResponse__storage_, awardedGymBadge),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "stardustAwarded",
+        .dataTypeSpecific.className = NULL,
+        .number = GymFeedPokemonResponse_FieldNumber_StardustAwarded,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(GymFeedPokemonResponse__storage_, stardustAwarded),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "xpAwarded",
+        .dataTypeSpecific.className = NULL,
+        .number = GymFeedPokemonResponse_FieldNumber_XpAwarded,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(GymFeedPokemonResponse__storage_, xpAwarded),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "numCandyAwarded",
+        .dataTypeSpecific.className = NULL,
+        .number = GymFeedPokemonResponse_FieldNumber_NumCandyAwarded,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(GymFeedPokemonResponse__storage_, numCandyAwarded),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+      {
+        .name = "familyCandyId",
+        .dataTypeSpecific.enumDescFunc = PokemonFamilyId_EnumDescriptor,
+        .number = GymFeedPokemonResponse_FieldNumber_FamilyCandyId,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(GymFeedPokemonResponse__storage_, familyCandyId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+      {
+        .name = "cooldownComplete",
+        .dataTypeSpecific.className = NULL,
+        .number = GymFeedPokemonResponse_FieldNumber_CooldownComplete,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(GymFeedPokemonResponse__storage_, cooldownComplete),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt64,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GymFeedPokemonResponse class]
+                                     rootClass:[PogoprotosNetworkingResponsesRoot class]
+                                          file:PogoprotosNetworkingResponsesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GymFeedPokemonResponse__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t GymFeedPokemonResponse_Result_RawValue(GymFeedPokemonResponse *message) {
+  GPBDescriptor *descriptor = [GymFeedPokemonResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:GymFeedPokemonResponse_FieldNumber_Result];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetGymFeedPokemonResponse_Result_RawValue(GymFeedPokemonResponse *message, int32_t value) {
+  GPBDescriptor *descriptor = [GymFeedPokemonResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:GymFeedPokemonResponse_FieldNumber_Result];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+int32_t GymFeedPokemonResponse_FamilyCandyId_RawValue(GymFeedPokemonResponse *message) {
+  GPBDescriptor *descriptor = [GymFeedPokemonResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:GymFeedPokemonResponse_FieldNumber_FamilyCandyId];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetGymFeedPokemonResponse_FamilyCandyId_RawValue(GymFeedPokemonResponse *message, int32_t value) {
+  GPBDescriptor *descriptor = [GymFeedPokemonResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:GymFeedPokemonResponse_FieldNumber_FamilyCandyId];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+#pragma mark - Enum GymFeedPokemonResponse_Result
+
+GPBEnumDescriptor *GymFeedPokemonResponse_Result_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "Unset\000Success\000ErrorCannotUse\000ErrorNotInR"
+        "ange\000ErrorPokemonNotThere\000ErrorPokemonFu"
+        "ll\000ErrorNoBerriesLeft\000ErrorWrongTeam\000Err"
+        "orWrongCount\000ErrorTooFast\000ErrorTooFreque"
+        "nt\000ErrorGymBusy\000ErrorRaidActive\000ErrorGym"
+        "Closed\000";
+    static const int32_t values[] = {
+        GymFeedPokemonResponse_Result_Unset,
+        GymFeedPokemonResponse_Result_Success,
+        GymFeedPokemonResponse_Result_ErrorCannotUse,
+        GymFeedPokemonResponse_Result_ErrorNotInRange,
+        GymFeedPokemonResponse_Result_ErrorPokemonNotThere,
+        GymFeedPokemonResponse_Result_ErrorPokemonFull,
+        GymFeedPokemonResponse_Result_ErrorNoBerriesLeft,
+        GymFeedPokemonResponse_Result_ErrorWrongTeam,
+        GymFeedPokemonResponse_Result_ErrorWrongCount,
+        GymFeedPokemonResponse_Result_ErrorTooFast,
+        GymFeedPokemonResponse_Result_ErrorTooFrequent,
+        GymFeedPokemonResponse_Result_ErrorGymBusy,
+        GymFeedPokemonResponse_Result_ErrorRaidActive,
+        GymFeedPokemonResponse_Result_ErrorGymClosed,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(GymFeedPokemonResponse_Result)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:GymFeedPokemonResponse_Result_IsValidValue];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL GymFeedPokemonResponse_Result_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case GymFeedPokemonResponse_Result_Unset:
+    case GymFeedPokemonResponse_Result_Success:
+    case GymFeedPokemonResponse_Result_ErrorCannotUse:
+    case GymFeedPokemonResponse_Result_ErrorNotInRange:
+    case GymFeedPokemonResponse_Result_ErrorPokemonNotThere:
+    case GymFeedPokemonResponse_Result_ErrorPokemonFull:
+    case GymFeedPokemonResponse_Result_ErrorNoBerriesLeft:
+    case GymFeedPokemonResponse_Result_ErrorWrongTeam:
+    case GymFeedPokemonResponse_Result_ErrorWrongCount:
+    case GymFeedPokemonResponse_Result_ErrorTooFast:
+    case GymFeedPokemonResponse_Result_ErrorTooFrequent:
+    case GymFeedPokemonResponse_Result_ErrorGymBusy:
+    case GymFeedPokemonResponse_Result_ErrorRaidActive:
+    case GymFeedPokemonResponse_Result_ErrorGymClosed:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
+#pragma mark - GymGetInfoResponse
+
+@implementation GymGetInfoResponse
+
+@dynamic hasGymStatusAndDefenders, gymStatusAndDefenders;
+@dynamic name;
+@dynamic URL;
+@dynamic result;
+@dynamic description_p;
+@dynamic secondaryURL;
+@dynamic hasAwardedGymBadge, awardedGymBadge;
+@dynamic checkinImageURL;
+@dynamic hasEventInfo, eventInfo;
+
+typedef struct GymGetInfoResponse__storage_ {
+  uint32_t _has_storage_[1];
+  GymGetInfoResponse_Result result;
+  GymStatusAndDefenders *gymStatusAndDefenders;
+  NSString *name;
+  NSString *URL;
+  NSString *description_p;
+  NSString *secondaryURL;
+  AwardedGymBadge *awardedGymBadge;
+  NSString *checkinImageURL;
+  EventInfo *eventInfo;
+} GymGetInfoResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "gymStatusAndDefenders",
+        .dataTypeSpecific.className = GPBStringifySymbol(GymStatusAndDefenders),
+        .number = GymGetInfoResponse_FieldNumber_GymStatusAndDefenders,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(GymGetInfoResponse__storage_, gymStatusAndDefenders),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "name",
+        .dataTypeSpecific.className = NULL,
+        .number = GymGetInfoResponse_FieldNumber_Name,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(GymGetInfoResponse__storage_, name),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "URL",
+        .dataTypeSpecific.className = NULL,
+        .number = GymGetInfoResponse_FieldNumber_URL,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(GymGetInfoResponse__storage_, URL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "result",
+        .dataTypeSpecific.enumDescFunc = GymGetInfoResponse_Result_EnumDescriptor,
+        .number = GymGetInfoResponse_FieldNumber_Result,
+        .hasIndex = 3,
+        .offset = (uint32_t)offsetof(GymGetInfoResponse__storage_, result),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+      {
+        .name = "description_p",
+        .dataTypeSpecific.className = NULL,
+        .number = GymGetInfoResponse_FieldNumber_Description_p,
+        .hasIndex = 4,
+        .offset = (uint32_t)offsetof(GymGetInfoResponse__storage_, description_p),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "secondaryURL",
+        .dataTypeSpecific.className = NULL,
+        .number = GymGetInfoResponse_FieldNumber_SecondaryURL,
+        .hasIndex = 5,
+        .offset = (uint32_t)offsetof(GymGetInfoResponse__storage_, secondaryURL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "awardedGymBadge",
+        .dataTypeSpecific.className = GPBStringifySymbol(AwardedGymBadge),
+        .number = GymGetInfoResponse_FieldNumber_AwardedGymBadge,
+        .hasIndex = 6,
+        .offset = (uint32_t)offsetof(GymGetInfoResponse__storage_, awardedGymBadge),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "checkinImageURL",
+        .dataTypeSpecific.className = NULL,
+        .number = GymGetInfoResponse_FieldNumber_CheckinImageURL,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(GymGetInfoResponse__storage_, checkinImageURL),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldTextFormatNameCustom),
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "eventInfo",
+        .dataTypeSpecific.className = GPBStringifySymbol(EventInfo),
+        .number = GymGetInfoResponse_FieldNumber_EventInfo,
+        .hasIndex = 8,
+        .offset = (uint32_t)offsetof(GymGetInfoResponse__storage_, eventInfo),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GymGetInfoResponse class]
+                                     rootClass:[PogoprotosNetworkingResponsesRoot class]
+                                          file:PogoprotosNetworkingResponsesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(GymGetInfoResponse__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+#if !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    static const char *extraTextFormatInfo =
+        "\003\003!!!\000\006\t\241!!\000\010\007\245\241!!\000";
+    [localDescriptor setupExtraTextInfo:extraTextFormatInfo];
+#endif  // !GPBOBJC_SKIP_MESSAGE_TEXTFORMAT_EXTRAS
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t GymGetInfoResponse_Result_RawValue(GymGetInfoResponse *message) {
+  GPBDescriptor *descriptor = [GymGetInfoResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:GymGetInfoResponse_FieldNumber_Result];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetGymGetInfoResponse_Result_RawValue(GymGetInfoResponse *message, int32_t value) {
+  GPBDescriptor *descriptor = [GymGetInfoResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:GymGetInfoResponse_FieldNumber_Result];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+#pragma mark - Enum GymGetInfoResponse_Result
+
+GPBEnumDescriptor *GymGetInfoResponse_Result_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "Unset\000Success\000ErrorNotInRange\000ErrorGymDi"
+        "sabled\000";
+    static const int32_t values[] = {
+        GymGetInfoResponse_Result_Unset,
+        GymGetInfoResponse_Result_Success,
+        GymGetInfoResponse_Result_ErrorNotInRange,
+        GymGetInfoResponse_Result_ErrorGymDisabled,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(GymGetInfoResponse_Result)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:GymGetInfoResponse_Result_IsValidValue];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL GymGetInfoResponse_Result_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case GymGetInfoResponse_Result_Unset:
+    case GymGetInfoResponse_Result_Success:
+    case GymGetInfoResponse_Result_ErrorNotInRange:
+    case GymGetInfoResponse_Result_ErrorGymDisabled:
+      return YES;
+    default:
+      return NO;
+  }
+}
 
 #pragma mark - IncenseEncounterResponse
 
@@ -4809,12 +5698,12 @@ BOOL LevelUpRewardsResponse_Result_IsValidValue(int32_t value__) {
 @implementation ListAvatarCustomizationsResponse
 
 @dynamic result;
-@dynamic hasAvatarCustomizations, avatarCustomizations;
+@dynamic avatarCustomizationsArray, avatarCustomizationsArray_Count;
 
 typedef struct ListAvatarCustomizationsResponse__storage_ {
   uint32_t _has_storage_[1];
   ListAvatarCustomizationsResponse_Result result;
-  AvatarCustomization *avatarCustomizations;
+  NSMutableArray *avatarCustomizationsArray;
 } ListAvatarCustomizationsResponse__storage_;
 
 // This method is threadsafe because it is initially called
@@ -4833,12 +5722,12 @@ typedef struct ListAvatarCustomizationsResponse__storage_ {
         .dataType = GPBDataTypeEnum,
       },
       {
-        .name = "avatarCustomizations",
+        .name = "avatarCustomizationsArray",
         .dataTypeSpecific.className = GPBStringifySymbol(AvatarCustomization),
-        .number = ListAvatarCustomizationsResponse_FieldNumber_AvatarCustomizations,
-        .hasIndex = 1,
-        .offset = (uint32_t)offsetof(ListAvatarCustomizationsResponse__storage_, avatarCustomizations),
-        .flags = GPBFieldOptional,
+        .number = ListAvatarCustomizationsResponse_FieldNumber_AvatarCustomizationsArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(ListAvatarCustomizationsResponse__storage_, avatarCustomizationsArray),
+        .flags = GPBFieldRepeated,
         .dataType = GPBDataTypeMessage,
       },
     };
@@ -4905,6 +5794,49 @@ BOOL ListAvatarCustomizationsResponse_Result_IsValidValue(int32_t value__) {
       return NO;
   }
 }
+
+#pragma mark - ListGymBadgesResponse
+
+@implementation ListGymBadgesResponse
+
+@dynamic gymBadgeArray, gymBadgeArray_Count;
+
+typedef struct ListGymBadgesResponse__storage_ {
+  uint32_t _has_storage_[1];
+  NSMutableArray *gymBadgeArray;
+} ListGymBadgesResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "gymBadgeArray",
+        .dataTypeSpecific.className = GPBStringifySymbol(AwardedGymBadge),
+        .number = ListGymBadgesResponse_FieldNumber_GymBadgeArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(ListGymBadgesResponse__storage_, gymBadgeArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[ListGymBadgesResponse class]
+                                     rootClass:[PogoprotosNetworkingResponsesRoot class]
+                                          file:PogoprotosNetworkingResponsesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(ListGymBadgesResponse__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
 
 #pragma mark - MarkTutorialCompleteResponse
 
@@ -5049,6 +5981,329 @@ BOOL NicknamePokemonResponse_Result_IsValidValue(int32_t value__) {
     case NicknamePokemonResponse_Result_ErrorInvalidNickname:
     case NicknamePokemonResponse_Result_ErrorPokemonNotFound:
     case NicknamePokemonResponse_Result_ErrorPokemonIsEgg:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
+#pragma mark - RegisterPushNotificationResponse
+
+@implementation RegisterPushNotificationResponse
+
+@dynamic result;
+
+typedef struct RegisterPushNotificationResponse__storage_ {
+  uint32_t _has_storage_[1];
+  RegisterPushNotificationResponse_Result result;
+} RegisterPushNotificationResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "result",
+        .dataTypeSpecific.enumDescFunc = RegisterPushNotificationResponse_Result_EnumDescriptor,
+        .number = RegisterPushNotificationResponse_FieldNumber_Result,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(RegisterPushNotificationResponse__storage_, result),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[RegisterPushNotificationResponse class]
+                                     rootClass:[PogoprotosNetworkingResponsesRoot class]
+                                          file:PogoprotosNetworkingResponsesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(RegisterPushNotificationResponse__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t RegisterPushNotificationResponse_Result_RawValue(RegisterPushNotificationResponse *message) {
+  GPBDescriptor *descriptor = [RegisterPushNotificationResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:RegisterPushNotificationResponse_FieldNumber_Result];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetRegisterPushNotificationResponse_Result_RawValue(RegisterPushNotificationResponse *message, int32_t value) {
+  GPBDescriptor *descriptor = [RegisterPushNotificationResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:RegisterPushNotificationResponse_FieldNumber_Result];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+#pragma mark - Enum RegisterPushNotificationResponse_Result
+
+GPBEnumDescriptor *RegisterPushNotificationResponse_Result_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "Unset\000Success\000NoChange\000";
+    static const int32_t values[] = {
+        RegisterPushNotificationResponse_Result_Unset,
+        RegisterPushNotificationResponse_Result_Success,
+        RegisterPushNotificationResponse_Result_NoChange,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(RegisterPushNotificationResponse_Result)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:RegisterPushNotificationResponse_Result_IsValidValue];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL RegisterPushNotificationResponse_Result_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case RegisterPushNotificationResponse_Result_Unset:
+    case RegisterPushNotificationResponse_Result_Success:
+    case RegisterPushNotificationResponse_Result_NoChange:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
+#pragma mark - UpdateNotificationStatusResponse
+
+@implementation UpdateNotificationStatusResponse
+
+@dynamic notificationIdsArray, notificationIdsArray_Count;
+@dynamic createTimestampMsArray, createTimestampMsArray_Count;
+@dynamic state;
+
+typedef struct UpdateNotificationStatusResponse__storage_ {
+  uint32_t _has_storage_[1];
+  UpdateNotificationStatusResponse_NotificationState state;
+  NSMutableArray *notificationIdsArray;
+  GPBInt64Array *createTimestampMsArray;
+} UpdateNotificationStatusResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "notificationIdsArray",
+        .dataTypeSpecific.className = NULL,
+        .number = UpdateNotificationStatusResponse_FieldNumber_NotificationIdsArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(UpdateNotificationStatusResponse__storage_, notificationIdsArray),
+        .flags = GPBFieldRepeated,
+        .dataType = GPBDataTypeString,
+      },
+      {
+        .name = "createTimestampMsArray",
+        .dataTypeSpecific.className = NULL,
+        .number = UpdateNotificationStatusResponse_FieldNumber_CreateTimestampMsArray,
+        .hasIndex = GPBNoHasBit,
+        .offset = (uint32_t)offsetof(UpdateNotificationStatusResponse__storage_, createTimestampMsArray),
+        .flags = (GPBFieldFlags)(GPBFieldRepeated | GPBFieldPacked),
+        .dataType = GPBDataTypeInt64,
+      },
+      {
+        .name = "state",
+        .dataTypeSpecific.enumDescFunc = UpdateNotificationStatusResponse_NotificationState_EnumDescriptor,
+        .number = UpdateNotificationStatusResponse_FieldNumber_State,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(UpdateNotificationStatusResponse__storage_, state),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[UpdateNotificationStatusResponse class]
+                                     rootClass:[PogoprotosNetworkingResponsesRoot class]
+                                          file:PogoprotosNetworkingResponsesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(UpdateNotificationStatusResponse__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t UpdateNotificationStatusResponse_State_RawValue(UpdateNotificationStatusResponse *message) {
+  GPBDescriptor *descriptor = [UpdateNotificationStatusResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:UpdateNotificationStatusResponse_FieldNumber_State];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetUpdateNotificationStatusResponse_State_RawValue(UpdateNotificationStatusResponse *message, int32_t value) {
+  GPBDescriptor *descriptor = [UpdateNotificationStatusResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:UpdateNotificationStatusResponse_FieldNumber_State];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+#pragma mark - Enum UpdateNotificationStatusResponse_NotificationState
+
+GPBEnumDescriptor *UpdateNotificationStatusResponse_NotificationState_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "UnsetState\000Viewed\000";
+    static const int32_t values[] = {
+        UpdateNotificationStatusResponse_NotificationState_UnsetState,
+        UpdateNotificationStatusResponse_NotificationState_Viewed,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(UpdateNotificationStatusResponse_NotificationState)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:UpdateNotificationStatusResponse_NotificationState_IsValidValue];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL UpdateNotificationStatusResponse_NotificationState_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case UpdateNotificationStatusResponse_NotificationState_UnsetState:
+    case UpdateNotificationStatusResponse_NotificationState_Viewed:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
+#pragma mark - OptOutPushNotificationCategoryResponse
+
+@implementation OptOutPushNotificationCategoryResponse
+
+
+typedef struct OptOutPushNotificationCategoryResponse__storage_ {
+  uint32_t _has_storage_[1];
+} OptOutPushNotificationCategoryResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[OptOutPushNotificationCategoryResponse class]
+                                     rootClass:[PogoprotosNetworkingResponsesRoot class]
+                                          file:PogoprotosNetworkingResponsesRoot_FileDescriptor()
+                                        fields:NULL
+                                    fieldCount:0
+                                   storageSize:sizeof(OptOutPushNotificationCategoryResponse__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+#pragma mark - PushNotificationRegistryResponse
+
+@implementation PushNotificationRegistryResponse
+
+@dynamic result;
+
+typedef struct PushNotificationRegistryResponse__storage_ {
+  uint32_t _has_storage_[1];
+  PushNotificationRegistryResponse_Result result;
+} PushNotificationRegistryResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "result",
+        .dataTypeSpecific.enumDescFunc = PushNotificationRegistryResponse_Result_EnumDescriptor,
+        .number = PushNotificationRegistryResponse_FieldNumber_Result,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(PushNotificationRegistryResponse__storage_, result),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[PushNotificationRegistryResponse class]
+                                     rootClass:[PogoprotosNetworkingResponsesRoot class]
+                                          file:PogoprotosNetworkingResponsesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(PushNotificationRegistryResponse__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t PushNotificationRegistryResponse_Result_RawValue(PushNotificationRegistryResponse *message) {
+  GPBDescriptor *descriptor = [PushNotificationRegistryResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:PushNotificationRegistryResponse_FieldNumber_Result];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetPushNotificationRegistryResponse_Result_RawValue(PushNotificationRegistryResponse *message, int32_t value) {
+  GPBDescriptor *descriptor = [PushNotificationRegistryResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:PushNotificationRegistryResponse_FieldNumber_Result];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+#pragma mark - Enum PushNotificationRegistryResponse_Result
+
+GPBEnumDescriptor *PushNotificationRegistryResponse_Result_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "Unset\000Success\000NoChange\000";
+    static const int32_t values[] = {
+        PushNotificationRegistryResponse_Result_Unset,
+        PushNotificationRegistryResponse_Result_Success,
+        PushNotificationRegistryResponse_Result_NoChange,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(PushNotificationRegistryResponse_Result)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:PushNotificationRegistryResponse_Result_IsValidValue];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL PushNotificationRegistryResponse_Result_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case PushNotificationRegistryResponse_Result_Unset:
+    case PushNotificationRegistryResponse_Result_Success:
+    case PushNotificationRegistryResponse_Result_NoChange:
       return YES;
     default:
       return NO;
@@ -5647,13 +6902,15 @@ GPBEnumDescriptor *SetBuddyPokemonResponse_Result_EnumDescriptor(void) {
   if (!descriptor) {
     static const char *valueNames =
         "Unest\000Success\000ErrorPokemonDeployed\000Error"
-        "PokemonNotOwned\000ErrorPokemonIsEgg\000";
+        "PokemonNotOwned\000ErrorPokemonIsEgg\000ErrorI"
+        "nvalidPokemon\000";
     static const int32_t values[] = {
         SetBuddyPokemonResponse_Result_Unest,
         SetBuddyPokemonResponse_Result_Success,
         SetBuddyPokemonResponse_Result_ErrorPokemonDeployed,
         SetBuddyPokemonResponse_Result_ErrorPokemonNotOwned,
         SetBuddyPokemonResponse_Result_ErrorPokemonIsEgg,
+        SetBuddyPokemonResponse_Result_ErrorInvalidPokemon,
     };
     GPBEnumDescriptor *worker =
         [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(SetBuddyPokemonResponse_Result)
@@ -5675,6 +6932,7 @@ BOOL SetBuddyPokemonResponse_Result_IsValidValue(int32_t value__) {
     case SetBuddyPokemonResponse_Result_ErrorPokemonDeployed:
     case SetBuddyPokemonResponse_Result_ErrorPokemonNotOwned:
     case SetBuddyPokemonResponse_Result_ErrorPokemonIsEgg:
+    case SetBuddyPokemonResponse_Result_ErrorInvalidPokemon:
       return YES;
     default:
       return NO;
@@ -6081,6 +7339,49 @@ BOOL SfidaActionLogResponse_Result_IsValidValue(int32_t value__) {
   }
 }
 
+#pragma mark - SfidaRegistrationResponse
+
+@implementation SfidaRegistrationResponse
+
+@dynamic accessToken;
+
+typedef struct SfidaRegistrationResponse__storage_ {
+  uint32_t _has_storage_[1];
+  NSData *accessToken;
+} SfidaRegistrationResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "accessToken",
+        .dataTypeSpecific.className = NULL,
+        .number = SfidaRegistrationResponse_FieldNumber_AccessToken,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(SfidaRegistrationResponse__storage_, accessToken),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeBytes,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[SfidaRegistrationResponse class]
+                                     rootClass:[PogoprotosNetworkingResponsesRoot class]
+                                          file:PogoprotosNetworkingResponsesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(SfidaRegistrationResponse__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - StartGymBattleResponse
 
 @implementation StartGymBattleResponse
@@ -6092,6 +7393,7 @@ BOOL SfidaActionLogResponse_Result_IsValidValue(int32_t value__) {
 @dynamic hasDefender, defender;
 @dynamic hasBattleLog, battleLog;
 @dynamic hasAttacker, attacker;
+@dynamic hasBattle, battle;
 
 typedef struct StartGymBattleResponse__storage_ {
   uint32_t _has_storage_[1];
@@ -6100,6 +7402,7 @@ typedef struct StartGymBattleResponse__storage_ {
   BattleParticipant *defender;
   BattleLog *battleLog;
   BattleParticipant *attacker;
+  Battle *battle;
   int64_t battleStartTimestampMs;
   int64_t battleEndTimestampMs;
 } StartGymBattleResponse__storage_;
@@ -6170,6 +7473,15 @@ typedef struct StartGymBattleResponse__storage_ {
         .number = StartGymBattleResponse_FieldNumber_Attacker,
         .hasIndex = 6,
         .offset = (uint32_t)offsetof(StartGymBattleResponse__storage_, attacker),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+      {
+        .name = "battle",
+        .dataTypeSpecific.className = GPBStringifySymbol(Battle),
+        .number = StartGymBattleResponse_FieldNumber_Battle,
+        .hasIndex = 7,
+        .offset = (uint32_t)offsetof(StartGymBattleResponse__storage_, battle),
         .flags = GPBFieldOptional,
         .dataType = GPBDataTypeMessage,
       },
@@ -7018,6 +8330,120 @@ BOOL UseItemGymResponse_Result_IsValidValue(int32_t value__) {
   }
 }
 
+#pragma mark - UseItemMoveRerollResponse
+
+@implementation UseItemMoveRerollResponse
+
+@dynamic result;
+@dynamic hasUpgradedPokemon, upgradedPokemon;
+
+typedef struct UseItemMoveRerollResponse__storage_ {
+  uint32_t _has_storage_[1];
+  UseItemMoveRerollResponse_Result result;
+  PokemonData *upgradedPokemon;
+} UseItemMoveRerollResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "result",
+        .dataTypeSpecific.enumDescFunc = UseItemMoveRerollResponse_Result_EnumDescriptor,
+        .number = UseItemMoveRerollResponse_FieldNumber_Result,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(UseItemMoveRerollResponse__storage_, result),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+      {
+        .name = "upgradedPokemon",
+        .dataTypeSpecific.className = GPBStringifySymbol(PokemonData),
+        .number = UseItemMoveRerollResponse_FieldNumber_UpgradedPokemon,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(UseItemMoveRerollResponse__storage_, upgradedPokemon),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeMessage,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[UseItemMoveRerollResponse class]
+                                     rootClass:[PogoprotosNetworkingResponsesRoot class]
+                                          file:PogoprotosNetworkingResponsesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(UseItemMoveRerollResponse__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t UseItemMoveRerollResponse_Result_RawValue(UseItemMoveRerollResponse *message) {
+  GPBDescriptor *descriptor = [UseItemMoveRerollResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:UseItemMoveRerollResponse_FieldNumber_Result];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetUseItemMoveRerollResponse_Result_RawValue(UseItemMoveRerollResponse *message, int32_t value) {
+  GPBDescriptor *descriptor = [UseItemMoveRerollResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:UseItemMoveRerollResponse_FieldNumber_Result];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+#pragma mark - Enum UseItemMoveRerollResponse_Result
+
+GPBEnumDescriptor *UseItemMoveRerollResponse_Result_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "Unset\000Success\000NoPokemon\000NoOtherMoves\000NoP"
+        "layer\000WrongItemType\000ItemNotInInventory\000I"
+        "nvalidPokemon\000";
+    static const int32_t values[] = {
+        UseItemMoveRerollResponse_Result_Unset,
+        UseItemMoveRerollResponse_Result_Success,
+        UseItemMoveRerollResponse_Result_NoPokemon,
+        UseItemMoveRerollResponse_Result_NoOtherMoves,
+        UseItemMoveRerollResponse_Result_NoPlayer,
+        UseItemMoveRerollResponse_Result_WrongItemType,
+        UseItemMoveRerollResponse_Result_ItemNotInInventory,
+        UseItemMoveRerollResponse_Result_InvalidPokemon,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(UseItemMoveRerollResponse_Result)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:UseItemMoveRerollResponse_Result_IsValidValue];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL UseItemMoveRerollResponse_Result_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case UseItemMoveRerollResponse_Result_Unset:
+    case UseItemMoveRerollResponse_Result_Success:
+    case UseItemMoveRerollResponse_Result_NoPokemon:
+    case UseItemMoveRerollResponse_Result_NoOtherMoves:
+    case UseItemMoveRerollResponse_Result_NoPlayer:
+    case UseItemMoveRerollResponse_Result_WrongItemType:
+    case UseItemMoveRerollResponse_Result_ItemNotInInventory:
+    case UseItemMoveRerollResponse_Result_InvalidPokemon:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
 #pragma mark - UseItemPotionResponse
 
 @implementation UseItemPotionResponse
@@ -7119,6 +8545,138 @@ BOOL UseItemPotionResponse_Result_IsValidValue(int32_t value__) {
     case UseItemPotionResponse_Result_ErrorNoPokemon:
     case UseItemPotionResponse_Result_ErrorCannotUse:
     case UseItemPotionResponse_Result_ErrorDeployedToFort:
+      return YES;
+    default:
+      return NO;
+  }
+}
+
+#pragma mark - UseItemRareCandyResponse
+
+@implementation UseItemRareCandyResponse
+
+@dynamic result;
+@dynamic pokemonId;
+@dynamic updatedCandyCount;
+
+typedef struct UseItemRareCandyResponse__storage_ {
+  uint32_t _has_storage_[1];
+  UseItemRareCandyResponse_Result result;
+  PokemonId pokemonId;
+  int32_t updatedCandyCount;
+} UseItemRareCandyResponse__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    static GPBMessageFieldDescription fields[] = {
+      {
+        .name = "result",
+        .dataTypeSpecific.enumDescFunc = UseItemRareCandyResponse_Result_EnumDescriptor,
+        .number = UseItemRareCandyResponse_FieldNumber_Result,
+        .hasIndex = 0,
+        .offset = (uint32_t)offsetof(UseItemRareCandyResponse__storage_, result),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+      {
+        .name = "pokemonId",
+        .dataTypeSpecific.enumDescFunc = PokemonId_EnumDescriptor,
+        .number = UseItemRareCandyResponse_FieldNumber_PokemonId,
+        .hasIndex = 1,
+        .offset = (uint32_t)offsetof(UseItemRareCandyResponse__storage_, pokemonId),
+        .flags = (GPBFieldFlags)(GPBFieldOptional | GPBFieldHasEnumDescriptor),
+        .dataType = GPBDataTypeEnum,
+      },
+      {
+        .name = "updatedCandyCount",
+        .dataTypeSpecific.className = NULL,
+        .number = UseItemRareCandyResponse_FieldNumber_UpdatedCandyCount,
+        .hasIndex = 2,
+        .offset = (uint32_t)offsetof(UseItemRareCandyResponse__storage_, updatedCandyCount),
+        .flags = GPBFieldOptional,
+        .dataType = GPBDataTypeInt32,
+      },
+    };
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[UseItemRareCandyResponse class]
+                                     rootClass:[PogoprotosNetworkingResponsesRoot class]
+                                          file:PogoprotosNetworkingResponsesRoot_FileDescriptor()
+                                        fields:fields
+                                    fieldCount:(uint32_t)(sizeof(fields) / sizeof(GPBMessageFieldDescription))
+                                   storageSize:sizeof(UseItemRareCandyResponse__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
+int32_t UseItemRareCandyResponse_Result_RawValue(UseItemRareCandyResponse *message) {
+  GPBDescriptor *descriptor = [UseItemRareCandyResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:UseItemRareCandyResponse_FieldNumber_Result];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetUseItemRareCandyResponse_Result_RawValue(UseItemRareCandyResponse *message, int32_t value) {
+  GPBDescriptor *descriptor = [UseItemRareCandyResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:UseItemRareCandyResponse_FieldNumber_Result];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+int32_t UseItemRareCandyResponse_PokemonId_RawValue(UseItemRareCandyResponse *message) {
+  GPBDescriptor *descriptor = [UseItemRareCandyResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:UseItemRareCandyResponse_FieldNumber_PokemonId];
+  return GPBGetMessageInt32Field(message, field);
+}
+
+void SetUseItemRareCandyResponse_PokemonId_RawValue(UseItemRareCandyResponse *message, int32_t value) {
+  GPBDescriptor *descriptor = [UseItemRareCandyResponse descriptor];
+  GPBFieldDescriptor *field = [descriptor fieldWithNumber:UseItemRareCandyResponse_FieldNumber_PokemonId];
+  GPBSetInt32IvarWithFieldInternal(message, field, value, descriptor.file.syntax);
+}
+
+#pragma mark - Enum UseItemRareCandyResponse_Result
+
+GPBEnumDescriptor *UseItemRareCandyResponse_Result_EnumDescriptor(void) {
+  static GPBEnumDescriptor *descriptor = NULL;
+  if (!descriptor) {
+    static const char *valueNames =
+        "Unset\000Success\000InvalidPokemonId\000NoPlayer\000"
+        "WrongItemType\000ItemNotInInventory\000";
+    static const int32_t values[] = {
+        UseItemRareCandyResponse_Result_Unset,
+        UseItemRareCandyResponse_Result_Success,
+        UseItemRareCandyResponse_Result_InvalidPokemonId,
+        UseItemRareCandyResponse_Result_NoPlayer,
+        UseItemRareCandyResponse_Result_WrongItemType,
+        UseItemRareCandyResponse_Result_ItemNotInInventory,
+    };
+    GPBEnumDescriptor *worker =
+        [GPBEnumDescriptor allocDescriptorForName:GPBNSStringifySymbol(UseItemRareCandyResponse_Result)
+                                       valueNames:valueNames
+                                           values:values
+                                            count:(uint32_t)(sizeof(values) / sizeof(int32_t))
+                                     enumVerifier:UseItemRareCandyResponse_Result_IsValidValue];
+    if (!OSAtomicCompareAndSwapPtrBarrier(nil, worker, (void * volatile *)&descriptor)) {
+      [worker release];
+    }
+  }
+  return descriptor;
+}
+
+BOOL UseItemRareCandyResponse_Result_IsValidValue(int32_t value__) {
+  switch (value__) {
+    case UseItemRareCandyResponse_Result_Unset:
+    case UseItemRareCandyResponse_Result_Success:
+    case UseItemRareCandyResponse_Result_InvalidPokemonId:
+    case UseItemRareCandyResponse_Result_NoPlayer:
+    case UseItemRareCandyResponse_Result_WrongItemType:
+    case UseItemRareCandyResponse_Result_ItemNotInInventory:
       return YES;
     default:
       return NO;

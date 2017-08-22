@@ -39,21 +39,26 @@ CF_EXTERN_C_BEGIN
 @class Candy;
 @class EggIncubator;
 @class EggIncubators;
+@class ExclusiveTicketInfo;
 @class InventoryItem;
 @class InventoryItemData;
 @class InventoryItem_DeletedItem;
 @class InventoryUpgrade;
 @class InventoryUpgrades;
 @class ItemData;
+@class LootItem;
 @class PlayerCamera;
 @class PlayerCurrency;
 @class PlayerStats;
 @class PokedexEntry;
 @class PokemonData;
 @class Quest;
+@class RaidTicket;
+@class RaidTickets;
 GPB_ENUM_FWD_DECLARE(ItemId);
 GPB_ENUM_FWD_DECLARE(ItemType);
 GPB_ENUM_FWD_DECLARE(PokemonFamilyId);
+GPB_ENUM_FWD_DECLARE(PokemonId);
 GPB_ENUM_FWD_DECLARE(QuestType);
 
 NS_ASSUME_NONNULL_BEGIN
@@ -271,6 +276,39 @@ typedef GPB_ENUM(EggIncubators_FieldNumber) {
 
 @end
 
+#pragma mark - ExclusiveTicketInfo
+
+typedef GPB_ENUM(ExclusiveTicketInfo_FieldNumber) {
+  ExclusiveTicketInfo_FieldNumber_RaidSeed = 1,
+  ExclusiveTicketInfo_FieldNumber_FortId = 2,
+  ExclusiveTicketInfo_FieldNumber_StartTimeMs = 4,
+  ExclusiveTicketInfo_FieldNumber_EndTimeMs = 5,
+  ExclusiveTicketInfo_FieldNumber_ImageURL = 6,
+  ExclusiveTicketInfo_FieldNumber_Latitude = 7,
+  ExclusiveTicketInfo_FieldNumber_Longitude = 8,
+  ExclusiveTicketInfo_FieldNumber_GymName = 9,
+};
+
+@interface ExclusiveTicketInfo : GPBMessage
+
+@property(nonatomic, readwrite) int64_t raidSeed;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *fortId;
+
+@property(nonatomic, readwrite) int64_t startTimeMs;
+
+@property(nonatomic, readwrite) int64_t endTimeMs;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *imageURL;
+
+@property(nonatomic, readwrite) double latitude;
+
+@property(nonatomic, readwrite) double longitude;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *gymName;
+
+@end
+
 #pragma mark - InventoryDelta
 
 typedef GPB_ENUM(InventoryDelta_FieldNumber) {
@@ -340,6 +378,7 @@ typedef GPB_ENUM(InventoryItemData_FieldNumber) {
   InventoryItemData_FieldNumber_Candy = 10,
   InventoryItemData_FieldNumber_Quest = 11,
   InventoryItemData_FieldNumber_AvatarItem = 12,
+  InventoryItemData_FieldNumber_RaidTickets = 13,
 };
 
 @interface InventoryItemData : GPBMessage
@@ -392,6 +431,10 @@ typedef GPB_ENUM(InventoryItemData_FieldNumber) {
 /** Test to see if @c avatarItem has been set. */
 @property(nonatomic, readwrite) BOOL hasAvatarItem;
 
+@property(nonatomic, readwrite, strong, null_resettable) RaidTickets *raidTickets;
+/** Test to see if @c raidTickets has been set. */
+@property(nonatomic, readwrite) BOOL hasRaidTickets;
+
 @end
 
 #pragma mark - InventoryKey
@@ -409,6 +452,7 @@ typedef GPB_ENUM(InventoryKey_FieldNumber) {
   InventoryKey_FieldNumber_PokemonFamilyId = 10,
   InventoryKey_FieldNumber_QuestType = 11,
   InventoryKey_FieldNumber_AvatarTemplateId = 12,
+  InventoryKey_FieldNumber_RaidTickets = 13,
 };
 
 @interface InventoryKey : GPBMessage
@@ -436,6 +480,8 @@ typedef GPB_ENUM(InventoryKey_FieldNumber) {
 @property(nonatomic, readwrite) enum QuestType questType;
 
 @property(nonatomic, readwrite, copy, null_resettable) NSString *avatarTemplateId;
+
+@property(nonatomic, readwrite) BOOL raidTickets;
 
 @end
 
@@ -528,6 +574,114 @@ typedef GPB_ENUM(InventoryUpgrades_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<InventoryUpgrade*> *inventoryUpgradesArray;
 /** The number of items in @c inventoryUpgradesArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger inventoryUpgradesArray_Count;
+
+@end
+
+#pragma mark - Loot
+
+typedef GPB_ENUM(Loot_FieldNumber) {
+  Loot_FieldNumber_LootItemArray = 1,
+};
+
+@interface Loot : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<LootItem*> *lootItemArray;
+/** The number of items in @c lootItemArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger lootItemArray_Count;
+
+@end
+
+#pragma mark - LootItem
+
+typedef GPB_ENUM(LootItem_FieldNumber) {
+  LootItem_FieldNumber_Item = 1,
+  LootItem_FieldNumber_Stardust = 2,
+  LootItem_FieldNumber_Pokecoin = 3,
+  LootItem_FieldNumber_PokemonCandy = 4,
+  LootItem_FieldNumber_Count = 5,
+};
+
+@interface LootItem : GPBMessage
+
+@property(nonatomic, readwrite) enum ItemId item;
+
+@property(nonatomic, readwrite) BOOL stardust;
+
+@property(nonatomic, readwrite) BOOL pokecoin;
+
+@property(nonatomic, readwrite) enum PokemonId pokemonCandy;
+
+@property(nonatomic, readwrite) int32_t count;
+
+@end
+
+/**
+ * Fetches the raw value of a @c LootItem's @c item property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t LootItem_Item_RawValue(LootItem *message);
+/**
+ * Sets the raw value of an @c LootItem's @c item property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetLootItem_Item_RawValue(LootItem *message, int32_t value);
+
+/**
+ * Fetches the raw value of a @c LootItem's @c pokemonCandy property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t LootItem_PokemonCandy_RawValue(LootItem *message);
+/**
+ * Sets the raw value of an @c LootItem's @c pokemonCandy property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetLootItem_PokemonCandy_RawValue(LootItem *message, int32_t value);
+
+#pragma mark - RaidTicket
+
+typedef GPB_ENUM(RaidTicket_FieldNumber) {
+  RaidTicket_FieldNumber_TicketId = 1,
+  RaidTicket_FieldNumber_Item = 2,
+  RaidTicket_FieldNumber_ExclusiveInfo = 4,
+};
+
+@interface RaidTicket : GPBMessage
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *ticketId;
+
+@property(nonatomic, readwrite) enum ItemId item;
+
+@property(nonatomic, readwrite, strong, null_resettable) ExclusiveTicketInfo *exclusiveInfo;
+/** Test to see if @c exclusiveInfo has been set. */
+@property(nonatomic, readwrite) BOOL hasExclusiveInfo;
+
+@end
+
+/**
+ * Fetches the raw value of a @c RaidTicket's @c item property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t RaidTicket_Item_RawValue(RaidTicket *message);
+/**
+ * Sets the raw value of an @c RaidTicket's @c item property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetRaidTicket_Item_RawValue(RaidTicket *message, int32_t value);
+
+#pragma mark - RaidTickets
+
+typedef GPB_ENUM(RaidTickets_FieldNumber) {
+  RaidTickets_FieldNumber_RaidTicketArray = 1,
+};
+
+@interface RaidTickets : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<RaidTicket*> *raidTicketArray;
+/** The number of items in @c raidTicketArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger raidTicketArray_Count;
 
 @end
 

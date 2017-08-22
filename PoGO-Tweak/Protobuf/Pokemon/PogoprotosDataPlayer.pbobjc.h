@@ -30,6 +30,8 @@ CF_EXTERN_C_BEGIN
 
 @class PlayerAvatar;
 GPB_ENUM_FWD_DECLARE(BadgeType);
+GPB_ENUM_FWD_DECLARE(GymBadgeType);
+GPB_ENUM_FWD_DECLARE(TeamColor);
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -246,6 +248,11 @@ typedef GPB_ENUM(PlayerPublicProfile_FieldNumber) {
   PlayerPublicProfile_FieldNumber_Name = 1,
   PlayerPublicProfile_FieldNumber_Level = 2,
   PlayerPublicProfile_FieldNumber_Avatar = 3,
+  PlayerPublicProfile_FieldNumber_TeamColor = 4,
+  PlayerPublicProfile_FieldNumber_BattlesWon = 5,
+  PlayerPublicProfile_FieldNumber_KmWalked = 6,
+  PlayerPublicProfile_FieldNumber_CaughtPokemon = 7,
+  PlayerPublicProfile_FieldNumber_GymBadgeType = 8,
 };
 
 @interface PlayerPublicProfile : GPBMessage
@@ -258,7 +265,41 @@ typedef GPB_ENUM(PlayerPublicProfile_FieldNumber) {
 /** Test to see if @c avatar has been set. */
 @property(nonatomic, readwrite) BOOL hasAvatar;
 
+@property(nonatomic, readwrite) enum TeamColor teamColor;
+
+@property(nonatomic, readwrite) int32_t battlesWon;
+
+@property(nonatomic, readwrite) float kmWalked;
+
+@property(nonatomic, readwrite) int32_t caughtPokemon;
+
+@property(nonatomic, readwrite) enum GymBadgeType gymBadgeType;
+
 @end
+
+/**
+ * Fetches the raw value of a @c PlayerPublicProfile's @c teamColor property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t PlayerPublicProfile_TeamColor_RawValue(PlayerPublicProfile *message);
+/**
+ * Sets the raw value of an @c PlayerPublicProfile's @c teamColor property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetPlayerPublicProfile_TeamColor_RawValue(PlayerPublicProfile *message, int32_t value);
+
+/**
+ * Fetches the raw value of a @c PlayerPublicProfile's @c gymBadgeType property, even
+ * if the value was not defined by the enum at the time the code was generated.
+ **/
+int32_t PlayerPublicProfile_GymBadgeType_RawValue(PlayerPublicProfile *message);
+/**
+ * Sets the raw value of an @c PlayerPublicProfile's @c gymBadgeType property, allowing
+ * it to be set to a value that was not defined by the enum at the time the code
+ * was generated.
+ **/
+void SetPlayerPublicProfile_GymBadgeType_RawValue(PlayerPublicProfile *message, int32_t value);
 
 #pragma mark - PlayerStats
 
@@ -288,6 +329,13 @@ typedef GPB_ENUM(PlayerStats_FieldNumber) {
   PlayerStats_FieldNumber_SmallRattataCaught = 23,
   PlayerStats_FieldNumber_UsedKmPool = 24,
   PlayerStats_FieldNumber_LastKmRefillMs = 25,
+  PlayerStats_FieldNumber_NumRaidBattleWon = 26,
+  PlayerStats_FieldNumber_NumRaidBattleTotal = 27,
+  PlayerStats_FieldNumber_NumLegendaryBattleWon = 28,
+  PlayerStats_FieldNumber_NumLegendaryBattleTotal = 29,
+  PlayerStats_FieldNumber_NumBerriesFed = 30,
+  PlayerStats_FieldNumber_TotalDefendedMs = 31,
+  PlayerStats_FieldNumber_EventBadgesArray = 32,
 };
 
 @interface PlayerStats : GPBMessage
@@ -343,6 +391,23 @@ typedef GPB_ENUM(PlayerStats_FieldNumber) {
 @property(nonatomic, readwrite) double usedKmPool;
 
 @property(nonatomic, readwrite) int64_t lastKmRefillMs;
+
+@property(nonatomic, readwrite) int32_t numRaidBattleWon;
+
+@property(nonatomic, readwrite) int32_t numRaidBattleTotal;
+
+@property(nonatomic, readwrite) int32_t numLegendaryBattleWon;
+
+@property(nonatomic, readwrite) int32_t numLegendaryBattleTotal;
+
+@property(nonatomic, readwrite) int32_t numBerriesFed;
+
+@property(nonatomic, readwrite) int64_t totalDefendedMs;
+
+// |eventBadgesArray| contains |GymBadgeType|
+@property(nonatomic, readwrite, strong, null_resettable) GPBEnumArray *eventBadgesArray;
+/** The number of items in @c eventBadgesArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger eventBadgesArray_Count;
 
 @end
 

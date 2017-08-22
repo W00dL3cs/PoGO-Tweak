@@ -113,6 +113,8 @@ typedef GPB_ENUM(FoodAttributes_FieldNumber) {
   FoodAttributes_FieldNumber_ItemEffectArray = 1,
   FoodAttributes_FieldNumber_ItemEffectPercentArray = 2,
   FoodAttributes_FieldNumber_GrowthPercent = 3,
+  FoodAttributes_FieldNumber_BerryMultiplier = 4,
+  FoodAttributes_FieldNumber_RemoteBerryMultiplier = 5,
 };
 
 @interface FoodAttributes : GPBMessage
@@ -127,6 +129,10 @@ typedef GPB_ENUM(FoodAttributes_FieldNumber) {
 @property(nonatomic, readonly) NSUInteger itemEffectPercentArray_Count;
 
 @property(nonatomic, readwrite) float growthPercent;
+
+@property(nonatomic, readwrite) float berryMultiplier;
+
+@property(nonatomic, readwrite) float remoteBerryMultiplier;
 
 @end
 

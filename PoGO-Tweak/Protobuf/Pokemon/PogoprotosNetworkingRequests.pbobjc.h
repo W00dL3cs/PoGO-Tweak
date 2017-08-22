@@ -113,16 +113,16 @@ typedef GPB_ENUM(RequestType) {
   /** Implemented [R & M] */
   RequestType_CheckAwardedBadges = 129,
 
-  /** Implemented [R & M] */
+  /** Removed */
   RequestType_UseItemGym = 133,
 
-  /** Implemented [R & M] */
+  /** Removed */
   RequestType_GetGymDetails = 134,
 
-  /** Implemented [R & M] */
+  /** Removed */
   RequestType_StartGymBattle = 135,
 
-  /** Implemented [R & M] */
+  /** Removed */
   RequestType_AttackGym = 136,
 
   /** Implemented [R & M] */
@@ -152,7 +152,7 @@ typedef GPB_ENUM(RequestType) {
   /** Implemented [R & M] */
   RequestType_DiskEncounter = 145,
 
-  /** Implemented [R & M] */
+  /** Removed */
   RequestType_CollectDailyDefenderBonus = 146,
 
   /** Implemented [R & M] */
@@ -178,6 +178,42 @@ typedef GPB_ENUM(RequestType) {
 
   /** Implemented [R & M] */
   RequestType_UseItemEncounter = 154,
+
+  /** Implemented [R & M] */
+  RequestType_GymDeploy = 155,
+
+  /** Implemented [R & M] */
+  RequestType_GymGetInfo = 156,
+
+  /** Not yet released. */
+  RequestType_GymStartSession = 157,
+
+  /** Not yet released. */
+  RequestType_GymBattleAttack = 158,
+
+  /** Not yet released. */
+  RequestType_JoinLobby = 159,
+
+  /** Not yet released. */
+  RequestType_LeaveLobby = 160,
+
+  /** Not yet released. */
+  RequestType_SetLobbyVisibility = 161,
+
+  /** Not yet released. */
+  RequestType_SetLobbyPokemon = 162,
+
+  /** Not yet released. */
+  RequestType_GetRaidDetails = 163,
+
+  /** Implemented [R & M] */
+  RequestType_GymFeedPokemon = 164,
+
+  /** Not yet released. */
+  RequestType_StartRaidBattle = 165,
+
+  /** Not yet released. */
+  RequestType_AttackRaid = 166,
 
   /** Implemented [R & M] */
   RequestType_GetAssetDigest = 300,
@@ -206,7 +242,7 @@ typedef GPB_ENUM(RequestType) {
   /** Implemented [R & M] */
   RequestType_Echo = 666,
 
-  /** Not yet released. */
+  /** Implemented [R & M] */
   RequestType_SfidaRegistration = 800,
 
   /** Implemented [R & M] */
@@ -237,7 +273,20 @@ typedef GPB_ENUM(RequestType) {
   RequestType_GetInbox = 809,
 
   /** Implemented [R & M] */
-  RequestType_UpdateNotificationStatus = 810,
+  RequestType_ListGymBadges = 811,
+
+  /** Implemented [R & M] */
+  RequestType_GetGymBadgeDetails = 812,
+
+  /** Implemented [R & M] */
+  RequestType_UseItemMoveReroll = 813,
+
+  /** Implemented [R & M] */
+  RequestType_UseItemRareCandy = 814,
+  RequestType_RegisterPushNotification = 5000,
+  RequestType_UnregisterPushNotification = 5001,
+  RequestType_UpdateNotificationStatus = 5002,
+  RequestType_OptOutPushNotificationCategory = 5003,
 };
 
 GPBEnumDescriptor *RequestType_EnumDescriptor(void);

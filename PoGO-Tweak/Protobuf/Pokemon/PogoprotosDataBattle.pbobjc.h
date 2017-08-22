@@ -21,8 +21,12 @@
 #endif
 
  #import "PogoprotosDataPlayer.pbobjc.h"
+ #import "PogoprotosMapPokemon.pbobjc.h"
  #import "PogoprotosData.pbobjc.h"
  #import "PogoprotosDataGym.pbobjc.h"
+ #import "PogoprotosDataRaid.pbobjc.h"
+ #import "PogoprotosInventory.pbobjc.h"
+ #import "PogoprotosDataBadge.pbobjc.h"
 // @@protoc_insertion_point(imports)
 
 #pragma clang diagnostic push
@@ -30,13 +34,20 @@
 
 CF_EXTERN_C_BEGIN
 
+@class AwardedGymBadge;
 @class BattleAction;
+@class BattleLog;
 @class BattleParticipant;
 @class BattlePokemonInfo;
 @class BattleResults;
 @class GymState;
+@class GymStatusAndDefenders;
+@class LobbyPokemon;
+@class Loot;
+@class Participation;
 @class PlayerPublicProfile;
 @class PokemonData;
+@class RaidEncounter;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -106,6 +117,7 @@ typedef GPB_ENUM(BattleType) {
   BattleType_BattleTypeUnset = 0,
   BattleType_BattleTypeNormal = 1,
   BattleType_BattleTypeTraining = 2,
+  BattleType_BattleTypeRaid = 3,
 };
 
 GPBEnumDescriptor *BattleType_EnumDescriptor(void);
@@ -129,6 +141,39 @@ BOOL BattleType_IsValidValue(int32_t value);
  * this file and all files that it depends on.
  **/
 @interface PogoprotosDataBattleRoot : GPBRootObject
+@end
+
+#pragma mark - Battle
+
+typedef GPB_ENUM(Battle_FieldNumber) {
+  Battle_FieldNumber_BattleStartMs = 1,
+  Battle_FieldNumber_BattleEndMs = 2,
+  Battle_FieldNumber_BattleId = 3,
+  Battle_FieldNumber_Defender = 4,
+  Battle_FieldNumber_BattleLog = 5,
+  Battle_FieldNumber_Attacker = 6,
+};
+
+@interface Battle : GPBMessage
+
+@property(nonatomic, readwrite) int64_t battleStartMs;
+
+@property(nonatomic, readwrite) int64_t battleEndMs;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *battleId;
+
+@property(nonatomic, readwrite, strong, null_resettable) BattleParticipant *defender;
+/** Test to see if @c defender has been set. */
+@property(nonatomic, readwrite) BOOL hasDefender;
+
+@property(nonatomic, readwrite, strong, null_resettable) BattleLog *battleLog;
+/** Test to see if @c battleLog has been set. */
+@property(nonatomic, readwrite) BOOL hasBattleLog;
+
+@property(nonatomic, readwrite, strong, null_resettable) BattleParticipant *attacker;
+/** Test to see if @c attacker has been set. */
+@property(nonatomic, readwrite) BOOL hasAttacker;
+
 @end
 
 #pragma mark - BattleAction
@@ -257,6 +302,8 @@ typedef GPB_ENUM(BattleParticipant_FieldNumber) {
   BattleParticipant_FieldNumber_TrainerPublicProfile = 2,
   BattleParticipant_FieldNumber_ReversePokemonArray = 3,
   BattleParticipant_FieldNumber_DefeatedPokemonArray = 4,
+  BattleParticipant_FieldNumber_LobbyPokemonArray = 5,
+  BattleParticipant_FieldNumber_DamageDealt = 6,
 };
 
 @interface BattleParticipant : GPBMessage
@@ -276,6 +323,12 @@ typedef GPB_ENUM(BattleParticipant_FieldNumber) {
 @property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<BattlePokemonInfo*> *defeatedPokemonArray;
 /** The number of items in @c defeatedPokemonArray without causing the array to be created. */
 @property(nonatomic, readonly) NSUInteger defeatedPokemonArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<LobbyPokemon*> *lobbyPokemonArray;
+/** The number of items in @c lobbyPokemonArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger lobbyPokemonArray_Count;
+
+@property(nonatomic, readwrite) int32_t damageDealt;
 
 @end
 
@@ -307,6 +360,11 @@ typedef GPB_ENUM(BattleResults_FieldNumber) {
   BattleResults_FieldNumber_PlayerExperienceAwardedArray = 3,
   BattleResults_FieldNumber_NextDefenderPokemonId = 4,
   BattleResults_FieldNumber_GymPointsDelta = 5,
+  BattleResults_FieldNumber_GymStatus = 6,
+  BattleResults_FieldNumber_ParticipationArray = 7,
+  BattleResults_FieldNumber_RaidItemRewardsArray = 8,
+  BattleResults_FieldNumber_PostRaidEncounterArray = 9,
+  BattleResults_FieldNumber_GymBadgeArray = 10,
 };
 
 @interface BattleResults : GPBMessage
@@ -326,6 +384,53 @@ typedef GPB_ENUM(BattleResults_FieldNumber) {
 @property(nonatomic, readwrite) int64_t nextDefenderPokemonId;
 
 @property(nonatomic, readwrite) int32_t gymPointsDelta;
+
+@property(nonatomic, readwrite, strong, null_resettable) GymStatusAndDefenders *gymStatus;
+/** Test to see if @c gymStatus has been set. */
+@property(nonatomic, readwrite) BOOL hasGymStatus;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<Participation*> *participationArray;
+/** The number of items in @c participationArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger participationArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<Loot*> *raidItemRewardsArray;
+/** The number of items in @c raidItemRewardsArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger raidItemRewardsArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<RaidEncounter*> *postRaidEncounterArray;
+/** The number of items in @c postRaidEncounterArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger postRaidEncounterArray_Count;
+
+@property(nonatomic, readwrite, strong, null_resettable) NSMutableArray<AwardedGymBadge*> *gymBadgeArray;
+/** The number of items in @c gymBadgeArray without causing the array to be created. */
+@property(nonatomic, readonly) NSUInteger gymBadgeArray_Count;
+
+@end
+
+#pragma mark - BattleUpdate
+
+typedef GPB_ENUM(BattleUpdate_FieldNumber) {
+  BattleUpdate_FieldNumber_BattleLog = 1,
+  BattleUpdate_FieldNumber_BattleId = 2,
+  BattleUpdate_FieldNumber_ActiveDefender = 3,
+  BattleUpdate_FieldNumber_ActiveAttacker = 4,
+};
+
+@interface BattleUpdate : GPBMessage
+
+@property(nonatomic, readwrite, strong, null_resettable) BattleLog *battleLog;
+/** Test to see if @c battleLog has been set. */
+@property(nonatomic, readwrite) BOOL hasBattleLog;
+
+@property(nonatomic, readwrite, copy, null_resettable) NSString *battleId;
+
+@property(nonatomic, readwrite, strong, null_resettable) BattlePokemonInfo *activeDefender;
+/** Test to see if @c activeDefender has been set. */
+@property(nonatomic, readwrite) BOOL hasActiveDefender;
+
+@property(nonatomic, readwrite, strong, null_resettable) BattlePokemonInfo *activeAttacker;
+/** Test to see if @c activeAttacker has been set. */
+@property(nonatomic, readwrite) BOOL hasActiveAttacker;
 
 @end
 

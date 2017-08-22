@@ -128,6 +128,36 @@ typedef struct BuyItemPokeCoinsRequest__storage_ {
 
 @end
 
+#pragma mark - GetStoreItemsRequest
+
+@implementation GetStoreItemsRequest
+
+
+typedef struct GetStoreItemsRequest__storage_ {
+  uint32_t _has_storage_[1];
+} GetStoreItemsRequest__storage_;
+
+// This method is threadsafe because it is initially called
+// in +initialize for each subclass.
++ (GPBDescriptor *)descriptor {
+  static GPBDescriptor *descriptor = nil;
+  if (!descriptor) {
+    GPBDescriptor *localDescriptor =
+        [GPBDescriptor allocDescriptorForClass:[GetStoreItemsRequest class]
+                                     rootClass:[PogoprotosNetworkingPlatformRequestsRoot class]
+                                          file:PogoprotosNetworkingPlatformRequestsRoot_FileDescriptor()
+                                        fields:NULL
+                                    fieldCount:0
+                                   storageSize:sizeof(GetStoreItemsRequest__storage_)
+                                         flags:GPBDescriptorInitializationFlag_None];
+    NSAssert(descriptor == nil, @"Startup recursed!");
+    descriptor = localDescriptor;
+  }
+  return descriptor;
+}
+
+@end
+
 #pragma mark - SendEncryptedSignatureRequest
 
 @implementation SendEncryptedSignatureRequest
