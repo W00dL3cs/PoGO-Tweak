@@ -1,4 +1,4 @@
-#line 1 "/Users/Alex/Desktop/PoGO-Tweak/PoGO-Tweak/Tweak.xm"
+#line 1 "/Users/Alex/Desktop/Development/Tweaks/PoGO-Tweak/PoGO-Tweak/Tweak.xm"
 
 
 
@@ -21,7 +21,7 @@ NSMutableDictionary* lookup = [NSMutableDictionary dictionary];
 
 #pragma mark - Original implementations
 
-static void (*original_recv)(int pointer, Result result);
+static void (*original_recv)(int pointer, Result* result);
 static int (*original_server)(int pointer, int timeoutMs, int retryDelayMs, int count, IntArray* methods, IntPtr bodies, IntArray* sizes, int* result);
 
 #pragma mark - Server Send
@@ -59,23 +59,23 @@ static int hacked_server(int pointer, int timeoutMs, int retryDelayMs, int count
 
 #pragma mark - Recv
 
-static void hacked_recv(int pointer, Result result)
+static void hacked_recv(int pointer, Result* result)
 {
     
-    int rpcId = result.rpcId;
+    int rpcId = result->rpcId;
     
     
     NSMutableArray* protos = [lookup objectForKey:@(rpcId)];
     
     if (protos)
     {
-        int actions = result.actionCount;
+        int actions = result->actionCount;
         
         
         if (protos.count == actions)
         {
             
-            ByteStringRepeatedField* repeatedField = result.rpcPayloads;
+            ByteStringRepeatedField* repeatedField = result->rpcPayloads;
             
             for (int i = 0; i < repeatedField->count; i++)
             {
@@ -154,10 +154,13 @@ static void hacked_recv(int pointer, Result result)
 static __attribute__((constructor)) void _logosLocalCtor_37a749d8(int __unused argc, char __unused **argv, char __unused **envp)
 {
     
-    unsigned long server_func = (_dyld_get_image_vmaddr_slide(0) + 0x1007C562C);
+    intptr_t slide = _dyld_get_image_vmaddr_slide(0);
+    
+    
+    unsigned long server_func = (slide + 0x1009012e8);
     MSHookFunction((void*)server_func, (void*)hacked_server, (void**)&original_server);
     
     
-    unsigned long recv_func = (_dyld_get_image_vmaddr_slide(0) + 0x1007C9914);
+    unsigned long recv_func = (slide + 0x100910e50);
     MSHookFunction((void*)recv_func, (void*)hacked_recv, (void**)&original_recv);
 }

@@ -83,63 +83,65 @@
 		FA7ED8731EBE30E00046C902 /* GPBWellKnownTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8341EBE30E00046C902 /* GPBWellKnownTypes.m */; };
 		FA7ED8741EBE30E00046C902 /* GPBWireFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8351EBE30E00046C902 /* GPBWireFormat.h */; };
 		FA7ED8751EBE30E00046C902 /* GPBWireFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8361EBE30E00046C902 /* GPBWireFormat.m */; };
-		FA7ED8AE1EBE32410046C902 /* PogoprotosData.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8761EBE32410046C902 /* PogoprotosData.pbobjc.h */; };
-		FA7ED8AF1EBE32410046C902 /* PogoprotosData.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8771EBE32410046C902 /* PogoprotosData.pbobjc.m */; };
-		FA7ED8B01EBE32410046C902 /* PogoprotosDataAvatar.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8781EBE32410046C902 /* PogoprotosDataAvatar.pbobjc.h */; };
-		FA7ED8B11EBE32410046C902 /* PogoprotosDataAvatar.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8791EBE32410046C902 /* PogoprotosDataAvatar.pbobjc.m */; };
-		FA7ED8B21EBE32410046C902 /* PogoprotosDataBadge.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED87A1EBE32410046C902 /* PogoprotosDataBadge.pbobjc.h */; };
-		FA7ED8B31EBE32410046C902 /* PogoprotosDataBadge.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED87B1EBE32410046C902 /* PogoprotosDataBadge.pbobjc.m */; };
-		FA7ED8B41EBE32410046C902 /* PogoprotosDataBattle.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED87C1EBE32410046C902 /* PogoprotosDataBattle.pbobjc.h */; };
-		FA7ED8B51EBE32410046C902 /* PogoprotosDataBattle.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED87D1EBE32410046C902 /* PogoprotosDataBattle.pbobjc.m */; };
-		FA7ED8B61EBE32410046C902 /* PogoprotosDataCapture.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED87E1EBE32410046C902 /* PogoprotosDataCapture.pbobjc.h */; };
-		FA7ED8B71EBE32410046C902 /* PogoprotosDataCapture.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED87F1EBE32410046C902 /* PogoprotosDataCapture.pbobjc.m */; };
-		FA7ED8B81EBE32410046C902 /* PogoprotosDataGym.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8801EBE32410046C902 /* PogoprotosDataGym.pbobjc.h */; };
-		FA7ED8B91EBE32410046C902 /* PogoprotosDataGym.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8811EBE32410046C902 /* PogoprotosDataGym.pbobjc.m */; };
-		FA7ED8BA1EBE32410046C902 /* PogoprotosDataLogs.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8821EBE32410046C902 /* PogoprotosDataLogs.pbobjc.h */; };
-		FA7ED8BB1EBE32410046C902 /* PogoprotosDataLogs.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8831EBE32410046C902 /* PogoprotosDataLogs.pbobjc.m */; };
-		FA7ED8BC1EBE32410046C902 /* PogoprotosDataPlayer.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8841EBE32410046C902 /* PogoprotosDataPlayer.pbobjc.h */; };
-		FA7ED8BD1EBE32410046C902 /* PogoprotosDataPlayer.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8851EBE32410046C902 /* PogoprotosDataPlayer.pbobjc.m */; };
-		FA7ED8BE1EBE32410046C902 /* PogoprotosDataQuests.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8861EBE32410046C902 /* PogoprotosDataQuests.pbobjc.h */; };
-		FA7ED8BF1EBE32410046C902 /* PogoprotosDataQuests.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8871EBE32410046C902 /* PogoprotosDataQuests.pbobjc.m */; };
-		FA7ED8C01EBE32410046C902 /* PogoprotosDataRedeem.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8881EBE32410046C902 /* PogoprotosDataRedeem.pbobjc.h */; };
-		FA7ED8C11EBE32410046C902 /* PogoprotosDataRedeem.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8891EBE32410046C902 /* PogoprotosDataRedeem.pbobjc.m */; };
-		FA7ED8C21EBE32410046C902 /* PogoprotosEnums.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED88A1EBE32410046C902 /* PogoprotosEnums.pbobjc.h */; };
-		FA7ED8C31EBE32410046C902 /* PogoprotosEnums.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED88B1EBE32410046C902 /* PogoprotosEnums.pbobjc.m */; };
-		FA7ED8C41EBE32410046C902 /* PogoprotosInventory.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED88C1EBE32410046C902 /* PogoprotosInventory.pbobjc.h */; };
-		FA7ED8C51EBE32410046C902 /* PogoprotosInventory.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED88D1EBE32410046C902 /* PogoprotosInventory.pbobjc.m */; };
-		FA7ED8C61EBE32410046C902 /* PogoprotosInventoryItem.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED88E1EBE32410046C902 /* PogoprotosInventoryItem.pbobjc.h */; };
-		FA7ED8C71EBE32410046C902 /* PogoprotosInventoryItem.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED88F1EBE32410046C902 /* PogoprotosInventoryItem.pbobjc.m */; };
-		FA7ED8C81EBE32410046C902 /* PogoprotosMap.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8901EBE32410046C902 /* PogoprotosMap.pbobjc.h */; };
-		FA7ED8C91EBE32410046C902 /* PogoprotosMap.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8911EBE32410046C902 /* PogoprotosMap.pbobjc.m */; };
-		FA7ED8CA1EBE32410046C902 /* PogoprotosMapFort.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8921EBE32410046C902 /* PogoprotosMapFort.pbobjc.h */; };
-		FA7ED8CB1EBE32410046C902 /* PogoprotosMapFort.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8931EBE32410046C902 /* PogoprotosMapFort.pbobjc.m */; };
-		FA7ED8CC1EBE32410046C902 /* PogoprotosMapPokemon.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8941EBE32410046C902 /* PogoprotosMapPokemon.pbobjc.h */; };
-		FA7ED8CD1EBE32410046C902 /* PogoprotosMapPokemon.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8951EBE32410046C902 /* PogoprotosMapPokemon.pbobjc.m */; };
-		FA7ED8CE1EBE32410046C902 /* PogoprotosNetworkingEnvelopes.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8961EBE32410046C902 /* PogoprotosNetworkingEnvelopes.pbobjc.h */; };
-		FA7ED8CF1EBE32410046C902 /* PogoprotosNetworkingEnvelopes.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8971EBE32410046C902 /* PogoprotosNetworkingEnvelopes.pbobjc.m */; };
-		FA7ED8D01EBE32410046C902 /* PogoprotosNetworkingPlatform.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8981EBE32410046C902 /* PogoprotosNetworkingPlatform.pbobjc.h */; };
-		FA7ED8D11EBE32410046C902 /* PogoprotosNetworkingPlatform.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8991EBE32410046C902 /* PogoprotosNetworkingPlatform.pbobjc.m */; };
-		FA7ED8D21EBE32410046C902 /* PogoprotosNetworkingPlatformRequests.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED89A1EBE32410046C902 /* PogoprotosNetworkingPlatformRequests.pbobjc.h */; };
-		FA7ED8D31EBE32410046C902 /* PogoprotosNetworkingPlatformRequests.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED89B1EBE32410046C902 /* PogoprotosNetworkingPlatformRequests.pbobjc.m */; };
-		FA7ED8D41EBE32410046C902 /* PogoprotosNetworkingPlatformResponses.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED89C1EBE32410046C902 /* PogoprotosNetworkingPlatformResponses.pbobjc.h */; };
-		FA7ED8D51EBE32410046C902 /* PogoprotosNetworkingPlatformResponses.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED89D1EBE32410046C902 /* PogoprotosNetworkingPlatformResponses.pbobjc.m */; };
-		FA7ED8D61EBE32410046C902 /* PogoprotosNetworkingRequests.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED89E1EBE32410046C902 /* PogoprotosNetworkingRequests.pbobjc.h */; };
-		FA7ED8D71EBE32410046C902 /* PogoprotosNetworkingRequests.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED89F1EBE32410046C902 /* PogoprotosNetworkingRequests.pbobjc.m */; };
-		FA7ED8D81EBE32410046C902 /* PogoprotosNetworkingRequestsMessages.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8A01EBE32410046C902 /* PogoprotosNetworkingRequestsMessages.pbobjc.h */; };
-		FA7ED8D91EBE32410046C902 /* PogoprotosNetworkingRequestsMessages.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8A11EBE32410046C902 /* PogoprotosNetworkingRequestsMessages.pbobjc.m */; };
-		FA7ED8DA1EBE32410046C902 /* PogoprotosNetworkingResponses.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8A21EBE32410046C902 /* PogoprotosNetworkingResponses.pbobjc.h */; };
-		FA7ED8DB1EBE32410046C902 /* PogoprotosNetworkingResponses.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8A31EBE32410046C902 /* PogoprotosNetworkingResponses.pbobjc.m */; };
-		FA7ED8DC1EBE32410046C902 /* PogoprotosSettings.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8A41EBE32410046C902 /* PogoprotosSettings.pbobjc.h */; };
-		FA7ED8DD1EBE32410046C902 /* PogoprotosSettings.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8A51EBE32410046C902 /* PogoprotosSettings.pbobjc.m */; };
-		FA7ED8DE1EBE32410046C902 /* PogoprotosSettingsMaster.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8A61EBE32410046C902 /* PogoprotosSettingsMaster.pbobjc.h */; };
-		FA7ED8DF1EBE32410046C902 /* PogoprotosSettingsMaster.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8A71EBE32410046C902 /* PogoprotosSettingsMaster.pbobjc.m */; };
-		FA7ED8E01EBE32410046C902 /* PogoprotosSettingsMasterItem.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8A81EBE32410046C902 /* PogoprotosSettingsMasterItem.pbobjc.h */; };
-		FA7ED8E11EBE32410046C902 /* PogoprotosSettingsMasterItem.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8A91EBE32410046C902 /* PogoprotosSettingsMasterItem.pbobjc.m */; };
-		FA7ED8E21EBE32410046C902 /* PogoprotosSettingsMasterPokemon.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8AA1EBE32410046C902 /* PogoprotosSettingsMasterPokemon.pbobjc.h */; };
-		FA7ED8E31EBE32410046C902 /* PogoprotosSettingsMasterPokemon.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8AB1EBE32410046C902 /* PogoprotosSettingsMasterPokemon.pbobjc.m */; };
-		FA7ED8E41EBE32410046C902 /* PogoprotosSettingsMasterQuest.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FA7ED8AC1EBE32410046C902 /* PogoprotosSettingsMasterQuest.pbobjc.h */; };
-		FA7ED8E51EBE32410046C902 /* PogoprotosSettingsMasterQuest.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7ED8AD1EBE32410046C902 /* PogoprotosSettingsMasterQuest.pbobjc.m */; };
 		FA7ED8E71EBE32820046C902 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7ED8E61EBE32820046C902 /* UIKit.framework */; };
+		FAA1C9411F4C481E0032F3A0 /* PogoprotosData.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C9071F4C481E0032F3A0 /* PogoprotosData.pbobjc.m */; };
+		FAA1C9421F4C481E0032F3A0 /* PogoprotosDataAvatar.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C9081F4C481E0032F3A0 /* PogoprotosDataAvatar.pbobjc.m */; };
+		FAA1C9431F4C481E0032F3A0 /* PogoprotosDataBadge.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C9091F4C481E0032F3A0 /* PogoprotosDataBadge.pbobjc.m */; };
+		FAA1C9441F4C481E0032F3A0 /* PogoprotosDataBattle.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C90A1F4C481E0032F3A0 /* PogoprotosDataBattle.pbobjc.m */; };
+		FAA1C9451F4C481E0032F3A0 /* PogoprotosDataCapture.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C90B1F4C481E0032F3A0 /* PogoprotosDataCapture.pbobjc.m */; };
+		FAA1C9461F4C481E0032F3A0 /* PogoprotosDataGym.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C90C1F4C481E0032F3A0 /* PogoprotosDataGym.pbobjc.m */; };
+		FAA1C9471F4C481E0032F3A0 /* PogoprotosDataLogs.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C90D1F4C481E0032F3A0 /* PogoprotosDataLogs.pbobjc.m */; };
+		FAA1C9481F4C481E0032F3A0 /* PogoprotosDataPlayer.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C90E1F4C481E0032F3A0 /* PogoprotosDataPlayer.pbobjc.m */; };
+		FAA1C9491F4C481E0032F3A0 /* PogoprotosDataQuests.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C90F1F4C481E0032F3A0 /* PogoprotosDataQuests.pbobjc.m */; };
+		FAA1C94A1F4C481E0032F3A0 /* PogoprotosDataRaid.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C9101F4C481E0032F3A0 /* PogoprotosDataRaid.pbobjc.m */; };
+		FAA1C94B1F4C481E0032F3A0 /* PogoprotosDataRedeem.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C9111F4C481E0032F3A0 /* PogoprotosDataRedeem.pbobjc.m */; };
+		FAA1C94C1F4C481E0032F3A0 /* PogoprotosEnums.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C9121F4C481E0032F3A0 /* PogoprotosEnums.pbobjc.m */; };
+		FAA1C94D1F4C481E0032F3A0 /* PogoprotosInventory.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C9131F4C481E0032F3A0 /* PogoprotosInventory.pbobjc.m */; };
+		FAA1C94E1F4C481E0032F3A0 /* PogoprotosInventoryItem.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C9141F4C481E0032F3A0 /* PogoprotosInventoryItem.pbobjc.m */; };
+		FAA1C94F1F4C481E0032F3A0 /* PogoprotosMap.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C9151F4C481E0032F3A0 /* PogoprotosMap.pbobjc.m */; };
+		FAA1C9501F4C481E0032F3A0 /* PogoprotosMapFort.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C9161F4C481E0032F3A0 /* PogoprotosMapFort.pbobjc.m */; };
+		FAA1C9511F4C481E0032F3A0 /* PogoprotosMapPokemon.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C9171F4C481E0032F3A0 /* PogoprotosMapPokemon.pbobjc.m */; };
+		FAA1C9521F4C481E0032F3A0 /* PogoprotosNetworkingEnvelopes.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C9181F4C481E0032F3A0 /* PogoprotosNetworkingEnvelopes.pbobjc.m */; };
+		FAA1C9531F4C481E0032F3A0 /* PogoprotosNetworkingPlatform.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C9191F4C481E0032F3A0 /* PogoprotosNetworkingPlatform.pbobjc.m */; };
+		FAA1C9541F4C481E0032F3A0 /* PogoprotosNetworkingPlatformRequests.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C91A1F4C481E0032F3A0 /* PogoprotosNetworkingPlatformRequests.pbobjc.m */; };
+		FAA1C9551F4C481E0032F3A0 /* PogoprotosNetworkingPlatformResponses.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C91B1F4C481E0032F3A0 /* PogoprotosNetworkingPlatformResponses.pbobjc.m */; };
+		FAA1C9561F4C481E0032F3A0 /* PogoprotosNetworkingRequests.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C91C1F4C481E0032F3A0 /* PogoprotosNetworkingRequests.pbobjc.m */; };
+		FAA1C9571F4C481E0032F3A0 /* PogoprotosNetworkingRequestsMessages.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C91D1F4C481E0032F3A0 /* PogoprotosNetworkingRequestsMessages.pbobjc.m */; };
+		FAA1C9581F4C481E0032F3A0 /* PogoprotosNetworkingResponses.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C91E1F4C481E0032F3A0 /* PogoprotosNetworkingResponses.pbobjc.m */; };
+		FAA1C9591F4C481E0032F3A0 /* PogoprotosSettings.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C91F1F4C481E0032F3A0 /* PogoprotosSettings.pbobjc.m */; };
+		FAA1C95A1F4C481E0032F3A0 /* PogoprotosSettingsMaster.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C9201F4C481E0032F3A0 /* PogoprotosSettingsMaster.pbobjc.m */; };
+		FAA1C95B1F4C481E0032F3A0 /* PogoprotosSettingsMasterItem.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C9211F4C481E0032F3A0 /* PogoprotosSettingsMasterItem.pbobjc.m */; };
+		FAA1C95C1F4C481E0032F3A0 /* PogoprotosSettingsMasterPokemon.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C9221F4C481E0032F3A0 /* PogoprotosSettingsMasterPokemon.pbobjc.m */; };
+		FAA1C95D1F4C481E0032F3A0 /* PogoprotosSettingsMasterQuest.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA1C9231F4C481E0032F3A0 /* PogoprotosSettingsMasterQuest.pbobjc.m */; };
+		FAA1C95E1F4C481E0032F3A0 /* PogoprotosData.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C9241F4C481E0032F3A0 /* PogoprotosData.pbobjc.h */; };
+		FAA1C95F1F4C481E0032F3A0 /* PogoprotosDataAvatar.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C9251F4C481E0032F3A0 /* PogoprotosDataAvatar.pbobjc.h */; };
+		FAA1C9601F4C481E0032F3A0 /* PogoprotosDataBadge.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C9261F4C481E0032F3A0 /* PogoprotosDataBadge.pbobjc.h */; };
+		FAA1C9611F4C481E0032F3A0 /* PogoprotosDataBattle.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C9271F4C481E0032F3A0 /* PogoprotosDataBattle.pbobjc.h */; };
+		FAA1C9621F4C481E0032F3A0 /* PogoprotosDataCapture.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C9281F4C481E0032F3A0 /* PogoprotosDataCapture.pbobjc.h */; };
+		FAA1C9631F4C481E0032F3A0 /* PogoprotosDataGym.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C9291F4C481E0032F3A0 /* PogoprotosDataGym.pbobjc.h */; };
+		FAA1C9641F4C481E0032F3A0 /* PogoprotosDataLogs.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C92A1F4C481E0032F3A0 /* PogoprotosDataLogs.pbobjc.h */; };
+		FAA1C9651F4C481E0032F3A0 /* PogoprotosDataPlayer.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C92B1F4C481E0032F3A0 /* PogoprotosDataPlayer.pbobjc.h */; };
+		FAA1C9661F4C481E0032F3A0 /* PogoprotosDataQuests.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C92C1F4C481E0032F3A0 /* PogoprotosDataQuests.pbobjc.h */; };
+		FAA1C9671F4C481E0032F3A0 /* PogoprotosDataRaid.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C92D1F4C481E0032F3A0 /* PogoprotosDataRaid.pbobjc.h */; };
+		FAA1C9681F4C481E0032F3A0 /* PogoprotosDataRedeem.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C92E1F4C481E0032F3A0 /* PogoprotosDataRedeem.pbobjc.h */; };
+		FAA1C9691F4C481E0032F3A0 /* PogoprotosEnums.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C92F1F4C481E0032F3A0 /* PogoprotosEnums.pbobjc.h */; };
+		FAA1C96A1F4C481E0032F3A0 /* PogoprotosInventory.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C9301F4C481E0032F3A0 /* PogoprotosInventory.pbobjc.h */; };
+		FAA1C96B1F4C481E0032F3A0 /* PogoprotosInventoryItem.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C9311F4C481E0032F3A0 /* PogoprotosInventoryItem.pbobjc.h */; };
+		FAA1C96C1F4C481E0032F3A0 /* PogoprotosMap.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C9321F4C481E0032F3A0 /* PogoprotosMap.pbobjc.h */; };
+		FAA1C96D1F4C481E0032F3A0 /* PogoprotosMapFort.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C9331F4C481E0032F3A0 /* PogoprotosMapFort.pbobjc.h */; };
+		FAA1C96E1F4C481E0032F3A0 /* PogoprotosMapPokemon.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C9341F4C481E0032F3A0 /* PogoprotosMapPokemon.pbobjc.h */; };
+		FAA1C96F1F4C481E0032F3A0 /* PogoprotosNetworkingEnvelopes.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C9351F4C481E0032F3A0 /* PogoprotosNetworkingEnvelopes.pbobjc.h */; };
+		FAA1C9701F4C481E0032F3A0 /* PogoprotosNetworkingPlatform.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C9361F4C481E0032F3A0 /* PogoprotosNetworkingPlatform.pbobjc.h */; };
+		FAA1C9711F4C481E0032F3A0 /* PogoprotosNetworkingPlatformRequests.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C9371F4C481E0032F3A0 /* PogoprotosNetworkingPlatformRequests.pbobjc.h */; };
+		FAA1C9721F4C481E0032F3A0 /* PogoprotosNetworkingPlatformResponses.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C9381F4C481E0032F3A0 /* PogoprotosNetworkingPlatformResponses.pbobjc.h */; };
+		FAA1C9731F4C481E0032F3A0 /* PogoprotosNetworkingRequests.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C9391F4C481E0032F3A0 /* PogoprotosNetworkingRequests.pbobjc.h */; };
+		FAA1C9741F4C481E0032F3A0 /* PogoprotosNetworkingRequestsMessages.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C93A1F4C481E0032F3A0 /* PogoprotosNetworkingRequestsMessages.pbobjc.h */; };
+		FAA1C9751F4C481E0032F3A0 /* PogoprotosNetworkingResponses.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C93B1F4C481E0032F3A0 /* PogoprotosNetworkingResponses.pbobjc.h */; };
+		FAA1C9761F4C481E0032F3A0 /* PogoprotosSettings.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C93C1F4C481E0032F3A0 /* PogoprotosSettings.pbobjc.h */; };
+		FAA1C9771F4C481E0032F3A0 /* PogoprotosSettingsMaster.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C93D1F4C481E0032F3A0 /* PogoprotosSettingsMaster.pbobjc.h */; };
+		FAA1C9781F4C481E0032F3A0 /* PogoprotosSettingsMasterItem.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C93E1F4C481E0032F3A0 /* PogoprotosSettingsMasterItem.pbobjc.h */; };
+		FAA1C9791F4C481E0032F3A0 /* PogoprotosSettingsMasterPokemon.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C93F1F4C481E0032F3A0 /* PogoprotosSettingsMasterPokemon.pbobjc.h */; };
+		FAA1C97A1F4C481E0032F3A0 /* PogoprotosSettingsMasterQuest.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = FAA1C9401F4C481E0032F3A0 /* PogoprotosSettingsMasterQuest.pbobjc.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -226,63 +228,65 @@
 		FA7ED8341EBE30E00046C902 /* GPBWellKnownTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBWellKnownTypes.m; sourceTree = "<group>"; };
 		FA7ED8351EBE30E00046C902 /* GPBWireFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPBWireFormat.h; sourceTree = "<group>"; };
 		FA7ED8361EBE30E00046C902 /* GPBWireFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPBWireFormat.m; sourceTree = "<group>"; };
-		FA7ED8761EBE32410046C902 /* PogoprotosData.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosData.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED8771EBE32410046C902 /* PogoprotosData.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosData.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED8781EBE32410046C902 /* PogoprotosDataAvatar.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataAvatar.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED8791EBE32410046C902 /* PogoprotosDataAvatar.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataAvatar.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED87A1EBE32410046C902 /* PogoprotosDataBadge.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataBadge.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED87B1EBE32410046C902 /* PogoprotosDataBadge.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataBadge.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED87C1EBE32410046C902 /* PogoprotosDataBattle.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataBattle.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED87D1EBE32410046C902 /* PogoprotosDataBattle.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataBattle.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED87E1EBE32410046C902 /* PogoprotosDataCapture.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataCapture.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED87F1EBE32410046C902 /* PogoprotosDataCapture.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataCapture.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED8801EBE32410046C902 /* PogoprotosDataGym.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataGym.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED8811EBE32410046C902 /* PogoprotosDataGym.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataGym.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED8821EBE32410046C902 /* PogoprotosDataLogs.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataLogs.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED8831EBE32410046C902 /* PogoprotosDataLogs.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataLogs.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED8841EBE32410046C902 /* PogoprotosDataPlayer.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataPlayer.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED8851EBE32410046C902 /* PogoprotosDataPlayer.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataPlayer.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED8861EBE32410046C902 /* PogoprotosDataQuests.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataQuests.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED8871EBE32410046C902 /* PogoprotosDataQuests.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataQuests.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED8881EBE32410046C902 /* PogoprotosDataRedeem.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataRedeem.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED8891EBE32410046C902 /* PogoprotosDataRedeem.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataRedeem.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED88A1EBE32410046C902 /* PogoprotosEnums.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosEnums.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED88B1EBE32410046C902 /* PogoprotosEnums.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosEnums.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED88C1EBE32410046C902 /* PogoprotosInventory.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosInventory.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED88D1EBE32410046C902 /* PogoprotosInventory.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosInventory.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED88E1EBE32410046C902 /* PogoprotosInventoryItem.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosInventoryItem.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED88F1EBE32410046C902 /* PogoprotosInventoryItem.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosInventoryItem.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED8901EBE32410046C902 /* PogoprotosMap.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosMap.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED8911EBE32410046C902 /* PogoprotosMap.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosMap.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED8921EBE32410046C902 /* PogoprotosMapFort.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosMapFort.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED8931EBE32410046C902 /* PogoprotosMapFort.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosMapFort.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED8941EBE32410046C902 /* PogoprotosMapPokemon.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosMapPokemon.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED8951EBE32410046C902 /* PogoprotosMapPokemon.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosMapPokemon.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED8961EBE32410046C902 /* PogoprotosNetworkingEnvelopes.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingEnvelopes.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED8971EBE32410046C902 /* PogoprotosNetworkingEnvelopes.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingEnvelopes.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED8981EBE32410046C902 /* PogoprotosNetworkingPlatform.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingPlatform.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED8991EBE32410046C902 /* PogoprotosNetworkingPlatform.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingPlatform.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED89A1EBE32410046C902 /* PogoprotosNetworkingPlatformRequests.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingPlatformRequests.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED89B1EBE32410046C902 /* PogoprotosNetworkingPlatformRequests.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingPlatformRequests.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED89C1EBE32410046C902 /* PogoprotosNetworkingPlatformResponses.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingPlatformResponses.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED89D1EBE32410046C902 /* PogoprotosNetworkingPlatformResponses.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingPlatformResponses.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED89E1EBE32410046C902 /* PogoprotosNetworkingRequests.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingRequests.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED89F1EBE32410046C902 /* PogoprotosNetworkingRequests.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingRequests.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED8A01EBE32410046C902 /* PogoprotosNetworkingRequestsMessages.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingRequestsMessages.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED8A11EBE32410046C902 /* PogoprotosNetworkingRequestsMessages.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingRequestsMessages.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED8A21EBE32410046C902 /* PogoprotosNetworkingResponses.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingResponses.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED8A31EBE32410046C902 /* PogoprotosNetworkingResponses.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingResponses.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED8A41EBE32410046C902 /* PogoprotosSettings.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosSettings.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED8A51EBE32410046C902 /* PogoprotosSettings.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosSettings.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED8A61EBE32410046C902 /* PogoprotosSettingsMaster.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosSettingsMaster.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED8A71EBE32410046C902 /* PogoprotosSettingsMaster.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosSettingsMaster.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED8A81EBE32410046C902 /* PogoprotosSettingsMasterItem.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosSettingsMasterItem.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED8A91EBE32410046C902 /* PogoprotosSettingsMasterItem.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosSettingsMasterItem.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED8AA1EBE32410046C902 /* PogoprotosSettingsMasterPokemon.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosSettingsMasterPokemon.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED8AB1EBE32410046C902 /* PogoprotosSettingsMasterPokemon.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosSettingsMasterPokemon.pbobjc.m; sourceTree = "<group>"; };
-		FA7ED8AC1EBE32410046C902 /* PogoprotosSettingsMasterQuest.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosSettingsMasterQuest.pbobjc.h; sourceTree = "<group>"; };
-		FA7ED8AD1EBE32410046C902 /* PogoprotosSettingsMasterQuest.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosSettingsMasterQuest.pbobjc.m; sourceTree = "<group>"; };
 		FA7ED8E61EBE32820046C902 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FAA1C9071F4C481E0032F3A0 /* PogoprotosData.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosData.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C9081F4C481E0032F3A0 /* PogoprotosDataAvatar.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataAvatar.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C9091F4C481E0032F3A0 /* PogoprotosDataBadge.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataBadge.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C90A1F4C481E0032F3A0 /* PogoprotosDataBattle.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataBattle.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C90B1F4C481E0032F3A0 /* PogoprotosDataCapture.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataCapture.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C90C1F4C481E0032F3A0 /* PogoprotosDataGym.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataGym.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C90D1F4C481E0032F3A0 /* PogoprotosDataLogs.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataLogs.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C90E1F4C481E0032F3A0 /* PogoprotosDataPlayer.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataPlayer.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C90F1F4C481E0032F3A0 /* PogoprotosDataQuests.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataQuests.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C9101F4C481E0032F3A0 /* PogoprotosDataRaid.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataRaid.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C9111F4C481E0032F3A0 /* PogoprotosDataRedeem.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosDataRedeem.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C9121F4C481E0032F3A0 /* PogoprotosEnums.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosEnums.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C9131F4C481E0032F3A0 /* PogoprotosInventory.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosInventory.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C9141F4C481E0032F3A0 /* PogoprotosInventoryItem.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosInventoryItem.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C9151F4C481E0032F3A0 /* PogoprotosMap.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosMap.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C9161F4C481E0032F3A0 /* PogoprotosMapFort.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosMapFort.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C9171F4C481E0032F3A0 /* PogoprotosMapPokemon.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosMapPokemon.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C9181F4C481E0032F3A0 /* PogoprotosNetworkingEnvelopes.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingEnvelopes.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C9191F4C481E0032F3A0 /* PogoprotosNetworkingPlatform.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingPlatform.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C91A1F4C481E0032F3A0 /* PogoprotosNetworkingPlatformRequests.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingPlatformRequests.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C91B1F4C481E0032F3A0 /* PogoprotosNetworkingPlatformResponses.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingPlatformResponses.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C91C1F4C481E0032F3A0 /* PogoprotosNetworkingRequests.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingRequests.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C91D1F4C481E0032F3A0 /* PogoprotosNetworkingRequestsMessages.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingRequestsMessages.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C91E1F4C481E0032F3A0 /* PogoprotosNetworkingResponses.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosNetworkingResponses.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C91F1F4C481E0032F3A0 /* PogoprotosSettings.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosSettings.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C9201F4C481E0032F3A0 /* PogoprotosSettingsMaster.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosSettingsMaster.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C9211F4C481E0032F3A0 /* PogoprotosSettingsMasterItem.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosSettingsMasterItem.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C9221F4C481E0032F3A0 /* PogoprotosSettingsMasterPokemon.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosSettingsMasterPokemon.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C9231F4C481E0032F3A0 /* PogoprotosSettingsMasterQuest.pbobjc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PogoprotosSettingsMasterQuest.pbobjc.m; sourceTree = "<group>"; };
+		FAA1C9241F4C481E0032F3A0 /* PogoprotosData.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosData.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C9251F4C481E0032F3A0 /* PogoprotosDataAvatar.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataAvatar.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C9261F4C481E0032F3A0 /* PogoprotosDataBadge.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataBadge.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C9271F4C481E0032F3A0 /* PogoprotosDataBattle.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataBattle.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C9281F4C481E0032F3A0 /* PogoprotosDataCapture.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataCapture.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C9291F4C481E0032F3A0 /* PogoprotosDataGym.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataGym.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C92A1F4C481E0032F3A0 /* PogoprotosDataLogs.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataLogs.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C92B1F4C481E0032F3A0 /* PogoprotosDataPlayer.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataPlayer.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C92C1F4C481E0032F3A0 /* PogoprotosDataQuests.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataQuests.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C92D1F4C481E0032F3A0 /* PogoprotosDataRaid.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataRaid.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C92E1F4C481E0032F3A0 /* PogoprotosDataRedeem.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosDataRedeem.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C92F1F4C481E0032F3A0 /* PogoprotosEnums.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosEnums.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C9301F4C481E0032F3A0 /* PogoprotosInventory.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosInventory.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C9311F4C481E0032F3A0 /* PogoprotosInventoryItem.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosInventoryItem.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C9321F4C481E0032F3A0 /* PogoprotosMap.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosMap.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C9331F4C481E0032F3A0 /* PogoprotosMapFort.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosMapFort.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C9341F4C481E0032F3A0 /* PogoprotosMapPokemon.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosMapPokemon.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C9351F4C481E0032F3A0 /* PogoprotosNetworkingEnvelopes.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingEnvelopes.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C9361F4C481E0032F3A0 /* PogoprotosNetworkingPlatform.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingPlatform.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C9371F4C481E0032F3A0 /* PogoprotosNetworkingPlatformRequests.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingPlatformRequests.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C9381F4C481E0032F3A0 /* PogoprotosNetworkingPlatformResponses.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingPlatformResponses.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C9391F4C481E0032F3A0 /* PogoprotosNetworkingRequests.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingRequests.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C93A1F4C481E0032F3A0 /* PogoprotosNetworkingRequestsMessages.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingRequestsMessages.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C93B1F4C481E0032F3A0 /* PogoprotosNetworkingResponses.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosNetworkingResponses.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C93C1F4C481E0032F3A0 /* PogoprotosSettings.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosSettings.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C93D1F4C481E0032F3A0 /* PogoprotosSettingsMaster.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosSettingsMaster.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C93E1F4C481E0032F3A0 /* PogoprotosSettingsMasterItem.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosSettingsMasterItem.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C93F1F4C481E0032F3A0 /* PogoprotosSettingsMasterPokemon.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosSettingsMasterPokemon.pbobjc.h; sourceTree = "<group>"; };
+		FAA1C9401F4C481E0032F3A0 /* PogoprotosSettingsMasterQuest.pbobjc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PogoprotosSettingsMasterQuest.pbobjc.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -537,62 +541,64 @@
 		FA7ED8371EBE30E00046C902 /* Pokemon */ = {
 			isa = PBXGroup;
 			children = (
-				FA7ED8761EBE32410046C902 /* PogoprotosData.pbobjc.h */,
-				FA7ED8771EBE32410046C902 /* PogoprotosData.pbobjc.m */,
-				FA7ED8781EBE32410046C902 /* PogoprotosDataAvatar.pbobjc.h */,
-				FA7ED8791EBE32410046C902 /* PogoprotosDataAvatar.pbobjc.m */,
-				FA7ED87A1EBE32410046C902 /* PogoprotosDataBadge.pbobjc.h */,
-				FA7ED87B1EBE32410046C902 /* PogoprotosDataBadge.pbobjc.m */,
-				FA7ED87C1EBE32410046C902 /* PogoprotosDataBattle.pbobjc.h */,
-				FA7ED87D1EBE32410046C902 /* PogoprotosDataBattle.pbobjc.m */,
-				FA7ED87E1EBE32410046C902 /* PogoprotosDataCapture.pbobjc.h */,
-				FA7ED87F1EBE32410046C902 /* PogoprotosDataCapture.pbobjc.m */,
-				FA7ED8801EBE32410046C902 /* PogoprotosDataGym.pbobjc.h */,
-				FA7ED8811EBE32410046C902 /* PogoprotosDataGym.pbobjc.m */,
-				FA7ED8821EBE32410046C902 /* PogoprotosDataLogs.pbobjc.h */,
-				FA7ED8831EBE32410046C902 /* PogoprotosDataLogs.pbobjc.m */,
-				FA7ED8841EBE32410046C902 /* PogoprotosDataPlayer.pbobjc.h */,
-				FA7ED8851EBE32410046C902 /* PogoprotosDataPlayer.pbobjc.m */,
-				FA7ED8861EBE32410046C902 /* PogoprotosDataQuests.pbobjc.h */,
-				FA7ED8871EBE32410046C902 /* PogoprotosDataQuests.pbobjc.m */,
-				FA7ED8881EBE32410046C902 /* PogoprotosDataRedeem.pbobjc.h */,
-				FA7ED8891EBE32410046C902 /* PogoprotosDataRedeem.pbobjc.m */,
-				FA7ED88A1EBE32410046C902 /* PogoprotosEnums.pbobjc.h */,
-				FA7ED88B1EBE32410046C902 /* PogoprotosEnums.pbobjc.m */,
-				FA7ED88C1EBE32410046C902 /* PogoprotosInventory.pbobjc.h */,
-				FA7ED88D1EBE32410046C902 /* PogoprotosInventory.pbobjc.m */,
-				FA7ED88E1EBE32410046C902 /* PogoprotosInventoryItem.pbobjc.h */,
-				FA7ED88F1EBE32410046C902 /* PogoprotosInventoryItem.pbobjc.m */,
-				FA7ED8901EBE32410046C902 /* PogoprotosMap.pbobjc.h */,
-				FA7ED8911EBE32410046C902 /* PogoprotosMap.pbobjc.m */,
-				FA7ED8921EBE32410046C902 /* PogoprotosMapFort.pbobjc.h */,
-				FA7ED8931EBE32410046C902 /* PogoprotosMapFort.pbobjc.m */,
-				FA7ED8941EBE32410046C902 /* PogoprotosMapPokemon.pbobjc.h */,
-				FA7ED8951EBE32410046C902 /* PogoprotosMapPokemon.pbobjc.m */,
-				FA7ED8961EBE32410046C902 /* PogoprotosNetworkingEnvelopes.pbobjc.h */,
-				FA7ED8971EBE32410046C902 /* PogoprotosNetworkingEnvelopes.pbobjc.m */,
-				FA7ED8981EBE32410046C902 /* PogoprotosNetworkingPlatform.pbobjc.h */,
-				FA7ED8991EBE32410046C902 /* PogoprotosNetworkingPlatform.pbobjc.m */,
-				FA7ED89A1EBE32410046C902 /* PogoprotosNetworkingPlatformRequests.pbobjc.h */,
-				FA7ED89B1EBE32410046C902 /* PogoprotosNetworkingPlatformRequests.pbobjc.m */,
-				FA7ED89C1EBE32410046C902 /* PogoprotosNetworkingPlatformResponses.pbobjc.h */,
-				FA7ED89D1EBE32410046C902 /* PogoprotosNetworkingPlatformResponses.pbobjc.m */,
-				FA7ED89E1EBE32410046C902 /* PogoprotosNetworkingRequests.pbobjc.h */,
-				FA7ED89F1EBE32410046C902 /* PogoprotosNetworkingRequests.pbobjc.m */,
-				FA7ED8A01EBE32410046C902 /* PogoprotosNetworkingRequestsMessages.pbobjc.h */,
-				FA7ED8A11EBE32410046C902 /* PogoprotosNetworkingRequestsMessages.pbobjc.m */,
-				FA7ED8A21EBE32410046C902 /* PogoprotosNetworkingResponses.pbobjc.h */,
-				FA7ED8A31EBE32410046C902 /* PogoprotosNetworkingResponses.pbobjc.m */,
-				FA7ED8A41EBE32410046C902 /* PogoprotosSettings.pbobjc.h */,
-				FA7ED8A51EBE32410046C902 /* PogoprotosSettings.pbobjc.m */,
-				FA7ED8A61EBE32410046C902 /* PogoprotosSettingsMaster.pbobjc.h */,
-				FA7ED8A71EBE32410046C902 /* PogoprotosSettingsMaster.pbobjc.m */,
-				FA7ED8A81EBE32410046C902 /* PogoprotosSettingsMasterItem.pbobjc.h */,
-				FA7ED8A91EBE32410046C902 /* PogoprotosSettingsMasterItem.pbobjc.m */,
-				FA7ED8AA1EBE32410046C902 /* PogoprotosSettingsMasterPokemon.pbobjc.h */,
-				FA7ED8AB1EBE32410046C902 /* PogoprotosSettingsMasterPokemon.pbobjc.m */,
-				FA7ED8AC1EBE32410046C902 /* PogoprotosSettingsMasterQuest.pbobjc.h */,
-				FA7ED8AD1EBE32410046C902 /* PogoprotosSettingsMasterQuest.pbobjc.m */,
+				FAA1C9071F4C481E0032F3A0 /* PogoprotosData.pbobjc.m */,
+				FAA1C9081F4C481E0032F3A0 /* PogoprotosDataAvatar.pbobjc.m */,
+				FAA1C9091F4C481E0032F3A0 /* PogoprotosDataBadge.pbobjc.m */,
+				FAA1C90A1F4C481E0032F3A0 /* PogoprotosDataBattle.pbobjc.m */,
+				FAA1C90B1F4C481E0032F3A0 /* PogoprotosDataCapture.pbobjc.m */,
+				FAA1C90C1F4C481E0032F3A0 /* PogoprotosDataGym.pbobjc.m */,
+				FAA1C90D1F4C481E0032F3A0 /* PogoprotosDataLogs.pbobjc.m */,
+				FAA1C90E1F4C481E0032F3A0 /* PogoprotosDataPlayer.pbobjc.m */,
+				FAA1C90F1F4C481E0032F3A0 /* PogoprotosDataQuests.pbobjc.m */,
+				FAA1C9101F4C481E0032F3A0 /* PogoprotosDataRaid.pbobjc.m */,
+				FAA1C9111F4C481E0032F3A0 /* PogoprotosDataRedeem.pbobjc.m */,
+				FAA1C9121F4C481E0032F3A0 /* PogoprotosEnums.pbobjc.m */,
+				FAA1C9131F4C481E0032F3A0 /* PogoprotosInventory.pbobjc.m */,
+				FAA1C9141F4C481E0032F3A0 /* PogoprotosInventoryItem.pbobjc.m */,
+				FAA1C9151F4C481E0032F3A0 /* PogoprotosMap.pbobjc.m */,
+				FAA1C9161F4C481E0032F3A0 /* PogoprotosMapFort.pbobjc.m */,
+				FAA1C9171F4C481E0032F3A0 /* PogoprotosMapPokemon.pbobjc.m */,
+				FAA1C9181F4C481E0032F3A0 /* PogoprotosNetworkingEnvelopes.pbobjc.m */,
+				FAA1C9191F4C481E0032F3A0 /* PogoprotosNetworkingPlatform.pbobjc.m */,
+				FAA1C91A1F4C481E0032F3A0 /* PogoprotosNetworkingPlatformRequests.pbobjc.m */,
+				FAA1C91B1F4C481E0032F3A0 /* PogoprotosNetworkingPlatformResponses.pbobjc.m */,
+				FAA1C91C1F4C481E0032F3A0 /* PogoprotosNetworkingRequests.pbobjc.m */,
+				FAA1C91D1F4C481E0032F3A0 /* PogoprotosNetworkingRequestsMessages.pbobjc.m */,
+				FAA1C91E1F4C481E0032F3A0 /* PogoprotosNetworkingResponses.pbobjc.m */,
+				FAA1C91F1F4C481E0032F3A0 /* PogoprotosSettings.pbobjc.m */,
+				FAA1C9201F4C481E0032F3A0 /* PogoprotosSettingsMaster.pbobjc.m */,
+				FAA1C9211F4C481E0032F3A0 /* PogoprotosSettingsMasterItem.pbobjc.m */,
+				FAA1C9221F4C481E0032F3A0 /* PogoprotosSettingsMasterPokemon.pbobjc.m */,
+				FAA1C9231F4C481E0032F3A0 /* PogoprotosSettingsMasterQuest.pbobjc.m */,
+				FAA1C9241F4C481E0032F3A0 /* PogoprotosData.pbobjc.h */,
+				FAA1C9251F4C481E0032F3A0 /* PogoprotosDataAvatar.pbobjc.h */,
+				FAA1C9261F4C481E0032F3A0 /* PogoprotosDataBadge.pbobjc.h */,
+				FAA1C9271F4C481E0032F3A0 /* PogoprotosDataBattle.pbobjc.h */,
+				FAA1C9281F4C481E0032F3A0 /* PogoprotosDataCapture.pbobjc.h */,
+				FAA1C9291F4C481E0032F3A0 /* PogoprotosDataGym.pbobjc.h */,
+				FAA1C92A1F4C481E0032F3A0 /* PogoprotosDataLogs.pbobjc.h */,
+				FAA1C92B1F4C481E0032F3A0 /* PogoprotosDataPlayer.pbobjc.h */,
+				FAA1C92C1F4C481E0032F3A0 /* PogoprotosDataQuests.pbobjc.h */,
+				FAA1C92D1F4C481E0032F3A0 /* PogoprotosDataRaid.pbobjc.h */,
+				FAA1C92E1F4C481E0032F3A0 /* PogoprotosDataRedeem.pbobjc.h */,
+				FAA1C92F1F4C481E0032F3A0 /* PogoprotosEnums.pbobjc.h */,
+				FAA1C9301F4C481E0032F3A0 /* PogoprotosInventory.pbobjc.h */,
+				FAA1C9311F4C481E0032F3A0 /* PogoprotosInventoryItem.pbobjc.h */,
+				FAA1C9321F4C481E0032F3A0 /* PogoprotosMap.pbobjc.h */,
+				FAA1C9331F4C481E0032F3A0 /* PogoprotosMapFort.pbobjc.h */,
+				FAA1C9341F4C481E0032F3A0 /* PogoprotosMapPokemon.pbobjc.h */,
+				FAA1C9351F4C481E0032F3A0 /* PogoprotosNetworkingEnvelopes.pbobjc.h */,
+				FAA1C9361F4C481E0032F3A0 /* PogoprotosNetworkingPlatform.pbobjc.h */,
+				FAA1C9371F4C481E0032F3A0 /* PogoprotosNetworkingPlatformRequests.pbobjc.h */,
+				FAA1C9381F4C481E0032F3A0 /* PogoprotosNetworkingPlatformResponses.pbobjc.h */,
+				FAA1C9391F4C481E0032F3A0 /* PogoprotosNetworkingRequests.pbobjc.h */,
+				FAA1C93A1F4C481E0032F3A0 /* PogoprotosNetworkingRequestsMessages.pbobjc.h */,
+				FAA1C93B1F4C481E0032F3A0 /* PogoprotosNetworkingResponses.pbobjc.h */,
+				FAA1C93C1F4C481E0032F3A0 /* PogoprotosSettings.pbobjc.h */,
+				FAA1C93D1F4C481E0032F3A0 /* PogoprotosSettingsMaster.pbobjc.h */,
+				FAA1C93E1F4C481E0032F3A0 /* PogoprotosSettingsMasterItem.pbobjc.h */,
+				FAA1C93F1F4C481E0032F3A0 /* PogoprotosSettingsMasterPokemon.pbobjc.h */,
+				FAA1C9401F4C481E0032F3A0 /* PogoprotosSettingsMasterQuest.pbobjc.h */,
 			);
 			path = Pokemon;
 			sourceTree = "<group>";
@@ -604,82 +610,83 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA1C9751F4C481E0032F3A0 /* PogoprotosNetworkingResponses.pbobjc.h in Headers */,
+				FAA1C97A1F4C481E0032F3A0 /* PogoprotosSettingsMasterQuest.pbobjc.h in Headers */,
 				FA7ED8521EBE30E00046C902 /* GPBCodedInputStream_PackagePrivate.h in Headers */,
 				FA7ED86F1EBE30E00046C902 /* GPBUtilities.h in Headers */,
-				FA7ED8D81EBE32410046C902 /* PogoprotosNetworkingRequestsMessages.pbobjc.h in Headers */,
 				FA7ED7F01EBE2E070046C902 /* ByteStringRepeatedField.h in Headers */,
-				FA7ED8CA1EBE32410046C902 /* PogoprotosMapFort.pbobjc.h in Headers */,
 				FA7ED83A1EBE30E00046C902 /* Api.pbobjc.h in Headers */,
 				FA7ED7EC1EBE2E070046C902 /* Il2CppArray.h in Headers */,
 				FA7ED86E1EBE30E00046C902 /* GPBUnknownFieldSet_PackagePrivate.h in Headers */,
-				FA7ED8B01EBE32410046C902 /* PogoprotosDataAvatar.pbobjc.h in Headers */,
+				FAA1C9711F4C481E0032F3A0 /* PogoprotosNetworkingPlatformRequests.pbobjc.h in Headers */,
+				FAA1C9671F4C481E0032F3A0 /* PogoprotosDataRaid.pbobjc.h in Headers */,
+				FAA1C95F1F4C481E0032F3A0 /* PogoprotosDataAvatar.pbobjc.h in Headers */,
 				FA7ED83C1EBE30E00046C902 /* Duration.pbobjc.h in Headers */,
-				FA7ED8D41EBE32410046C902 /* PogoprotosNetworkingPlatformResponses.pbobjc.h in Headers */,
-				FA7ED8E41EBE32410046C902 /* PogoprotosSettingsMasterQuest.pbobjc.h in Headers */,
-				FA7ED8BE1EBE32410046C902 /* PogoprotosDataQuests.pbobjc.h in Headers */,
+				FAA1C9661F4C481E0032F3A0 /* PogoprotosDataQuests.pbobjc.h in Headers */,
 				FA7ED8621EBE30E00046C902 /* GPBMessage_PackagePrivate.h in Headers */,
 				FA7ED7EF1EBE2E070046C902 /* ByteStringArray.h in Headers */,
 				FA7ED7F21EBE2E070046C902 /* Structs.h in Headers */,
 				FA7ED86B1EBE30E00046C902 /* GPBUnknownField_PackagePrivate.h in Headers */,
+				FAA1C9721F4C481E0032F3A0 /* PogoprotosNetworkingPlatformResponses.pbobjc.h in Headers */,
+				FAA1C9701F4C481E0032F3A0 /* PogoprotosNetworkingPlatform.pbobjc.h in Headers */,
 				FA7ED8401EBE30E00046C902 /* FieldMask.pbobjc.h in Headers */,
 				FA7ED8681EBE30E00046C902 /* GPBRuntimeTypes.h in Headers */,
 				FA7ED8381EBE30E00046C902 /* Any.pbobjc.h in Headers */,
 				FA7ED85B1EBE30E00046C902 /* GPBDictionary_PackagePrivate.h in Headers */,
 				FA7ED8631EBE30E00046C902 /* GPBProtocolBuffers.h in Headers */,
-				FA7ED8CE1EBE32410046C902 /* PogoprotosNetworkingEnvelopes.pbobjc.h in Headers */,
 				FA7ED84A1EBE30E00046C902 /* Wrappers.pbobjc.h in Headers */,
 				FA7ED86C1EBE30E00046C902 /* GPBUnknownFieldSet.h in Headers */,
-				FA7ED8B81EBE32410046C902 /* PogoprotosDataGym.pbobjc.h in Headers */,
+				FAA1C9631F4C481E0032F3A0 /* PogoprotosDataGym.pbobjc.h in Headers */,
+				FAA1C9791F4C481E0032F3A0 /* PogoprotosSettingsMasterPokemon.pbobjc.h in Headers */,
+				FAA1C9741F4C481E0032F3A0 /* PogoprotosNetworkingRequestsMessages.pbobjc.h in Headers */,
+				FAA1C96F1F4C481E0032F3A0 /* PogoprotosNetworkingEnvelopes.pbobjc.h in Headers */,
 				FA7ED8461EBE30E00046C902 /* Timestamp.pbobjc.h in Headers */,
-				FA7ED8DC1EBE32410046C902 /* PogoprotosSettings.pbobjc.h in Headers */,
 				FA7ED8671EBE30E00046C902 /* GPBRootObject_PackagePrivate.h in Headers */,
 				FA7ED7EB1EBE2E070046C902 /* IntPtr.h in Headers */,
 				FA7ED7EA1EBE2E070046C902 /* IntArray.h in Headers */,
 				FA7ED84E1EBE30E00046C902 /* GPBArray_PackagePrivate.h in Headers */,
 				FA7ED8651EBE30E00046C902 /* GPBRootObject.h in Headers */,
-				FA7ED8C01EBE32410046C902 /* PogoprotosDataRedeem.pbobjc.h in Headers */,
 				FA7ED8531EBE30E00046C902 /* GPBCodedOutputStream.h in Headers */,
 				FA7ED8561EBE30E00046C902 /* GPBDescriptor.h in Headers */,
+				FAA1C9761F4C481E0032F3A0 /* PogoprotosSettings.pbobjc.h in Headers */,
 				FA7ED8591EBE30E00046C902 /* GPBDictionary.h in Headers */,
 				FA7ED8601EBE30E00046C902 /* GPBMessage.h in Headers */,
-				FA7ED8B41EBE32410046C902 /* PogoprotosDataBattle.pbobjc.h in Headers */,
-				FA7ED8C41EBE32410046C902 /* PogoprotosInventory.pbobjc.h in Headers */,
+				FAA1C9611F4C481E0032F3A0 /* PogoprotosDataBattle.pbobjc.h in Headers */,
+				FAA1C9681F4C481E0032F3A0 /* PogoprotosDataRedeem.pbobjc.h in Headers */,
 				FA7ED8691EBE30E00046C902 /* GPBUnknownField.h in Headers */,
+				FAA1C9691F4C481E0032F3A0 /* PogoprotosEnums.pbobjc.h in Headers */,
+				FAA1C96C1F4C481E0032F3A0 /* PogoprotosMap.pbobjc.h in Headers */,
 				FA7ED8581EBE30E00046C902 /* GPBDescriptor_PackagePrivate.h in Headers */,
-				FA7ED8DA1EBE32410046C902 /* PogoprotosNetworkingResponses.pbobjc.h in Headers */,
 				FA7ED8711EBE30E00046C902 /* GPBUtilities_PackagePrivate.h in Headers */,
-				FA7ED8D01EBE32410046C902 /* PogoprotosNetworkingPlatform.pbobjc.h in Headers */,
 				FA7ED84C1EBE30E00046C902 /* GPBArray.h in Headers */,
 				FA7ED8481EBE30E00046C902 /* Type.pbobjc.h in Headers */,
-				FA7ED8DE1EBE32410046C902 /* PogoprotosSettingsMaster.pbobjc.h in Headers */,
+				FAA1C96D1F4C481E0032F3A0 /* PogoprotosMapFort.pbobjc.h in Headers */,
 				FA7ED8421EBE30E00046C902 /* SourceContext.pbobjc.h in Headers */,
 				FA7ED7EE1EBE2E070046C902 /* ByteString.h in Headers */,
-				FA7ED8D61EBE32410046C902 /* PogoprotosNetworkingRequests.pbobjc.h in Headers */,
+				FAA1C9731F4C481E0032F3A0 /* PogoprotosNetworkingRequests.pbobjc.h in Headers */,
+				FAA1C96E1F4C481E0032F3A0 /* PogoprotosMapPokemon.pbobjc.h in Headers */,
+				FAA1C96B1F4C481E0032F3A0 /* PogoprotosInventoryItem.pbobjc.h in Headers */,
+				FAA1C96A1F4C481E0032F3A0 /* PogoprotosInventory.pbobjc.h in Headers */,
 				FA7ED7E91EBE2E070046C902 /* ByteArray.h in Headers */,
-				FA7ED8B61EBE32410046C902 /* PogoprotosDataCapture.pbobjc.h in Headers */,
+				FAA1C9621F4C481E0032F3A0 /* PogoprotosDataCapture.pbobjc.h in Headers */,
+				FAA1C9781F4C481E0032F3A0 /* PogoprotosSettingsMasterItem.pbobjc.h in Headers */,
 				FA7ED7F41EBE2E5B0046C902 /* substrate.h in Headers */,
-				FA7ED8BC1EBE32410046C902 /* PogoprotosDataPlayer.pbobjc.h in Headers */,
-				FA7ED8E21EBE32410046C902 /* PogoprotosSettingsMasterPokemon.pbobjc.h in Headers */,
+				FAA1C9651F4C481E0032F3A0 /* PogoprotosDataPlayer.pbobjc.h in Headers */,
 				FA7ED85E1EBE30E00046C902 /* GPBExtensionRegistry.h in Headers */,
-				FA7ED8BA1EBE32410046C902 /* PogoprotosDataLogs.pbobjc.h in Headers */,
-				FA7ED8E01EBE32410046C902 /* PogoprotosSettingsMasterItem.pbobjc.h in Headers */,
-				FA7ED8CC1EBE32410046C902 /* PogoprotosMapPokemon.pbobjc.h in Headers */,
+				FAA1C9641F4C481E0032F3A0 /* PogoprotosDataLogs.pbobjc.h in Headers */,
 				FA7ED8641EBE30E00046C902 /* GPBProtocolBuffers_RuntimeSupport.h in Headers */,
-				FA7ED8C61EBE32410046C902 /* PogoprotosInventoryItem.pbobjc.h in Headers */,
 				FA7ED84F1EBE30E00046C902 /* GPBBootstrap.h in Headers */,
 				FA7ED8721EBE30E00046C902 /* GPBWellKnownTypes.h in Headers */,
-				FA7ED8C81EBE32410046C902 /* PogoprotosMap.pbobjc.h in Headers */,
 				FA7ED8441EBE30E00046C902 /* Struct.pbobjc.h in Headers */,
 				FA7ED7ED1EBE2E070046C902 /* Il2CppObject.h in Headers */,
-				FA7ED8AE1EBE32410046C902 /* PogoprotosData.pbobjc.h in Headers */,
+				FAA1C95E1F4C481E0032F3A0 /* PogoprotosData.pbobjc.h in Headers */,
 				FA7ED83E1EBE30E00046C902 /* Empty.pbobjc.h in Headers */,
+				FAA1C9771F4C481E0032F3A0 /* PogoprotosSettingsMaster.pbobjc.h in Headers */,
 				FA7ED8501EBE30E00046C902 /* GPBCodedInputStream.h in Headers */,
 				FA7ED8551EBE30E00046C902 /* GPBCodedOutputStream_PackagePrivate.h in Headers */,
 				FA7ED8741EBE30E00046C902 /* GPBWireFormat.h in Headers */,
-				FA7ED8C21EBE32410046C902 /* PogoprotosEnums.pbobjc.h in Headers */,
-				FA7ED8B21EBE32410046C902 /* PogoprotosDataBadge.pbobjc.h in Headers */,
+				FAA1C9601F4C481E0032F3A0 /* PogoprotosDataBadge.pbobjc.h in Headers */,
 				FA7ED7F11EBE2E070046C902 /* Result.h in Headers */,
-				FA7ED8D21EBE32410046C902 /* PogoprotosNetworkingPlatformRequests.pbobjc.h in Headers */,
 				FA7ED85C1EBE30E00046C902 /* GPBExtensionInternals.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -771,59 +778,60 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA7ED8B11EBE32410046C902 /* PogoprotosDataAvatar.pbobjc.m in Sources */,
+				FAA1C9421F4C481E0032F3A0 /* PogoprotosDataAvatar.pbobjc.m in Sources */,
 				FA7ED8701EBE30E00046C902 /* GPBUtilities.m in Sources */,
-				FA7ED8C71EBE32410046C902 /* PogoprotosInventoryItem.pbobjc.m in Sources */,
-				FA7ED8B31EBE32410046C902 /* PogoprotosDataBadge.pbobjc.m in Sources */,
-				FA7ED8BF1EBE32410046C902 /* PogoprotosDataQuests.pbobjc.m in Sources */,
-				FA7ED8DB1EBE32410046C902 /* PogoprotosNetworkingResponses.pbobjc.m in Sources */,
+				FAA1C9431F4C481E0032F3A0 /* PogoprotosDataBadge.pbobjc.m in Sources */,
+				FAA1C9491F4C481E0032F3A0 /* PogoprotosDataQuests.pbobjc.m in Sources */,
 				FA7ED86A1EBE30E00046C902 /* GPBUnknownField.m in Sources */,
 				FA7ED84B1EBE30E00046C902 /* Wrappers.pbobjc.m in Sources */,
-				FA7ED8C91EBE32410046C902 /* PogoprotosMap.pbobjc.m in Sources */,
-				FA7ED8CD1EBE32410046C902 /* PogoprotosMapPokemon.pbobjc.m in Sources */,
+				FAA1C9541F4C481E0032F3A0 /* PogoprotosNetworkingPlatformRequests.pbobjc.m in Sources */,
+				FAA1C9591F4C481E0032F3A0 /* PogoprotosSettings.pbobjc.m in Sources */,
 				FA7ED8511EBE30E00046C902 /* GPBCodedInputStream.m in Sources */,
+				FAA1C9551F4C481E0032F3A0 /* PogoprotosNetworkingPlatformResponses.pbobjc.m in Sources */,
 				FA7ED83D1EBE30E00046C902 /* Duration.pbobjc.m in Sources */,
 				FA7ED7CC1EBE2C880046C902 /* Tweak.mm in Sources */,
 				FA7ED8751EBE30E00046C902 /* GPBWireFormat.m in Sources */,
-				FA7ED8E51EBE32410046C902 /* PogoprotosSettingsMasterQuest.pbobjc.m in Sources */,
 				FA7ED83B1EBE30E00046C902 /* Api.pbobjc.m in Sources */,
+				FAA1C9511F4C481E0032F3A0 /* PogoprotosMapPokemon.pbobjc.m in Sources */,
 				FA7ED8611EBE30E00046C902 /* GPBMessage.m in Sources */,
 				FA7ED83F1EBE30E00046C902 /* Empty.pbobjc.m in Sources */,
 				FA7ED85F1EBE30E00046C902 /* GPBExtensionRegistry.m in Sources */,
-				FA7ED8CB1EBE32410046C902 /* PogoprotosMapFort.pbobjc.m in Sources */,
+				FAA1C9501F4C481E0032F3A0 /* PogoprotosMapFort.pbobjc.m in Sources */,
 				FA7ED8431EBE30E00046C902 /* SourceContext.pbobjc.m in Sources */,
 				FA7ED8451EBE30E00046C902 /* Struct.pbobjc.m in Sources */,
 				FA7ED8661EBE30E00046C902 /* GPBRootObject.m in Sources */,
+				FAA1C95B1F4C481E0032F3A0 /* PogoprotosSettingsMasterItem.pbobjc.m in Sources */,
 				FA7ED8731EBE30E00046C902 /* GPBWellKnownTypes.m in Sources */,
-				FA7ED8C11EBE32410046C902 /* PogoprotosDataRedeem.pbobjc.m in Sources */,
+				FAA1C94B1F4C481E0032F3A0 /* PogoprotosDataRedeem.pbobjc.m in Sources */,
 				FA7ED8491EBE30E00046C902 /* Type.pbobjc.m in Sources */,
-				FA7ED8B51EBE32410046C902 /* PogoprotosDataBattle.pbobjc.m in Sources */,
-				FA7ED8E11EBE32410046C902 /* PogoprotosSettingsMasterItem.pbobjc.m in Sources */,
-				FA7ED8C51EBE32410046C902 /* PogoprotosInventory.pbobjc.m in Sources */,
-				FA7ED8D71EBE32410046C902 /* PogoprotosNetworkingRequests.pbobjc.m in Sources */,
-				FA7ED8C31EBE32410046C902 /* PogoprotosEnums.pbobjc.m in Sources */,
+				FAA1C9441F4C481E0032F3A0 /* PogoprotosDataBattle.pbobjc.m in Sources */,
+				FAA1C95A1F4C481E0032F3A0 /* PogoprotosSettingsMaster.pbobjc.m in Sources */,
+				FAA1C94D1F4C481E0032F3A0 /* PogoprotosInventory.pbobjc.m in Sources */,
 				FA7ED85A1EBE30E00046C902 /* GPBDictionary.m in Sources */,
 				FA7ED86D1EBE30E00046C902 /* GPBUnknownFieldSet.m in Sources */,
-				FA7ED8B71EBE32410046C902 /* PogoprotosDataCapture.pbobjc.m in Sources */,
+				FAA1C9451F4C481E0032F3A0 /* PogoprotosDataCapture.pbobjc.m in Sources */,
+				FAA1C95D1F4C481E0032F3A0 /* PogoprotosSettingsMasterQuest.pbobjc.m in Sources */,
+				FAA1C9521F4C481E0032F3A0 /* PogoprotosNetworkingEnvelopes.pbobjc.m in Sources */,
+				FAA1C95C1F4C481E0032F3A0 /* PogoprotosSettingsMasterPokemon.pbobjc.m in Sources */,
+				FAA1C94F1F4C481E0032F3A0 /* PogoprotosMap.pbobjc.m in Sources */,
 				FA7ED8391EBE30E00046C902 /* Any.pbobjc.m in Sources */,
-				FA7ED8DF1EBE32410046C902 /* PogoprotosSettingsMaster.pbobjc.m in Sources */,
 				FA7ED84D1EBE30E00046C902 /* GPBArray.m in Sources */,
-				FA7ED8CF1EBE32410046C902 /* PogoprotosNetworkingEnvelopes.pbobjc.m in Sources */,
-				FA7ED8AF1EBE32410046C902 /* PogoprotosData.pbobjc.m in Sources */,
+				FAA1C9581F4C481E0032F3A0 /* PogoprotosNetworkingResponses.pbobjc.m in Sources */,
+				FAA1C9411F4C481E0032F3A0 /* PogoprotosData.pbobjc.m in Sources */,
+				FAA1C94E1F4C481E0032F3A0 /* PogoprotosInventoryItem.pbobjc.m in Sources */,
 				FA7ED85D1EBE30E00046C902 /* GPBExtensionInternals.m in Sources */,
-				FA7ED8D31EBE32410046C902 /* PogoprotosNetworkingPlatformRequests.pbobjc.m in Sources */,
-				FA7ED8D11EBE32410046C902 /* PogoprotosNetworkingPlatform.pbobjc.m in Sources */,
 				FA7ED8411EBE30E00046C902 /* FieldMask.pbobjc.m in Sources */,
-				FA7ED8DD1EBE32410046C902 /* PogoprotosSettings.pbobjc.m in Sources */,
 				FA7ED8571EBE30E00046C902 /* GPBDescriptor.m in Sources */,
-				FA7ED8D91EBE32410046C902 /* PogoprotosNetworkingRequestsMessages.pbobjc.m in Sources */,
 				FA7ED8541EBE30E00046C902 /* GPBCodedOutputStream.m in Sources */,
-				FA7ED8D51EBE32410046C902 /* PogoprotosNetworkingPlatformResponses.pbobjc.m in Sources */,
-				FA7ED8E31EBE32410046C902 /* PogoprotosSettingsMasterPokemon.pbobjc.m in Sources */,
+				FAA1C94A1F4C481E0032F3A0 /* PogoprotosDataRaid.pbobjc.m in Sources */,
+				FAA1C9561F4C481E0032F3A0 /* PogoprotosNetworkingRequests.pbobjc.m in Sources */,
 				FA7ED8471EBE30E00046C902 /* Timestamp.pbobjc.m in Sources */,
-				FA7ED8B91EBE32410046C902 /* PogoprotosDataGym.pbobjc.m in Sources */,
-				FA7ED8BB1EBE32410046C902 /* PogoprotosDataLogs.pbobjc.m in Sources */,
-				FA7ED8BD1EBE32410046C902 /* PogoprotosDataPlayer.pbobjc.m in Sources */,
+				FAA1C9461F4C481E0032F3A0 /* PogoprotosDataGym.pbobjc.m in Sources */,
+				FAA1C9471F4C481E0032F3A0 /* PogoprotosDataLogs.pbobjc.m in Sources */,
+				FAA1C94C1F4C481E0032F3A0 /* PogoprotosEnums.pbobjc.m in Sources */,
+				FAA1C9481F4C481E0032F3A0 /* PogoprotosDataPlayer.pbobjc.m in Sources */,
+				FAA1C9571F4C481E0032F3A0 /* PogoprotosNetworkingRequestsMessages.pbobjc.m in Sources */,
+				FAA1C9531F4C481E0032F3A0 /* PogoprotosNetworkingPlatform.pbobjc.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,7 +20,7 @@ NSMutableDictionary* lookup = [NSMutableDictionary dictionary];
 
 #pragma mark - Original implementations
 
-static void (*original_recv)(int pointer, Result result);
+static void (*original_recv)(int pointer, Result* result);
 static int (*original_server)(int pointer, int timeoutMs, int retryDelayMs, int count, IntArray* methods, IntPtr bodies, IntArray* sizes, int* result);
 
 #pragma mark - Server Send
@@ -58,23 +58,23 @@ static int hacked_server(int pointer, int timeoutMs, int retryDelayMs, int count
 
 #pragma mark - Recv
 
-static void hacked_recv(int pointer, Result result)
+static void hacked_recv(int pointer, Result* result)
 {
     // Get the identifier of the current server response
-    int rpcId = result.rpcId;
+    int rpcId = result->rpcId;
     
     // Lookup for the request having the same identifier
     NSMutableArray* protos = [lookup objectForKey:@(rpcId)];
     
     if (protos)
     {
-        int actions = result.actionCount;
+        int actions = result->actionCount;
         
         // Game requests and server responses are supposed to have the same amount of messages
         if (protos.count == actions)
         {
             // Get a reference to the various bodies contained in this response
-            ByteStringRepeatedField* repeatedField = result.rpcPayloads;
+            ByteStringRepeatedField* repeatedField = result->rpcPayloads;
             
             for (int i = 0; i < repeatedField->count; i++)
             {
@@ -152,11 +152,14 @@ static void hacked_recv(int pointer, Result result)
 
 %ctor
 {
+    // Calculate ASRL slide
+    intptr_t slide = _dyld_get_image_vmaddr_slide(0);
+    
     // N2ServerSend$$Invoke
-    unsigned long server_func = (_dyld_get_image_vmaddr_slide(0) + 0x1007C562C);
+    unsigned long server_func = (slide + 0x1009012e8);
     MSHookFunction((void*)server_func, (void*)hacked_server, (void**)&original_server);
     
-    // RPC$$Recv
-    unsigned long recv_func = (_dyld_get_image_vmaddr_slide(0) + 0x1007C9914);
+    // RPCManager$$Recv
+    unsigned long recv_func = (slide + 0x100910e50);
     MSHookFunction((void*)recv_func, (void*)hacked_recv, (void**)&original_recv);
 }
