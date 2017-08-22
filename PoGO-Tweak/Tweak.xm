@@ -152,7 +152,7 @@ static void hacked_recv(int pointer, Result* result)
 
 %ctor
 {
-    // Calculate ASRL slide
+    // Calculate ASLR slide
     intptr_t slide = _dyld_get_image_vmaddr_slide(0);
     
     // N2ServerSend$$Invoke
